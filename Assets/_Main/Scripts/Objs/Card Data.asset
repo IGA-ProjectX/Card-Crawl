@@ -1,0 +1,221 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 972347a057270774a8fb401a3053d5cd, type: 3}
+  m_Name: Card Data
+  m_EditorClassIdentifier: 
+  healthCards:
+  - cardName: Life
+    cardImage: {fileID: 21300000, guid: f0a7801fc9bdc2843b644c17242a778c, type: 3}
+    cardValue: 2
+  - cardName: Life
+    cardImage: {fileID: 21300000, guid: f0a7801fc9bdc2843b644c17242a778c, type: 3}
+    cardValue: 3
+  - cardName: Life
+    cardImage: {fileID: 21300000, guid: f0a7801fc9bdc2843b644c17242a778c, type: 3}
+    cardValue: 4
+  - cardName: Life
+    cardImage: {fileID: 21300000, guid: f0a7801fc9bdc2843b644c17242a778c, type: 3}
+    cardValue: 5
+  - cardName: Life
+    cardImage: {fileID: 21300000, guid: f0a7801fc9bdc2843b644c17242a778c, type: 3}
+    cardValue: 6
+  - cardName: Life
+    cardImage: {fileID: 21300000, guid: f0a7801fc9bdc2843b644c17242a778c, type: 3}
+    cardValue: 7
+  - cardName: Life
+    cardImage: {fileID: 21300000, guid: f0a7801fc9bdc2843b644c17242a778c, type: 3}
+    cardValue: 8
+  - cardName: Life
+    cardImage: {fileID: 21300000, guid: f0a7801fc9bdc2843b644c17242a778c, type: 3}
+    cardValue: 9
+  - cardName: Life
+    cardImage: {fileID: 21300000, guid: f0a7801fc9bdc2843b644c17242a778c, type: 3}
+    cardValue: 10
+  goldCards:
+  - cardName: Rupy
+    cardImage: {fileID: 21300000, guid: daec9cc0110038746a6b0b817109c3ed, type: 3}
+    cardValue: 2
+  - cardName: Rupy
+    cardImage: {fileID: 21300000, guid: daec9cc0110038746a6b0b817109c3ed, type: 3}
+    cardValue: 3
+  - cardName: Rupy
+    cardImage: {fileID: 21300000, guid: daec9cc0110038746a6b0b817109c3ed, type: 3}
+    cardValue: 4
+  - cardName: Rupy
+    cardImage: {fileID: 21300000, guid: daec9cc0110038746a6b0b817109c3ed, type: 3}
+    cardValue: 5
+  - cardName: Rupy
+    cardImage: {fileID: 21300000, guid: daec9cc0110038746a6b0b817109c3ed, type: 3}
+    cardValue: 6
+  - cardName: Rupy
+    cardImage: {fileID: 21300000, guid: daec9cc0110038746a6b0b817109c3ed, type: 3}
+    cardValue: 7
+  - cardName: Rupy
+    cardImage: {fileID: 21300000, guid: daec9cc0110038746a6b0b817109c3ed, type: 3}
+    cardValue: 8
+  - cardName: Rupy
+    cardImage: {fileID: 21300000, guid: daec9cc0110038746a6b0b817109c3ed, type: 3}
+    cardValue: 9
+  - cardName: Rupy
+    cardImage: {fileID: 21300000, guid: daec9cc0110038746a6b0b817109c3ed, type: 3}
+    cardValue: 10
+  weaponCards:
+  - cardName: Weapon
+    cardImage: {fileID: 21300000, guid: 254e3464f6486f347bd5285ce09cb72f, type: 3}
+    cardValue: 2
+  - cardName: Weapon
+    cardImage: {fileID: 21300000, guid: 254e3464f6486f347bd5285ce09cb72f, type: 3}
+    cardValue: 3
+  - cardName: Weapon
+    cardImage: {fileID: 21300000, guid: 254e3464f6486f347bd5285ce09cb72f, type: 3}
+    cardValue: 4
+  - cardName: Weapon
+    cardImage: {fileID: 21300000, guid: 254e3464f6486f347bd5285ce09cb72f, type: 3}
+    cardValue: 5
+  - cardName: Weapon
+    cardImage: {fileID: 21300000, guid: 254e3464f6486f347bd5285ce09cb72f, type: 3}
+    cardValue: 6
+  - cardName: Weapon
+    cardImage: {fileID: 21300000, guid: 254e3464f6486f347bd5285ce09cb72f, type: 3}
+    cardValue: 7
+  shieldCards:
+  - cardName: Shield
+    cardImage: {fileID: 21300000, guid: c8046f34f496d6149b40da803201c101, type: 3}
+    cardValue: 2
+  - cardName: Shield
+    cardImage: {fileID: 21300000, guid: c8046f34f496d6149b40da803201c101, type: 3}
+    cardValue: 3
+  - cardName: Shield
+    cardImage: {fileID: 21300000, guid: c8046f34f496d6149b40da803201c101, type: 3}
+    cardValue: 4
+  - cardName: Shield
+    cardImage: {fileID: 21300000, guid: c8046f34f496d6149b40da803201c101, type: 3}
+    cardValue: 5
+  - cardName: Shield
+    cardImage: {fileID: 21300000, guid: c8046f34f496d6149b40da803201c101, type: 3}
+    cardValue: 6
+  - cardName: Shield
+    cardImage: {fileID: 21300000, guid: c8046f34f496d6149b40da803201c101, type: 3}
+    cardValue: 7
+  monsterCards:
+  - cardName: Goblin
+    cardImage: {fileID: 21300000, guid: 53dea20fa9d758345b57ab9fa23d5132, type: 3}
+    cardValue: 2
+  - cardName: Slime
+    cardImage: {fileID: 21300000, guid: 71267f0dc4f22f04f8d1394eaec003a7, type: 3}
+    cardValue: 3
+  - cardName: Troll
+    cardImage: {fileID: 21300000, guid: 223f39a6f5752094fb4e1682cac84bc5, type: 3}
+    cardValue: 4
+  - cardName: Gargoyle
+    cardImage: {fileID: 21300000, guid: 6e991cecf9bbe534f9e5fac905932bd4, type: 3}
+    cardValue: 5
+  - cardName: Vampire
+    cardImage: {fileID: 21300000, guid: bccef24dd2cdfc64f8390b367abeeef7, type: 3}
+    cardValue: 6
+  - cardName: Werewolf
+    cardImage: {fileID: 21300000, guid: 8dad7c4b3e134794d838d115d58715be, type: 3}
+    cardValue: 7
+  - cardName: Orc
+    cardImage: {fileID: 21300000, guid: 54a20fdf7187fba458ddfbc029ec382e, type: 3}
+    cardValue: 8
+  - cardName: Devil
+    cardImage: {fileID: 21300000, guid: 3aa9a60ea669f59419c3c5097111f702, type: 3}
+    cardValue: 9
+  - cardName: Dragon
+    cardImage: {fileID: 21300000, guid: 5402d4f640787c2489947c850040986f, type: 3}
+    cardValue: 10
+  specialCards:
+  - cardName: Equalize
+    cardImage: {fileID: 21300000, guid: 667fd60ed231ca14c946f7dd5d918dc0, type: 3}
+    cardValue: 0
+    cardEffect: 1
+    effectDescription: Give the adjacent cards the value of the selected dungeon
+      card
+    isLocked: 1
+    purchaseValue: 100
+  - cardName: Swap
+    cardImage: {fileID: 21300000, guid: 59e2d66ee156ff04093dbaa1e01ab993, type: 3}
+    cardValue: 0
+    cardEffect: 2
+    effectDescription: Swap the value of the selected dungeon card with a random
+      adjacent card
+    isLocked: 1
+    purchaseValue: 120
+  - cardName: Trade
+    cardImage: {fileID: 21300000, guid: 5f66dda3c08a66e4191aaa69c14026d5, type: 3}
+    cardValue: 0
+    cardEffect: 3
+    effectDescription: Sell any none monster card for the double of it's value
+    isLocked: 0
+    purchaseValue: 135
+  - cardName: Steal
+    cardImage: {fileID: 21300000, guid: 320d6899123ac2441a78b80fb22db825, type: 3}
+    cardValue: 0
+    cardEffect: 4
+    effectDescription: If your backpack is empty add next card from the deck into
+      it
+    isLocked: 0
+    purchaseValue: 150
+  - cardName: Leech
+    cardImage: {fileID: 21300000, guid: 2cb5515693e7d514eae7f21a360c5adb, type: 3}
+    cardValue: 0
+    cardEffect: 5
+    effectDescription: Gain Life equal to the value of the selected dungeon card
+    isLocked: 1
+    purchaseValue: 175
+  - cardName: Lash
+    cardImage: {fileID: 21300000, guid: 02ff3777812201e488e32e01b4f3f722, type: 3}
+    cardValue: 3
+    cardEffect: 6
+    effectDescription: Attack between 1 and 3 monster cards for 3
+    isLocked: 0
+    purchaseValue: 200
+  characterCards:
+  - cardName: Barbarian
+    cardImage: {fileID: 21300000, guid: 37384a495efa8e94ebfa6369d4e4a949, type: 3}
+    maxHealth: 13
+  - cardName: Cowled
+    cardImage: {fileID: 21300000, guid: 6bdda2feb6507b241b0ccbfea62337e1, type: 3}
+    maxHealth: 11
+  - cardName: Monk
+    cardImage: {fileID: 21300000, guid: bbd5b876e25b43b4a8e0c943d6c59dd9, type: 3}
+    maxHealth: 17
+  - cardName: Wizard
+    cardImage: {fileID: 21300000, guid: 65ed2de5dfbafe74f84d5dff3ab54ab6, type: 3}
+    maxHealth: 14
+  cardUseLogics:
+  - cardType: 0
+    targets_Pool: 01000000020000000b000000
+    targets_Hand: 
+    targets_Backpack: 020000000b000000
+    targets_Use: 02000000
+  - cardType: 1
+    targets_Pool: 01000000020000000b000000
+    targets_Hand: 
+    targets_Backpack: 
+    targets_Use: 0100000002000000
+  - cardType: 2
+    targets_Pool: 01000000020000000b000000
+    targets_Hand: 04000000
+    targets_Backpack: 020000000b000000
+    targets_Use: 04000000
+  - cardType: 3
+    targets_Pool: 01000000020000000b000000
+    targets_Hand: 
+    targets_Backpack: 020000000b000000
+    targets_Use: 
+  - cardType: 4
+    targets_Pool: 0500000009000000
+    targets_Hand: 
+    targets_Backpack: 
+    targets_Use: 0500000009000000
