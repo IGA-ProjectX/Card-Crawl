@@ -64,20 +64,5 @@ namespace IGDF
         {
             Destroy(gameObject, 0.5f);
         }
-
-        //public void WaitingForDestroy()
-        //{
-        //    TurnResolving tr = FindObjectOfType<TurnResolving>();
-        //    isForDestroy = true;
-        //    tr.cardsToDestroy.Add(transform);
-        //    GetComponent<SpriteRenderer>().color = Color.cyan;
-        //    GetComponent<BoxCollider2D>().enabled = false;
-        //    FindObjectOfType<TurnResolving>().AddCommand(this);
-        //}
-
-        //public void Execute()
-        //{
-        //    DestroyCard();
-        //}
     }
 }

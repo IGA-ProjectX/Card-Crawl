@@ -12,17 +12,11 @@ namespace IGDF
         public List<Card> inGameDeck = new List<Card>();
         public List<Transform> cardsInTurn = new List<Transform>();
         [HideInInspector] public bool isUsable = false;
+        [HideInInspector] public bool isToPro = false;
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                DrawCard();
-            }
-            if (true)
-            {
-
-            }
+            if (Input.GetKeyDown(KeyCode.Space)) DrawCard();
         }
 
         public void ShuffleDeck(SO_Deck deckData)
@@ -59,6 +53,7 @@ namespace IGDF
                     go.DOMoveY(go.position.y - 1, 0.2f);
                 }
             }
+            StopCoroutine(TurnEnd());
         }
 
         public void ShowMovableSlot(Card cardData)
@@ -71,9 +66,11 @@ namespace IGDF
         public void ShowMovableState(Transform cardTrans,CardType cardType,int cardValue)
         {
             Transform[] staffSlots = M_Main.instance.m_Staff.staffSlots;
-            float ditanceBetweenCardAndSlot = Vector2.Distance(cardTrans.position, staffSlots[(int)cardType].position);
+            float ditanceBetweenCardTypeSlot = Vector2.Distance(cardTrans.position, staffSlots[(int)cardType].position);
+            float ditanceBetweenProductionSlot = Vector2.Distance(cardTrans.position, staffSlots[0].position);
             SpriteRenderer staffGridSprite = staffSlots[(int)cardType].GetComponent<SpriteRenderer>();
-            if (ditanceBetweenCardAndSlot <= 0.6f)
+            SpriteRenderer produGridSprite = staffSlots[0].GetComponent<SpriteRenderer>();
+            if (ditanceBetweenCardTypeSlot <= 0.6f)
             {
                 if (cardValue>=0)
                 {
@@ -95,10 +92,28 @@ namespace IGDF
                     }
                 }
             }
+            else if (ditanceBetweenProductionSlot <= 0.6f)
+            {
+                int ddlValue = M_Main.instance.m_Staff.GetDDLValue();
+                if (ddlValue+cardValue>0 && cardValue<=0)
+                {
+                    DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, Color.green, 0.3f);
+                    isUsable = true;
+                    isToPro = true;
+                }
+                else
+                {
+                    DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, Color.red, 0.3f);
+                    isUsable = false;
+                    isToPro = false;
+                }
+            }
             else
             {
                 DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, new Color32(255, 255, 255, 140), 0.3f);
+                DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, new Color32(255, 255, 255, 140), 0.3f);
                 isUsable = false;
+                isToPro = false;
             }
         }
 
@@ -106,23 +121,40 @@ namespace IGDF
         {
             Transform[] staffSlots = M_Main.instance.m_Staff.staffSlots;
             SpriteRenderer staffGridSprite = staffSlots[(int)cardType].GetComponent<SpriteRenderer>();
+            SpriteRenderer produGridSprite = staffSlots[0].GetComponent<SpriteRenderer>();
             if (isUsable)
             {
-                Sequence s = DOTween.Sequence();
-                s.Append(cardTrans.DOMove(staffSlots[(int)cardType].position, 0.2f));
-                s.AppendCallback(() => cardTrans.DOScale(0, 0.3f));
-                s.AppendInterval(0.2f);
-                s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue((int)cardType, cardValue));
-                s.AppendCallback(() => cardsInTurn[cardTrans.GetComponent<O_Card>().inSlotIndex] = null);
-                s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCard());
-                s.AppendCallback(() => CheckInTurnCardNumber());
+                if (isToPro && (int)cardType != 0)
+                {
+                    Sequence s = DOTween.Sequence();
+                    s.Append(cardTrans.DOMove(staffSlots[0].position, 0.2f));
+                    s.AppendCallback(() => cardTrans.DOScale(0, 0.3f));
+                    s.AppendInterval(0.2f);
+                    s.AppendCallback(() => M_Main.instance.m_Staff.ChangeDeadLineValue(cardValue));
+                    s.AppendCallback(() => cardsInTurn[cardTrans.GetComponent<O_Card>().inSlotIndex] = null);
+                    s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCard());
+                    s.AppendCallback(() => CheckInTurnCardNumber());
+                }
+                else
+                {
+                    Sequence s = DOTween.Sequence();
+                    s.Append(cardTrans.DOMove(staffSlots[(int)cardType].position, 0.2f));
+                    s.AppendCallback(() => cardTrans.DOScale(0, 0.3f));
+                    s.AppendInterval(0.2f);
+                    s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue((int)cardType, cardValue));
+                    s.AppendCallback(() => cardsInTurn[cardTrans.GetComponent<O_Card>().inSlotIndex] = null);
+                    s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCard());
+                    s.AppendCallback(() => CheckInTurnCardNumber());
+                }
             }
             else
             {
                 cardTrans.DOMove(cardTrans.GetComponent<O_Card>().inSlotPos,0.3f);
             }
             DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, new Color32(255, 255, 255, 0), 0.3f);
+            DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, new Color32(255, 255, 255, 0), 0.3f);
             isUsable = false;
+            isToPro = false;
         }
 
         public void CheckInTurnCardNumber()
@@ -134,8 +166,30 @@ namespace IGDF
             }
             if (nullCount>=3)
             {
-                DrawCard();
+                StartCoroutine(TurnEnd());
             }
+        }
+
+        public IEnumerator TurnEnd()
+        {
+            for (int i = 0; i < cardsInTurn.Count; i++)
+            {
+                if (cardsInTurn[i] != null && cardsInTurn[i].GetComponent<O_Card>().cardCurrentValue < 0)
+                {
+                    SpriteRenderer residueCardSprite = cardsInTurn[i].Find("Card BG").GetComponent<SpriteRenderer>();
+                    DOTween.To(() => residueCardSprite.color, x => residueCardSprite.color = x, Color.red, 0.1f);
+                    yield return new WaitForSeconds(0.1f);
+                    DOTween.To(() => residueCardSprite.color, x => residueCardSprite.color = x, Color.white, 0.1f);
+                    yield return new WaitForSeconds(0.1f);
+                    DOTween.To(() => residueCardSprite.color, x => residueCardSprite.color = x, Color.red, 0.1f);
+                    yield return new WaitForSeconds(0.1f);
+                    DOTween.To(() => residueCardSprite.color, x => residueCardSprite.color = x, Color.white, 0.1f);
+                    yield return new WaitForSeconds(0.2f);
+                    M_Main.instance.m_Staff.ChangeDeadLineValue(-1);
+                }
+            }
+            yield return new WaitForSeconds(0.2f);
+            DrawCard();
         }
     }
 }
