@@ -26,7 +26,7 @@ namespace IGDF
             foreach (Card card in deckData.cards_Design) tempList.Add(card);
             foreach (Card card in deckData.cards_Art) tempList.Add(card);
             foreach (Card card in deckData.cards_Code) tempList.Add(card);
-
+            
             int rand;
             Card tempValue;
             for (int i = tempList.Count - 1; i >= 0; i--)
@@ -43,7 +43,7 @@ namespace IGDF
         {
             for (int i = 0; i < 4; i++)
             {
-                if (cardsInTurn[i] == null)
+                if (cardsInTurn[i] == null && inGameDeck.Count != 0)
                 {
                     Transform go = Instantiate(pre_Card, taskSlots[i].transform.position, Quaternion.identity).transform;
                     go.position = new Vector3(go.position.x, go.position.y + 1, 0);
@@ -92,7 +92,7 @@ namespace IGDF
                     }
                 }
             }
-            else if (ditanceBetweenProductionSlot <= 0.6f)
+            else if (cardValue <= 0&& ditanceBetweenProductionSlot <= 0.6f)
             {
                 int ddlValue = M_Main.instance.m_Staff.GetDDLValue();
                 if (ddlValue+cardValue>0 && cardValue<=0)
@@ -111,7 +111,10 @@ namespace IGDF
             else
             {
                 DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, new Color32(255, 255, 255, 140), 0.3f);
-                DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, new Color32(255, 255, 255, 140), 0.3f);
+                if (cardValue<=0 && (int)cardType!=0)
+                {
+                    DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, new Color32(255, 255, 255, 140), 0.3f);
+                }
                 isUsable = false;
                 isToPro = false;
             }
