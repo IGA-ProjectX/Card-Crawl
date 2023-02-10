@@ -10,10 +10,13 @@ namespace IGDF
     {
         private Card cardData;
         [HideInInspector] public int cardCurrentValue;
+        [HideInInspector] public CardType cardCurrentType;
+
         private Vector3 lastMousePosition = Vector3.zero;
-        [HideInInspector] public bool isForDestroy = false;
         [HideInInspector] public Vector3 inSlotPos;
         [HideInInspector] public int inSlotIndex;
+
+        [HideInInspector] public bool isCardReadyForSkill = false;
 
         private M_Card m_Card;
 
@@ -26,6 +29,7 @@ namespace IGDF
         {
             cardData = card;
             cardCurrentValue = cardData.cardValue;
+            cardCurrentType = cardData.cardType;
             if(card.cardImage!=null)
             transform.Find("Card Image Content").GetComponent<SpriteRenderer>().sprite = card.cardImage;
             transform.Find("Card Name").GetComponent<TMP_Text>().text = card.cardName;
@@ -38,31 +42,54 @@ namespace IGDF
         #region - Interaction -
         public void OnMouseDown()
         {
-            transform.DOMoveZ(-0.2f, 0.1f);
-            m_Card.ShowMovableSlot(cardData);
+            switch (M_Main.instance.m_Skill.skillUseState)
+            {
+                case SkillUseState.WaitForUse:
+                    transform.DOMoveZ(-0.2f, 0.1f);
+                    m_Card.ShowMovableSlot(cardData);
+                    break;
+                case SkillUseState.Targeting:
+                    M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
+                    break;
+            }
         }
 
         public void OnMouseDrag()
         {
-            if (lastMousePosition != Vector3.zero)
+            if (M_Main.instance.m_Skill.skillUseState == SkillUseState.WaitForUse)
             {
-                Vector3 offset = Camera.main.ScreenToWorldPoint(Input.mousePosition) - lastMousePosition;
-                transform.position += offset;
+                if (lastMousePosition != Vector3.zero)
+                {
+                    Vector3 offset = Camera.main.ScreenToWorldPoint(Input.mousePosition) - lastMousePosition;
+                    transform.position += offset;
+                }
+                lastMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                m_Card.ShowMovableState(transform, cardData.cardType, cardCurrentValue);
             }
-            lastMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            m_Card.ShowMovableState(transform,cardData.cardType,cardCurrentValue);
         }
 
         public void OnMouseUp()
         {
-            lastMousePosition = Vector3.zero;
-            m_Card.CardUseOrMoveBack(transform, cardData.cardType, cardCurrentValue);
+            if (M_Main.instance.m_Skill.skillUseState == SkillUseState.WaitForUse)
+            {
+                lastMousePosition = Vector3.zero;
+                m_Card.CardUseOrMoveBack(transform, cardData.cardType, cardCurrentValue);
+            }
         }
         #endregion
 
         public void DestroyCard()
         {
+            Sequence s = DOTween.Sequence();
+            s.AppendCallback(() => M_Main.instance.m_Card.cardsInTurn[inSlotIndex] = null);
+            s.AppendCallback(() => transform.DOScale(0, 0.3f));
             Destroy(gameObject, 0.5f);
+        }
+
+        public void CardBackToDeck()
+        {
+            M_Main.instance.m_Card.inGameDeck.Add(cardData);
+            DestroyCard();
         }
     }
 }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c054bdda59a8544f876c28a7ca5b690, type: 3}
+  m_Name: S001
+  m_EditorClassIdentifier: 
+  skillIndex: 1
+  skillName: Later
+  skillDescription: Withdraw one task card
+  skillImage: {fileID: 21300000, guid: 5236f7365fae1604a907c0a3321295fc, type: 3}
+  skillType: 1
+  skillUseType: 2

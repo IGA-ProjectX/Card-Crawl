@@ -19,24 +19,28 @@ namespace IGDF
             if (Input.GetKeyDown(KeyCode.Space)) DrawCard();
         }
 
-        public void ShuffleDeck(SO_Deck deckData)
+        public void InitializeDeck(SO_Deck deckData)
         {
             List<Card> tempList = new List<Card>();
             foreach (Card card in deckData.cards_Production) tempList.Add(card);
             foreach (Card card in deckData.cards_Design) tempList.Add(card);
             foreach (Card card in deckData.cards_Art) tempList.Add(card);
             foreach (Card card in deckData.cards_Code) tempList.Add(card);
-            
+            ShuffleDeck(tempList);
+        }
+
+        public void ShuffleDeck(List<Card> deckToShuffle)
+        {
             int rand;
             Card tempValue;
-            for (int i = tempList.Count - 1; i >= 0; i--)
+            for (int i = deckToShuffle.Count - 1; i >= 0; i--)
             {
                 rand = Random.Range(0, i + 1);
-                tempValue = tempList[rand];
-                tempList[rand] = tempList[i];
-                tempList[i] = tempValue;
+                tempValue = deckToShuffle[rand];
+                deckToShuffle[rand] = deckToShuffle[i];
+                deckToShuffle[i] = tempValue;
             }
-            inGameDeck = tempList;
+            inGameDeck = deckToShuffle;
         }
 
         public void DrawCard()
@@ -54,6 +58,19 @@ namespace IGDF
                 }
             }
             StopCoroutine(TurnEnd());
+        }
+
+        public void DrawCard(List<int> toDrawSlots)
+        {
+            foreach (int slotIndex in toDrawSlots)
+            {
+                Transform go = Instantiate(pre_Card, taskSlots[slotIndex].transform.position, Quaternion.identity).transform;
+                go.position = new Vector3(go.position.x, go.position.y + 1, 0);
+                cardsInTurn[slotIndex] = go;
+                go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], slotIndex, go.position + new Vector3(0, -1, 0));
+                inGameDeck.RemoveAt(0);
+                go.DOMoveY(go.position.y - 1, 0.2f);
+            }
         }
 
         public void ShowMovableSlot(Card cardData)
@@ -131,22 +148,18 @@ namespace IGDF
                 {
                     Sequence s = DOTween.Sequence();
                     s.Append(cardTrans.DOMove(staffSlots[0].position, 0.2f));
-                    s.AppendCallback(() => cardTrans.DOScale(0, 0.3f));
-                    s.AppendInterval(0.2f);
-                    s.AppendCallback(() => M_Main.instance.m_Staff.ChangeDeadLineValue(cardValue));
-                    s.AppendCallback(() => cardsInTurn[cardTrans.GetComponent<O_Card>().inSlotIndex] = null);
                     s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCard());
+                    s.AppendCallback(() => M_Main.instance.m_Staff.ChangeDeadLineValue(cardValue));
+                    s.AppendInterval(0.1f);
                     s.AppendCallback(() => CheckInTurnCardNumber());
                 }
                 else
                 {
                     Sequence s = DOTween.Sequence();
                     s.Append(cardTrans.DOMove(staffSlots[(int)cardType].position, 0.2f));
-                    s.AppendCallback(() => cardTrans.DOScale(0, 0.3f));
-                    s.AppendInterval(0.2f);
-                    s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue((int)cardType, cardValue));
-                    s.AppendCallback(() => cardsInTurn[cardTrans.GetComponent<O_Card>().inSlotIndex] = null);
                     s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCard());
+                    s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue((int)cardType, cardValue));
+                    s.AppendInterval(0.1f);
                     s.AppendCallback(() => CheckInTurnCardNumber());
                 }
             }
