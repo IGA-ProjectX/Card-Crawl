@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 namespace IGDF
 {
@@ -19,7 +20,7 @@ namespace IGDF
             if (Input.GetKeyDown(KeyCode.Space)) DrawCard();
         }
 
-        public void InitializeDeck(SO_Deck deckData)
+        public void InitializeDeck(SO_Level deckData)
         {
             List<Card> tempList = new List<Card>();
             foreach (Card card in deckData.cards_Production) tempList.Add(card);
@@ -49,12 +50,14 @@ namespace IGDF
             {
                 if (cardsInTurn[i] == null && inGameDeck.Count != 0)
                 {
-                    Transform go = Instantiate(pre_Card, taskSlots[i].transform.position, Quaternion.identity).transform;
-                    go.position = new Vector3(go.position.x, go.position.y + 1, 0);
+                    Transform go = Instantiate(pre_Card, taskSlots[i].transform.position, Quaternion.identity, GameObject.Find("Canvas").transform.Find("Mask")).transform;
                     cardsInTurn[i] = go;
-                    go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], i, go.position + new Vector3(0, -1, 0));
+                    go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], i);
                     inGameDeck.RemoveAt(0);
-                    go.DOMoveY(go.position.y - 1, 0.2f);
+                    Sequence s = DOTween.Sequence();
+                    s.Append(go.DOMoveY(1.82f, 1f));
+                    s.AppendCallback(()=> go.transform.SetParent(GameObject.Find("Canvas").transform));
+                    s.AppendCallback(() => go.GetComponent<O_Card>().inSlotPos = go.position);
                 }
             }
             StopCoroutine(TurnEnd());
@@ -64,19 +67,22 @@ namespace IGDF
         {
             foreach (int slotIndex in toDrawSlots)
             {
-                Transform go = Instantiate(pre_Card, taskSlots[slotIndex].transform.position, Quaternion.identity).transform;
+                Transform go = Instantiate(pre_Card, taskSlots[slotIndex].transform.position, Quaternion.identity, GameObject.Find("Canvas").transform.Find("Mask")).transform;
                 go.position = new Vector3(go.position.x, go.position.y + 1, 0);
                 cardsInTurn[slotIndex] = go;
-                go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], slotIndex, go.position + new Vector3(0, -1, 0));
+                go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], slotIndex);
                 inGameDeck.RemoveAt(0);
-                go.DOMoveY(go.position.y - 1, 0.2f);
+                Sequence s = DOTween.Sequence();
+                s.Append(go.DOMoveY(1.82f, 1f));
+                s.AppendCallback(() => go.transform.SetParent(GameObject.Find("Canvas").transform));
+                s.AppendCallback(() => go.GetComponent<O_Card>().inSlotPos = go.position);
             }
         }
 
-        public void ShowMovableSlot(Card cardData)
+        public void ShowMovableSlot(CardType cardType)
         {
             Transform[] staffSlots = M_Main.instance.m_Staff.staffSlots;
-            SpriteRenderer staffGridSprite = staffSlots[(int)cardData.cardType].GetComponent<SpriteRenderer>();
+            SpriteRenderer staffGridSprite = staffSlots[(int)cardType].GetComponent<SpriteRenderer>();
             DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, new Color32(255, 255, 255, 140), 0.3f);
         }
 
@@ -111,19 +117,9 @@ namespace IGDF
             }
             else if (cardValue <= 0&& ditanceBetweenProductionSlot <= 0.6f)
             {
-                int ddlValue = M_Main.instance.m_Staff.GetDDLValue();
-                if (ddlValue+cardValue>0 && cardValue<=0)
-                {
-                    DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, Color.green, 0.3f);
-                    isUsable = true;
-                    isToPro = true;
-                }
-                else
-                {
-                    DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, Color.red, 0.3f);
-                    isUsable = false;
-                    isToPro = false;
-                }
+                DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, Color.green, 0.3f);
+                isUsable = true;
+                isToPro = true;
             }
             else
             {
@@ -190,18 +186,25 @@ namespace IGDF
         {
             for (int i = 0; i < cardsInTurn.Count; i++)
             {
-                if (cardsInTurn[i] != null && cardsInTurn[i].GetComponent<O_Card>().cardCurrentValue < 0)
+                if (cardsInTurn[i] != null )
                 {
-                    SpriteRenderer residueCardSprite = cardsInTurn[i].Find("Card BG").GetComponent<SpriteRenderer>();
-                    DOTween.To(() => residueCardSprite.color, x => residueCardSprite.color = x, Color.red, 0.1f);
-                    yield return new WaitForSeconds(0.1f);
-                    DOTween.To(() => residueCardSprite.color, x => residueCardSprite.color = x, Color.white, 0.1f);
-                    yield return new WaitForSeconds(0.1f);
-                    DOTween.To(() => residueCardSprite.color, x => residueCardSprite.color = x, Color.red, 0.1f);
-                    yield return new WaitForSeconds(0.1f);
-                    DOTween.To(() => residueCardSprite.color, x => residueCardSprite.color = x, Color.white, 0.1f);
-                    yield return new WaitForSeconds(0.2f);
-                    M_Main.instance.m_Staff.ChangeDeadLineValue(-1);
+                    if (cardsInTurn[i].GetComponent<O_Card>().cardCurrentValue < 0)
+                    {
+                        Image residueCardSprite = cardsInTurn[i].GetComponent<Image>();
+                        DOTween.To(() => residueCardSprite.color, x => residueCardSprite.color = x, Color.red, 0.1f);
+                        yield return new WaitForSeconds(0.1f);
+                        DOTween.To(() => residueCardSprite.color, x => residueCardSprite.color = x, Color.white, 0.1f);
+                        yield return new WaitForSeconds(0.1f);
+                        DOTween.To(() => residueCardSprite.color, x => residueCardSprite.color = x, Color.red, 0.1f);
+                        yield return new WaitForSeconds(0.1f);
+                        DOTween.To(() => residueCardSprite.color, x => residueCardSprite.color = x, Color.white, 0.1f);
+                        yield return new WaitForSeconds(0.2f);
+                        M_Main.instance.m_Staff.ChangeDeadLineValue(-1);
+                    }
+                    else
+                    {
+                        cardsInTurn[i].GetComponent<O_Card>().DestroyCard();
+                    }
                 }
             }
             yield return new WaitForSeconds(0.2f);

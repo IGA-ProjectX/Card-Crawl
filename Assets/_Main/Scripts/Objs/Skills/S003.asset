@@ -17,4 +17,4 @@ MonoBehaviour:
   skillDescription: Randomly change one boost card's profession
   skillImage: {fileID: 21300000, guid: 36d97de6b96ea9f43b424fd746735650, type: 3}
   skillType: 3
-  skillUseType: 1
+  skillUseType: 5

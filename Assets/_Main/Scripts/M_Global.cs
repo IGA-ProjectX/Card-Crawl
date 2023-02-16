@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class M_Global : MonoBehaviour
+namespace IGDF
 {
-    // Start is called before the first frame update
-    void Start()
+    public class M_Global : MonoBehaviour
     {
-        
-    }
+        public SO_Data mainData;
+        public SO_Level[] levels;
+        public int targetLevel = 1;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public static M_Global instance;
+
+        private void Awake()
+        {
+            if (instance != null) Destroy(this);
+            else
+            {
+                instance = this;
+                DontDestroyOnLoad(this);
+            }
+        }
+
+        public void PlayerExpUp(int newExp) 
+        {
+            mainData.playExp += newExp;
+        }
     }
 }
+

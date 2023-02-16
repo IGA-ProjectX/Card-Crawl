@@ -40,6 +40,7 @@ namespace IGDF
         public void ChangeDeadLineValue(int value)
         {
             deadLine += value;
+            if (deadLine < 0) deadLine = 0;
             deadlineText.text = deadLine.ToString();
         }
 

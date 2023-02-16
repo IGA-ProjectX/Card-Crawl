@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 namespace IGDF
 {
@@ -29,7 +30,6 @@ namespace IGDF
         public void UseSkill(O_Skill receivedSkill)
         {
             activatedSkill = receivedSkill;
-            Debug.Log(activatedSkill.skillData.skillName);
             skillUseState = SkillUseState.Targeting;
             switch (activatedSkill.skillData.skillUseType)
             {
@@ -47,6 +47,9 @@ namespace IGDF
                     break;
                 case SkillUseType.TargetExp:
                     EnterTargetingState("Exp");
+                    break;
+                case SkillUseType.TargetNoExp:
+                    EnterTargetingState("NoExp");
                     break;
             }
         }
@@ -77,12 +80,18 @@ namespace IGDF
                     if (card.cardCurrentType == CardType.Production) SetCardForSkillState(card, true);
                     else SetCardForSkillState(card, false);
             }
+            else if (targetType == "NoExp")
+            {
+                foreach (O_Card card in cardObjs)
+                    if (card.cardCurrentType != CardType.Production) SetCardForSkillState(card, true);
+                    else SetCardForSkillState(card, false);
+            }
         }
 
         public void SetCardForSkillState(O_Card targetCard,bool targetState)
         {
             targetCard.isCardReadyForSkill = targetState;
-            SpriteRenderer targetCardBG = targetCard.transform.Find("Card BG").GetComponent<SpriteRenderer>();
+            Image targetCardBG = targetCard.GetComponent<Image>();
             if (targetState)
                 DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.green, 0.3f);
             else
@@ -98,7 +107,7 @@ namespace IGDF
                 if (cardTrans!=null)
                 {
                     cardTrans.GetComponent<O_Card>().isCardReadyForSkill = false;
-                    SpriteRenderer targetCardBG = cardTrans.Find("Card BG").GetComponent<SpriteRenderer>();
+                    Image targetCardBG = cardTrans.GetComponent<Image>();
                     DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.white, 0.3f);
                 }
             }

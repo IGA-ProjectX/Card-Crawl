@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1427459640223904067}
   - component: {fileID: 5846037615152765911}
   m_Layer: 0
-  m_Name: T_Name
+  m_Name: Skill Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 3769158455227563753}
   - component: {fileID: 3769158455227563752}
   m_Layer: 0
-  m_Name: Img_Skill
+  m_Name: Skill Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e48f8c2d4b73047b98b1d1f15e1f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillData: {fileID: 0}
 --- !u!1 &7429454513089501820
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +337,7 @@ GameObject:
   - component: {fileID: 5842452336023292756}
   - component: {fileID: 6608356751299601603}
   m_Layer: 0
-  m_Name: BG_Skill
+  m_Name: Skill BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

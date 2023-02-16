@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c487008e91e61fe4b8cd9f306f4d1365, type: 3}
-  m_Name: D_PapersPlease
+  m_Name: D_SuperMario
   m_EditorClassIdentifier: 
-  levelType: 0
-  levelName: Papers. Please!
+  levelType: 2
+  levelName: Super Mario
   levelButtonImage: {fileID: 0}
   cards_Production:
   - cardType: 0
@@ -105,14 +105,6 @@ MonoBehaviour:
     cardName: D_NULL-
     cardImage: {fileID: 0}
     cardValue: -8
-  - cardType: 1
-    cardName: D_NULL-
-    cardImage: {fileID: 0}
-    cardValue: -9
-  - cardType: 1
-    cardName: D_NULL-
-    cardImage: {fileID: 0}
-    cardValue: -10
   cards_Art:
   - cardType: 2
     cardName: A_NULL+
@@ -170,14 +162,6 @@ MonoBehaviour:
     cardName: A_NULL-
     cardImage: {fileID: 0}
     cardValue: -8
-  - cardType: 2
-    cardName: A_NULL-
-    cardImage: {fileID: 0}
-    cardValue: -9
-  - cardType: 2
-    cardName: A_NULL-
-    cardImage: {fileID: 0}
-    cardValue: -10
   cards_Code:
   - cardType: 3
     cardName: C_NULL+
@@ -235,24 +219,17 @@ MonoBehaviour:
     cardName: C_NULL-
     cardImage: {fileID: 0}
     cardValue: -8
-  - cardType: 3
-    cardName: C_NULL-
-    cardImage: {fileID: 0}
-    cardValue: -9
-  - cardType: 3
-    cardName: C_NULL-
-    cardImage: {fileID: 0}
-    cardValue: -10
   productLevels:
   - productLevel: 1
-    productName: Bug Generator
-    productDescription: Its actually a digital trash.
+    productName: Mario Raw
+    productDescription: Mario RawMario RawMario RawMario RawMario Raw
     productImage: {fileID: 0}
   - productLevel: 2
-    productName: BBBBBB
-    productDescription: bbbbb bb bb bbbbb bbbbb bbbbb bbb
+    productName: Mario Medium
+    productDescription: Mario MediumMario MediumMario MediumMario Medium
     productImage: {fileID: 0}
   - productLevel: 3
-    productName: AAAAAAA
-    productDescription: aaaaa aa a aaaaa aaa, aaa ,aaaadaa aaa
+    productName: Mario Welldone
+    productDescription: Mario WelldoneMario WelldoneMario WelldoneMario Welldone
+      v
     productImage: {fileID: 0}

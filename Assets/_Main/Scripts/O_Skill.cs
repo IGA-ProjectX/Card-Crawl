@@ -14,8 +14,8 @@ namespace IGDF
         public void InitializeSkill(SO_Skill receivedData)
         {
             skillData = receivedData;
-            transform.Find("Img_Skill").GetComponent<SpriteRenderer>().sprite = skillData.skillImage;
-            transform.Find("T_Name").GetComponent<TMP_Text>().text = skillData.skillName;
+            transform.Find("Skill Image").GetComponent<SpriteRenderer>().sprite = skillData.skillImage;
+            transform.Find("Skill Name").GetComponent<TMP_Text>().text = skillData.skillName;
         }
 
         private void OnMouseDown()
@@ -28,7 +28,7 @@ namespace IGDF
         {
             if (!isUsed)
             {
-                SpriteRenderer skillBG = transform.Find("BG_Skill").GetComponent<SpriteRenderer>();
+                SpriteRenderer skillBG = transform.Find("Skill BG").GetComponent<SpriteRenderer>();
                 DOTween.To(() => skillBG.color, x => skillBG.color = x, Color.cyan, 0.3f);
             }
         }
@@ -37,7 +37,7 @@ namespace IGDF
         {
             if (!isUsed)
             {
-                SpriteRenderer skillBG = transform.Find("BG_Skill").GetComponent<SpriteRenderer>();
+                SpriteRenderer skillBG = transform.Find("Skill BG").GetComponent<SpriteRenderer>();
                 DOTween.To(() => skillBG.color, x => skillBG.color = x, Color.white, 0.3f);
             } 
         }
@@ -50,7 +50,7 @@ namespace IGDF
         public void SetSkillUninteractable()
         {
             isUsed = true;
-            SpriteRenderer skillBG = transform.Find("BG_Skill").GetComponent<SpriteRenderer>();
+            SpriteRenderer skillBG = transform.Find("Skill BG").GetComponent<SpriteRenderer>();
             DOTween.To(() => skillBG.color, x => skillBG.color = x, Color.grey, 0.3f);
         }
     }

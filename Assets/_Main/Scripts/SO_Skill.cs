@@ -40,5 +40,6 @@ namespace IGDF
         TargetTask,
         TargetBoost,
         TargetExp,
+        TargetNoExp
     }
 }
