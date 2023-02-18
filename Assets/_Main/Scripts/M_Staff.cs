@@ -9,7 +9,6 @@ namespace IGDF
     {
         public Transform[] staffSlots;
         private int[] inTurnValues = { 0, 0, 0, 0};
-        public TMP_Text deadlineText;
         private int deadLine;
 
         public void InitializeStaffValues(int[] valueArray)
@@ -41,7 +40,7 @@ namespace IGDF
         {
             deadLine += value;
             if (deadLine < 0) deadLine = 0;
-            deadlineText.text = deadLine.ToString();
+            M_Main.instance.m_DDL.GetValueChangeDot(deadLine);
         }
 
         public int GetDDLValue()

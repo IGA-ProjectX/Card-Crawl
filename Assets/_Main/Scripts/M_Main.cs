@@ -19,6 +19,7 @@ namespace IGDF
         [HideInInspector] public M_Staff m_Staff;
         [HideInInspector] public M_Skill m_Skill;
         [HideInInspector] public M_SkillResolve m_SkillResolve;
+        [HideInInspector] public M_DDL m_DDL;
 
         void Start()
         {
@@ -27,9 +28,11 @@ namespace IGDF
             m_Staff = GetComponent<M_Staff>();
             m_Skill = GetComponent<M_Skill>();
             m_SkillResolve = GetComponent<M_SkillResolve>();
+            m_DDL = GetComponent<M_DDL>();
 
-            Debug.Log(M_Global.instance.targetLevel);
             m_Card.InitializeDeck(M_Global.instance.levels[M_Global.instance.targetLevel]);
+            m_DDL.CreateDots();
+            m_DDL.InitializeNumberList();
             m_Staff.InitializeStaffValues(staffValue_Tester_PapersPlease);
             m_Skill.InitializeSkills(skill_Tester);
         }
