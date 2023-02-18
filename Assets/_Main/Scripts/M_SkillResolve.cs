@@ -65,10 +65,10 @@ namespace IGDF
                 }
             }
             Sequence s = DOTween.Sequence();
-            s.AppendInterval(0.35f);
+            s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.03f);
+            s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
             s.AppendCallback(() => M_Main.instance.m_Card.ShuffleDeck(M_Main.instance.m_Card.inGameDeck));
             s.AppendCallback(() => M_Main.instance.m_Card.DrawCard(toDrawIndexes));
-            s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
         }
 
         private void Skill_WithdrawOneTask(O_Card targetCard)
@@ -76,9 +76,9 @@ namespace IGDF
             targetCard.CardBackToDeck();
      
             Sequence s = DOTween.Sequence();
-            s.AppendInterval(0.4f);
-            s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
+            s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.03f);
             s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
+            s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
         }
 
         private void Skill_ChangeOneCardProfessionRandomly(O_Card targetCard)
@@ -98,11 +98,11 @@ namespace IGDF
                     targetCard.cardCurrentType = CardType.Code;
                     break;
             }
-            Image cardBG = targetCard.GetComponent<Image>();
+            SpriteRenderer cardBG = targetCard.transform.Find("Card BG").GetComponent<SpriteRenderer>();
             Sequence s = DOTween.Sequence();
             s.AppendCallback(() => DOTween.To(() => cardBG.color, x => cardBG.color = x, Color.yellow, 0.4f));
             s.AppendInterval(0.3f);
-            s.AppendCallback(() => targetCard.transform.Find("Card Type").GetComponent<Image>().sprite = M_Main.instance.repository.cardTypeIcons[randomType]);
+            s.AppendCallback(() => targetCard.transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardTypeIcons[randomType]);
             s.AppendInterval(0.1f);
             s.AppendCallback(() => DOTween.To(() => cardBG.color, x => cardBG.color = x, Color.white, 0.4f));
             s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
@@ -113,7 +113,7 @@ namespace IGDF
             Sequence s = DOTween.Sequence();
             s.Append(targetCard.transform.DOMove(M_Main.instance.m_Staff.staffSlots[0].position, 0.2f));
             s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue(0, targetCard.cardCurrentValue * 2));
-            s.AppendCallback(() => targetCard.DestroyCard());
+            s.AppendCallback(() => targetCard.DestroyCardInScreen());
             s.AppendInterval(0.1f);
             s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
             s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());

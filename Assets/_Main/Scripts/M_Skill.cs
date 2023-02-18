@@ -91,7 +91,7 @@ namespace IGDF
         public void SetCardForSkillState(O_Card targetCard,bool targetState)
         {
             targetCard.isCardReadyForSkill = targetState;
-            Image targetCardBG = targetCard.GetComponent<Image>();
+            SpriteRenderer targetCardBG = targetCard.transform.Find("Card BG").GetComponent<SpriteRenderer>();
             if (targetState)
                 DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.green, 0.3f);
             else
@@ -107,7 +107,7 @@ namespace IGDF
                 if (cardTrans!=null)
                 {
                     cardTrans.GetComponent<O_Card>().isCardReadyForSkill = false;
-                    Image targetCardBG = cardTrans.GetComponent<Image>();
+                    SpriteRenderer targetCardBG = cardTrans.transform.Find("Card BG").GetComponent<SpriteRenderer>();
                     DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.white, 0.3f);
                 }
             }

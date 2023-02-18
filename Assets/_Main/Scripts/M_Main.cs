@@ -31,6 +31,7 @@ namespace IGDF
             m_DDL = GetComponent<M_DDL>();
 
             m_Card.InitializeDeck(M_Global.instance.levels[M_Global.instance.targetLevel]);
+            m_Card.InitializeMoveValue();
             m_DDL.CreateDots();
             m_DDL.InitializeNumberList();
             m_Staff.InitializeStaffValues(staffValue_Tester_PapersPlease);
