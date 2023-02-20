@@ -136,7 +136,7 @@ namespace IGDF
                 if (isToPro && (int)cardType != 0)
                 {
                     Sequence s = DOTween.Sequence();
-                    s.Append(cardTrans.DOMove(staffSlots[0].position, 0.2f));
+                    s.Append(cardTrans.DOMove(staffSlots[0].position, 0.2f)) ;
                     s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
                     s.AppendCallback(() => M_Main.instance.m_Staff.ChangeDeadLineValue(cardValue));
                     s.AppendInterval(0.1f);
@@ -154,7 +154,7 @@ namespace IGDF
             }
             else
             {
-                cardTrans.DOMove(cardTrans.parent.GetChild(0).position,0.3f);
+                cardTrans.DOMove(cardTrans.parent.GetChild(0).position + new Vector3(0, 0, 0.2f), 0.3f);
             }
             DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, new Color32(255, 255, 255, 0), 0.3f);
             DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, new Color32(255, 255, 255, 0), 0.3f);
@@ -227,7 +227,6 @@ namespace IGDF
 
         public void ClipperLeftUpperToMiddleDown(Transform clipperTrans)
         {
-            Debug.Log("enteredasdasda");
             clipperTrans.GetChild(1).position = new Vector3(clipperTrans.GetChild(1).position.x, clipperTrans.GetChild(1).position.y, 0.2f);
             clipperTrans.position = new Vector3(clipperTrans.position.x, clipperTrans.position.y, 0f);
             SpriteRenderer clipperSprite = clipperTrans.GetComponent<SpriteRenderer>();

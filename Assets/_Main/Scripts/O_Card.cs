@@ -46,7 +46,7 @@ namespace IGDF
             switch (M_Main.instance.m_Skill.skillUseState)
             {
                 case SkillUseState.WaitForUse:
-                    transform.DOMoveZ(-0.2f, 0.1f);
+                    //transform.DOMoveZ(-0.2f, 0.1f);
                     m_Card.ShowMovableSlot(cardCurrentType);
                     break;
                 case SkillUseState.Targeting:
@@ -77,56 +77,6 @@ namespace IGDF
                 m_Card.CardUseOrMoveBack(transform, cardCurrentType, cardCurrentValue);
             }
         }
-        //public void OnDrag(PointerEventData eventData)
-        //{
-        //    if (M_Main.instance.m_Skill.skillUseState == SkillUseState.WaitForUse)
-        //    {
-        //        if (lastMousePosition != Vector3.zero)
-        //        {
-        //            Vector3 offset = Camera.main.ScreenToWorldPoint(Input.mousePosition) - lastMousePosition;
-        //            transform.position += offset;
-        //        }
-        //        lastMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //        m_Card.ShowMovableState(transform, cardCurrentType, cardCurrentValue);
-        //    }
-        //}
-
-        //public void OnPointerDown(PointerEventData eventData)
-        //{
-        //    switch (M_Main.instance.m_Skill.skillUseState)
-        //    {
-        //        case SkillUseState.WaitForUse:
-        //            transform.DOMoveZ(-0.2f, 0.1f);
-        //            m_Card.ShowMovableSlot(cardCurrentType);
-        //            break;
-        //        case SkillUseState.Targeting:
-        //            M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
-        //            break;
-        //    }
-        //}
-
-        //public void OnEndDrag(PointerEventData eventData)
-        //{
-        //    if (M_Main.instance.m_Skill.skillUseState == SkillUseState.WaitForUse)
-        //    {
-        //        lastMousePosition = Vector3.zero;
-        //        m_Card.CardUseOrMoveBack(transform, cardCurrentType, cardCurrentValue);
-        //    }
-        //}
-
-        //public void OnBeginDrag(PointerEventData eventData)
-        //{
-        //    //switch (M_Main.instance.m_Skill.skillUseState)
-        //    //{
-        //    //    case SkillUseState.WaitForUse:
-        //    //        transform.DOMoveZ(-0.2f, 0.1f);
-        //    //        m_Card.ShowMovableSlot(cardCurrentType);
-        //    //        break;
-        //    //    case SkillUseState.Targeting:
-        //    //        M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
-        //    //        break;
-        //    //}
-        //}
         #endregion
 
         public void DestroyCardOutScene()
