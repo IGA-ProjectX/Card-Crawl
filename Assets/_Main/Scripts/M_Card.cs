@@ -14,6 +14,8 @@ namespace IGDF
         public List<Transform> cardsInTurn = new List<Transform>();
         [HideInInspector] public bool isUsable = false;
         [HideInInspector] public bool isToPro = false;
+        public GameObject pre_CardSlider;
+        public Transform outScreenJoint;
 
         void Update()
         {
@@ -50,11 +52,14 @@ namespace IGDF
             {
                 if (cardsInTurn[i] == null && inGameDeck.Count != 0)
                 {
+                    InstantiateCardSlider(i);
                     Transform go = Instantiate(pre_Card, taskSlots[i].transform.position, Quaternion.identity,taskSlots[i].parent).transform;
                     cardsInTurn[i] = go;
                     go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], i);
                     inGameDeck.RemoveAt(0);
                     ClipperLeftUpperToMiddleDown(go.parent);
+                    go.parent.GetComponentInChildren<O_ClipperLine>().cardTrans = go;
+                    go.parent.GetComponentInChildren<O_ClipperLine>().SetLineState("Manuel");
                 }
             }
             StopCoroutine(TurnEnd());
@@ -64,6 +69,7 @@ namespace IGDF
         {
             foreach (int slotIndex in toDrawSlots)
             {
+                InstantiateCardSlider(slotIndex);
                 Transform go = Instantiate(pre_Card, taskSlots[slotIndex].transform.position, Quaternion.identity, taskSlots[slotIndex].parent).transform;
                 cardsInTurn[slotIndex] = go;
                 go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], slotIndex);
@@ -151,10 +157,11 @@ namespace IGDF
                     s.AppendInterval(0.1f);
                     s.AppendCallback(() => CheckInTurnCardNumber());
                 }
+                cardTrans.GetComponent<O_Card>().SetLineStateAuto();
             }
             else
             {
-                cardTrans.DOMove(cardTrans.parent.GetChild(0).position + new Vector3(0, 0, 0.2f), 0.3f);
+                cardTrans.DOMove(cardTrans.parent.Find("Card Pivot").position + new Vector3(0, 0, 0.2f), 0.3f);
             }
             DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, new Color32(255, 255, 255, 0), 0.3f);
             DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, new Color32(255, 255, 255, 0), 0.3f);
@@ -187,9 +194,13 @@ namespace IGDF
                 }
                 else moveIndex.Add(i);
             }
+
             for (int i = 0; i < moveIndex.Count; i++)
             {
-                if (clipperState[moveIndex[i]]) ClipperMiddleDownToRightDown(taskSlots[moveIndex[i]].parent);
+               if( taskSlots[moveIndex[i]]!=null)
+                if (taskSlots[moveIndex[i]].parent.GetComponentInChildren<O_ClipperLine>().isClipperInScreen) {
+                    ClipperMiddleDownToRightDown(taskSlots[moveIndex[i]].parent);
+                }
             }
             for (int i = 0; i < cardsInTurn.Count; i++)
             {
@@ -207,7 +218,7 @@ namespace IGDF
                     M_Main.instance.m_Staff.ChangeDeadLineValue(-1);
                 }
             }
-            yield return new WaitForSeconds(horiTime + verTime + 0.03f);
+            //yield return new WaitForSeconds(horiTime + verTime + 0.03f);
             DrawCard();
         }
 
@@ -216,7 +227,6 @@ namespace IGDF
         private Transform cardSlider;
         public float horiTime;
         public float verTime;
-        private bool[] clipperState = { false, false, false, false };
 
         public void InitializeMoveValue()
         {
@@ -227,35 +237,49 @@ namespace IGDF
 
         public void ClipperLeftUpperToMiddleDown(Transform clipperTrans)
         {
-            clipperTrans.GetChild(1).position = new Vector3(clipperTrans.GetChild(1).position.x, clipperTrans.GetChild(1).position.y, 0.2f);
+            //卡牌及夹子 前后位置关系调整 解决覆盖Bug
+            Transform cardTrans = clipperTrans.GetComponentInChildren<O_Card>().transform;
+            cardTrans.position = new Vector3(cardTrans.position.x, cardTrans.position.y, 0.2f);
             clipperTrans.position = new Vector3(clipperTrans.position.x, clipperTrans.position.y, 0f);
-            SpriteRenderer clipperSprite = clipperTrans.GetComponent<SpriteRenderer>();
-            SpriteRenderer cardBG = clipperTrans.GetChild(1).Find("Card BG").GetComponent<SpriteRenderer>();
+            //卡牌 夹子 滑轮颜色的获取和变灰 + 绳子
+            SpriteRenderer handlerSprite = clipperTrans.Find("Handler").GetComponent<SpriteRenderer>();
+            SpriteRenderer clipperSprite = clipperTrans.Find("Clipper").GetComponent<SpriteRenderer>();
+            SpriteRenderer cardBG = cardTrans.Find("Card BG").GetComponent<SpriteRenderer>();
+            LineRenderer line = handlerSprite.GetComponent<LineRenderer>();
             clipperSprite.color = Color.gray;
+            handlerSprite.color = Color.gray;
             cardBG.color = Color.gray;
-
+            line.endColor = Color.gray;
+            line.startColor = Color.gray;
+            //卡牌+轮滑组的具体位移
             Sequence s = DOTween.Sequence();
             s.Append(clipperTrans.DOMoveX(clipperTrans.position.x + horiDistance, horiTime));
             s.AppendCallback(() => CardMoveDownwards());
             s.AppendInterval(verTime + 0.01f);
-            s.AppendCallback(() => clipperTrans.GetChild(1).position = new Vector3(clipperTrans.GetChild(1).position.x, clipperTrans.GetChild(1).position.y, 0.1f));
-            s.AppendCallback(() => clipperState[int.Parse(clipperTrans.name.Split('-')[1]) - 1] = true);
+            s.AppendCallback(() => cardTrans.position = new Vector3(cardTrans.position.x, cardTrans.position.y, 0.1f));
+            s.AppendCallback(() => clipperTrans.GetComponentInChildren<O_ClipperLine>().isClipperInScreen = true);
 
             void CardMoveDownwards()
             {
                 clipperTrans.DOMoveY(clipperTrans.position.y - verDistance, verTime);
                 DOTween.To(() => cardBG.color, x => cardBG.color = x, Color.white, verTime);
                 DOTween.To(() => clipperSprite.color, x => clipperSprite.color = x, Color.white, verTime);
+                DOTween.To(() => handlerSprite.color, x => handlerSprite.color = x, Color.white, verTime);
+                DOTween.To(() => line.endColor, x => line.endColor = x, Color.white, verTime);
+                DOTween.To(() => line.startColor, x => line.startColor = x, Color.white, verTime);
             }
         }
 
         public void ClipperMiddleDownToLeftUpper(Transform clipperTrans)
         {
-            clipperTrans.GetChild(1).position = new Vector3(clipperTrans.GetChild(1).position.x, clipperTrans.GetChild(1).position.y, 0.2f);
+            Transform cardTrans = clipperTrans.GetComponentInChildren<O_Card>().transform;
+            cardTrans.position = new Vector3(cardTrans.position.x, cardTrans.position.y, 0.2f);
             clipperTrans.position = new Vector3(clipperTrans.position.x, clipperTrans.position.y, 0.1f);
-            SpriteRenderer clipperSprite = clipperTrans.GetComponent<SpriteRenderer>();
-            SpriteRenderer cardBG = clipperTrans.GetChild(1).Find("Card BG").GetComponent<SpriteRenderer>();
-            clipperState[int.Parse(clipperTrans.name.Split('-')[1]) - 1] = false;
+            SpriteRenderer handlerSprite = clipperTrans.Find("Handler").GetComponent<SpriteRenderer>();
+            SpriteRenderer clipperSprite = clipperTrans.Find("Clipper").GetComponent<SpriteRenderer>();
+            SpriteRenderer cardBG = cardTrans.Find("Card BG").GetComponent<SpriteRenderer>();
+            LineRenderer line = handlerSprite.GetComponent<LineRenderer>();
+            clipperTrans.GetComponentInChildren<O_ClipperLine>().isClipperInScreen  = false;
 
             Sequence s = DOTween.Sequence();
             s.AppendCallback(() => CardUpDownwards());
@@ -267,16 +291,27 @@ namespace IGDF
                 clipperTrans.DOMoveY(clipperTrans.position.y + verDistance, verTime);
                 DOTween.To(() => cardBG.color, x => cardBG.color = x, Color.grey, verTime);
                 DOTween.To(() => clipperSprite.color, x => clipperSprite.color = x, Color.grey, verTime);
+                DOTween.To(() => handlerSprite.color, x => handlerSprite.color = x, Color.grey, verTime);
+                DOTween.To(() => line.endColor, x => line.endColor = x, Color.grey, verTime);
+                DOTween.To(() => line.startColor, x => line.startColor = x, Color.grey, verTime);
             }
         }
 
         public void ClipperMiddleDownToRightDown(Transform clipperTrans)
         {
-            Debug.Log("entered");
-            Sequence s = DOTween.Sequence();
-            s.Append(clipperTrans.DOMoveX(clipperTrans.position.x + horiDistance, horiTime));
-            s.AppendCallback(() => clipperTrans.GetChild(1).GetComponent<O_Card>().DestroyCardOutScene());
-            s.AppendCallback(() => clipperTrans.position = new Vector3(clipperTrans.position.x - horiDistance * 2, clipperTrans.position.y + verDistance, 0));
+            clipperTrans.GetComponentInChildren<O_ClipperLine>().isClipperInScreen = false;
+            clipperTrans.DOMoveX(clipperTrans.position.x + horiDistance, horiTime);
+            if (clipperTrans.GetComponentInChildren<O_Card>()!=null)
+                clipperTrans.GetComponentInChildren<O_Card>().DestroyCardOutScene(horiTime + 0.1f);
+            clipperTrans.GetComponentInChildren<O_ClipperLine>().DestroySlider(horiTime + 0.2f);
+            Destroy(clipperTrans, horiTime + 0.2f);
+        }
+
+        public void InstantiateCardSlider(int index)
+        {
+            Transform slider = Instantiate(pre_CardSlider, outScreenJoint.GetChild(index).position, Quaternion.identity, outScreenJoint.GetChild(index)).transform;
+            taskSlots[index] = slider.Find("Card Pivot");
+            slider.GetComponentInChildren<O_ClipperLine>().InitializeClipperLine();
         }
     }
 }

@@ -8,5 +8,6 @@ namespace IGDF
     public class SO_Repo : ScriptableObject
     {
         public Sprite[] cardTypeIcons;
+        public Color[] chaColors;
     }
 }

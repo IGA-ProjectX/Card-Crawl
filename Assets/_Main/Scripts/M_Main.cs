@@ -21,6 +21,8 @@ namespace IGDF
         [HideInInspector] public M_SkillResolve m_SkillResolve;
         [HideInInspector] public M_DDL m_DDL;
 
+        public SpringJoint2D springJ;
+
         void Start()
         {
             instance = this;

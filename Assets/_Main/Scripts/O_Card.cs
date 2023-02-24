@@ -43,6 +43,7 @@ namespace IGDF
         #region - Interaction -
         public void OnMouseDown()
         {
+            //transform.parent.GetComponentInChildren<O_ClipperLine>().isLineActive = true;
             switch (M_Main.instance.m_Skill.skillUseState)
             {
                 case SkillUseState.WaitForUse:
@@ -79,12 +80,11 @@ namespace IGDF
         }
         #endregion
 
-        public void DestroyCardOutScene()
+        public void DestroyCardOutScene(float destroyTime)
         {
-            transform.SetParent(null);
             M_Main.instance.m_Card.cardsInTurn[inSlotIndex] = null;
             M_Main.instance.CheckDevCircumstance();
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject, destroyTime);
         }
 
         public void DestroyCardInScreen()
@@ -101,9 +101,13 @@ namespace IGDF
         {
             M_Main.instance.m_Card.inGameDeck.Add(cardData);
             M_Main.instance.m_Card.ClipperMiddleDownToLeftUpper(transform.parent);
-            Sequence s = DOTween.Sequence();
-            s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.02f);
-            s.AppendCallback(() => DestroyCardOutScene());
+            transform.parent.GetComponentInChildren<O_ClipperLine>().DestroySlider(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.2f);
+            DestroyCardOutScene( M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.1f);
+        }
+
+        public void SetLineStateAuto()
+        {
+            transform.parent.GetComponentInChildren<O_ClipperLine>().SetLineState("Auto");
         }
     }
 }

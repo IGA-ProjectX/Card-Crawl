@@ -60,8 +60,8 @@ namespace IGDF
             {
                 if (M_Main.instance.m_Card.cardsInTurn[i] != null)
                 {
-                    M_Main.instance.m_Card.cardsInTurn[i].GetComponent<O_Card>().CardBackToDeck();
                     toDrawIndexes.Add(M_Main.instance.m_Card.cardsInTurn[i].GetComponent<O_Card>().inSlotIndex);
+                    M_Main.instance.m_Card.cardsInTurn[i].GetComponent<O_Card>().CardBackToDeck();
                 }
             }
             Sequence s = DOTween.Sequence();
@@ -111,6 +111,7 @@ namespace IGDF
         private void Skill_GainOneExpDoubleItsValue(O_Card targetCard)
         {
             Sequence s = DOTween.Sequence();
+            s.AppendCallback(() => targetCard.SetLineStateAuto());
             s.Append(targetCard.transform.DOMove(M_Main.instance.m_Staff.staffSlots[0].position, 0.2f));
             s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue(0, targetCard.cardCurrentValue * 2));
             s.AppendCallback(() => targetCard.DestroyCardInScreen());

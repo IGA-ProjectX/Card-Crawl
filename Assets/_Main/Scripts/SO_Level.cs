@@ -38,10 +38,14 @@ namespace IGDF
         public Sprite productImage;
     }
 
-    public enum CardType
+    public class ChatContent
     {
-        Production, Design, Art, Code
+        public CharacterType instigator;
+        public string content;
+
     }
+
+    public enum CardType { Production, Design, Art, Code }
 
     public enum LevelType
     {
@@ -50,9 +54,8 @@ namespace IGDF
         SuperMario
     }
 
-    public enum ProductLevel
-    {
-        None, Raw, Medium, Welldone
-    }
+    public enum ProductLevel { None, Raw, Medium, Welldone }
+
+    public enum CharacterType { Producer, Designer, Artist, Programmer }
 }
 
