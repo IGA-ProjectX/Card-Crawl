@@ -8,10 +8,16 @@ using DG.Tweening;
 
 namespace IGDF
 {
-    public class O_ChatBubble : MonoBehaviour, IPointerClickHandler, IDragHandler, IEndDragHandler
+    public class O_ChatBubble : MonoBehaviour, IPointerClickHandler, IDragHandler, IEndDragHandler,IBeginDragHandler
     {
         private Vector3 lastMousePosition = Vector3.zero;
+        private bool isDrag = false;
+        private bool isProcessDestroy = false;
 
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            isDrag = true;
+        }
 
         public void OnDrag(PointerEventData eventData)
         {
@@ -26,42 +32,34 @@ namespace IGDF
         public void OnEndDrag(PointerEventData eventData)
         {
             lastMousePosition = Vector3.zero;
+            isDrag = false;
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Sequence s = DOTween.Sequence();
-            s.Append(transform.DOScale(1.2f, 0.1f));
-            s.Append(transform.DOScale(0, 0.3f));
-            Destroy(gameObject, 0.5f);
+            if (!isDrag && !isProcessDestroy)
+            {
+                isProcessDestroy = true;
+                Sequence s = DOTween.Sequence();
+                s.Append(transform.DOScale(1.2f, 0.1f));
+                s.Append(transform.DOScale(0, 0.3f));
+                Destroy(gameObject, 0.5f);
+            }
         }
 
         public void PopUpChatBubble(CharacterType chaType, string sentence)
         {
-            GetComponentInChildren<Text>().color = M_Main.instance.repository.chaColors[(int)chaType];
-            GetComponentInChildren<Text>().text = sentence;
+            foreach (O_Character characterObj in GameObject.Find("Environment").transform.Find("Characters").GetComponentsInChildren<O_Character>())
+                if (characterObj.thisCharacter == chaType)
+                    transform.position = characterObj.transform.position;
+            Text chatText = transform.Find("Chat Bubble").GetComponentInChildren<Text>();
+            chatText.color = M_Main.instance.repository.chaColors[(int)chaType];
+            chatText.text = sentence;
+            //transform.Find("Close Button").GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
             Sequence s = DOTween.Sequence();
             s.Append(transform.DOScale(1.2f, 0.3f));
             s.Append(transform.DOScale(0.9f, 0.1f));
             s.Append(transform.DOScale(1f, 0.05f));
-        }
-
-        public void InitializeChatBubble(CharacterType chaType,string sentence)
-        {
-            GetComponentInChildren<Text>().color = M_Main.instance.repository.chaColors[(int)chaType];
-            StartCoroutine(Type(sentence));
-        }
-
-        IEnumerator Type(string sentence)
-        {
-            string typeText = "";
-            foreach (char letter in sentence)
-            {
-                typeText += letter;
-                transform.Find("Text").GetComponent<Text>().text = typeText;
-                yield return new WaitForSeconds(0.04f);
-            }
-
         }
     }
 }

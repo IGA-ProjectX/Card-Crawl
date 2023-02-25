@@ -1,1 +1,11 @@
-namespace IGDF{public enum TalkConditionType{DDLDropTo0,ProductionFinished,DesSkillLargerThan10,ArtSkillLargerThan10,ProSkillLargerThan10,}}
+namespace IGDF{
+public enum TalkConditionType{
+ExpSVLargerThan100,
+DesSVLargerThan10,
+ArtSVLargerThan10,
+ProSVLargerThan10,
+WinGame,
+LoseGame,
+
+}
+}

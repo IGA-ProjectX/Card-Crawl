@@ -13,13 +13,9 @@ MonoBehaviour:
   m_Name: TalkCondition
   m_EditorClassIdentifier: 
   talkConditions:
-  - enumType: DDLDropTo0
-    talkingCha: 0
-  - enumType: ProductionFinished
-    talkingCha: 0
-  - enumType: DesSkillLargerThan10
-    talkingCha: 2
-  - enumType: ArtSkillLargerThan10
-    talkingCha: 1
-  - enumType: ProSkillLargerThan10
-    talkingCha: 3
+  - ExpSVLargerThan100
+  - DesSVLargerThan10
+  - ArtSVLargerThan10
+  - ProSVLargerThan10
+  - WinGame
+  - LoseGame

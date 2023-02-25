@@ -17,6 +17,8 @@ namespace IGDF
         public Card[] cards_Code;
         [Header("Product Level")]
         public Product[] productLevels;
+        [Header("Narrative")]
+        public TalkContent[] talkList;
     }
 
     [System.Serializable]
@@ -57,5 +59,14 @@ namespace IGDF
     public enum ProductLevel { None, Raw, Medium, Welldone }
 
     public enum CharacterType { Producer, Designer, Artist, Programmer }
+
+    [System.Serializable]
+    public class TalkContent
+    {
+        public TalkConditionType conditionType;
+        public CharacterType talkCharacter;
+        [TextArea(3,3)]
+        public string talkContent;
+    }
 }
 

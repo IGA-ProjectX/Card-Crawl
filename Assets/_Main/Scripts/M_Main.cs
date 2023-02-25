@@ -20,6 +20,7 @@ namespace IGDF
         [HideInInspector] public M_Skill m_Skill;
         [HideInInspector] public M_SkillResolve m_SkillResolve;
         [HideInInspector] public M_DDL m_DDL;
+        [HideInInspector] public M_ChatBubble m_ChatBubble;
 
         public SpringJoint2D springJ;
 
@@ -31,7 +32,9 @@ namespace IGDF
             m_Skill = GetComponent<M_Skill>();
             m_SkillResolve = GetComponent<M_SkillResolve>();
             m_DDL = GetComponent<M_DDL>();
+            m_ChatBubble = GetComponent<M_ChatBubble>();
 
+            m_ChatBubble.PrepareTalkList(M_Global.instance.levels[M_Global.instance.targetLevel].talkList);
             m_Card.InitializeDeck(M_Global.instance.levels[M_Global.instance.targetLevel]);
             m_Card.InitializeMoveValue();
             m_DDL.CreateDots();
@@ -52,12 +55,14 @@ namespace IGDF
 
             void GameDevSucceed()
             {
+                m_ChatBubble.TryTriggerTalkSpecialCondition(TalkConditionType.WinGame);
                 M_Global.instance.PlayerExpUp(m_Staff.GetStaffValue(0));
                 obj_ReturnButton.SetActive(true);
             }
 
             void GameDevFailed()
             {
+                m_ChatBubble.TryTriggerTalkSpecialCondition(TalkConditionType.LoseGame);
                 obj_ReturnButton.SetActive(true);
             }
         }

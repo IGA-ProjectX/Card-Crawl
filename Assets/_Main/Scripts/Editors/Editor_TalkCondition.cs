@@ -27,13 +27,13 @@ namespace IGDF
         private void GenerateEnum()
         {
             string filePath = "Assets/_Main/Scripts/Enums/Enum_TalkCondition.cs";
-            string code = "namespace IGDF{";
-            code += "public enum TalkConditionType{";
-            foreach (TalkCondition talkCondition in so_TalkCondition.talkConditions)
+            string code = "namespace IGDF{\n";
+            code += "public enum TalkConditionType{\n";
+            foreach (string talkCondition in so_TalkCondition.talkConditions)
             {
-                code += talkCondition.enumType + ",";
+                code += talkCondition + ",\n";
             }
-            code += "}}";
+            code += "\n}\n}";
             File.WriteAllText(filePath, code);
             AssetDatabase.ImportAsset("Assets/_Main/Scripts/Enums/Enum_TalkCondition.cs");
         }

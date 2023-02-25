@@ -256,3 +256,22 @@ MonoBehaviour:
     productName: AAAAAAA
     productDescription: aaaaa aa a aaaaa aaa, aaa ,aaaadaa aaa
     productImage: {fileID: 0}
+  talkList:
+  - conditionType: 0
+    talkCharacter: 0
+    talkContent: "\u8FD9\u4E2A\u6E38\u620F\u5DF2\u7ECF\u505A\u4E86\u4E00\u534A\u4E86"
+  - conditionType: 1
+    talkCharacter: 1
+    talkContent: "\u8499\u591A~\n\u60F3\u8BBE\u5565\uFF0C\u5C31\u8BBE\u5565"
+  - conditionType: 2
+    talkCharacter: 2
+    talkContent: "\u6211\n\u5F53\u4EE3\u6BD5\u52A0\u7D22\n\u6253\u94B1"
+  - conditionType: 3
+    talkCharacter: 3
+    talkContent: "\u6211\u6015\u4E0D\u662F\u4E2A\u5929\u624D"
+  - conditionType: 4
+    talkCharacter: 0
+    talkContent: "\u554A\uFF0C\u7ADF\u7136\u505A\u51FA\u6765\u4E86"
+  - conditionType: 5
+    talkCharacter: 3
+    talkContent: "\u554A\uFF0C\u4F60\u4EEC\u884C\u4E0D\u884C\u554A\uFF0C\u5149\u5403\u4E0D\u62C9"

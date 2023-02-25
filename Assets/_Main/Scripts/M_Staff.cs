@@ -29,6 +29,22 @@ namespace IGDF
             }
             inTurnValues[index] += value;
             staffSlots[index].Find("Text Value").GetComponent<TMP_Text>().text = inTurnValues[index].ToString();
+
+            switch (index)
+            {
+                case 0:
+                    M_Main.instance.m_ChatBubble.TryTriggerTalkStaffValueChange(CharacterType.Producer);
+                    break;
+                case 1:
+                    M_Main.instance.m_ChatBubble.TryTriggerTalkStaffValueChange(CharacterType.Designer);
+                    break;
+                case 2:
+                    M_Main.instance.m_ChatBubble.TryTriggerTalkStaffValueChange(CharacterType.Artist);
+                    break;
+                case 3:
+                    M_Main.instance.m_ChatBubble.TryTriggerTalkStaffValueChange(CharacterType.Programmer);
+                    break;
+            }
         }
 
         public int GetStaffValue(int index)
