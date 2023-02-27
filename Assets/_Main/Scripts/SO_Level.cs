@@ -66,7 +66,9 @@ namespace IGDF
         public TalkConditionType conditionType;
         public CharacterType talkCharacter;
         [TextArea(3,3)]
-        public string talkContent;
+        public string talkContentChi;
+        [TextArea(3,3)]
+        public string talkContentEng;
     }
 }
 

@@ -14,10 +14,9 @@ namespace IGDF
         public void InstantiateChatBubble(TalkConditionType talkConditionType)
         {
             CharacterType toTalkCha = talkContentPool[talkConditionType].talkCharacter;
-            string toTalkContent = talkContentPool[talkConditionType].talkContent;
             GameObject go = Instantiate(pre_ChatBubble, Vector3.zero, Quaternion.identity, GameObject.Find("Canvas").transform.Find("ChatBubbles"));
             go.transform.localScale = Vector3.zero;
-            go.GetComponent<O_ChatBubble>().PopUpChatBubble(toTalkCha, toTalkContent);
+            go.GetComponent<O_ChatBubble>().PopUpChatBubble(toTalkCha, talkContentPool[talkConditionType]);
             isToldStates[talkConditionType] = true;
         }
 

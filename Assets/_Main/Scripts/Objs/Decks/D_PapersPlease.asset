@@ -259,19 +259,29 @@ MonoBehaviour:
   talkList:
   - conditionType: 0
     talkCharacter: 0
-    talkContent: "\u8FD9\u4E2A\u6E38\u620F\u5DF2\u7ECF\u505A\u4E86\u4E00\u534A\u4E86"
+    talkContentChi: "\u54C7\uFF01 \u8FD9\u4E2A\u6E38\u620F\u5DF2\u7ECF\u505A\u4E86\u4E00\u534A\u4E86"
+    talkContentEng: Woo! The game is half finished
   - conditionType: 1
     talkCharacter: 1
-    talkContent: "\u8499\u591A~\n\u60F3\u8BBE\u5565\uFF0C\u5C31\u8BBE\u5565"
+    talkContentChi: "\u6211\u611F\u89C9\u6211\u5565\u90FD\u8BBE\u8BA1\u7684\u51FA\u6765"
+    talkContentEng: 'Want to know what a designer looks like?
+
+      Just look at
+      me'
   - conditionType: 2
     talkCharacter: 2
-    talkContent: "\u6211\n\u5F53\u4EE3\u6BD5\u52A0\u7D22\n\u6253\u94B1"
+    talkContentChi: "\u753B\u753B\u8FD9\u4E1C\u897F\u4E0D\u662F\u6709\u7B14\u5C31\u884C\uFF1F"
+    talkContentEng: The Louvre should really buy some of my paintings for exhibition
   - conditionType: 3
     talkCharacter: 3
-    talkContent: "\u6211\u6015\u4E0D\u662F\u4E2A\u5929\u624D"
+    talkContentChi: "\u6211\u8981\u8003\u8651\u8DF3\u69FD\u53BB\u5FAE\u8F6F\u4E86\uFF0C\u8FD9\u4E2A\u6E38\u620F\u5F00\u53D1\u96BE\u5EA6\u914D\u4E0D\u4E0A\u6211"
+    talkContentEng: "Game development is so unchallenging, \nmaybe it's time to go
+      to Silicon Valley"
   - conditionType: 4
     talkCharacter: 0
-    talkContent: "\u554A\uFF0C\u7ADF\u7136\u505A\u51FA\u6765\u4E86"
+    talkContentChi: "\u6211\u7684\u9879\u76EE\u7BA1\u7406\u6C34\u51C6\u662F\u771F\u7684\u9AD8"
+    talkContentEng: My project management standerd is really high
   - conditionType: 5
-    talkCharacter: 3
-    talkContent: "\u554A\uFF0C\u4F60\u4EEC\u884C\u4E0D\u884C\u554A\uFF0C\u5149\u5403\u4E0D\u62C9"
+    talkCharacter: 0
+    talkContentChi: "\u4F60\u4EEC\u8FD9\u7FA4\u5783\u573E\uFF0C\u5C31\u77E5\u9053\u62D6\u6211\u9879\u76EE\u8FDB\u5EA6"
+    talkContentEng: You rubbishes, my project is ruined
