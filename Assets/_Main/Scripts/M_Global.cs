@@ -9,6 +9,7 @@ namespace IGDF
         public SO_Data mainData;
         public SO_Level[] levels;
         public int targetLevel = 1;
+        public SO_Skill[] skillList;
 
         public static M_Global instance;
 

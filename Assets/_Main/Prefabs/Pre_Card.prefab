@@ -248,6 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardCurrentValue: 0
   cardCurrentType: 0
+  targetableType: 
   inSlotPos: {x: 0, y: 0, z: 0}
   inSlotIndex: 0
   isCardReadyForSkill: 0

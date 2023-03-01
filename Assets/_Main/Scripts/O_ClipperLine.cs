@@ -19,12 +19,18 @@ namespace IGDF
         {
             lineR.SetPosition(0, transform.position);
             lineR.SetPosition(1, clipperTrans.position);
+
+            if (cardTrans == null && transform.parent.GetComponentInChildren<O_Card>()!=null)
+            {  
+                cardTrans = transform.parent.GetComponentInChildren<O_Card>().transform;
+            }
+
             if (isClipperFollow && cardTrans != null)
             {
                 clipperTrans.position = cardTrans.position + new Vector3(0, 1.462f, 0);
             }
         }
-
+         
         public void SetLineState(string lineState)
         {
             if (lineState == "Auto")

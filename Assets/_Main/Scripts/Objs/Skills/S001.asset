@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: S001
   m_EditorClassIdentifier: 
   skillIndex: 1
-  skillName: Later
-  skillDescription: Withdraw one task card
+  skillNameChi: 
+  skillDescriptionChi: 
+  skillNameEng: Later
+  skillDescriptionEng: Withdraw one task card
   skillImage: {fileID: 21300000, guid: 5236f7365fae1604a907c0a3321295fc, type: 3}
   skillType: 1
   skillUseType: 2

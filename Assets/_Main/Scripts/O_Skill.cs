@@ -15,7 +15,7 @@ namespace IGDF
         {
             skillData = receivedData;
             transform.Find("Skill Image").GetComponent<SpriteRenderer>().sprite = skillData.skillImage;
-            transform.Find("Skill Name").GetComponent<TMP_Text>().text = skillData.skillName;
+            transform.Find("Skill Name").GetComponent<TMP_Text>().text = skillData.skillNameEng;
         }
 
         private void OnMouseDown()
@@ -40,11 +40,6 @@ namespace IGDF
                 SpriteRenderer skillBG = transform.Find("Skill BG").GetComponent<SpriteRenderer>();
                 DOTween.To(() => skillBG.color, x => skillBG.color = x, Color.white, 0.3f);
             } 
-        }
-
-        private void OnMouseOver()
-        {
-            
         }
 
         public void SetSkillUninteractable()

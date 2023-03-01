@@ -49,6 +49,9 @@ namespace IGDF
                     break;
                 case SkillType.RemoveOneTaskDecreaseEqualExp:
                     break;
+                case SkillType.SelectOneNoneExpCardMultitarget:
+                    Skill_SelectOneNoneExpCardMultitarget(targetCard);
+                    break;
             }
             activatedSkill.SetSkillUninteractable();
         }
@@ -65,7 +68,7 @@ namespace IGDF
                 }
             }
             Sequence s = DOTween.Sequence();
-            s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.03f);
+            s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.3f);
             s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
             s.AppendCallback(() => M_Main.instance.m_Card.ShuffleDeck(M_Main.instance.m_Card.inGameDeck));
             s.AppendCallback(() => M_Main.instance.m_Card.DrawCard(toDrawIndexes));
@@ -76,7 +79,7 @@ namespace IGDF
             targetCard.CardBackToDeck();
      
             Sequence s = DOTween.Sequence();
-            s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.03f);
+            s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.3f);
             s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
             s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
         }
@@ -118,6 +121,34 @@ namespace IGDF
             s.AppendInterval(0.1f);
             s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
             s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
+        }
+
+        private void Skill_SelectOneNoneExpCardMultitarget(O_Card targetCard)
+        {
+            switch (targetCard.cardCurrentType)
+            {
+                case CardType.Design:
+                    targetCard.targetableType.Add(CardType.Art);
+                    targetCard.targetableType.Add(CardType.Code);
+                    break;
+                case CardType.Art:
+                    targetCard.targetableType.Add(CardType.Design);
+                    targetCard.targetableType.Add(CardType.Code);
+                    break;
+                case CardType.Code:
+                    targetCard.targetableType.Add(CardType.Design);
+                    targetCard.targetableType.Add(CardType.Art);
+                    break;
+            }
+            SpriteRenderer cardBG = targetCard.transform.Find("Card BG").GetComponent<SpriteRenderer>();
+            Sequence s = DOTween.Sequence();
+            s.AppendCallback(() => DOTween.To(() => cardBG.color, x => cardBG.color = x, Color.yellow, 0.2f));
+            s.AppendInterval(0.2f);
+            s.AppendCallback(() => DOTween.To(() => cardBG.color, x => cardBG.color = x, Color.white, 0.2f));
+            s.AppendInterval(0.2f);
+            s.AppendCallback(() => DOTween.To(() => cardBG.color, x => cardBG.color = x, Color.yellow, 0.2f));
+            s.AppendInterval(0.2f);
+            s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
         }
     }
 }

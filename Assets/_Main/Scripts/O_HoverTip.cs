@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace IGDF
 {
-    public enum HoverTipType { Card, Skill, DDLMachine, SkillMachine }
+    public enum HoverTipType { Card, Skill, DDLMachine, SkillMachine ,SkillParent}
     public class O_HoverTip : MonoBehaviour
     {
         public HoverTipType tipType;
@@ -15,6 +16,8 @@ namespace IGDF
         private float hoveringTime = 0.3f;
         private float timer;
         private bool isOpen;
+
+        public static bool isAllowOpen = true;
 
         private void Start()
         {
@@ -36,13 +39,20 @@ namespace IGDF
 
         private void OnMouseOver()
         {
-            timer -= Time.deltaTime;
-            if (timer < 0 && !isOpen)
+            if (isAllowOpen)
             {
-                isOpen = true;
-                ActiveHoverTip();
+                timer -= Time.deltaTime;
+                if (timer < 0 && !isOpen)
+                {
+                    isOpen = true;
+                    ActiveHoverTip();
+                }
+                SetPosDependsOnMouse();
             }
-            SetPosDependsOnMouse();
+            else
+            {
+                ui_HoverTip.SetActive(false);
+            }
         }
 
         private void SetPosDependsOnMouse()
@@ -77,9 +87,21 @@ namespace IGDF
                     break;
                 case HoverTipType.SkillMachine:
                     break;
-                default:
+                case HoverTipType.SkillParent:
+                    SetTipName(GetComponent<O_SkillParent>().nodeInfo.childSkills[0].skillNameEng);
+                    SetTipDescription(GetComponent<O_SkillParent>().nodeInfo.childSkills[0].skillDescriptionEng);
                     break;
             }
+        }
+
+        private void SetTipName(string tipName)
+        {
+            ui_HoverContent.Find("Name").GetComponent<Text>().text = tipName;
+        }
+
+        private void SetTipDescription(string tipDescription)
+        {
+            ui_HoverContent.Find("Description").GetComponent<Text>().text = tipDescription;
         }
     }
 }

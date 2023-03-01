@@ -8,10 +8,15 @@ namespace IGDF
     public class SO_Skill : ScriptableObject
     {
         public int skillIndex;
-        [TextArea(2, 2)]
-        public string skillName;
+
+        public string skillNameChi;
         [TextArea(3,3)]
-        public string skillDescription;
+        public string skillDescriptionChi;
+
+        public string skillNameEng;
+        [TextArea(3, 3)]
+        public string skillDescriptionEng;
+
         public Sprite skillImage;
         public SkillType skillType;
         public SkillUseType skillUseType;
@@ -31,6 +36,16 @@ namespace IGDF
         GainOneExpDoubleItsValue,
         EvenDistributeProfessionValue,
         RemoveOneTaskDecreaseEqualExp,
+        SelectOneNoneExpCardMultitarget,
+        xzxzxzx,
+        zxzxzxz,
+        BasicSyntax,
+        BasicGameEngine,
+        ScriptableObject,
+        FiniteStateMachine,
+        GamePhysics,
+        DesignPattern,
+        Shader,
     }
 
     public enum SkillUseType
@@ -40,6 +55,7 @@ namespace IGDF
         TargetTask,
         TargetBoost,
         TargetExp,
-        TargetNoExp
+        TargetNoExp,
+        TargetPro
     }
 }

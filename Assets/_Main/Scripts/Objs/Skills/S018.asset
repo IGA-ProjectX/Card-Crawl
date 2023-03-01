@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c054bdda59a8544f876c28a7ca5b690, type: 3}
-  m_Name: S002
+  m_Name: S018
   m_EditorClassIdentifier: 
-  skillIndex: 2
-  skillNameChi: 
-  skillDescriptionChi: 
-  skillNameEng: Change Game
-  skillDescriptionEng: Redraw all card
-  skillImage: {fileID: 21300000, guid: 68b31aeef98d03547a9343bbcaac3d69, type: 3}
-  skillType: 2
+  skillIndex: 18
+  skillNameChi: "\u6709\u9650\u72B6\u6001\u673A"
+  skillDescriptionChi: "\u5F53\u524D\u7A0B\u5E8F\u5458\u6280\u80FD\u70B9\u6570\u7FFB\u500D"
+  skillNameEng: Finite State Machine
+  skillDescriptionEng: Double the skill points of the current programmer
+  skillImage: {fileID: 21300000, guid: 4f3a106299767d146975053c7be09b97, type: 3}
+  skillType: 18
   skillUseType: 1

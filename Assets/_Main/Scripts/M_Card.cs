@@ -78,95 +78,187 @@ namespace IGDF
             }
         }
 
-        public void ShowMovableSlot(CardType cardType)
-        {
-            Transform[] staffSlots = M_Main.instance.m_Staff.staffSlots;
-            SpriteRenderer staffGridSprite = staffSlots[(int)cardType].GetComponent<SpriteRenderer>();
-            DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, new Color32(255, 255, 255, 140), 0.3f);
-        }
+        //public void ShowMovableSlot(CardType cardType)
+        //{
+        //    Transform[] staffSlots = M_Main.instance.m_Staff.staffSlots;
+        //    SpriteRenderer staffGridSprite = staffSlots[(int)cardType].GetComponent<SpriteRenderer>();
+        //    DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, new Color32(255, 255, 255, 140), 0.3f);
+        //}
+        //public void ShowMovableState(Transform cardTrans,CardType cardType,int cardValue)
+        //{
+        //    Transform[] staffSlots = M_Main.instance.m_Staff.staffSlots;
+        //    float ditanceBetweenCardTypeSlot = Vector2.Distance(cardTrans.position, staffSlots[(int)cardType].position);
+        //    float ditanceBetweenProductionSlot = Vector2.Distance(cardTrans.position, staffSlots[0].position);
+        //    SpriteRenderer staffGridSprite = staffSlots[(int)cardType].GetComponent<SpriteRenderer>();
+        //    SpriteRenderer produGridSprite = staffSlots[0].GetComponent<SpriteRenderer>();
+        //    if (ditanceBetweenCardTypeSlot <= 0.6f)
+        //    {
+        //        if (cardValue>=0)
+        //        {
+        //            DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, Color.green, 0.3f);
+        //            isUsable = true;
+        //        }
+        //        else
+        //        {
+        //            int staffValue = M_Main.instance.m_Staff.GetStaffValue((int)cardType);
+        //            if ((staffValue+cardValue) < 0)
+        //            {
+        //                DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, Color.red, 0.3f);
+        //                isUsable = false;
+        //            }
+        //            else
+        //            {
+        //                DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, Color.green, 0.3f);
+        //                isUsable = true;
+        //            }
+        //        }
+        //    }
+        //    else if (cardValue <= 0&& ditanceBetweenProductionSlot <= 0.6f)
+        //    {
+        //        DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, Color.green, 0.3f);
+        //        isUsable = true;
+        //        isToPro = true;
+        //    }
+        //    else
+        //    {
+        //        DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, new Color32(255, 255, 255, 140), 0.3f);
+        //        if (cardValue<=0 && (int)cardType!=0)
+        //        {
+        //            DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, new Color32(255, 255, 255, 140), 0.3f);
+        //        }
+        //        isUsable = false;
+        //        isToPro = false;
+        //    }
+        //}
 
-        public void ShowMovableState(Transform cardTrans,CardType cardType,int cardValue)
+        //public void CardUseOrMoveBack(Transform cardTrans, CardType cardType, int cardValue)
+        //{
+        //    Transform[] staffSlots = M_Main.instance.m_Staff.staffSlots;
+        //    SpriteRenderer staffGridSprite = staffSlots[(int)cardType].GetComponent<SpriteRenderer>();
+        //    SpriteRenderer produGridSprite = staffSlots[0].GetComponent<SpriteRenderer>();
+        //    if (isUsable)
+        //    {
+        //        if (isToPro && (int)cardType != 0)
+        //        {
+        //            Sequence s = DOTween.Sequence();
+        //            s.Append(cardTrans.DOMove(staffSlots[0].position, 0.2f)) ;
+        //            s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
+        //            s.AppendCallback(() => M_Main.instance.m_Staff.ChangeDeadLineValue(cardValue));
+        //            s.AppendInterval(0.1f);
+        //            s.AppendCallback(() => CheckInTurnCardNumber());
+        //        }
+        //        else
+        //        {
+        //            Sequence s = DOTween.Sequence();
+        //            s.Append(cardTrans.DOMove(staffSlots[(int)cardType].position, 0.2f));
+        //            s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
+        //            s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue((int)cardType, cardValue));
+        //            s.AppendInterval(0.1f);
+        //            s.AppendCallback(() => CheckInTurnCardNumber());
+        //        }
+        //        cardTrans.GetComponent<O_Card>().SetLineStateAuto();
+        //    }
+        //    else
+        //    {
+        //        cardTrans.DOMove(cardTrans.parent.Find("Card Pivot").position + new Vector3(0, 0, 0.2f), 0.3f);
+        //    }
+        //    DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, new Color32(255, 255, 255, 0), 0.3f);
+        //    DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, new Color32(255, 255, 255, 0), 0.3f);
+        //    isUsable = false;
+        //    isToPro = false;
+        //}
+        private enum SlotCondition { Approved,Disapproved,Activated,Inactivated }
+        public void ShowMovableState(Transform cardTrans, List<CardType> targetableTypes, int cardValue)
         {
             Transform[] staffSlots = M_Main.instance.m_Staff.staffSlots;
-            float ditanceBetweenCardTypeSlot = Vector2.Distance(cardTrans.position, staffSlots[(int)cardType].position);
-            float ditanceBetweenProductionSlot = Vector2.Distance(cardTrans.position, staffSlots[0].position);
-            SpriteRenderer staffGridSprite = staffSlots[(int)cardType].GetComponent<SpriteRenderer>();
-            SpriteRenderer produGridSprite = staffSlots[0].GetComponent<SpriteRenderer>();
-            if (ditanceBetweenCardTypeSlot <= 0.6f)
+            foreach (CardType targetType in targetableTypes)
             {
-                if (cardValue>=0)
+                float distanceFromSlot = Vector2.Distance(cardTrans.position, staffSlots[(int)targetType].position);
+                SpriteRenderer targetGridSprite = staffSlots[(int)targetType].GetComponent<SpriteRenderer>();
+                if (distanceFromSlot <= 0.6f)
                 {
-                    DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, Color.green, 0.3f);
-                    isUsable = true;
-                }
-                else
-                {
-                    int staffValue = M_Main.instance.m_Staff.GetStaffValue((int)cardType);
-                    if ((staffValue+cardValue) < 0)
+                    if (targetType == CardType.Production)
                     {
-                        DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, Color.red, 0.3f);
-                        isUsable = false;
+                        TargetSlotChangeTo(targetGridSprite, SlotCondition.Approved);
                     }
                     else
                     {
-                        DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, Color.green, 0.3f);
-                        isUsable = true;
+                        int staffValue = M_Main.instance.m_Staff.GetStaffValue((int)targetType);
+                        if (staffValue + cardValue>=0)
+                        {
+                            TargetSlotChangeTo(targetGridSprite, SlotCondition.Approved);
+                        }
+                        else
+                        {
+                            TargetSlotChangeTo(targetGridSprite, SlotCondition.Disapproved);
+                        }
                     }
-                }
-            }
-            else if (cardValue <= 0&& ditanceBetweenProductionSlot <= 0.6f)
-            {
-                DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, Color.green, 0.3f);
-                isUsable = true;
-                isToPro = true;
-            }
-            else
-            {
-                DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, new Color32(255, 255, 255, 140), 0.3f);
-                if (cardValue<=0 && (int)cardType!=0)
-                {
-                    DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, new Color32(255, 255, 255, 140), 0.3f);
-                }
-                isUsable = false;
-                isToPro = false;
-            }
-        }
-
-        public void CardUseOrMoveBack(Transform cardTrans, CardType cardType, int cardValue)
-        {
-            Transform[] staffSlots = M_Main.instance.m_Staff.staffSlots;
-            SpriteRenderer staffGridSprite = staffSlots[(int)cardType].GetComponent<SpriteRenderer>();
-            SpriteRenderer produGridSprite = staffSlots[0].GetComponent<SpriteRenderer>();
-            if (isUsable)
-            {
-                if (isToPro && (int)cardType != 0)
-                {
-                    Sequence s = DOTween.Sequence();
-                    s.Append(cardTrans.DOMove(staffSlots[0].position, 0.2f)) ;
-                    s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
-                    s.AppendCallback(() => M_Main.instance.m_Staff.ChangeDeadLineValue(cardValue));
-                    s.AppendInterval(0.1f);
-                    s.AppendCallback(() => CheckInTurnCardNumber());
                 }
                 else
                 {
-                    Sequence s = DOTween.Sequence();
-                    s.Append(cardTrans.DOMove(staffSlots[(int)cardType].position, 0.2f));
-                    s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
-                    s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue((int)cardType, cardValue));
-                    s.AppendInterval(0.1f);
-                    s.AppendCallback(() => CheckInTurnCardNumber());
+                    TargetSlotChangeTo(targetGridSprite, SlotCondition.Activated);
                 }
-                cardTrans.GetComponent<O_Card>().SetLineStateAuto();
             }
-            else
+        }
+
+        public void CardUseOrMoveBack(Transform cardTrans, List<CardType> targetableTypes, int cardValue)
+        {
+            Transform[] staffSlots = M_Main.instance.m_Staff.staffSlots;
+            bool isUsed = false;
+            foreach (CardType targetType in targetableTypes)
             {
-                cardTrans.DOMove(cardTrans.parent.Find("Card Pivot").position + new Vector3(0, 0, 0.2f), 0.3f);
+                float distanceFromSlot = Vector2.Distance(cardTrans.position, staffSlots[(int)targetType].position);
+                SpriteRenderer targetGridSprite = staffSlots[(int)targetType].GetComponent<SpriteRenderer>();
+                if (distanceFromSlot <= 0.6f)
+                {
+                    if (cardTrans.GetComponent<O_Card>().cardCurrentType!= CardType.Production && cardValue<0 && targetType == CardType.Production)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(cardTrans.DOMove(staffSlots[0].position, 0.2f));
+                        s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
+                        s.AppendCallback(() => M_Main.instance.m_Staff.ChangeDeadLineValue(cardValue));
+                        s.AppendInterval(0.1f);
+                        s.AppendCallback(() => CheckInTurnCardNumber());
+                    }
+                    else
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(cardTrans.DOMove(staffSlots[(int)targetType].position, 0.2f));
+                        s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
+                        s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue((int)targetType, cardValue));
+                        s.AppendInterval(0.1f);
+                        s.AppendCallback(() => CheckInTurnCardNumber());
+                    }
+                    cardTrans.GetComponent<O_Card>().SetLineStateAuto();
+                    TargetSlotChangeTo(targetGridSprite, SlotCondition.Inactivated);
+                    isUsed = true;
+                }
             }
-            DOTween.To(() => staffGridSprite.color, x => staffGridSprite.color = x, new Color32(255, 255, 255, 0), 0.3f);
-            DOTween.To(() => produGridSprite.color, x => produGridSprite.color = x, new Color32(255, 255, 255, 0), 0.3f);
-            isUsable = false;
-            isToPro = false;
+            if (!isUsed) cardTrans.DOMove(cardTrans.parent.Find("Card Pivot").position + new Vector3(0, 0, 0.2f), 0.3f);
+            foreach (CardType targetType in targetableTypes)
+            {
+                SpriteRenderer targetGridSprite = staffSlots[(int)targetType].GetComponent<SpriteRenderer>();
+                TargetSlotChangeTo(targetGridSprite, SlotCondition.Inactivated);
+            }
+        }
+
+        private void TargetSlotChangeTo(SpriteRenderer targetSpriteBg, SlotCondition slotCondition)
+        {
+            switch (slotCondition)
+            {
+                case SlotCondition.Approved:
+                    DOTween.To(() => targetSpriteBg.color, x => targetSpriteBg.color = x, Color.green, 0.3f);
+                    break;
+                case SlotCondition.Disapproved:
+                    DOTween.To(() => targetSpriteBg.color, x => targetSpriteBg.color = x, Color.red, 0.3f);
+                    break;
+                case SlotCondition.Activated:
+                    DOTween.To(() => targetSpriteBg.color, x => targetSpriteBg.color = x, new Color32(255, 255, 255, 140), 0.3f);
+                    break;
+                case SlotCondition.Inactivated:
+                    DOTween.To(() => targetSpriteBg.color, x => targetSpriteBg.color = x, new Color32(255, 255, 255, 0), 0.3f);
+                    break;
+            }
         }
 
         public void CheckInTurnCardNumber()

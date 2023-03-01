@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00bb30740f7a0740884d28d07dc2d45, type: 3}
+  m_Name: PS_Producer
+  m_EditorClassIdentifier: 
+  characterType: 3
+  nodeList:
+  - thisNodeIndex: 1
+    parentNodeIndexes: 
+    childSkills:
+    - {fileID: 11400000, guid: 523ad8c581d9a634b8b0a0856fe8d412, type: 2}
+  - thisNodeIndex: 2
+    parentNodeIndexes: 
+    childSkills:
+    - {fileID: 11400000, guid: 2176a9d8b0ac8e842aac897e3701af5c, type: 2}
+  - thisNodeIndex: 4
+    parentNodeIndexes: 01000000
+    childSkills:
+    - {fileID: 11400000, guid: 32bf1c459ea49d942b5a65e1ce2f57ba, type: 2}
+  - thisNodeIndex: 5
+    parentNodeIndexes: 01000000
+    childSkills:
+    - {fileID: 11400000, guid: 9ee0df2c245540941bb3eb48c421e9ff, type: 2}
+  - thisNodeIndex: 6
+    parentNodeIndexes: 02000000
+    childSkills:
+    - {fileID: 11400000, guid: f423a1c413d82624bb981c4f6e1d14e8, type: 2}
+  - thisNodeIndex: 7
+    parentNodeIndexes: 0400000005000000
+    childSkills:
+    - {fileID: 11400000, guid: d3fda1319dd9c65459b74a6b023219dd, type: 2}
+  - thisNodeIndex: 8
+    parentNodeIndexes: 06000000
+    childSkills:
+    - {fileID: 11400000, guid: 8b2f326d5be300e4da2509988be780af, type: 2}

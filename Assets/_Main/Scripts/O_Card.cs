@@ -13,7 +13,7 @@ namespace IGDF
         private Card cardData;
         [HideInInspector] public int cardCurrentValue;
         [HideInInspector] public CardType cardCurrentType;
-
+        [HideInInspector]public List<CardType> targetableType = new List<CardType>();
         private Vector3 lastMousePosition = Vector3.zero;
         [HideInInspector] public Vector3 inSlotPos;
         [HideInInspector] public int inSlotIndex;
@@ -37,18 +37,18 @@ namespace IGDF
             transform.Find("Card Name").GetComponent<TMP_Text>().text = card.cardName;
             transform.Find("Card Value").GetComponent<TMP_Text>().text = card.cardValue.ToString();
             transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardTypeIcons[(int)card.cardType];
+            targetableType.Add(card.cardType);
+            if (card.cardType!=0 && card.cardValue<0) targetableType.Add(CardType.Production);
             inSlotIndex = index;
         }
 
         #region - Interaction -
         public void OnMouseDown()
         {
-            //transform.parent.GetComponentInChildren<O_ClipperLine>().isLineActive = true;
             switch (M_Main.instance.m_Skill.skillUseState)
             {
                 case SkillUseState.WaitForUse:
-                    //transform.DOMoveZ(-0.2f, 0.1f);
-                    m_Card.ShowMovableSlot(cardCurrentType);
+                    //m_Card.ShowMovableSlot(cardCurrentType);
                     break;
                 case SkillUseState.Targeting:
                     M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
@@ -66,7 +66,7 @@ namespace IGDF
                     transform.position += offset;
                 }
                 lastMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                m_Card.ShowMovableState(transform, cardCurrentType, cardCurrentValue);
+                m_Card.ShowMovableState(transform, targetableType, cardCurrentValue);
             }
         }
 
@@ -75,7 +75,7 @@ namespace IGDF
             if (M_Main.instance.m_Skill.skillUseState == SkillUseState.WaitForUse)
             {
                 lastMousePosition = Vector3.zero;
-                m_Card.CardUseOrMoveBack(transform, cardCurrentType, cardCurrentValue);
+                m_Card.CardUseOrMoveBack(transform, targetableType, cardCurrentValue);
             }
         }
         #endregion
