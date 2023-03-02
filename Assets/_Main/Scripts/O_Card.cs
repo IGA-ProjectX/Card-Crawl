@@ -107,6 +107,14 @@ namespace IGDF
             DestroyCardOutScene( M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.1f);
         }
 
+        public void CardMoveOutOfScreenRightWards()
+        {
+            M_Main.instance.m_Card.inGameDeck.Add(cardData);
+            M_Main.instance.m_Card.ClipperMiddleDownToRightDown(transform.parent);
+            transform.parent.GetComponentInChildren<O_ClipperLine>().DestroySlider(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.2f);
+            DestroyCardOutScene(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.1f);
+        }
+
         public void SetLineStateAuto()
         {
             transform.parent.GetComponentInChildren<O_ClipperLine>().SetLineState("Auto");

@@ -82,6 +82,8 @@ namespace IGDF
                 case HoverTipType.Card:
                     break;
                 case HoverTipType.Skill:
+                    SetTipName(GetComponent<O_Skill>().skillData.skillNameEng);
+                    SetTipDescription(GetComponent<O_Skill>().skillData.skillDescriptionEng);
                     break;
                 case HoverTipType.DDLMachine:
                     break;

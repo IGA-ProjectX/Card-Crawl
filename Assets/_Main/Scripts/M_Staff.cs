@@ -47,6 +47,12 @@ namespace IGDF
             }
         }
 
+        public void GainExpDirectly(int value)
+        {
+            inTurnValues[0] += value;
+            staffSlots[0].Find("Text Value").GetComponent<TMP_Text>().text = inTurnValues[0].ToString();
+        }
+
         public int GetStaffValue(int index)
         {
             return inTurnValues[index];

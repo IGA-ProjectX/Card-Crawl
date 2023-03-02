@@ -219,19 +219,28 @@ namespace IGDF
                         s.AppendCallback(() => M_Main.instance.m_Staff.ChangeDeadLineValue(cardValue));
                         s.AppendInterval(0.1f);
                         s.AppendCallback(() => CheckInTurnCardNumber());
+
+                        cardTrans.GetComponent<O_Card>().SetLineStateAuto();
+                        TargetSlotChangeTo(targetGridSprite, SlotCondition.Inactivated);
+                        isUsed = true;
                     }
                     else
                     {
-                        Sequence s = DOTween.Sequence();
-                        s.Append(cardTrans.DOMove(staffSlots[(int)targetType].position, 0.2f));
-                        s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
-                        s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue((int)targetType, cardValue));
-                        s.AppendInterval(0.1f);
-                        s.AppendCallback(() => CheckInTurnCardNumber());
+                        if (M_Main.instance.m_Staff.GetStaffValue((int)targetType) >= -cardValue)
+                        {
+                            Sequence s = DOTween.Sequence();
+                            s.Append(cardTrans.DOMove(staffSlots[(int)targetType].position, 0.2f));
+                            s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
+                            s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue((int)targetType, cardValue));
+                            s.AppendInterval(0.1f);
+                            s.AppendCallback(() => CheckInTurnCardNumber());
+
+                            cardTrans.GetComponent<O_Card>().SetLineStateAuto();
+                            TargetSlotChangeTo(targetGridSprite, SlotCondition.Inactivated);
+                            isUsed = true;
+                        }
                     }
-                    cardTrans.GetComponent<O_Card>().SetLineStateAuto();
-                    TargetSlotChangeTo(targetGridSprite, SlotCondition.Inactivated);
-                    isUsed = true;
+           
                 }
             }
             if (!isUsed) cardTrans.DOMove(cardTrans.parent.Find("Card Pivot").position + new Vector3(0, 0, 0.2f), 0.3f);

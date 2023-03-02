@@ -3336,10 +3336,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1db94fab10ac6b349b69e9e114dc704b, type: 2}
   targetLevel: 0
   skillList:
-  - {fileID: 11400000, guid: c874a23b8ea850d44a387fc288826e76, type: 2}
-  - {fileID: 11400000, guid: ac8840154f2420d4890bfff9068a0578, type: 2}
-  - {fileID: 11400000, guid: ce2e7235bec99ba40840c66c91bad824, type: 2}
-  - {fileID: 11400000, guid: 90029eefc41025047befcc805a175090, type: 2}
+  - {fileID: 11400000, guid: 32bf1c459ea49d942b5a65e1ce2f57ba, type: 2}
+  - {fileID: 11400000, guid: f423a1c413d82624bb981c4f6e1d14e8, type: 2}
+  - {fileID: 11400000, guid: 2176a9d8b0ac8e842aac897e3701af5c, type: 2}
+  - {fileID: 11400000, guid: 8b2f326d5be300e4da2509988be780af, type: 2}
 --- !u!114 &1442969061
 MonoBehaviour:
   m_ObjectHideFlags: 0

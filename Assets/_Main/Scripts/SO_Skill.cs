@@ -56,8 +56,11 @@ namespace IGDF
         TargetBoost,
         TargetExp,
         TargetNoExp,
-        TargetPro,
-        TargetArt,
-        TargetDesign
+        TargetProTask,
+        TargetProBoost,
+        TargetArtTask,
+        TargetArtBoost,
+        TargetDesignTask,
+        TargetDesignBoost
     }
 }

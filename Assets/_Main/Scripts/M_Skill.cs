@@ -27,7 +27,7 @@ namespace IGDF
         public void UseSkill(O_Skill receivedSkill)
         {
             activatedSkill = receivedSkill;
-            skillUseState = SkillUseState.Targeting;
+            if (receivedSkill.skillData.skillUseType!=SkillUseType.ClickUse) skillUseState = SkillUseState.Targeting;
             switch (activatedSkill.skillData.skillUseType)
             {
                 case SkillUseType.None:
@@ -48,14 +48,23 @@ namespace IGDF
                 case SkillUseType.TargetNoExp:
                     EnterTargetingState("NoExp");
                     break;
-                case SkillUseType.TargetPro:
-                    EnterTargetingState("Pro");
+                case SkillUseType.TargetProTask:
+                    EnterTargetingState("ProTask");
                     break;
-                case SkillUseType.TargetDesign:
-                    EnterTargetingState("Design");
+                case SkillUseType.TargetDesignTask:
+                    EnterTargetingState("DesignTask");
                     break;
-                case SkillUseType.TargetArt:
-                    EnterTargetingState("Art");
+                case SkillUseType.TargetArtTask:
+                    EnterTargetingState("ArtTask");
+                    break;
+                case SkillUseType.TargetProBoost:
+                    EnterTargetingState("ProBoost");
+                    break;
+                case SkillUseType.TargetDesignBoost:
+                    EnterTargetingState("DesignBoost");
+                    break;
+                case SkillUseType.TargetArtBoost:
+                    EnterTargetingState("ArtBoost");
                     break;
             }
         }
@@ -92,22 +101,40 @@ namespace IGDF
                     if (card.cardCurrentType != CardType.Production) SetCardForSkillState(card, true);
                     else SetCardForSkillState(card, false);
             }
-            else if (targetType == "Pro")
+            else if (targetType == "ProBoost")
             {
                 foreach (O_Card card in cardObjs)
-                    if (card.cardCurrentType != CardType.Code) SetCardForSkillState(card, true);
+                    if (card.cardCurrentType == CardType.Code && card.cardCurrentValue>=0) SetCardForSkillState(card, true);
                     else SetCardForSkillState(card, false);
             }
-            else if (targetType == "Design")
+            else if (targetType == "DesignBoost")
             {
                 foreach (O_Card card in cardObjs)
-                    if (card.cardCurrentType != CardType.Design) SetCardForSkillState(card, true);
+                    if (card.cardCurrentType == CardType.Design && card.cardCurrentValue >= 0) SetCardForSkillState(card, true);
                     else SetCardForSkillState(card, false);
             }
-            else if (targetType == "Art")
+            else if (targetType == "ArtBoost")
             {
                 foreach (O_Card card in cardObjs)
-                    if (card.cardCurrentType != CardType.Art) SetCardForSkillState(card, true);
+                    if (card.cardCurrentType == CardType.Art && card.cardCurrentValue >= 0) SetCardForSkillState(card, true);
+                    else SetCardForSkillState(card, false);
+            }
+            else if (targetType == "ProTask")
+            {
+                foreach (O_Card card in cardObjs)
+                    if (card.cardCurrentType == CardType.Code && card.cardCurrentValue < 0) SetCardForSkillState(card, true);
+                    else SetCardForSkillState(card, false);
+            }
+            else if (targetType == "DesignTask")
+            {
+                foreach (O_Card card in cardObjs)
+                    if (card.cardCurrentType == CardType.Design && card.cardCurrentValue < 0) SetCardForSkillState(card, true);
+                    else SetCardForSkillState(card, false);
+            }
+            else if (targetType == "ArtTask")
+            {
+                foreach (O_Card card in cardObjs)
+                    if (card.cardCurrentType == CardType.Art && card.cardCurrentValue < 0) SetCardForSkillState(card, true);
                     else SetCardForSkillState(card, false);
             }
         }
