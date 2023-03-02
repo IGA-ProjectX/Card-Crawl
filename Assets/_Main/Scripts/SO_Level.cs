@@ -9,6 +9,7 @@ namespace IGDF
     {
         public LevelType levelType;
         public string levelName;
+        public int[] staffValue;
         public Sprite levelButtonImage;
         [Header("Deck")]
         public Card[] cards_Production;

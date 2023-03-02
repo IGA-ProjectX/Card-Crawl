@@ -9,10 +9,6 @@ namespace IGDF
         public static M_Main instance;
         public SO_Repo repository;
 
-        public SO_Level deck_Tester_PapersPlease;
-        private int[] staffValue_Tester_PapersPlease = { 0, 10, 10, 10 ,15};
-        public SO_Skill[] skill_Tester;
-
         public GameObject obj_ReturnButton;
 
         [HideInInspector] public M_Card m_Card;
@@ -39,8 +35,8 @@ namespace IGDF
             m_Card.InitializeMoveValue();
             m_DDL.CreateDots();
             m_DDL.InitializeNumberList();
-            m_Staff.InitializeStaffValues(staffValue_Tester_PapersPlease);
-            m_Skill.InitializeSkills(skill_Tester);
+            m_Staff.InitializeStaffValues(M_Global.instance.levels[M_Global.instance.targetLevel].staffValue);
+            m_Skill.InitializeSkills(M_Global.instance.skillList);
         }
 
         public void CheckDevCircumstance()

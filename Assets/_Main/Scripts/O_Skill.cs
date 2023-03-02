@@ -20,7 +20,7 @@ namespace IGDF
 
         private void OnMouseDown()
         {
-            if (M_Main.instance.m_Skill.skillUseState == SkillUseState.WaitForUse && !isUsed)
+            if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse && !isUsed)
                 M_Main.instance.m_Skill.UseSkill(this);
         }
 

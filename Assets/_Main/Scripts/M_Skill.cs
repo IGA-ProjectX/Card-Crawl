@@ -6,19 +6,16 @@ using UnityEngine.UI;
 
 namespace IGDF
 {
-    public enum SkillUseState { WaitForUse, Targeting, EffectApply }
+    public enum SkillUseState { WaitForUse, Targeting ,CanNotUse}
     public class M_Skill : MonoBehaviour
     {
         public Transform[] skillObjects;
-        [HideInInspector]public SkillUseState skillUseState = SkillUseState.WaitForUse;
+        private SkillUseState skillUseState = SkillUseState.CanNotUse;
         [HideInInspector]public O_Skill activatedSkill;
 
         private void Update()
         {
-            if (skillUseState == SkillUseState.Targeting && Input.GetMouseButtonDown(1))
-            {
-                EnterWaitForUseState();
-            }
+            if (skillUseState == SkillUseState.Targeting && Input.GetMouseButtonDown(1)) EnterWaitForUseState();
         }
 
         public void InitializeSkills(SO_Skill[] skillArray)
@@ -50,6 +47,15 @@ namespace IGDF
                     break;
                 case SkillUseType.TargetNoExp:
                     EnterTargetingState("NoExp");
+                    break;
+                case SkillUseType.TargetPro:
+                    EnterTargetingState("Pro");
+                    break;
+                case SkillUseType.TargetDesign:
+                    EnterTargetingState("Design");
+                    break;
+                case SkillUseType.TargetArt:
+                    EnterTargetingState("Art");
                     break;
             }
         }
@@ -86,6 +92,24 @@ namespace IGDF
                     if (card.cardCurrentType != CardType.Production) SetCardForSkillState(card, true);
                     else SetCardForSkillState(card, false);
             }
+            else if (targetType == "Pro")
+            {
+                foreach (O_Card card in cardObjs)
+                    if (card.cardCurrentType != CardType.Code) SetCardForSkillState(card, true);
+                    else SetCardForSkillState(card, false);
+            }
+            else if (targetType == "Design")
+            {
+                foreach (O_Card card in cardObjs)
+                    if (card.cardCurrentType != CardType.Design) SetCardForSkillState(card, true);
+                    else SetCardForSkillState(card, false);
+            }
+            else if (targetType == "Art")
+            {
+                foreach (O_Card card in cardObjs)
+                    if (card.cardCurrentType != CardType.Art) SetCardForSkillState(card, true);
+                    else SetCardForSkillState(card, false);
+            }
         }
 
         public void SetCardForSkillState(O_Card targetCard,bool targetState)
@@ -111,6 +135,16 @@ namespace IGDF
                     DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.white, 0.3f);
                 }
             }
+        }
+
+        public void EnterCanNotUseState()
+        {
+            skillUseState = SkillUseState.CanNotUse;
+        }
+
+        public SkillUseState GetSkillState()
+        {
+            return skillUseState;
         }
     }
 }

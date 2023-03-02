@@ -350,6 +350,8 @@ namespace IGDF
             s.AppendInterval(verTime + 0.01f);
             s.AppendCallback(() => cardTrans.position = new Vector3(cardTrans.position.x, cardTrans.position.y, 0.1f));
             s.AppendCallback(() => clipperTrans.GetComponentInChildren<O_ClipperLine>().isClipperInScreen = true);
+            s.AppendCallback(() => cardTrans.GetComponent<O_Card>().SetDraggableState(true));
+            s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
 
             void CardMoveDownwards()
             {
@@ -374,6 +376,7 @@ namespace IGDF
             clipperTrans.GetComponentInChildren<O_ClipperLine>().isClipperInScreen  = false;
 
             Sequence s = DOTween.Sequence();
+            s.AppendCallback(() => cardTrans.GetComponent<O_Card>().SetDraggableState(false));
             s.AppendCallback(() => CardUpDownwards());
             s.AppendInterval(verTime);
             s.Append(clipperTrans.DOMoveX(clipperTrans.position.x - horiDistance, horiTime));
@@ -391,6 +394,10 @@ namespace IGDF
 
         public void ClipperMiddleDownToRightDown(Transform clipperTrans)
         {
+            if (clipperTrans.GetComponentInChildren<O_Card>() != null)
+                clipperTrans.GetComponentInChildren<O_Card>().SetDraggableState(false);
+            M_Main.instance.m_Skill.EnterCanNotUseState();
+
             clipperTrans.GetComponentInChildren<O_ClipperLine>().isClipperInScreen = false;
             clipperTrans.DOMoveX(clipperTrans.position.x + horiDistance, horiTime);
             if (clipperTrans.GetComponentInChildren<O_Card>()!=null)

@@ -69,7 +69,7 @@ namespace IGDF
             }
             Sequence s = DOTween.Sequence();
             s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.3f);
-            s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
+            //s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
             s.AppendCallback(() => M_Main.instance.m_Card.ShuffleDeck(M_Main.instance.m_Card.inGameDeck));
             s.AppendCallback(() => M_Main.instance.m_Card.DrawCard(toDrawIndexes));
         }
@@ -77,10 +77,10 @@ namespace IGDF
         private void Skill_WithdrawOneTask(O_Card targetCard)
         {
             targetCard.CardBackToDeck();
-     
+            targetCard.SetDraggableState(false);
             Sequence s = DOTween.Sequence();
             s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.3f);
-            s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
+            //s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
             s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
         }
 
@@ -108,18 +108,19 @@ namespace IGDF
             s.AppendCallback(() => targetCard.transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardTypeIcons[randomType]);
             s.AppendInterval(0.1f);
             s.AppendCallback(() => DOTween.To(() => cardBG.color, x => cardBG.color = x, Color.white, 0.4f));
-            s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
+            //s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
         }
 
         private void Skill_GainOneExpDoubleItsValue(O_Card targetCard)
         {
             Sequence s = DOTween.Sequence();
             s.AppendCallback(() => targetCard.SetLineStateAuto());
-            s.Append(targetCard.transform.DOMove(M_Main.instance.m_Staff.staffSlots[0].position, 0.2f));
+            s.AppendCallback(() => targetCard.SetDraggableState(false));
+            s.Append(targetCard.transform.DOMove(M_Main.instance.m_Staff.staffSlots[0].position, 0.4f));
             s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue(0, targetCard.cardCurrentValue * 2));
             s.AppendCallback(() => targetCard.DestroyCardInScreen());
             s.AppendInterval(0.1f);
-            s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
+            //s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
             s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
         }
 
@@ -148,8 +149,39 @@ namespace IGDF
             s.AppendInterval(0.2f);
             s.AppendCallback(() => DOTween.To(() => cardBG.color, x => cardBG.color = x, Color.yellow, 0.2f));
             s.AppendInterval(0.2f);
-            s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
+            //s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
         }
+
+        #region Programmer Skill
+        private void Skill_Pro_BasicSyntax(O_Card targetCard)
+        {
+            //双倍价值获取一张程序技能提升卡
+        }
+        private void Skill_Pro_BasicGameEngine(O_Card targetCard)
+        {
+            //移除一个程序需求，并获得对应项目经验
+        }
+        private void Skill_Pro_ScriptableObject()
+        {
+            //设计师的技能点数等于程序员的技能点数
+        }
+        private void Skill_Pro_FiniteStateMachine()
+        {
+            //当前程序员技能点数翻倍
+        }
+        private void Skill_Pro_GamePhysics(O_Card targetCard)
+        {
+            //移除一张程序需求，无经验，并增加对应的绝对值的技能点数
+        }
+        private void Skill_Pro_DesignPattern()
+        {
+            //无损耗解决该轮内所有程序需求
+        }
+        private void Skill_Pro_Shader()
+        {
+            //程序员的技能点数 += 美术的技能点数
+        }
+        #endregion
     }
 }
 

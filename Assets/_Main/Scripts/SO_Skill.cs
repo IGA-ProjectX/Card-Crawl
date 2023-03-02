@@ -56,6 +56,8 @@ namespace IGDF
         TargetBoost,
         TargetExp,
         TargetNoExp,
-        TargetPro
+        TargetPro,
+        TargetArt,
+        TargetDesign
     }
 }

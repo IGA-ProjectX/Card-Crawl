@@ -19,6 +19,7 @@ namespace IGDF
         [HideInInspector] public int inSlotIndex;
 
         [HideInInspector] public bool isCardReadyForSkill = false;
+        private bool isDraggable = false;
 
         private M_Card m_Card;
 
@@ -42,24 +43,25 @@ namespace IGDF
             inSlotIndex = index;
         }
 
+        public void SetDraggableState(bool isForDrag)
+        {
+            isDraggable = isForDrag;
+        }
+
         #region - Interaction -
         public void OnMouseDown()
         {
-            switch (M_Main.instance.m_Skill.skillUseState)
+            if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.Targeting)
             {
-                case SkillUseState.WaitForUse:
-                    //m_Card.ShowMovableSlot(cardCurrentType);
-                    break;
-                case SkillUseState.Targeting:
-                    M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
-                    break;
+                M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
+                M_Main.instance.m_Skill.EnterWaitForUseState();
             }
         }
 
         public void OnMouseDrag()
         {
-            if (M_Main.instance.m_Skill.skillUseState == SkillUseState.WaitForUse)
-            {
+            if (isDraggable && M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse) 
+            { 
                 if (lastMousePosition != Vector3.zero)
                 {
                     Vector3 offset = Camera.main.ScreenToWorldPoint(Input.mousePosition) - lastMousePosition;
@@ -72,7 +74,7 @@ namespace IGDF
 
         public void OnMouseUp()
         {
-            if (M_Main.instance.m_Skill.skillUseState == SkillUseState.WaitForUse)
+            if (isDraggable && M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse)
             {
                 lastMousePosition = Vector3.zero;
                 m_Card.CardUseOrMoveBack(transform, targetableType, cardCurrentValue);

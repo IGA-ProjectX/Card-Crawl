@@ -3236,12 +3236,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repository: {fileID: 11400000, guid: a857d36fb737e2c45971440ace47d67b, type: 2}
-  deck_Tester_PapersPlease: {fileID: 11400000, guid: c9510bd470f72ca4b8db1d98e50d4dd8, type: 2}
-  skill_Tester:
-  - {fileID: 11400000, guid: c874a23b8ea850d44a387fc288826e76, type: 2}
-  - {fileID: 11400000, guid: ac8840154f2420d4890bfff9068a0578, type: 2}
-  - {fileID: 11400000, guid: 90029eefc41025047befcc805a175090, type: 2}
-  - {fileID: 11400000, guid: ce2e7235bec99ba40840c66c91bad824, type: 2}
   obj_ReturnButton: {fileID: 187457378}
   m_Card: {fileID: 0}
   m_Staff: {fileID: 0}
@@ -3298,7 +3292,6 @@ MonoBehaviour:
   - {fileID: 90425891}
   - {fileID: 1158288437}
   - {fileID: 1529064606}
-  skillUseState: 0
   activatedSkill: {fileID: 0}
 --- !u!114 &1442969058
 MonoBehaviour:
@@ -3342,6 +3335,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad0e07e4f72e4c043a02d709f06f11a1, type: 2}
   - {fileID: 11400000, guid: 1db94fab10ac6b349b69e9e114dc704b, type: 2}
   targetLevel: 0
+  skillList:
+  - {fileID: 11400000, guid: c874a23b8ea850d44a387fc288826e76, type: 2}
+  - {fileID: 11400000, guid: ac8840154f2420d4890bfff9068a0578, type: 2}
+  - {fileID: 11400000, guid: ce2e7235bec99ba40840c66c91bad824, type: 2}
+  - {fileID: 11400000, guid: 90029eefc41025047befcc805a175090, type: 2}
 --- !u!114 &1442969061
 MonoBehaviour:
   m_ObjectHideFlags: 0

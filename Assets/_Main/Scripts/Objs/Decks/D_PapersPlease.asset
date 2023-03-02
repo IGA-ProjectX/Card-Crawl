@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelType: 0
   levelName: Papers. Please!
+  staffValue: 000000000a0000000a0000000a0000000f000000
   levelButtonImage: {fileID: 0}
   cards_Production:
   - cardType: 0
