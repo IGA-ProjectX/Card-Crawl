@@ -39,6 +39,18 @@ namespace IGDF
             m_Skill.InitializeSkills(M_Global.instance.skillList);
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                m_Card.DrawCard();
+                foreach (Transform skillTrans in m_Skill.skillObjects)
+                {
+                    skillTrans.GetComponent<O_Skill>().OpenEye();
+                }
+            }
+        }
+
         public void CheckDevCircumstance()
         {
             int nullCount = 0;

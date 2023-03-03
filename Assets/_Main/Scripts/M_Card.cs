@@ -17,11 +17,6 @@ namespace IGDF
         public GameObject pre_CardSlider;
         public Transform outScreenJoint;
 
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space)) DrawCard();
-        }
-
         public void InitializeDeck(SO_Level deckData)
         {
             List<Card> tempList = new List<Card>();
