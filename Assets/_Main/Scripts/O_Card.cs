@@ -56,6 +56,10 @@ namespace IGDF
                 M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
                 M_Main.instance.m_Skill.EnterWaitForUseState();
             }
+            else
+            {
+                m_Card.ShowMovableState(transform, targetableType, cardCurrentValue);
+            }
         }
 
         public void OnMouseDrag()
@@ -68,7 +72,7 @@ namespace IGDF
                     transform.position += offset;
                 }
                 lastMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                m_Card.ShowMovableState(transform, targetableType, cardCurrentValue);
+                m_Card.CardTargetingDetection(transform, targetableType, cardCurrentValue);
             }
         }
 
@@ -92,11 +96,15 @@ namespace IGDF
         public void DestroyCardInScreen()
         {
             transform.SetParent(null);
-            Sequence s = DOTween.Sequence();
-            s.AppendCallback(() => M_Main.instance.m_Card.cardsInTurn[inSlotIndex] = null);
-            s.Append(transform.DOScale(0,0.3f));
-            s.AppendCallback(() => M_Main.instance.CheckDevCircumstance());
-            Destroy(gameObject, 0.4f);
+            M_Main.instance.m_Card.cardsInTurn[inSlotIndex] = null;
+            transform.DOScale(0, 0.6f);
+            transform.DORotate(new Vector3(0,0,180), 0.8f);
+            M_Main.instance.CheckDevCircumstance();
+            //Sequence s = DOTween.Sequence();
+            //s.AppendCallback(() => M_Main.instance.m_Card.cardsInTurn[inSlotIndex] = null);
+            //s.Append(transform.DOScale(0,0.3f));
+            //s.AppendCallback(() => M_Main.instance.CheckDevCircumstance());
+            Destroy(gameObject, 0.9f);
         }
 
         public void CardBackToDeck()

@@ -58,9 +58,6 @@ namespace IGDF
         public void InitializeSkill(SO_Skill receivedData)
         {
             skillData = receivedData;
-            Debug.Log(skillData.skillNameEng);
-            //transform.Find("Skill Image").GetComponent<SpriteRenderer>().sprite = skillData.skillImage;
-            //transform.Find("Skill Name").GetComponent<TMP_Text>().text = skillData.skillNameEng;
             eyelidUpper = transform.Find("Eye White").Find("Eyelid Upper");
             eyelidBottom = transform.Find("Eye White").Find("Eyelid Bottom");
             eyeball = transform.Find("Eye White").Find("Eye Black");
