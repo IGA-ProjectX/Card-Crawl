@@ -24,10 +24,16 @@ namespace IGDF
         private Transform eyeball;
 
         private float timer;
+        private LineRenderer targetingLine;
+        private GameObject targetingArrow;
 
         private void Start()
         {
             timer = Random.Range(3.4f, 7.4f);
+            targetingLine = GetComponent<LineRenderer>();
+            targetingLine.enabled = false;
+            targetingArrow = transform.Find("Targeting Arrow").gameObject;
+            targetingArrow.SetActive(false);
         }
 
         private void Update()
@@ -51,6 +57,7 @@ namespace IGDF
                 case EyeState.Close:
                     break;
                 case EyeState.FollowMouse:
+                    EyeAndTrajectoryFollow();
                     break;
             }
         }
@@ -73,6 +80,7 @@ namespace IGDF
         public void OpenEye()
         {
             float speed = Random.Range(0.45f, 1.2f);
+            eyeball.DOMove(eyeballMiddlePos, 0.3f);
             eyelidUpper.DOMoveY(upperLidOpenPos.y, speed);
             eyelidBottom.DOMoveY(bottomLidOpenPos.y, speed);
             eyeState = EyeState.LookAround;
@@ -88,79 +96,114 @@ namespace IGDF
 
         private void OnMouseDown()
         {
-            if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse && !isUsed)
-                M_Main.instance.m_Skill.UseSkill(this);
+            if (eyeState != EyeState.FollowMouse)
+            {
+                if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse && !isUsed)
+                {
+                    M_Main.instance.m_Skill.UseSkill(this);
+                    if (skillData.skillUseType != SkillUseType.ClickUse)
+                    {
+                        eyelidUpper.DOMoveY(upperLidClosePos.y + 0.49f, 0.1f);
+                        eyelidBottom.DOMoveY(bottomLidClosePos.y - 0.3f, 0.1f);
+                        Sequence s = DOTween.Sequence();
+                        s.Append(eyeball.DOScale(0.4f, 0.1f));
+                        s.Append(eyeball.DOScale(1.2f, 0.3f));
+                        s.Append(eyeball.DOScale(1f, 0.1f));
+                        s.AppendCallback(() => eyeState = EyeState.FollowMouse);
+                        s.AppendCallback(() => Cursor.visible = false);
+                        s.AppendCallback(() => targetingArrow.SetActive(true));
+                    }
+                    else 
+                    {
+                        M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Check);
+                        Sequence s = DOTween.Sequence();
+                        s.Append(eyeball.DOScale(0.4f, 0.1f));
+                        s.Append(eyeball.DOScale(1.2f, 0.3f));
+                        s.Append(eyeball.DOScale(1f, 0.1f));
+                    }
+
+                }
+            }
         }
 
         private void OnMouseEnter()
         {
-            if (!isUsed)
+            if (eyeState != EyeState.FollowMouse)
             {
-                //SpriteRenderer skillBG = transform.Find("Skill BG").GetComponent<SpriteRenderer>();
-                //DOTween.To(() => skillBG.color, x => skillBG.color = x, Color.cyan, 0.3f);
-                eyeState = EyeState.Focus;
-                eyeball.DOMove(eyeballMiddlePos, 0.3f);
-                eyeball.DOScale(0.9f, 0.3f);
+                if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse && !isUsed)
+                {
+                    eyeState = EyeState.Focus;
+                    eyeball.DOMove(eyeballMiddlePos, 0.3f);
+                    eyeball.DOScale(0.9f, 0.3f);
+                    M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Poke);
+                }
+                else M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Check);
             }
         }
 
         private void OnMouseExit()
         {
-            if (!isUsed)
+            if (eyeState!=EyeState.FollowMouse)
             {
-                //SpriteRenderer skillBG = transform.Find("Skill BG").GetComponent<SpriteRenderer>();
-                //DOTween.To(() => skillBG.color, x => skillBG.color = x, Color.white, 0.3f);
-                eyeState = EyeState.LookAround;
-                //eyeball.DOMove(eyeballMiddlePos, 0.3f);
-                eyeball.DOScale(1f, 0.3f);
-            } 
+                if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse && !isUsed)
+                {
+                    eyeState = EyeState.LookAround;
+                    eyeball.DOScale(1f, 0.3f);
+                }
+                M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Arrow);
+            }
+
         }
 
         public void SetSkillUninteractable()
         {
             isUsed = true;
             CloseEye();
-            //SpriteRenderer skillBG = transform.Find("Skill BG").GetComponent<SpriteRenderer>();
-            //DOTween.To(() => skillBG.color, x => skillBG.color = x, Color.grey, 0.3f);
         }
 
+        public void EyeAndTrajectoryFollow()
+        {
+            if (targetingLine.enabled == false)
+            {
+                targetingLine.enabled = true;
+            }
+            Vector2 direction = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)eyeball.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            targetingArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        //public void InitializeSkill(SO_Skill receivedData)
-        //{
-        //    skillData = receivedData;
-        //    transform.Find("Skill Image").GetComponent<SpriteRenderer>().sprite = skillData.skillImage;
-        //    transform.Find("Skill Name").GetComponent<TMP_Text>().text = skillData.skillNameEng;
-        //}
+            eyeball.DOMove(eyeballMiddlePos + new Vector2(direction.normalized.x / 5, direction.normalized.y / 5), 0.2f);
+            if (Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), eyeballMiddlePos) < 0.5f)
+            {
+                targetingLine.enabled = false;
+                targetingArrow.SetActive(false);
+                Cursor.visible = true;
+            }
+            else
+            {
+                targetingLine.enabled = true;
+                targetingArrow.SetActive(true);
+                Cursor.visible = false;
+            }
+                //{
+                //    eyeball.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                //}
+                //else
+                //{
+                //    eyeball.position = eyeballMiddlePos + new Vector2(direction.normalized.x / 5, direction.normalized.y / 5);
+                //}
 
-        //private void OnMouseDown()
-        //{
-        //    if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse && !isUsed)
-        //        M_Main.instance.m_Skill.UseSkill(this);
-        //}
+                targetingArrow.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            targetingLine.SetPosition(0, (Vector2) eyeball.position);
+            targetingLine.SetPosition(1, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
 
-        //private void OnMouseEnter()
-        //{
-        //    if (!isUsed)
-        //    {
-        //        SpriteRenderer skillBG = transform.Find("Skill BG").GetComponent<SpriteRenderer>();
-        //        DOTween.To(() => skillBG.color, x => skillBG.color = x, Color.cyan, 0.3f);
-        //    }
-        //}
-
-        //private void OnMouseExit()
-        //{
-        //    if (!isUsed)
-        //    {
-        //        SpriteRenderer skillBG = transform.Find("Skill BG").GetComponent<SpriteRenderer>();
-        //        DOTween.To(() => skillBG.color, x => skillBG.color = x, Color.white, 0.3f);
-        //    }
-        //}
-
-        //public void SetSkillUninteractable()
-        //{
-        //    isUsed = true;
-        //    SpriteRenderer skillBG = transform.Find("Skill BG").GetComponent<SpriteRenderer>();
-        //    DOTween.To(() => skillBG.color, x => skillBG.color = x, Color.grey, 0.3f);
-        //}
+        public void ExitTargetingState()
+        {
+            OpenEye();
+            eyeState = EyeState.LookAround;
+            targetingLine.enabled = false;
+            targetingArrow.SetActive(false);
+            Cursor.visible = true;
+        }
     }
 }

@@ -49,6 +49,11 @@ namespace IGDF
         }
 
         #region - Interaction -
+        public void OnMouseEnter()
+        {
+            M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Grabbing);
+        }
+
         public void OnMouseDown()
         {
             if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.Targeting)
@@ -59,6 +64,7 @@ namespace IGDF
             else
             {
                 m_Card.ShowMovableState(transform, targetableType, cardCurrentValue);
+                M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Grabbed);
             }
         }
 
@@ -82,7 +88,13 @@ namespace IGDF
             {
                 lastMousePosition = Vector3.zero;
                 m_Card.CardUseOrMoveBack(transform, targetableType, cardCurrentValue);
+                M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Arrow);
             }
+        }
+
+        private void OnMouseExit()
+        {
+            M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Arrow);
         }
         #endregion
 

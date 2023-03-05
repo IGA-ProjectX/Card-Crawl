@@ -15,7 +15,11 @@ namespace IGDF
 
         private void Update()
         {
-            if (skillUseState == SkillUseState.Targeting && Input.GetMouseButtonDown(1)) EnterWaitForUseState();
+            if (skillUseState == SkillUseState.Targeting && Input.GetMouseButtonDown(1))
+            {
+                activatedSkill.ExitTargetingState();
+                EnterWaitForUseState();
+            }
         }
 
         public void InitializeSkills(SO_Skill[] skillArray)
@@ -151,6 +155,7 @@ namespace IGDF
 
         public void EnterWaitForUseState()
         {
+
             skillUseState = SkillUseState.WaitForUse;
             activatedSkill = null;
             foreach (Transform cardTrans in M_Main.instance.m_Card.cardsInTurn)
@@ -172,6 +177,11 @@ namespace IGDF
         public SkillUseState GetSkillState()
         {
             return skillUseState;
+        }
+
+        public void SkillTargetingAnim()
+        {
+
         }
     }
 }
