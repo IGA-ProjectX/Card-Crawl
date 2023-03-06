@@ -25,10 +25,10 @@ namespace IGDF
             if (value < 0) 
             {
                 inTurnValues[0] -= value;
-                staffSlots[0].Find("Cat Former").Find("Text Value").GetComponent<TMP_Text>().text = inTurnValues[0].ToString();
+                staffSlots[0].Find("Cat Behind").Find("Text Value").GetComponent<TMP_Text>().text = inTurnValues[0].ToString();
             }
             inTurnValues[index] += value;
-            staffSlots[index].Find("Cat Former").Find("Text Value").GetComponent<TMP_Text>().text = inTurnValues[index].ToString();
+            staffSlots[index].Find("Cat Behind").Find("Text Value").GetComponent<TMP_Text>().text = inTurnValues[index].ToString();
 
             switch (index)
             {
@@ -50,7 +50,7 @@ namespace IGDF
         public void GainExpDirectly(int value)
         {
             inTurnValues[0] += value;
-            staffSlots[0].Find("Cat Former").Find("Text Value").GetComponent<TMP_Text>().text = inTurnValues[0].ToString();
+            staffSlots[0].Find("Cat Behind").Find("Text Value").GetComponent<TMP_Text>().text = inTurnValues[0].ToString();
         }
 
         public int GetStaffValue(int index)

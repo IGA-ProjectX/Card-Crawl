@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelType: 2
   levelName: Super Mario
+  staffValue: 0000000022000000160000002c00000007000000
   levelButtonImage: {fileID: 0}
   cards_Production:
   - cardType: 0
@@ -233,3 +234,4 @@ MonoBehaviour:
     productDescription: Mario WelldoneMario WelldoneMario WelldoneMario Welldone
       v
     productImage: {fileID: 0}
+  talkList: []

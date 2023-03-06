@@ -184,16 +184,8 @@ namespace IGDF
                 targetingArrow.SetActive(true);
                 Cursor.visible = false;
             }
-                //{
-                //    eyeball.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                //}
-                //else
-                //{
-                //    eyeball.position = eyeballMiddlePos + new Vector2(direction.normalized.x / 5, direction.normalized.y / 5);
-                //}
-
-                targetingArrow.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetingLine.SetPosition(0, (Vector2) eyeball.position);
+            targetingArrow.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            targetingLine.SetPosition(0, (Vector2)eyeball.position);
             targetingLine.SetPosition(1, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
 

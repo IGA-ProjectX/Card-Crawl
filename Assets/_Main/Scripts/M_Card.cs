@@ -57,6 +57,7 @@ namespace IGDF
                     go.parent.GetComponentInChildren<O_ClipperLine>().SetLineState("Manuel");
                 }
             }
+
             StopCoroutine(TurnEnd());
         }
 
@@ -256,7 +257,6 @@ namespace IGDF
             s.AppendCallback(() => cardTrans.position = new Vector3(cardTrans.position.x, cardTrans.position.y, 0.1f));
             s.AppendCallback(() => clipperTrans.GetComponentInChildren<O_ClipperLine>().isClipperInScreen = true);
             s.AppendCallback(() => cardTrans.GetComponent<O_Card>().SetDraggableState(true));
-            s.AppendCallback(() => Debug.Log("entered"));
             s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
 
             void CardMoveDownwards()

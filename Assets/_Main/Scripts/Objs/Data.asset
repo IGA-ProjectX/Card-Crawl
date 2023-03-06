@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8afa8cc8341104cb4c4dab935cc9eb, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  playExp: 544
+  playExp: 0
   productShowcases:
   - levelType: 0
     productLevel: 0

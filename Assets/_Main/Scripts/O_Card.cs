@@ -48,6 +48,11 @@ namespace IGDF
             isDraggable = isForDrag;
         }
 
+        public bool GetDraggableState()
+        {
+            return isDraggable;
+        }
+
         #region - Interaction -
         public void OnMouseEnter()
         {
@@ -58,6 +63,7 @@ namespace IGDF
         {
             if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.Targeting)
             {
+                M_Main.instance.m_Skill.activatedSkill.ExitTargetingState();
                 M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
                 M_Main.instance.m_Skill.EnterWaitForUseState();
             }
@@ -112,10 +118,6 @@ namespace IGDF
             transform.DOScale(0, 0.6f);
             transform.DORotate(new Vector3(0,0,180), 0.8f);
             M_Main.instance.CheckDevCircumstance();
-            //Sequence s = DOTween.Sequence();
-            //s.AppendCallback(() => M_Main.instance.m_Card.cardsInTurn[inSlotIndex] = null);
-            //s.Append(transform.DOScale(0,0.3f));
-            //s.AppendCallback(() => M_Main.instance.CheckDevCircumstance());
             Destroy(gameObject, 0.9f);
         }
 

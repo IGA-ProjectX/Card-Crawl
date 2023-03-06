@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelType: 1
   levelName: Super Hot
+  staffValue: 0000000014000000140000001400000005000000
   levelButtonImage: {fileID: 0}
   cards_Production:
   - cardType: 0
@@ -98,3 +99,4 @@ MonoBehaviour:
     productDescription: Hot WelldoneHot WelldoneHot WelldoneHot WelldoneHot WelldoneHot
       WelldoneHot Welldone
     productImage: {fileID: 0}
+  talkList: []

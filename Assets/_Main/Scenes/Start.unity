@@ -930,6 +930,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad0e07e4f72e4c043a02d709f06f11a1, type: 2}
   - {fileID: 11400000, guid: 1db94fab10ac6b349b69e9e114dc704b, type: 2}
   targetLevel: -1
+  skillList:
+  - {fileID: 11400000, guid: 9ee0df2c245540941bb3eb48c421e9ff, type: 2}
+  - {fileID: 11400000, guid: f423a1c413d82624bb981c4f6e1d14e8, type: 2}
+  - {fileID: 11400000, guid: d3fda1319dd9c65459b74a6b023219dd, type: 2}
+  - {fileID: 11400000, guid: 8b2f326d5be300e4da2509988be780af, type: 2}
 --- !u!4 &1305179896
 Transform:
   m_ObjectHideFlags: 0

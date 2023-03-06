@@ -20,6 +20,10 @@ namespace IGDF
                 activatedSkill.ExitTargetingState();
                 EnterWaitForUseState();
             }
+            if (M_Main.instance.m_Card.inGameDeck.Count == 0)
+            {
+                skillUseState = SkillUseState.WaitForUse;
+            }
         }
 
         public void InitializeSkills(SO_Skill[] skillArray)
@@ -177,11 +181,6 @@ namespace IGDF
         public SkillUseState GetSkillState()
         {
             return skillUseState;
-        }
-
-        public void SkillTargetingAnim()
-        {
-
         }
     }
 }
