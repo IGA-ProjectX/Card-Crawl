@@ -248,15 +248,15 @@ MonoBehaviour:
   - productLevel: 1
     productName: Bug Generator
     productDescription: Its actually a digital trash.
-    productImage: {fileID: 0}
+    productImage: {fileID: 21300000, guid: 5975cafa724a3df4baf0ac2eecfc85fa, type: 3}
   - productLevel: 2
     productName: BBBBBB
     productDescription: bbbbb bb bb bbbbb bbbbb bbbbb bbb
-    productImage: {fileID: 0}
+    productImage: {fileID: 21300000, guid: 5975cafa724a3df4baf0ac2eecfc85fa, type: 3}
   - productLevel: 3
     productName: AAAAAAA
     productDescription: aaaaa aa a aaaaa aaa, aaa ,aaaadaa aaa
-    productImage: {fileID: 0}
+    productImage: {fileID: 21300000, guid: 5975cafa724a3df4baf0ac2eecfc85fa, type: 3}
   talkList:
   - conditionType: 0
     talkCharacter: 0

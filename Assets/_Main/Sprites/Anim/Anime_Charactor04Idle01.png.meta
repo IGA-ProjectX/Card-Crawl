@@ -1,0 +1,816 @@
+fileFormatVersion: 2
+guid: 542103fe055ff50438405db2f5f05186
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7030000928640661933
+    second: Anime_Charactor04Idle01_0
+  - first:
+      213: -5402310654649059111
+    second: Anime_Charactor04Idle01_1
+  - first:
+      213: -1353827051377057263
+    second: Anime_Charactor04Idle01_2
+  - first:
+      213: -3619631702921101147
+    second: Anime_Charactor04Idle01_3
+  - first:
+      213: -4380098857814671239
+    second: Anime_Charactor04Idle01_4
+  - first:
+      213: -8626774195752571595
+    second: Anime_Charactor04Idle01_5
+  - first:
+      213: 7725040861356325070
+    second: Anime_Charactor04Idle01_6
+  - first:
+      213: -7863992670913837099
+    second: Anime_Charactor04Idle01_7
+  - first:
+      213: 9138651449637417221
+    second: Anime_Charactor04Idle01_8
+  - first:
+      213: -4818971100889101535
+    second: Anime_Charactor04Idle01_9
+  - first:
+      213: -5543800251208643619
+    second: Anime_Charactor04Idle01_10
+  - first:
+      213: -6929913759167713326
+    second: Anime_Charactor04Idle01_11
+  - first:
+      213: -4862668120220862149
+    second: Anime_Charactor04Idle01_12
+  - first:
+      213: -8628010096549232644
+    second: Anime_Charactor04Idle01_13
+  - first:
+      213: -1275742972352944287
+    second: Anime_Charactor04Idle01_14
+  - first:
+      213: -2346484013948882643
+    second: Anime_Charactor04Idle01_15
+  - first:
+      213: 5313570606445847852
+    second: Anime_Charactor04Idle01_16
+  - first:
+      213: 3069818391228623522
+    second: Anime_Charactor04Idle01_17
+  - first:
+      213: 397350995580991452
+    second: Anime_Charactor04Idle01_18
+  - first:
+      213: 6370157057590306873
+    second: Anime_Charactor04Idle01_19
+  - first:
+      213: 7333813641063960415
+    second: Anime_Charactor04Idle01_20
+  - first:
+      213: 5942642422471102559
+    second: Anime_Charactor04Idle01_21
+  - first:
+      213: -5510237160681164318
+    second: Anime_Charactor04Idle01_22
+  - first:
+      213: 3746333955397024432
+    second: Anime_Charactor04Idle01_23
+  - first:
+      213: -5057386335941422547
+    second: Anime_Charactor04Idle01_24
+  - first:
+      213: -2884018572067531351
+    second: Anime_Charactor04Idle01_25
+  - first:
+      213: 4379236971123412455
+    second: Anime_Charactor04Idle01_26
+  - first:
+      213: -4433329468392842324
+    second: Anime_Charactor04Idle01_27
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1768
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35605b5e66b607e90800000000000000
+      internalID: -7030000928640661933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_1
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 1768
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d8b55f05132705b0800000000000000
+      internalID: -5402310654649059111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_2
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 1768
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1122b5b387d363de0800000000000000
+      internalID: -1353827051377057263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_3
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 1768
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a045a1d42c74cdc0800000000000000
+      internalID: -3619631702921101147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1488
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 970ccdaab43c633c0800000000000000
+      internalID: -4380098857814671239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_5
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 1488
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d69a8539a874880800000000000000
+      internalID: -8626774195752571595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_6
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 1488
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec875800cbbd43b60800000000000000
+      internalID: 7725040861356325070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_7
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 1488
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d7c7edb45c7dd290800000000000000
+      internalID: -7863992670913837099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1208
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5013fb5231303de70800000000000000
+      internalID: 9138651449637417221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_9
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 1208
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12bc1a4d0539f1db0800000000000000
+      internalID: -4818971100889101535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_10
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 1208
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddbccf83b077013b0800000000000000
+      internalID: -5543800251208643619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_11
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 1208
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2df67bcf62004df90800000000000000
+      internalID: -6929913759167713326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 928
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b397e91bb15548cb0800000000000000
+      internalID: -4862668120220862149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_13
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 928
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfff2b4c786234880800000000000000
+      internalID: -8628010096549232644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_14
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 928
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 167a33c9686ab4ee0800000000000000
+      internalID: -1275742972352944287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_15
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 928
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d21b175b83d9f6fd0800000000000000
+      internalID: -2346484013948882643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 648
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c25692660589db940800000000000000
+      internalID: 5313570606445847852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_17
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 648
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aaa42eef8f2a9a20800000000000000
+      internalID: 3069818391228623522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_18
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 648
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd7b0ce00aca38500800000000000000
+      internalID: 397350995580991452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_19
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 648
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9382e15e718576850800000000000000
+      internalID: 6370157057590306873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 368
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5f088c76a0f6c560800000000000000
+      internalID: 7333813641063960415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_21
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 368
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f509e8a3cc1887250800000000000000
+      internalID: 5942642422471102559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_22
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 368
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e131713f74b783b0800000000000000
+      internalID: -5510237160681164318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_23
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 368
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ba7c6d22e6adf330800000000000000
+      internalID: 3746333955397024432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 88
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d221c423ced80d9b0800000000000000
+      internalID: -5057386335941422547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_25
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 88
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a5194e8368e9f7d0800000000000000
+      internalID: -2884018572067531351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_26
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 88
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ed8113b2dc26cc30800000000000000
+      internalID: 4379236971123412455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anime_Charactor04Idle01_27
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 88
+        width: 511
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cab5c285656a972c0800000000000000
+      internalID: -4433329468392842324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -224,14 +224,14 @@ MonoBehaviour:
   - productLevel: 1
     productName: Mario Raw
     productDescription: Mario RawMario RawMario RawMario RawMario Raw
-    productImage: {fileID: 0}
+    productImage: {fileID: 21300000, guid: 8a4d8aa046182d746abd7e8ae31e6dc3, type: 3}
   - productLevel: 2
     productName: Mario Medium
     productDescription: Mario MediumMario MediumMario MediumMario Medium
-    productImage: {fileID: 0}
+    productImage: {fileID: 21300000, guid: 8a4d8aa046182d746abd7e8ae31e6dc3, type: 3}
   - productLevel: 3
     productName: Mario Welldone
     productDescription: Mario WelldoneMario WelldoneMario WelldoneMario Welldone
       v
-    productImage: {fileID: 0}
+    productImage: {fileID: 21300000, guid: 8a4d8aa046182d746abd7e8ae31e6dc3, type: 3}
   talkList: []

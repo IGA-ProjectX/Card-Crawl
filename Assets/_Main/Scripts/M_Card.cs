@@ -300,9 +300,9 @@ namespace IGDF
 
         public void ClipperMiddleDownToRightDown(Transform clipperTrans)
         {
-            if (clipperTrans.GetComponentInChildren<O_Card>() != null)
-                clipperTrans.GetComponentInChildren<O_Card>().SetDraggableState(false);
-            M_Main.instance.m_Skill.EnterCanNotUseState();
+            //if (clipperTrans.GetComponentInChildren<O_Card>() != null)
+            //    clipperTrans.GetComponentInChildren<O_Card>().SetDraggableState(false);
+            //M_Main.instance.m_Skill.EnterCanNotUseState();
 
             clipperTrans.GetComponentInChildren<O_ClipperLine>().isClipperInScreen = false;
             clipperTrans.DOMoveX(clipperTrans.position.x + horiDistance, horiTime);

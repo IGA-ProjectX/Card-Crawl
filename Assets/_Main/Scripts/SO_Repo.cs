@@ -9,5 +9,7 @@ namespace IGDF
     {
         public Sprite[] cardTypeIcons;
         public Color[] chaColors;
+        public Sprite[] stamps;
+        public Color[] stampColors;
     }
 }

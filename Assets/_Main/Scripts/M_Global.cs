@@ -10,6 +10,7 @@ namespace IGDF
         public SO_Level[] levels;
         public int targetLevel = 1;
         public SO_Skill[] skillList;
+        public SO_Repo repository;
 
         public static M_Global instance;
 
