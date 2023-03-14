@@ -44,14 +44,10 @@ namespace IGDF
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                m_Card.DrawCard();
-                foreach (Transform skillTrans in m_Skill.skillObjects)
-                {
-                    skillTrans.GetComponent<O_Skill>().OpenEye();
-                }
-            }
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+       
+            //}
             if(!isGameFinished)
             CheckDevCircumstance();
         }
@@ -89,5 +85,13 @@ namespace IGDF
             }
         }
 
+        public void GameStart()
+        {
+            m_Card.DrawCard();
+            foreach (Transform skillTrans in m_Skill.skillObjects)
+            {
+                skillTrans.GetComponent<O_Skill>().OpenEye();
+            }
+        }
     }
 }
