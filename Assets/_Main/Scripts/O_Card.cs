@@ -35,7 +35,11 @@ namespace IGDF
             cardCurrentType = cardData.cardType;
             if (card.cardImage != null)
                 transform.Find("Card Image Content").GetComponent<SpriteRenderer>().sprite = card.cardImage;
-            transform.Find("Card Name").GetComponent<TMP_Text>().text = card.cardName;
+
+            if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese)
+                transform.Find("Card Name").GetComponent<TMP_Text>().text = card.cardNameChi;
+            else transform.Find("Card Name").GetComponent<TMP_Text>().text = card.cardNameEng;
+
             transform.Find("Card Value").GetComponent<TMP_Text>().text = card.cardValue.ToString();
             transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardTypeIcons[(int)card.cardType];
             targetableType.Add(card.cardType);

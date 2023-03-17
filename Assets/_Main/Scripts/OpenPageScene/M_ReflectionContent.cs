@@ -33,7 +33,9 @@ namespace IGDF
             cloudSpawnTimer = Random.Range(cloudSpawnSpeed * 0.7f, cloudSpawnSpeed * 1.3f);
             for (int i = 1; i < 6; i++)
             {
-                carWheels.Add(GameObject.Find("Car").transform.GetChild(i).transform);
+                carWheels.Add(transform.Find("Train").Find("Cabin Studio").transform.GetChild(i).transform);
+                carWheels.Add(transform.Find("Train").Find("Cabin Skill").transform.GetChild(i).transform);
+                carWheels.Add(transform.Find("Train").Find("Cabin Website").transform.GetChild(i).transform);
             }
         }
 
@@ -84,7 +86,7 @@ namespace IGDF
             int randomSpriteIndex = Random.Range(0, clouds.Length);
             Transform cloud = Instantiate(pre_Cloud, roadSignAttribute[0].pivot.position, Quaternion.identity, objContainer).transform;
             cloud.GetComponent<SpriteRenderer>().sprite = clouds[randomSpriteIndex];
-            cloud.GetComponent<SpriteRenderer>().sortingOrder = -10;
+            cloud.GetComponent<SpriteRenderer>().sortingOrder = -23;
 
             float randomScale = Random.Range(7f, 10f);
             cloud.localScale = new Vector2(randomScale, randomScale);

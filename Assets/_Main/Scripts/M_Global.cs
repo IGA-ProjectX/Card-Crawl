@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace IGDF
 {
@@ -11,7 +12,7 @@ namespace IGDF
         public int targetLevel = 1;
         public SO_Skill[] skillList;
         public SO_Repo repository;
-
+        private SystemLanguage currentLanguage = SystemLanguage.Chinese;
         public static M_Global instance;
 
         private void Awake()
@@ -27,6 +28,16 @@ namespace IGDF
         public void PlayerExpUp(int newExp) 
         {
             mainData.playExp += newExp;
+        }
+
+        public SystemLanguage GetLanguage()
+        {
+            return currentLanguage;
+        }
+
+        public void SetLanguage(SystemLanguage targetLanguage)
+        {
+            currentLanguage = targetLanguage;
         }
     }
 }

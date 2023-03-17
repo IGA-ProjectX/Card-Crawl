@@ -26,6 +26,7 @@ namespace IGDF
         private float timer;
         private LineRenderer targetingLine;
         private GameObject targetingArrow;
+        private SpriteMask eyeMask;
 
         private void Start()
         {
@@ -75,6 +76,8 @@ namespace IGDF
             upperLidClosePos = eyelidUpper.position;
             bottomLidClosePos = eyelidBottom.position;
             eyeballMiddlePos = eyeball.position;
+            eyeMask = transform.Find("Eye White").GetComponent<SpriteMask>();
+            //UpdateMaskState(false);
         }
 
         public void OpenEye()
@@ -196,6 +199,11 @@ namespace IGDF
             targetingLine.enabled = false;
             targetingArrow.SetActive(false);
             Cursor.visible = true;
+        }
+
+        public void UpdateMaskState(bool state)
+        {
+            eyeMask.enabled = state;
         }
     }
 }

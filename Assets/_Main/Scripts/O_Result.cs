@@ -24,15 +24,6 @@ namespace IGDF
              dateText = transform.Find("Date").GetComponent<Text>();
         }
 
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                GetCurrentDate();
-            }
-        }
-
-
         public void GameProduced()
         {
             LevelType currentLevelType = M_Global.instance.levels[M_Global.instance.targetLevel].levelType;
@@ -72,36 +63,36 @@ namespace IGDF
                     if (currentLevel == ProductLevel.None)
                     {
                         ProductUpgrade(toChangeProduct, ProductLevel.Raw);
-                        dateText.text = "Game Produced on " + GetCurrentDate();
+                        dateText.text = "Released: " + GetCurrentDate();
                     }
                     else
                     {
                         ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, currentLevel));
-                        dateText.text = "Game Produced on " + GetProductShowcase(M_Global.instance.levels[M_Global.instance.targetLevel].levelType).producedDate;
+                        dateText.text = "Released: " + GetProductShowcase(M_Global.instance.levels[M_Global.instance.targetLevel].levelType).producedDate;
                     }
                     break;
                 case ProductLevel.Medium:
                     if (currentLevel != ProductLevel.Welldone && currentLevel != ProductLevel.Medium)
                     {
                         ProductUpgrade(toChangeProduct, ProductLevel.Medium);
-                        dateText.text = "Game Produced on " + GetCurrentDate();
+                        dateText.text = "Released: " + GetCurrentDate();
                     }
                     else
                     {
                         ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, currentLevel));
-                        dateText.text = "Game Produced on " + GetProductShowcase(M_Global.instance.levels[M_Global.instance.targetLevel].levelType).producedDate;
+                        dateText.text = "Released: " + GetProductShowcase(M_Global.instance.levels[M_Global.instance.targetLevel].levelType).producedDate;
                     }
                     break;
                 case ProductLevel.Welldone:
                     if (currentLevel != ProductLevel.Welldone)
                     {
                         ProductUpgrade(toChangeProduct, ProductLevel.Welldone);
-                        dateText.text = "Game Produced on " + GetCurrentDate();
+                        dateText.text = "Released: " + GetCurrentDate();
                     }
                     else
                     {
                         ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, currentLevel));
-                        dateText.text = "Game Produced on " + GetProductShowcase(M_Global.instance.levels[M_Global.instance.targetLevel].levelType).producedDate;
+                        dateText.text = "Released: " + GetProductShowcase(M_Global.instance.levels[M_Global.instance.targetLevel].levelType).producedDate;
                     }
                     break;
             }

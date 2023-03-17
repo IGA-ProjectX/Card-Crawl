@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4888409936655367691}
   - component: {fileID: 2865973198546693808}
   - component: {fileID: 8714808722523911215}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pre_RoadSign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_ReflectionDepthOffset: 0
   m_ReflectionSortingOrder: 0
   m_OrderInLayerOffset: 0
-  m_CustomSortingLayerID: 0
+  m_CustomSortingLayerID: -689545863
   m_CustomOrderInLayer: 0
   m_ReflectionMaskInteraction: 2
   m_PropertyCheckingFlag: 3

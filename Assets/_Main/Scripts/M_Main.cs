@@ -75,13 +75,13 @@ namespace IGDF
             {
                 m_ChatBubble.TryTriggerTalkSpecialCondition(TalkConditionType.WinGame);
                 M_Global.instance.PlayerExpUp(m_Staff.GetStaffValue(0));
-                FindObjectOfType<O_Result>().GameProduced();
+                FindObjectOfType<O_ResultSteam>().GameProduced();
             }
 
             void GameDevFailed()
             {
                 m_ChatBubble.TryTriggerTalkSpecialCondition(TalkConditionType.LoseGame);
-                FindObjectOfType<O_Result>().GameProduced();
+                FindObjectOfType<O_ResultSteam>().GameProduced();
             }
         }
 
@@ -91,6 +91,11 @@ namespace IGDF
             foreach (Transform skillTrans in m_Skill.skillObjects)
             {
                 skillTrans.GetComponent<O_Skill>().OpenEye();
+                skillTrans.GetComponent<O_Skill>().UpdateMaskState(true);
+            }
+            foreach (Transform  staffTrans in m_Staff.staffSlots)
+            {
+                staffTrans.GetComponent<O_HalfCat>().UpdateMaskState(true);
             }
         }
     }

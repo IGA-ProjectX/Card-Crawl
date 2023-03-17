@@ -3,50 +3,97 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using Psychoflow.SSWaterReflection2D;
 
 namespace IGDF
 {
     public class M_SceneTransition : MonoBehaviour
     {
-        public Transform carDoor;
-        private bool isMoved = false;
+        public enum CabinView { Overview,Studio,Skill,Website,InStudio,InSkill,InWebsite }
+        [HideInInspector]public CabinView currentView = CabinView.Overview;
+        public Transform[] cars;
+        public LayerMask mask_WaterScene;
+        public LayerMask mask_RoomScene;
+        private float transitionTime = 2;
+        private float carDoorDefaultY;
 
-        // Start is called before the first frame update
-        private void Awake()
+        private void Start()
         {
-            //DontDestroyOnLoad(gameObject);
+            carDoorDefaultY = cars[0].Find("Car Door").position.y;
         }
 
-        void Start()
+        public void EnterCabinView(CabinView targetCabin)
         {
-            //SceneManager.LoadScene("Studio", LoadSceneMode.Additive);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            //if (Input.GetKeyDown(KeyCode.T))
-            //{
-            //    SceneManager.LoadScene(5);
-            //}
-            if (Input.GetKeyDown(KeyCode.V)) CameraMoveIn();
-        }
-
-        void CameraMoveIn()
-        {
-            if (isMoved)
+            switch (targetCabin)
             {
-                DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 5.1f, 2f);
-                carDoor.DOMoveY(carDoor.position.y + 12, 2f);
-                Sequence s = DOTween.Sequence();
-                s.AppendInterval(2);
-                s.AppendCallback(() => M_Main.instance.GameStart());
-                //s.app
+                case CabinView.Overview:
+                    DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 50f, transitionTime);
+                    break;
+                case CabinView.Studio:
+                    DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime);
+                    Camera.main.transform.DOMoveX(0, transitionTime);
+                    currentView = CabinView.Studio;
+                    break;
+                case CabinView.Skill:
+                    DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime);
+                    Camera.main.transform.DOMoveX(-33, transitionTime);
+                    currentView = CabinView.Skill;
+                    break;
+                case CabinView.Website:
+                    DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime);
+                    Camera.main.transform.DOMoveX(33, transitionTime);
+                    currentView = CabinView.Website;
+                    break;
             }
-            else
+        }
+
+        public void EnterCurrentCabin()
+        {
+            DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 5.1f, transitionTime);
+            switch (currentView)
             {
-                DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, 2f);
-                isMoved = true;
+                case CabinView.Studio:
+                    cars[0].Find("Car Door").DOMoveY(cars[0].Find("Car Door").position.y + 12, transitionTime);
+                    Sequence s = DOTween.Sequence();
+                    s.AppendInterval(transitionTime);
+                    //s.AppendCallback(() => TransitToRoomState());
+                    s.AppendCallback(() => M_Main.instance.GameStart());
+                    currentView = CabinView.InStudio;
+                    break;
+                case CabinView.Skill:
+                    cars[1].Find("Car Door").DOMoveY(cars[1].Find("Car Door").position.y + 12, transitionTime);
+                    currentView = CabinView.Skill;
+                    break;
+                case CabinView.Website:
+                    cars[1].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y + 12, transitionTime);
+                    currentView = CabinView.Website;
+                    break;
+            }
+
+            //void TransitToRoomState()
+            //{
+            //    cars[0].Find("Door Mask").GetComponent<SpriteMask>().enabled = false;
+            //    //Camera.main.cullingMask = mask_WaterScene;
+            //}
+        }
+
+        public void ExitCurrentCabin()
+        {
+            DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime);
+            switch (currentView)
+            {
+                case CabinView.InStudio:
+                    cars[0].Find("Car Door").DOMoveY(cars[0].Find("Car Door").position.y - 12, transitionTime);
+                    currentView = CabinView.Studio;
+                    break;
+                case CabinView.InSkill:
+                    cars[1].Find("Car Door").DOMoveY(cars[1].Find("Car Door").position.y - 12, transitionTime);
+                    currentView = CabinView.Skill;
+                    break;
+                case CabinView.InWebsite:
+                    cars[2].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y - 12, transitionTime);
+                    currentView = CabinView.Website;
+                    break;
             }
         }
     }

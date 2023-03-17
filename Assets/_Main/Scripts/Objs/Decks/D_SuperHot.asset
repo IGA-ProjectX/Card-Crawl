@@ -67,4 +67,9 @@ MonoBehaviour:
     productDescription: Hot WelldoneHot WelldoneHot WelldoneHot WelldoneHot WelldoneHot
       WelldoneHot Welldone
     productImage: {fileID: 21300000, guid: a7ae26bf11447c942ad3cdeb36138a2c, type: 3}
+  productUserTags:
+  - Action
+  - FPS
+  - Time Manipulation
+  - Bullet Time
   talkList: []

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: f7a753b3d53d9764d99474ba901980bc
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - .HeitiUI TC
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a6bfb29790c3e1d4095fd9b66d8e5acf, type: 3}
+  - {fileID: 12800000, guid: 53cd4cf5e994bcf47a61037fbef10676, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

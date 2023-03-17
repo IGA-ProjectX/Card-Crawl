@@ -22,6 +22,9 @@ namespace IGDF
         private float expandedBehindX;
         private float shrinkedBehindX;
 
+        private SpriteMask catFormerMask;
+        private SpriteMask catBehindMask;
+
         private void Start()
         {
             formerBody = transform.Find("Cat Former");
@@ -32,6 +35,9 @@ namespace IGDF
             shrinkedFormerX = formerBody.position.x;
             expandedBehindX = behindBody.position.x - horiMoveDistance;
             shrinkedBehindX = behindBody.position.x;
+            catFormerMask = transform.Find("Cat Former").GetComponentInChildren<SpriteMask>();
+            catBehindMask = transform.Find("Cat Behind").GetComponentInChildren<SpriteMask>();
+            //UpdateMaskState(false);
         }
 
         public void CatSlotChangeTo(SlotCondition targetState)
@@ -72,6 +78,12 @@ namespace IGDF
                     currentIconCondition = IconCondition.Disapproved;
                     break;
             }
+        }
+
+        public void UpdateMaskState(bool state)
+        {
+            catBehindMask.enabled = state;
+            catFormerMask.enabled = state;
         }
     }
 }

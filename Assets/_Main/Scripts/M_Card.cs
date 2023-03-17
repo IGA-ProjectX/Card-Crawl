@@ -228,7 +228,7 @@ namespace IGDF
 
         public void InitializeMoveValue()
         {
-             cardSlider = GameObject.Find("Environment").transform.Find("Card Slider");
+             cardSlider = GameObject.Find("Studio Scene").transform.Find("Card Slider");
              horiDistance = cardSlider.Find("InScreen Joints").position.x - cardSlider.Find("OutScreen Joints").position.x;
              verDistance = cardSlider.Find("InScreen Joints").Find("Pivot 1 Inner").position.y - cardSlider.Find("InScreen Joints").Find("Pivot 1 Outer").position.y;
         }

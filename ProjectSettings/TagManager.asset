@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - WaterScene
   - 
   - 
   - 
@@ -43,4 +43,13 @@ TagManager:
     locked: 0
   - name: WaterScene
     uniqueID: 3605421433
+    locked: 0
+  - name: StudioScene
+    uniqueID: 2748900499
+    locked: 0
+  - name: CarScene
+    uniqueID: 2435521579
+    locked: 0
+  - name: UI
+    uniqueID: 2022310447
     locked: 0
