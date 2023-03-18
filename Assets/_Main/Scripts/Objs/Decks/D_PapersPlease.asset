@@ -122,45 +122,100 @@ MonoBehaviour:
     cardValue: 10
   cards_Design:
   - cardType: 1
-    cardNameEng: 
-    cardNameChi: 
-    cardSummaryEng: 
-    cardSummaryChi: 
+    cardNameEng: 'The Art of Game Design: A Book of Lenses'
+    cardNameChi: "\u300A\u6E38\u620F\u8BBE\u8BA1\u827A\u672F:\u955C\u5934\u4E4B\u4E66\u300B"
+    cardSummaryEng: "The Art of Game Design is a unique book in that it emphasizes
+      studying game design from several different perspectives.\r Calling these perspectives
+      \u2018lenses', the author covers basic game design principles that are useful
+      for games of all genres and platforms.\r The reader is then asked to consider
+      challenging design questions (more than 100) that arise from looking at a game
+      through a specific perspective, forcing you to think about how other people
+      would see your game.\r The book also leads you through the game design process
+      while analyzing each step a designer must take to build their ideas.\r The
+      author, Jesse Schell, is an award-winning designer of Disney online games and
+      once served as the chair of the\_International Game Developers Association.\r
+      In other words, you can rest easy knowing that this book was written by someone
+      who not only has plenty of game design experience but was very good at it as
+      well."
+    cardSummaryChi: "\u300A\u6E38\u620F\u8BBE\u8BA1\u827A\u672F:\u955C\u5934\u4E4B\u4E66\u300B\u662F\u4E00\u672C\u72EC\u7279\u7684\u4E66\uFF0C\u5B83\u5F3A\u8C03\u4ECE\u591A\u4E2A\u4E0D\u540C\u7684\u89D2\u5EA6\u6765\u7814\u7A76\u6E38\u620F\u8BBE\u8BA1\u3002\u4F5C\u8005\u5C06\u8FD9\u4E9B\u89C6\u89D2\u79F0\u4E3A\u201C\u955C\u5934\u201D\uFF0C\u6DB5\u76D6\u4E86\u9002\u7528\u4E8E\u6240\u6709\u7C7B\u578B\u548C\u5E73\u53F0\u7684\u6E38\u620F\u7684\u57FA\u672C\u6E38\u620F
+      \u8BBE\u8BA1\u539F\u5219\u3002\u7136\u540E\uFF0C\u8BFB\u8005\u4F1A\u88AB\u8981\u6C42\u8003\u8651\u901A\u8FC7\u7279\u5B9A\u89C6\u89D2\u770B\u5F85\u6E38\u620F\u6240\u4EA7\u751F\u7684\u5177\u6709\u6311\u6218\u6027\u7684\u8BBE\u8BA1\u95EE\u9898
+      (\u6709 100 \u4E2A)\uFF0C\u8FEB\u4F7F\u4F60\u601D\u8003\u5176\u4ED6\u4EBA\u4F1A\u5982\u4F55\u770B\u5F85\u4F60\u7684\u6E38\u620F\u3002\u8FD9\u672C\u4E66\u8FD8\u5E26\u9886\u4F60\u8D70\u8FC7\u6E38\u620F\u8BBE\u8BA1\u8FC7\u7A0B\uFF0C\u540C\u65F6\u5206\u6790\u8BBE\u8BA1\u5E08\u5728\u6784\u5EFA\u81EA\u5DF1\u7684\u60F3\u6CD5\u65F6\u5FC5\u987B\u91C7\u53D6\u7684\u6BCF\u4E00\u6B65\u3002
+      \u672C\u6587\u4F5C\u8005 Jesse Schell \u662F\u8FEA\u58EB\u5C3C\u7F51\u7EDC\u6E38\u620F\u83B7\u5956\u8BBE\u8BA1\u5E08\uFF0C\u66FE\u62C5\u4EFB\u56FD\u9645\u6E38\u620F\u5F00\u53D1\u8005\u534F\u4F1A\u4E3B\u5E2D\u3002\u6362\u53E5\u8BDD\u8BF4\uFF0C\u8FD9\u672C\u4E66\u7684\u4F5C\u8005\u4E0D\u4EC5\u62E5\u6709\u4E30\u5BCC\u7684\u6E38\u620F\u8BBE\u8BA1\u7ECF\u9A8C\uFF0C\u800C\u4E14\u8FD8\u975E\u5E38\u64C5\u957F\u6E38\u620F\u8BBE\u8BA1\u3002"
     cardImage: {fileID: 0}
     cardValue: 3
   - cardType: 1
-    cardNameEng: 
-    cardNameChi: 
-    cardSummaryEng: 
-    cardSummaryChi: 
+    cardNameEng: The Ultimate Guide to Video Game Writing and Design
+    cardNameChi: "\u300A\u7535\u5B50\u6E38\u620F\u5199\u4F5C\u548C\u8BBE\u8BA1\u2014\u2014\u7EC8\u6781\u6307\u5357\u300B"
+    cardSummaryEng: The Ultimate Guide to Video Game Writing and Design is a must-have
+      for any aspiring game designers who also see themselves deeply involved in
+      the storytelling side of development. Readers will learn the advanced techniques
+      and knowledge needed for integrating a story into any game to craft a captivating,
+      emotional experience. Topics covered by the book include writing the story,
+      game script, game bible, design document, and technical content for your game.
+      The authors are Flint Dille and John Zurr, two experienced game developers
+      who also added samples of their own work for readers to learn from.
+    cardSummaryChi: "\u300A\u7535\u5B50\u6E38\u620F\u5199\u4F5C\u548C\u8BBE\u8BA1\u2014\u2014\u7EC8\u6781\u6307\u5357\u300B\u662F\u4EFB\u4F55\u6709\u62B1\u8D1F\u7684\u6E38\u620F\u8BBE\u8BA1\u5E08\u7684\u5FC5\u5907\u6307\u5357\uFF0C\u5982\u679C\u60F3\u6DF1\u5165\u7814\u7A76\u6E38\u620F\u7684\u6545\u4E8B\u53D9\u8FF0\u65B9\u9762\uFF0C\u90A3\u5C31\u66F4\u8981\u8BFB\u4E00\u8BFB\u8FD9\u672C\u4E66\u4E86\u3002
+      \u8BFB\u8005\u5C06\u5B66\u4E60\u5230\u5C06\u6545\u4E8B\u6574\u5408\u5230\u4EFB\u4F55\u6E38\u620F\u4E2D\u6240\u9700\u8981\u7684\u5148\u8FDB\u6280\u672F\u548C\u77E5\u8BC6\uFF0C\u8BB2\u8FF0\u5982\u4F55\u5236\u4F5C\u5F15\u4EBA\u5165\u80DC\u7684\u60C5\u611F\u4F53\u9A8C\u3002
+      \u4E66\u4E2D\u6D89\u53CA\u7684\u4E3B\u9898\u5305\u62EC\u4E3A\u4F60\u7684\u6E38\u620F\u7F16\u5199\u6545\u4E8B\u3001\u6E38\u620F\u811A\u672C\u3001\u8BBE\u8BA1\u6587\u4EF6\u548C\u6280\u672F\u5185\u5BB9\u3002
+      \u4F5C\u8005\u662F Flint Dille \u548C John Zurr\uFF0C\u4E24\u4F4D\u7ECF\u9A8C\u4E30\u5BCC\u7684\u6E38\u620F\u5F00\u53D1\u8005\uFF0C\u4ED6\u4EEC\u8FD8\u52A0\u5165\u4E86\u81EA\u5DF1\u7684\u4F5C\u54C1\u4F5C\u4E3A\u8303\u4F8B\uFF0C\u4F9B\u8BFB\u8005\u5B66\u4E60\u3002"
     cardImage: {fileID: 0}
     cardValue: 4
   - cardType: 1
-    cardNameEng: 
-    cardNameChi: 
-    cardSummaryEng: 
-    cardSummaryChi: 
+    cardNameEng: A Theory of Fun for Game Design
+    cardNameChi: "\u300A\u6E38\u620F\u8BBE\u8BA1\u4E50\u8DA3\u8BBA\u300B"
+    cardSummaryEng: 'The complete opposite of our previous entry in terms of size,
+      A Theory of Fun for Game Design is a small but effective game design book that
+      challenges readers to figure out why games appeal to human beings.
+
+      Included
+      are colorful full-page illustrations as well as a deep examination of modern
+      video games to figure out why some are boring and others can be enjoyed for
+      years.
+
+      Raph Koster, the author of the book, is a veteran game designer
+      who has worked on big hits like Star Wars Galaxies and Ultima Online and served
+      as a creative executive at top companies like Disney Playdom and Sony Online.'
+    cardSummaryChi: "\u300A\u6E38\u620F\u8BBE\u8BA1\u4E50\u8DA3\u8BBA\u300B\u4E0E\u6211\u4EEC\u6240\u63A8\u8350\u7684\u5176\u4ED6\u4E66\u5B8C\u5168\u76F8\u53CD\uFF0C\u8FD9\u662F\u4E00\u672C\u89C4\u6A21\u867D\u5C0F\u4F46\u5374\u6709\u7740\u7279\u6B8A\u610F\u4E49\u7684\u6E38\u620F\u8BBE\u8BA1\u4E66\u7C4D\uFF0C\u65E8\u5728\u8BA9\u8BFB\u8005\u7406\u89E3\u6E38\u620F\u4E3A\u4F55\u5438\u5F15\u73A9\u5BB6\u3002\u4E66\u4E2D\u5305\u542B\u4E86\u5F69\u8272\u7684\u5168\u9875\u63D2\u56FE\uFF0C\u4EE5\u53CA\u5BF9\u73B0\u4EE3\u7535\u5B50\u6E38\u620F\u7684\u6DF1\u5165\u7814\u7A76\uFF0C\u4EE5\u5F04\u6E05\u695A\u4E3A\u4EC0\u4E48\u6709\u4E9B\u6E38\u620F\u5F88\u65E0\u804A\uFF0C\u800C\u53E6\u4E00\u4E9B\u6E38\u620F\u53EF\u4EE5\u73A9\u597D\u51E0\u5E74\u3002
+      \u8FD9\u672C\u4E66\u7684\u4F5C\u8005 Raph Koster \u662F\u4E00\u540D\u8D44\u6DF1\u6E38\u620F\u8BBE\u8BA1\u5E08\uFF0C\u66FE\u53C2\u4E0E\u300A\u661F\u7403\u5927\u6218:\u94F6\u6CB3\u300B\u548C
+      \u300A\u521B\u4E16\u7EAA Online\u300B\u7B49\u70ED\u95E8\u6E38\u620F\u7684\u8BBE\u8BA1\uFF0C\u5E76\u66FE\u5728\u8FEA\u58EB\u5C3C
+      Playdom \u548C\u7D22\u5C3C Online \u7B49\u9876\u7EA7\u516C\u53F8\u62C5\u4EFB\u521B\u610F\u4E3B\u7BA1\u3002"
     cardImage: {fileID: 0}
     cardValue: 5
   - cardType: 1
-    cardNameEng: 
-    cardNameChi: 
-    cardSummaryEng: 
-    cardSummaryChi: 
+    cardNameEng: Level Up! The Guide to Great Video Game Design
+    cardNameChi: "\u300ALevel Up\uFF01\u4F18\u79C0\u7535\u5B50\u6E38\u620F\u7684\u8BBE\u8BA1\u6307\u5357\u300B"
+    cardSummaryEng: "Level Up! is perhaps one of the best choices on this list to
+      have as a first game design book. The author provides plenty of attractive
+      cartoon art that helps present his ideas in a way that's both approachable
+      and instructive. \r\nTopics include: mobile and console systems, monetization,
+      design document creation.\r\nWhile Scott Rogers doesn't have the same relevant
+      professional experience as authors of other game design books, he nonetheless
+      does an amazing job of taking readers through game development from start to
+      finish.\r\nIf you want a game design book that trades lengthy theoretical language
+      for delightful illustrations, look no further."
+    cardSummaryChi: "\u300ALevel Up\uFF01\u4F18\u79C0\u7535\u5B50\u6E38\u620F\u7684\u8BBE\u8BA1\u6307\u5357\u300B\u4E5F\u8BB8\u662F\u4F60\u7B2C\u4E00\u672C\u6E38\u620F\u8BBE\u8BA1\u4E66\u7C4D\u7684\u6700\u4F73\u4E4B\u9009\u3002
+      \u4F5C\u8005\u63D0\u4F9B\u4E86\u5927\u91CF\u6709\u5438\u5F15\u529B\u7684\u5361\u901A\u827A\u672F\uFF0C\u4EE5\u4E00\u79CD\u65E2\u5E73\u6613\u8FD1\u4EBA\u53C8\u5177\u6709\u6559\u80B2\u610F\u4E49\u7684\u65B9\u5F0F\u5448\u73B0\u4ED6\u7684\u60F3\u6CD5\u3002
+      \u4E66\u4E2D\u6D89\u53CA\u5230\u7684\u4E3B\u9898\u5305\u62EC\uFF1A\u624B\u673A\u548C\u4E3B\u673A\u7CFB\u7EDF\u7684\u533A\u522B\u3001\u7535\u5B50\u6E38\u620F\u7684\u8D27\u5E01\u5316\u3001\u4F55\u4E3A\u4F18\u79C0\u7684\u8BBE\u8BA1\u6587\u6863\u7B49\u3002\u867D\u7136
+      Scott Rogers \u4E0D\u50CF\u5176\u4ED6\u6E38\u620F\u8BBE\u8BA1\u4E66\u7C4D\u7684\u4F5C\u8005\u90A3\u6837\u62E5\u6709\u591A\u5E74\u7684\u4E13\u4E1A\u7ECF\u9A8C\uFF0C\u4F46\u4ED6\u5728\u5F15\u5BFC\u8BFB\u8005\u4ECE\u5934\u5230\u5C3E\u4F53\u9A8C\u6E38\u620F\u5F00\u53D1\u65B9\u9762\u505A\u5F97\u975E\u5E38\u51FA\u8272\u3002\u5982\u679C\u4F60\u60F3\u8981\u4E00\u672C\u53BB\u9664\u4E86\u5197\u957F\u7684\u7406\u8BBA\u8BED\u8A00\uFF0C\u6362\u53D6\u4EE4\u4EBA\u6109\u60A6\u7684\u63D2\u56FE\u7684\u6709\u8DA3\u6E38\u620F\u8BBE\u8BA1\u56FE\u4E66\uFF0C\u90A3\u5C31\u8D76\u5FEB\u5165\u624B\u5427\u3002"
     cardImage: {fileID: 0}
     cardValue: 6
   - cardType: 1
-    cardNameEng: 
-    cardNameChi: 
-    cardSummaryEng: 
-    cardSummaryChi: 
+    cardNameEng: Brainstorming
+    cardNameChi: "\u5934\u8111\u98CE\u66B4"
+    cardSummaryEng: "Often, when you are working as a creative professional, there
+      is no time to wait for that moment of inspiration to hit; you need a more formalized
+      system of idea generation\u2014what is called \u201Cbrainstorming.\u201D "
+    cardSummaryChi: "\u5728\u521B\u610F\u884C\u4E1A\u5DE5\u4F5C\u8FC7\u7684\u4EBA\u90FD\u4F1A\u6709\u8FD9\u6837\u7684\u4F53\u9A8C\uFF1A\u5728\u5DE5\u4F5C\u65F6\u4F60\u5F80\u5F80\u6CA1\u6709\u65F6\u95F4\u7B49\u6765\u90A3\u4E2A\u7075\u611F\u6765\u88AD\u7684\u65F6\u523B\uFF0C\u800C\u9700\u8981\u4E00\u4E2A\u66F4\u53EF\u9760\u7684\u65B9\u6CD5\u6765\u7CFB\u7EDF\u5316\u7684\u83B7\u53D6\u5927\u5BB6\u7684\u60F3\u6CD5\u2014\u2014\u4E5F\u5C31\u662F\u6240\u8C13\u7684\u201C\u5934\u8111\u98CE\u66B4\u201D\u3002"
     cardImage: {fileID: 0}
     cardValue: 7
   - cardType: 1
-    cardNameEng: 
-    cardNameChi: 
-    cardSummaryEng: 
-    cardSummaryChi: 
+    cardNameEng: Procedural Literacy
+    cardNameChi: "\u7A0B\u5E8F\u7D20\u517B"
+    cardSummaryEng: "It means having a good grasp on how computers work, how code
+      is structured, and the general principles behind game programming. A game designer
+      is highly encouraged to learn at least one programming language\u2014even if
+      they do not plan to be a programmer."
+    cardSummaryChi: "\u7A0B\u5E8F\u7D20\u517B\u7684\u610F\u601D\u662F\u8F83\u597D\u5730\u638C\u63E1\u8BA1\u7B97\u673A\u7684\u5DE5\u4F5C\u539F\u7406\uFF0C\u4EE3\u7801\u7684\u7ED3\u6784\uFF0C\u4EE5\u53CA\u6E38\u620F\u7F16\u7A0B\u80CC\u540E\u7684\u4E00\u822C\u539F\u5219\u3002\u56E0\u6B64\uFF0C\u6211\u4EEC\u9F13\u52B1\u6E38\u620F\u8BBE\u8BA1\u5E08\u81F3\u5C11\u5B66\u4E60\u4E00\u79CD\u7F16\u7A0B\u8BED\u8A00\uFF0C\u5373\u4F7F\u4ED6\u4EEC\u6CA1\u6709\u8F6C\u884C\u53BB\u7A0B\u5E8F\u6572\u4EE3\u7801\u7684\u6253\u7B97\u3002"
     cardImage: {fileID: 0}
     cardValue: 8
   - cardType: 1
@@ -171,10 +226,24 @@ MonoBehaviour:
     cardImage: {fileID: 0}
     cardValue: 9
   - cardType: 1
-    cardNameEng: 
-    cardNameChi: 
-    cardSummaryEng: 
-    cardSummaryChi: 
+    cardNameEng: A Theory of Fun for Game Design
+    cardNameChi: "\u300A\u6E38\u620F\u8BBE\u8BA1\u4E50\u8DA3\u8BBA\u300B"
+    cardSummaryEng: 'The complete opposite of our previous entry in terms of size,
+      A Theory of Fun for Game Design is a small but effective game design book that
+      challenges readers to figure out why games appeal to human beings.
+
+      Included
+      are colorful full-page illustrations as well as a deep examination of modern
+      video games to figure out why some are boring and others can be enjoyed for
+      years.
+
+      Raph Koster, the author of the book, is a veteran game designer
+      who has worked on big hits like Star Wars Galaxies and Ultima Online and served
+      as a creative executive at top companies like Disney Playdom and Sony Online.'
+    cardSummaryChi: "\u300A\u6E38\u620F\u8BBE\u8BA1\u4E50\u8DA3\u8BBA\u300B\u4E0E\u6211\u4EEC\u6240\u63A8\u8350\u7684\u5176\u4ED6\u4E66\u5B8C\u5168\u76F8\u53CD\uFF0C\u8FD9\u662F\u4E00\u672C\u89C4\u6A21\u867D\u5C0F\u4F46\u5374\u6709\u7740\u7279\u6B8A\u610F\u4E49\u7684\u6E38\u620F\u8BBE\u8BA1\u4E66\u7C4D\uFF0C\u65E8\u5728\u8BA9\u8BFB\u8005\u7406\u89E3\u6E38\u620F\u4E3A\u4F55\u5438\u5F15\u73A9\u5BB6\u3002\u4E66\u4E2D\u5305\u542B\u4E86\u5F69\u8272\u7684\u5168\u9875\u63D2\u56FE\uFF0C\u4EE5\u53CA\u5BF9\u73B0\u4EE3\u7535\u5B50\u6E38\u620F\u7684\u6DF1\u5165\u7814\u7A76\uFF0C\u4EE5\u5F04\u6E05\u695A\u4E3A\u4EC0\u4E48\u6709\u4E9B\u6E38\u620F\u5F88\u65E0\u804A\uFF0C\u800C\u53E6\u4E00\u4E9B\u6E38\u620F\u53EF\u4EE5\u73A9\u597D\u51E0\u5E74\u3002
+      \u8FD9\u672C\u4E66\u7684\u4F5C\u8005 Raph Koster \u662F\u4E00\u540D\u8D44\u6DF1\u6E38\u620F\u8BBE\u8BA1\u5E08\uFF0C\u66FE\u53C2\u4E0E\u300A\u661F\u7403\u5927\u6218:\u94F6\u6CB3\u300B\u548C
+      \u300A\u521B\u4E16\u7EAA Online\u300B\u7B49\u70ED\u95E8\u6E38\u620F\u7684\u8BBE\u8BA1\uFF0C\u5E76\u66FE\u5728\u8FEA\u58EB\u5C3C
+      Playdom \u548C\u7D22\u5C3C Online \u7B49\u9876\u7EA7\u516C\u53F8\u62C5\u4EFB\u521B\u610F\u4E3B\u7BA1\u3002"
     cardImage: {fileID: 0}
     cardValue: 10
   - cardType: 1

@@ -27,7 +27,8 @@ namespace IGDF
 
             if (isClipperFollow && cardTrans != null)
             {
-                clipperTrans.position = cardTrans.position + new Vector3(0, 1.834f, 0);
+                //clipperTrans.position = cardTrans.position + new Vector3(0, 1.834f, 0);
+                clipperTrans.position = cardTrans.position + new Vector3(0, 1.72f, 0);
             }
         }
          

@@ -12,15 +12,8 @@ namespace IGDF
         public enum CabinView { Overview,Studio,Skill,Website,InStudio,InSkill,InWebsite }
         [HideInInspector]public CabinView currentView = CabinView.Overview;
         public Transform[] cars;
-        public LayerMask mask_WaterScene;
-        public LayerMask mask_RoomScene;
         private float transitionTime = 2;
-        private float carDoorDefaultY;
-
-        private void Start()
-        {
-            carDoorDefaultY = cars[0].Find("Car Door").position.y;
-        }
+        public Transform windContainer;
 
         public void EnterCabinView(CabinView targetCabin)
         {
@@ -28,20 +21,28 @@ namespace IGDF
             {
                 case CabinView.Overview:
                     DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 50f, transitionTime);
+                    WindDepthChange("Overview");
                     break;
                 case CabinView.Studio:
                     DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime);
+                    WindDepthChange("Car");
                     Camera.main.transform.DOMoveX(0, transitionTime);
+                    transform.Find("Train").Find("Plat_SS").Find("Button").DORotate(Vector3.zero, transitionTime/2);
+                    transform.Find("Train").Find("Plat_SW").Find("Button").DORotate(Vector3.zero, transitionTime/2);
                     currentView = CabinView.Studio;
                     break;
                 case CabinView.Skill:
                     DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime);
-                    Camera.main.transform.DOMoveX(-33, transitionTime);
+                    WindDepthChange("Car");
+                    Camera.main.transform.DOMoveX(-32f, transitionTime);
+                    transform.Find("Train").Find("Plat_SS").Find("Button").DORotate(new Vector3(0, 0, 180), transitionTime/2);
                     currentView = CabinView.Skill;
                     break;
                 case CabinView.Website:
                     DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime);
-                    Camera.main.transform.DOMoveX(33, transitionTime);
+                    WindDepthChange("Car");
+                    Camera.main.transform.DOMoveX(32f, transitionTime);
+                    transform.Find("Train").Find("Plat_SW").Find("Button").DORotate(new Vector3(0, 0, 180), transitionTime/2);
                     currentView = CabinView.Website;
                     break;
             }
@@ -50,6 +51,7 @@ namespace IGDF
         public void EnterCurrentCabin()
         {
             DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 5.1f, transitionTime);
+            WindDepthChange("InRoom");
             switch (currentView)
             {
                 case CabinView.Studio:
@@ -80,6 +82,7 @@ namespace IGDF
         public void ExitCurrentCabin()
         {
             DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime);
+            WindDepthChange("Car");
             switch (currentView)
             {
                 case CabinView.InStudio:
@@ -95,6 +98,29 @@ namespace IGDF
                     currentView = CabinView.Website;
                     break;
             }
+        }
+
+        public void WindDepthChange(string view)
+        {
+            float windScale = 0;
+            float windYpos = 0;
+            if (view == "Car")
+            {
+                windScale = 0.55f;
+                windYpos = -0.5f;
+            }
+            else if(view == "InRoom")
+            {
+                windScale = 0.15f;
+                windYpos = -0.42f;
+            }
+            else if(view == "Overview")
+            {
+                windScale = 1;
+                windYpos = -0.7f;
+            }
+            windContainer.DOMoveY(windYpos, transitionTime);
+            windContainer.DOScale(windScale, transitionTime);
         }
     }
 }

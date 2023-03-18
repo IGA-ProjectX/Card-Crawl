@@ -47,14 +47,15 @@ namespace IGDF
             {
                 if (cardsInTurn[i] == null && inGameDeck.Count != 0)
                 {
-                    InstantiateCardSlider(i);
-                    Transform go = Instantiate(pre_Card, taskSlots[i].transform.position, Quaternion.identity,taskSlots[i].parent).transform;
-                    cardsInTurn[i] = go;
-                    go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], i);
-                    inGameDeck.RemoveAt(0);
-                    ClipperLeftUpperToMiddleDown(go.parent);
-                    go.parent.GetComponentInChildren<O_ClipperLine>().cardTrans = go;
-                    go.parent.GetComponentInChildren<O_ClipperLine>().SetLineState("Manuel");
+                    //InstantiateCardSlider(i);
+                    //Transform go = Instantiate(pre_Card, taskSlots[i].transform.position, Quaternion.identity,taskSlots[i].parent).transform;
+                    //cardsInTurn[i] = go;
+                    //go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], i);
+                    //inGameDeck.RemoveAt(0);
+                    //ClipperLeftUpperToMiddleDown(go.parent);
+                    //go.parent.GetComponentInChildren<O_ClipperLine>().cardTrans = go;
+                    //go.parent.GetComponentInChildren<O_ClipperLine>().SetLineState("Manuel");
+                    InstantiateCard(i);
                 }
             }
 
@@ -65,14 +66,28 @@ namespace IGDF
         {
             foreach (int slotIndex in toDrawSlots)
             {
-                InstantiateCardSlider(slotIndex);
-                Transform go = Instantiate(pre_Card, taskSlots[slotIndex].transform.position, Quaternion.identity, taskSlots[slotIndex].parent).transform;
-                cardsInTurn[slotIndex] = go;
-                go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], slotIndex);
-                inGameDeck.RemoveAt(0);
-                ClipperLeftUpperToMiddleDown(go.parent);
+                InstantiateCard(slotIndex);
+                //InstantiateCardSlider(slotIndex);
+                //Transform go = Instantiate(pre_Card, taskSlots[slotIndex].transform.position, Quaternion.identity, taskSlots[slotIndex].parent).transform;
+                //cardsInTurn[slotIndex] = go;
+                //go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], slotIndex);
+                //inGameDeck.RemoveAt(0);
+                //ClipperLeftUpperToMiddleDown(go.parent);
             }
         }
+
+        public void InstantiateCard(int slotIndex)
+        {
+            InstantiateCardSlider(slotIndex);
+            Transform go = Instantiate(pre_Card, taskSlots[slotIndex].transform.position, Quaternion.identity, taskSlots[slotIndex].parent).transform;
+            cardsInTurn[slotIndex] = go;
+            go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], slotIndex);
+            inGameDeck.RemoveAt(0);
+            go.parent.GetComponentInChildren<O_ClipperLine>().cardTrans = go;
+            go.parent.GetComponentInChildren<O_ClipperLine>().SetLineState("Manuel");
+            ClipperLeftUpperToMiddleDown(go.parent);
+        }
+
         #region Card Drag & Use & Half Cat Anim
         public void ShowMovableState(Transform cardTrans, List<CardType> targetableTypes, int cardValue)
         {

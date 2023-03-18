@@ -11,5 +11,6 @@ namespace IGDF
         public Color[] chaColors;
         public Sprite[] stamps;
         public Color[] stampColors;
+        public Sprite[] cardBGImages;
     }
 }

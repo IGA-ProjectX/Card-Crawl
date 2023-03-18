@@ -30,3 +30,6 @@ MonoBehaviour:
   - {r: 0.735849, g: 0.26758626, b: 0.19784619, a: 1}
   - {r: 0.2171591, g: 0.754717, b: 0.3107812, a: 1}
   - {r: 0.31287822, g: 0.634188, b: 0.8396226, a: 1}
+  cardBGImages:
+  - {fileID: 21300000, guid: 54514f3651c300f4bbd728b874ada52f, type: 3}
+  - {fileID: 21300000, guid: a064c03ee6a97ce4bb0ccd7c982098db, type: 3}

@@ -20,8 +20,9 @@ namespace IGDF
         [SerializeField] Sprite[] clouds;
         [SerializeField] GameObject pre_Cloud;
         public float cloudMoveSpeed;
-        public float cloudSpawnSpeed;
-        private float cloudSpawnTimer;
+
+        private List<Transform> cloudTranses = new List<Transform>();
+        private List<bool> cloudisMiddle = new List<bool>();
 
         private List<Transform> carWheels = new List<Transform>();
         public float wheelSpeed;
@@ -30,7 +31,8 @@ namespace IGDF
         {
             for (int i = 0; i < roadSignSpawnTimers.Length; i++)
                 roadSignSpawnTimers[i] = Random.Range(roadSignAttribute[i].spawnSpeed * 0.7f, roadSignAttribute[i].spawnSpeed * 1.3f);
-            cloudSpawnTimer = Random.Range(cloudSpawnSpeed * 0.7f, cloudSpawnSpeed * 1.3f);
+            cloudTranses.Add(transform.Find("Cloud Container").Find("Cloud"));
+            cloudisMiddle.Add(false);
             for (int i = 1; i < 6; i++)
             {
                 carWheels.Add(transform.Find("Train").Find("Cabin Studio").transform.GetChild(i).transform);
@@ -46,8 +48,9 @@ namespace IGDF
                 roadSignSpawnTimers[i] -= Time.deltaTime;
                 if (roadSignSpawnTimers[i] < 0) InstantiateRoadSignInRow(i);
             }
-            cloudSpawnTimer -= Time.deltaTime;
-            if (cloudSpawnTimer < 0) InstantiateCloud();
+
+            MoveClouds();
+
             foreach (Transform wheel in carWheels)
             {
                 wheel.RotateAround(wheel.position, Vector3.forward, wheelSpeed);
@@ -80,18 +83,33 @@ namespace IGDF
             Destroy(roadSign.gameObject, roadSignAttribute[spawnRow].moveSpeed + 2);
         }
 
-        void InstantiateCloud()
+        void MoveClouds()
         {
-            cloudSpawnTimer = Random.Range(cloudSpawnSpeed * 0.7f, cloudSpawnSpeed * 1.3f);
-            int randomSpriteIndex = Random.Range(0, clouds.Length);
-            Transform cloud = Instantiate(pre_Cloud, roadSignAttribute[0].pivot.position, Quaternion.identity, objContainer).transform;
-            cloud.GetComponent<SpriteRenderer>().sprite = clouds[randomSpriteIndex];
-            cloud.GetComponent<SpriteRenderer>().sortingOrder = -23;
-
-            float randomScale = Random.Range(7f, 10f);
-            cloud.localScale = new Vector2(randomScale, randomScale);
-            cloud.DOMoveX(endPosX, cloudMoveSpeed);
-            Destroy(cloud.gameObject, cloudMoveSpeed + 2);
+            for (int i = 0; i < cloudTranses.Count; i++)
+            {
+                if (cloudTranses[i].localPosition.x >= 0 && !cloudisMiddle[i])
+                {
+                    int randomSpriteIndex = Random.Range(0, clouds.Length);
+                    Transform cloud = Instantiate(pre_Cloud, transform.Find("Cloud Container").Find("Spawn Point")).transform;
+                    cloud.SetParent(transform.Find("Cloud Container"));
+                    cloud.GetComponent<SpriteRenderer>().sprite = clouds[randomSpriteIndex];
+                    cloud.GetComponent<SpriteRenderer>().sortingOrder = -23;
+                    cloud.GetComponent<SpriteSelfWaterReflection>().ReflectionProvider = transform.Find("Cloud Container").GetComponentInChildren<SSWaterReflectionProvider>();
+                    cloudTranses.Add(cloud);
+                    cloudisMiddle.Add(false);
+                    cloudisMiddle[i] = true;
+                }
+                if (cloudTranses[i].localPosition.x >= transform.Find("Cloud Container").Find("End Point").localPosition.x)
+                {
+                    Destroy(cloudTranses[i].gameObject, 1);
+                    cloudTranses.RemoveAt(i);
+                    cloudisMiddle.RemoveAt(i);
+                }
+            }
+            foreach (Transform cloudTrans in cloudTranses)
+            {
+                cloudTrans.position += new Vector3(cloudMoveSpeed * cloudTrans.parent.localScale.x * 0.01f, 0, 0);
+            }
         }
     }
 

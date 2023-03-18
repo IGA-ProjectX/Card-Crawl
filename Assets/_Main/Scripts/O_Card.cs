@@ -37,11 +37,60 @@ namespace IGDF
                 transform.Find("Card Image Content").GetComponent<SpriteRenderer>().sprite = card.cardImage;
 
             if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese)
+            {
                 transform.Find("Card Name").GetComponent<TMP_Text>().text = card.cardNameChi;
-            else transform.Find("Card Name").GetComponent<TMP_Text>().text = card.cardNameEng;
+                switch (cardCurrentType)
+                {
+                    case CardType.Production:
+                        transform.Find("Card Text Type").GetComponent<TMP_Text>().text = "经验";
+                    break;
+                    case CardType.Design:
+                        transform.Find("Card Text Type").GetComponent<TMP_Text>().text = "设计";
+                        break;
+                    case CardType.Art:
+                        transform.Find("Card Text Type").GetComponent<TMP_Text>().text = "美术";
+                        break;
+                    case CardType.Code:
+                        transform.Find("Card Text Type").GetComponent<TMP_Text>().text = "程序";
+                        break;
+                }
+            }
+            else 
+            {
+                transform.Find("Card Name").GetComponent<TMP_Text>().text = card.cardNameEng;
+                switch (cardCurrentType)
+                {
+                    case CardType.Production:
+                        transform.Find("Card Text Type").GetComponent<TMP_Text>().text = "Exp";
+                        break;
+                    case CardType.Design:
+                        transform.Find("Card Text Type").GetComponent<TMP_Text>().text = "Design";
+                        transform.Find("Card Text Type").GetComponent<TMP_Text>().fontSize = 1.72f;
+                        break;
+                    case CardType.Art:
+                        transform.Find("Card Text Type").GetComponent<TMP_Text>().text = "Art";
+                        break;
+                    case CardType.Code:
+                        transform.Find("Card Text Type").GetComponent<TMP_Text>().text = "Code";
+                        transform.Find("Card Text Type").GetComponent<TMP_Text>().fontSize = 2.3f;
+                        break;
+                }
+            }
 
-            transform.Find("Card Value").GetComponent<TMP_Text>().text = card.cardValue.ToString();
+            if (card.cardValue > 0)
+            {
+                transform.Find("Card Value").GetComponent<TMP_Text>().text = "+" + card.cardValue.ToString();
+                transform.Find("Card BG").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardBGImages[0];
+            }
+            else
+            {
+                transform.Find("Card Value").GetComponent<TMP_Text>().text = card.cardValue.ToString();
+                transform.Find("Card BG").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardBGImages[1];
+            }
+
             transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardTypeIcons[(int)card.cardType];
+
+
             targetableType.Add(card.cardType);
             if (card.cardType!=0 && card.cardValue<0) targetableType.Add(CardType.Production);
             inSlotIndex = index;
