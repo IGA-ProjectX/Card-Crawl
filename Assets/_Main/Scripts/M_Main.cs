@@ -20,6 +20,7 @@ namespace IGDF
         [HideInInspector] public M_SkillResolve m_SkillResolve;
         [HideInInspector] public M_DDL m_DDL;
         [HideInInspector] public M_ChatBubble m_ChatBubble;
+        [HideInInspector] public M_Website m_Website;
 
         bool isGameFinished = false;
 
@@ -32,6 +33,7 @@ namespace IGDF
             m_SkillResolve = GetComponent<M_SkillResolve>();
             m_DDL = GetComponent<M_DDL>();
             m_ChatBubble = GetComponent<M_ChatBubble>();
+            m_Website = GetComponent<M_Website>();
 
             m_ChatBubble.PrepareTalkList(M_Global.instance.levels[M_Global.instance.targetLevel].talkList);
             m_Card.InitializeDeck(M_Global.instance.levels[M_Global.instance.targetLevel]);

@@ -33,3 +33,46 @@ MonoBehaviour:
   cardBGImages:
   - {fileID: 21300000, guid: 54514f3651c300f4bbd728b874ada52f, type: 3}
   - {fileID: 21300000, guid: a064c03ee6a97ce4bb0ccd7c982098db, type: 3}
+  bgMusics:
+  - soundType: 9
+    audioClip: {fileID: 8300000, guid: 3160e7645ff70904c923fe34209ce41b, type: 3}
+    volume: 1
+  - soundType: 10
+    audioClip: {fileID: 8300000, guid: f1bca8d308d30a2499a6d497b43d2084, type: 3}
+    volume: 1
+  - soundType: 11
+    audioClip: {fileID: 8300000, guid: 4cfec53e41d0b904bb31801134ea9d26, type: 3}
+    volume: 1
+  - soundType: 12
+    audioClip: {fileID: 8300000, guid: d0207834a1fef9c4aadd31d9c542e75f, type: 3}
+    volume: 1
+  studioClips:
+  - soundType: 0
+    audioClip: {fileID: 8300000, guid: 69a3fcbdf1849b04ba5a1d5e51f0b75b, type: 3}
+    volume: 0.24
+  - soundType: 1
+    audioClip: {fileID: 8300000, guid: 0323fa63c220c1846b15499207fe9129, type: 3}
+    volume: 0.27
+  - soundType: 3
+    audioClip: {fileID: 8300000, guid: 4aab43c27f393154e80613e52c45420a, type: 3}
+    volume: 0.41
+  - soundType: 4
+    audioClip: {fileID: 8300000, guid: 37d7a9fe592f9ce44b551d2254312505, type: 3}
+    volume: 1
+  - soundType: 5
+    audioClip: {fileID: 8300000, guid: 082cf073f1cd3104a9c78eedc789e5e7, type: 3}
+    volume: 1
+  - soundType: 6
+    audioClip: {fileID: 8300000, guid: a393a48527d1ee2479c0ea43eec78bbf, type: 3}
+    volume: 1
+  - soundType: 7
+    audioClip: {fileID: 8300000, guid: 10e16ecfe09b7f847bc09bb751862ab2, type: 3}
+    volume: 1
+  - soundType: 8
+    audioClip: {fileID: 8300000, guid: 3d5e52996328a614e8908a1c7def4480, type: 3}
+    volume: 0.09
+  openPageClips:
+  - soundType: 2
+    audioClip: {fileID: 8300000, guid: fc40c9f135e55934eb5eeb8af0485512, type: 3}
+    volume: 0.08
+  uiClips: []

@@ -61,14 +61,20 @@ namespace IGDF
                     //s.AppendCallback(() => TransitToRoomState());
                     s.AppendCallback(() => M_Main.instance.GameStart());
                     currentView = CabinView.InStudio;
+                    M_Audio.PlaySceneMusic(CabinView.InStudio);
                     break;
                 case CabinView.Skill:
                     cars[1].Find("Car Door").DOMoveY(cars[1].Find("Car Door").position.y + 12, transitionTime);
                     currentView = CabinView.Skill;
                     break;
                 case CabinView.Website:
-                    cars[1].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y + 12, transitionTime);
+                    cars[2].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y + 12, transitionTime);
                     currentView = CabinView.Website;
+                    Sequence ws = DOTween.Sequence();
+                    ws.AppendInterval(transitionTime);
+                    ws.AppendCallback(() => M_Main.instance.m_Website.OpenWeb());
+                    M_Audio.PlaySceneMusic(CabinView.InWebsite);
+
                     break;
             }
 
@@ -87,6 +93,7 @@ namespace IGDF
             {
                 case CabinView.InStudio:
                     cars[0].Find("Car Door").DOMoveY(cars[0].Find("Car Door").position.y - 12, transitionTime);
+                    GameObject.Find("Canvas").transform.Find("Result Steam").DOScale(0, 0.4f);
                     currentView = CabinView.Studio;
                     break;
                 case CabinView.InSkill:
@@ -98,6 +105,7 @@ namespace IGDF
                     currentView = CabinView.Website;
                     break;
             }
+            M_Audio.PlaySceneMusic(CabinView.Overview);
         }
 
         public void WindDepthChange(string view)

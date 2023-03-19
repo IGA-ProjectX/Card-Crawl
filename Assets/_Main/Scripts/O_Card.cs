@@ -124,6 +124,7 @@ namespace IGDF
             {
                 m_Card.ShowMovableState(transform, targetableType, cardCurrentValue);
                 M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Grabbed);
+                M_Audio.PlaySound(SoundType.SpringStretch);
             }
         }
 
@@ -148,6 +149,7 @@ namespace IGDF
                 lastMousePosition = Vector3.zero;
                 m_Card.CardUseOrMoveBack(transform, targetableType, cardCurrentValue);
                 M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Arrow);
+                M_Audio.PlaySound(SoundType.SpringShrink);
             }
         }
 
@@ -172,6 +174,7 @@ namespace IGDF
             transform.DORotate(new Vector3(0,0,180), 0.8f);
             M_Main.instance.CheckDevCircumstance();
             Destroy(gameObject, 0.9f);
+            M_Audio.PlaySound(SoundType.CardIndraft);
         }
 
         public void CardBackToDeck()

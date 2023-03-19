@@ -87,6 +87,7 @@ namespace IGDF
             eyelidUpper.DOMoveY(upperLidOpenPos.y, speed);
             eyelidBottom.DOMoveY(bottomLidOpenPos.y, speed);
             eyeState = EyeState.LookAround;
+            M_Audio.PlaySound(SoundType.SkillRobotEyeOpen);
         }
 
         public void CloseEye()

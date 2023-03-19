@@ -60,6 +60,7 @@ namespace IGDF
 
         public void ChangeDeadLineValue(int value)
         {
+            M_Audio.PlaySound(SoundType.ScoreIndicator);
             deadLine += value;
             if (deadLine < 0) deadLine = 0;
             M_Main.instance.m_DDL.GetValueChangeDot(deadLine);

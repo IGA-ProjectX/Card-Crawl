@@ -12,5 +12,36 @@ namespace IGDF
         public Sprite[] stamps;
         public Color[] stampColors;
         public Sprite[] cardBGImages;
+
+        [Header("Audio")]
+        public SoundAudioClip[] bgMusics;
+        public SoundAudioClip[] studioClips;
+        public SoundAudioClip[] openPageClips;
+        public SoundAudioClip[] uiClips;
+    }
+
+    [System.Serializable]
+    public class SoundAudioClip
+    {
+        public SoundType soundType;
+        public AudioClip audioClip;
+        [Range(0f,1f)]
+        public float volume;
+    }
+
+    public enum SoundType {
+        PulleySlide,
+        PulleyStop,
+        TrainMove,
+        SkillRobotEyeOpen,
+        CardIndraft,
+        SpringShrink,
+        SpringStretch,
+        ScoreIndicator,
+        MainMachineRegular ,
+        BGMusic1,
+        BGMusic2,
+        BGMusic3,
+        BGMusic4
     }
 }

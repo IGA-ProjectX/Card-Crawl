@@ -266,6 +266,7 @@ namespace IGDF
             line.startColor = Color.gray;
             //卡牌+轮滑组的具体位移
             Sequence s = DOTween.Sequence();
+            s.AppendCallback(() => M_Audio.PlayDelaySound(SoundType.PulleySlide,0.2f));
             s.Append(clipperTrans.DOMoveX(clipperTrans.position.x + horiDistance, horiTime));
             s.AppendCallback(() => CardMoveDownwards());
             s.AppendInterval(verTime + 0.01f);
@@ -282,6 +283,7 @@ namespace IGDF
                 DOTween.To(() => handlerSprite.color, x => handlerSprite.color = x, Color.white, verTime);
                 DOTween.To(() => line.endColor, x => line.endColor = x, Color.white, verTime);
                 DOTween.To(() => line.startColor, x => line.startColor = x, Color.white, verTime);
+                M_Audio.PlaySound(SoundType.PulleyStop);
             }
         }
 
@@ -318,7 +320,7 @@ namespace IGDF
             //if (clipperTrans.GetComponentInChildren<O_Card>() != null)
             //    clipperTrans.GetComponentInChildren<O_Card>().SetDraggableState(false);
             //M_Main.instance.m_Skill.EnterCanNotUseState();
-
+            M_Audio.PlaySound(SoundType.PulleySlide);
             clipperTrans.GetComponentInChildren<O_ClipperLine>().isClipperInScreen = false;
             clipperTrans.DOMoveX(clipperTrans.position.x + horiDistance, horiTime);
             if (clipperTrans.GetComponentInChildren<O_Card>()!=null)

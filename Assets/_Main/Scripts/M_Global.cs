@@ -23,6 +23,7 @@ namespace IGDF
                 instance = this;
                 DontDestroyOnLoad(this);
             }
+            M_Audio.PlaySceneMusic(M_SceneTransition.CabinView.Overview);
         }
 
         public void PlayerExpUp(int newExp) 
