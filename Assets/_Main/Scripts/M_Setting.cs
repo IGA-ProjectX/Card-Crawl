@@ -39,7 +39,14 @@ namespace IGDF
 
         public void ClickResetProgress()
         {
-
+            M_Global.instance.mainData.playExp = 0;
+            foreach (ProductShowcase productRecord in M_Global.instance.mainData.productShowcases)
+            {
+                productRecord.producedDate = "";
+                productRecord.productLevel = ProductLevel.None;
+                productRecord.useReviews = "";
+            }
+            UpdateCurrentExp();
         }
 
         public void ClickLanguageChange()
@@ -52,6 +59,11 @@ namespace IGDF
             {
                 LanguageUpdate(SystemLanguage.Chinese);
             }
+        }
+
+        public void UpdateCurrentExp()
+        {
+            transform.Find("T_Exp").GetComponent<TMPro.TMP_Text>().text = "Current Exp: " + M_Global.instance.mainData.playExp;
         }
     }
 }

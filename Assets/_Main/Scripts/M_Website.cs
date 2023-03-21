@@ -51,6 +51,11 @@ namespace IGDF
             DOTween.To(() => ui_ShowcaseGroup.alpha, x => ui_ShowcaseGroup.alpha = x, 1, 1f);
         }
 
+        public void CloseWeb()
+        {
+            ui_ShowcaseGroup.alpha = 0;
+        }
+
         Product GetProductInfo(LevelType targetGameType, ProductLevel targetProductLevel)
         {
             SO_Level targetGame = null;

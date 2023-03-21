@@ -47,6 +47,9 @@ TagManager:
   - name: StudioScene
     uniqueID: 2748900499
     locked: 0
+  - name: StudioCard
+    uniqueID: 3495621353
+    locked: 0
   - name: CarScene
     uniqueID: 2435521579
     locked: 0

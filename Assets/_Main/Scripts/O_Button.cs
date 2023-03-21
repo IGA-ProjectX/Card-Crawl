@@ -7,7 +7,13 @@ namespace IGDF
 { 
     public class O_Button : MonoBehaviour
     {
-        public enum ButtonType { StartGame, ExitGame, Credits, CabinBetweenStudioSkill, CabinBetweenStudioWebsite ,BackToOverview,EnterRoom,OpenSettingPanel}
+        public enum ButtonType 
+        { 
+            StartGame, ExitGame, Credits, 
+            CabinBetweenStudioSkill, CabinBetweenStudioWebsite ,BackToOverview,
+            EnterRoom,OpenSettingPanel,ExitRoom,
+            CallOutLevelList
+        }
         public ButtonType buttonType;
         private M_SceneTransition m_SceneTransition;
 
@@ -34,6 +40,7 @@ namespace IGDF
                     StartGame();
                     break;
                 case ButtonType.ExitGame:
+                    ExitGame();
                     break;
                 case ButtonType.Credits:
                     break;
@@ -49,9 +56,14 @@ namespace IGDF
                 case ButtonType.EnterRoom:
                     EnterRoom();
                     break;
-
                 case ButtonType.OpenSettingPanel:
                     OpenSettingPanel();
+                    break;
+                case ButtonType.ExitRoom:
+                    m_SceneTransition.ExitCurrentCabin();
+                    break;
+                case ButtonType.CallOutLevelList:
+                    GameObject.Find("Canvas").transform.Find("Level Selection").DOScale(1, 0.4f);
                     break;
                 default:
                     break;
@@ -65,7 +77,7 @@ namespace IGDF
 
         void ExitGame()
         {
-
+            Application.Quit();
         }
 
         void CabinBetweenStudioSkill()
@@ -98,7 +110,7 @@ namespace IGDF
             m_SceneTransition.EnterCabinView(M_SceneTransition.CabinView.Overview);
         }
 
-        void EnterRoom()
+        public void EnterRoom()
         {
             m_SceneTransition.EnterCurrentCabin();
         }
@@ -106,6 +118,7 @@ namespace IGDF
         void OpenSettingPanel()
         {
             GameObject.Find("Canvas").transform.Find("Setting Panel").DOScale(Vector3.one, 1);
+            FindObjectOfType<M_Setting>().UpdateCurrentExp();
         }
     }
 }

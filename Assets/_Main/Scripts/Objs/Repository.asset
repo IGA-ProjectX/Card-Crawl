@@ -71,8 +71,29 @@ MonoBehaviour:
   - soundType: 8
     audioClip: {fileID: 8300000, guid: 3d5e52996328a614e8908a1c7def4480, type: 3}
     volume: 0.09
+  - soundType: 13
+    audioClip: {fileID: 8300000, guid: 7c31edbf78467534e862f5c6020a9099, type: 3}
+    volume: 0.805
+  - soundType: 14
+    audioClip: {fileID: 8300000, guid: c209262e635eeb84f8d170871c92395f, type: 3}
+    volume: 0.809
+  - soundType: 15
+    audioClip: {fileID: 8300000, guid: b71e0d8e9ba8c3649a2a0215a4e05110, type: 3}
+    volume: 0.813
+  - soundType: 16
+    audioClip: {fileID: 8300000, guid: 308e88a90eb00f341955c900b770380b, type: 3}
+    volume: 0.813
+  - soundType: 17
+    audioClip: {fileID: 8300000, guid: 00fce2f5d28a94d48a91cb54d7d04fac, type: 3}
+    volume: 0.822
   openPageClips:
   - soundType: 2
     audioClip: {fileID: 8300000, guid: fc40c9f135e55934eb5eeb8af0485512, type: 3}
     volume: 0.08
+  - soundType: 18
+    audioClip: {fileID: 8300000, guid: 65cf19362760c9f4c95f6edee69183fb, type: 3}
+    volume: 0.08
+  - soundType: 19
+    audioClip: {fileID: 8300000, guid: cb690883d0f3a3843ae635a350b4c0a6, type: 3}
+    volume: 0.698
   uiClips: []

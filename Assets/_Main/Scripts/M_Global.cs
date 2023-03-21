@@ -14,6 +14,8 @@ namespace IGDF
         public SO_Repo repository;
         private SystemLanguage currentLanguage = SystemLanguage.Chinese;
         public static M_Global instance;
+        [HideInInspector] public GameObject ui_HoverTip;
+        [HideInInspector] public RectTransform ui_HoverContent;
 
         private void Awake()
         {
@@ -24,6 +26,13 @@ namespace IGDF
                 DontDestroyOnLoad(this);
             }
             M_Audio.PlaySceneMusic(M_SceneTransition.CabinView.Overview);
+        }
+
+        private void Start()
+        {
+            ui_HoverTip = GameObject.Find("Canvas").transform.Find("Hover Tip").gameObject;
+            ui_HoverContent = ui_HoverTip.transform.GetChild(0).GetComponent<RectTransform>();
+            ui_HoverTip.SetActive(false);
         }
 
         public void PlayerExpUp(int newExp) 

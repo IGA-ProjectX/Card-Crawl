@@ -26,6 +26,7 @@ namespace IGDF
                 case M_SceneTransition.CabinView.Overview:
                     PlayLoopSoundFadeIn(SoundType.BGMusic1);
                     PlayLoopSoundFadeIn(SoundType.TrainMove);
+                    PlayLoopSoundFadeIn(SoundType.Wind);
                     break;
                 case M_SceneTransition.CabinView.Studio:
                     break;
@@ -76,6 +77,24 @@ namespace IGDF
             Sequence s = DOTween.Sequence();
             s.AppendInterval(time);
             s.AppendCallback(() => PlaySound(toPlaySoundType));
+        }
+
+        public static void PlayFixedTimeSound(SoundType toPlaySoundType,float time)
+        {
+            GameObject soundGameObject = new GameObject("Sound " + toPlaySoundType);
+            AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            audioSource.clip = GetAudioClip(toPlaySoundType).audioClip;
+            audioSource.volume = GetAudioClip(toPlaySoundType).volume;
+            audioSource.Play();
+            Sequence s = DOTween.Sequence();
+            s.AppendInterval(time);
+            s.AppendCallback(() => audioSource.Stop());
+            Object.Destroy(soundGameObject, audioSource.clip.length);
+        }
+
+        public static void GlobalVolumeChange()
+        {
+
         }
 
         private static SoundAudioClip GetAudioClip(SoundType toPlaySoundType)

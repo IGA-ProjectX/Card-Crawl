@@ -52,6 +52,7 @@ namespace IGDF
         {
             DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 5.1f, transitionTime);
             WindDepthChange("InRoom");
+            M_Audio.PlayFixedTimeSound(SoundType.ShutterDoor, transitionTime);
             switch (currentView)
             {
                 case CabinView.Studio:
@@ -65,19 +66,18 @@ namespace IGDF
                     break;
                 case CabinView.Skill:
                     cars[1].Find("Car Door").DOMoveY(cars[1].Find("Car Door").position.y + 12, transitionTime);
-                    currentView = CabinView.Skill;
+                    currentView = CabinView.InSkill;
                     break;
                 case CabinView.Website:
                     cars[2].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y + 12, transitionTime);
-                    currentView = CabinView.Website;
+                    currentView = CabinView.InWebsite;
                     Sequence ws = DOTween.Sequence();
                     ws.AppendInterval(transitionTime);
-                    ws.AppendCallback(() => M_Main.instance.m_Website.OpenWeb());
+                    ws.AppendCallback(() => FindObjectOfType<M_Website>().OpenWeb());
                     M_Audio.PlaySceneMusic(CabinView.InWebsite);
 
                     break;
             }
-
             //void TransitToRoomState()
             //{
             //    cars[0].Find("Door Mask").GetComponent<SpriteMask>().enabled = false;
@@ -89,11 +89,14 @@ namespace IGDF
         {
             DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime);
             WindDepthChange("Car");
+            M_Audio.PlayFixedTimeSound(SoundType.ShutterDoor, transitionTime);
             switch (currentView)
             {
                 case CabinView.InStudio:
-                    cars[0].Find("Car Door").DOMoveY(cars[0].Find("Car Door").position.y - 12, transitionTime);
-                    GameObject.Find("Canvas").transform.Find("Result Steam").DOScale(0, 0.4f);
+                    Sequence s = DOTween.Sequence();
+                    s.Append(GameObject.Find("Canvas").transform.Find("Result Steam").DOScale(0, 0.4f));
+                    s.Append(cars[0].Find("Car Door").DOMoveY(cars[0].Find("Car Door").position.y - 12, transitionTime));
+                    s.AppendCallback(() => FindObjectOfType<M_Level>().RemoveExistingStudioScene());
                     currentView = CabinView.Studio;
                     break;
                 case CabinView.InSkill:
@@ -101,7 +104,9 @@ namespace IGDF
                     currentView = CabinView.Skill;
                     break;
                 case CabinView.InWebsite:
-                    cars[2].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y - 12, transitionTime);
+                   FindObjectOfType<M_Website>().CloseWeb();
+                   cars[2].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y - 12, transitionTime);
+
                     currentView = CabinView.Website;
                     break;
             }

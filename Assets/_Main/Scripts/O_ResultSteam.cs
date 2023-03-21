@@ -71,6 +71,7 @@ namespace IGDF
                         ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, currentLevel));
                         t_Date.text = "Release Date: " + GetProductShowcase(M_Global.instance.levels[M_Global.instance.targetLevel].levelType).producedDate;
                     }
+                    M_Audio.PlaySound(SoundType.ProducedRare);
                     break;
                 case ProductLevel.Medium:
                     if (currentLevel != ProductLevel.Welldone && currentLevel != ProductLevel.Medium)
@@ -83,6 +84,7 @@ namespace IGDF
                         ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, currentLevel));
                         t_Date.text = "Release Date: " + GetProductShowcase(M_Global.instance.levels[M_Global.instance.targetLevel].levelType).producedDate;
                     }
+                    M_Audio.PlaySound(SoundType.ProducedMedium);
                     break;
                 case ProductLevel.Welldone:
                     if (currentLevel != ProductLevel.Welldone)
@@ -95,6 +97,7 @@ namespace IGDF
                         ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, currentLevel));
                         t_Date.text = "Release Date: " + GetProductShowcase(M_Global.instance.levels[M_Global.instance.targetLevel].levelType).producedDate;
                     }
+                    M_Audio.PlaySound(SoundType.ProducedWelldone);
                     break;
             }
             ObjPopOut(transform, 1);
@@ -129,20 +132,14 @@ namespace IGDF
                 case ProductLevel.Raw:
                     t_Review.text = "Mixed";
                     t_Review.color = M_Global.instance.repository.stampColors[0];
-                    //stamp.sprite = M_Global.instance.repository.stamps[0];
-                    //stamp.color = M_Global.instance.repository.stampColors[0];
                     break;
                 case ProductLevel.Medium:
                     t_Review.text = "Very Positive";
                     t_Review.color = M_Global.instance.repository.stampColors[1];
-                    //stamp.sprite = M_Global.instance.repository.stamps[1];
-                    //stamp.color = M_Global.instance.repository.stampColors[1];
                     break;
                 case ProductLevel.Welldone:
                     t_Review.text = "Overwhelmingly Positive";
                     t_Review.color = M_Global.instance.repository.stampColors[2];
-                    //stamp.sprite = M_Global.instance.repository.stamps[2];
-                    //stamp.color = M_Global.instance.repository.stampColors[2];
                     break;
             }
             i_Game.sprite = toUpdateInfo.productImage;

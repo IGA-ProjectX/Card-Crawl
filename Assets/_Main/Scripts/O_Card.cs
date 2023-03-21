@@ -125,6 +125,7 @@ namespace IGDF
                 m_Card.ShowMovableState(transform, targetableType, cardCurrentValue);
                 M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Grabbed);
                 M_Audio.PlaySound(SoundType.SpringStretch);
+                CardLayerChangeToAbove();
             }
         }
 
@@ -150,6 +151,7 @@ namespace IGDF
                 m_Card.CardUseOrMoveBack(transform, targetableType, cardCurrentValue);
                 M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Arrow);
                 M_Audio.PlaySound(SoundType.SpringShrink);
+                CardLayerChangeToCommon();
             }
         }
 
@@ -196,6 +198,42 @@ namespace IGDF
         public void SetLineStateAuto()
         {
             transform.parent.GetComponentInChildren<O_ClipperLine>().SetLineState("Auto");
+        }
+
+        private int layerModifyAmount = 7;
+
+        private void CardLayerChangeToAbove()
+        {
+            int cardModifyOffsetedAmount = layerModifyAmount + 2;
+            transform.Find("Card BG").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            transform.Find("Card Image Content").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
+
+            transform.Find("Card Name").GetComponent<MeshRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            transform.Find("Card Value").GetComponent<MeshRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            transform.Find("Card Text Type").GetComponent<MeshRenderer>().sortingOrder += cardModifyOffsetedAmount;
+
+            transform.Find("Card Image Mask").GetComponent<SpriteMask>().frontSortingOrder += cardModifyOffsetedAmount;
+            transform.parent.Find("Clipper").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            transform.parent.Find("Handler").GetComponent<LineRenderer>().sortingOrder += layerModifyAmount-4;
+            transform.parent.Find("Handler").GetComponent<SpriteRenderer>().sortingOrder += layerModifyAmount-3;
+        }
+
+        private void CardLayerChangeToCommon()
+        {
+            int cardModifyOffsetedAmount = layerModifyAmount + 2;
+            transform.Find("Card BG").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.Find("Card Image Content").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+
+            transform.Find("Card Name").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.Find("Card Value").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.Find("Card Text Type").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+
+            transform.Find("Card Image Mask").GetComponent<SpriteMask>().frontSortingOrder -= cardModifyOffsetedAmount;
+            transform.parent.Find("Clipper").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.parent.Find("Handler").GetComponent<LineRenderer>().sortingOrder -= layerModifyAmount+4;
+            transform.parent.Find("Handler").GetComponent<SpriteRenderer>().sortingOrder -= layerModifyAmount+3;
         }
     }
 }

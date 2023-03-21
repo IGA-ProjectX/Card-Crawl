@@ -42,6 +42,13 @@ namespace IGDF
         BGMusic1,
         BGMusic2,
         BGMusic3,
-        BGMusic4
+        BGMusic4,
+        MainMachineLose,
+        MainMachineSuccess,
+        ProducedRare,
+        ProducedMedium,
+        ProducedWelldone,
+        Wind,
+        ShutterDoor
     }
 }

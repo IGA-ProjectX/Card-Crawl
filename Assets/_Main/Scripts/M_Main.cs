@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using Psychoflow.SSWaterReflection2D;
 
 namespace IGDF
 {
@@ -11,16 +12,12 @@ namespace IGDF
     {
         public static M_Main instance;
         public SO_Repo repository;
-
-        public Transform resultPanel;
-
         [HideInInspector] public M_Card m_Card;
         [HideInInspector] public M_Staff m_Staff;
         [HideInInspector] public M_Skill m_Skill;
         [HideInInspector] public M_SkillResolve m_SkillResolve;
         [HideInInspector] public M_DDL m_DDL;
         [HideInInspector] public M_ChatBubble m_ChatBubble;
-        [HideInInspector] public M_Website m_Website;
 
         bool isGameFinished = false;
 
@@ -33,25 +30,10 @@ namespace IGDF
             m_SkillResolve = GetComponent<M_SkillResolve>();
             m_DDL = GetComponent<M_DDL>();
             m_ChatBubble = GetComponent<M_ChatBubble>();
-            m_Website = GetComponent<M_Website>();
 
-            m_ChatBubble.PrepareTalkList(M_Global.instance.levels[M_Global.instance.targetLevel].talkList);
-            m_Card.InitializeDeck(M_Global.instance.levels[M_Global.instance.targetLevel]);
-            m_Card.InitializeMoveValue();
-            m_DDL.CreateDots();
-            m_DDL.InitializeNumberList();
-            m_Staff.InitializeStaffValues(M_Global.instance.levels[M_Global.instance.targetLevel].staffValue);
-            m_Skill.InitializeSkills(M_Global.instance.skillList);
-        }
-
-        private void Update()
-        {
-            //if (Input.GetKeyDown(KeyCode.Space))
-            //{
-       
-            //}
-            if(!isGameFinished)
-            CheckDevCircumstance();
+            SpriteSelfWaterReflection studio = transform.parent.GetComponentInChildren<SpriteSelfWaterReflection>();
+            studio.ReflectionProvider = FindObjectOfType<SSWaterReflectionProvider>();
+            studio.ClearAndInitReflectionRenderers();
         }
 
         public void CheckDevCircumstance()
@@ -78,17 +60,20 @@ namespace IGDF
                 m_ChatBubble.TryTriggerTalkSpecialCondition(TalkConditionType.WinGame);
                 M_Global.instance.PlayerExpUp(m_Staff.GetStaffValue(0));
                 FindObjectOfType<O_ResultSteam>().GameProduced();
+                M_Audio.PlaySound(SoundType.MainMachineSuccess);
             }
 
             void GameDevFailed()
             {
                 m_ChatBubble.TryTriggerTalkSpecialCondition(TalkConditionType.LoseGame);
                 FindObjectOfType<O_ResultSteam>().GameProduced();
+                M_Audio.PlaySound(SoundType.MainMachineLose);
             }
         }
 
         public void GameStart()
         {
+            InitializeLevel();
             m_Card.DrawCard();
             foreach (Transform skillTrans in m_Skill.skillObjects)
             {
@@ -99,6 +84,17 @@ namespace IGDF
             {
                 staffTrans.GetComponent<O_HalfCat>().UpdateMaskState(true);
             }
+        }
+
+        public void InitializeLevel()
+        {
+            m_ChatBubble.PrepareTalkList(M_Global.instance.levels[M_Global.instance.targetLevel].talkList);
+            m_Card.InitializeDeck(M_Global.instance.levels[M_Global.instance.targetLevel]);
+            m_Card.InitializeMoveValue();
+            m_DDL.CreateDots();
+            m_DDL.InitializeNumberList();
+            m_Staff.InitializeStaffValues(M_Global.instance.levels[M_Global.instance.targetLevel].staffValue);
+            m_Skill.InitializeSkills(M_Global.instance.skillList);
         }
     }
 }

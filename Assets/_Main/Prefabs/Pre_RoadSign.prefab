@@ -99,10 +99,10 @@ MonoBehaviour:
   m_RefelectionReferenceOffsetY: 0
   m_LockReflectionReferenceY: 0
   m_ReflectionDepthOffset: 0
-  m_ReflectionSortingOrder: 0
+  m_ReflectionSortingOrder: 1
   m_OrderInLayerOffset: 0
   m_CustomSortingLayerID: -689545863
-  m_CustomOrderInLayer: 0
+  m_CustomOrderInLayer: 6
   m_ReflectionMaskInteraction: 2
   m_PropertyCheckingFlag: 3
   m_HideReflectionInstanceInHierarchy: 1

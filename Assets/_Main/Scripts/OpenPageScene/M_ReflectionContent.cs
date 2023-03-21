@@ -13,6 +13,7 @@ namespace IGDF
         [Header("RoadSign")]
         [SerializeField] Sprite[] roadSigns;
         [SerializeField] GameObject pre_RoadSign;
+        [SerializeField] GameObject pre_RoadSignAbove;
         public RoadSignAttribute[] roadSignAttribute;
         private float[] roadSignSpawnTimers = { 0, 0, 0, 0 };
 
@@ -61,21 +62,32 @@ namespace IGDF
         {
             roadSignSpawnTimers[spawnRow] = Random.Range(roadSignAttribute[spawnRow].spawnSpeed * 0.7f, roadSignAttribute[spawnRow].spawnSpeed * 1.3f);
             int randomSpriteIndex = Random.Range(0, roadSigns.Length);
-            Transform roadSign = Instantiate(pre_RoadSign, roadSignAttribute[spawnRow].pivot.position, Quaternion.identity, objContainer).transform;
+            //Transform roadSign = Instantiate(pre_RoadSign, roadSignAttribute[spawnRow].pivot.position, Quaternion.identity, objContainer).transform;
+            Transform roadSign;
+
+            if (spawnRow < 2)
+            {
+                roadSign = Instantiate(pre_RoadSign, roadSignAttribute[spawnRow].pivot.position, Quaternion.identity, objContainer).transform;
+                //roadSign.GetComponent<SpriteRenderer>().sortingLayerName = "Water";
+                //roadSign.GetComponent<SpriteSelfWaterReflection>().CustomSortingLayerID = LayerMask.NameToLayer("Water");
+                //roadSign.GetComponent<SpriteRenderer>().sor
+                //roadSign.GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+                //roadSign.GetComponent<SpriteSelfWaterReflection>().ReflectionMaskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+            }
+            else
+            {
+                roadSign = Instantiate(pre_RoadSignAbove, roadSignAttribute[spawnRow].pivot.position, Quaternion.identity, objContainer).transform;
+                //roadSign.GetComponent<SpriteRenderer>().sortingLayerName = "Car";
+                //roadSign.GetComponent<SpriteSelfWaterReflection>().CustomSortingLayerID = LayerMask.NameToLayer("Car");
+                //roadSign.GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
+                //roadSign.GetComponent<SpriteSelfWaterReflection>().ReflectionMaskInteraction = SpriteMaskInteraction.None;
+            }
+
             roadSign.GetComponent<SpriteRenderer>().sprite = roadSigns[randomSpriteIndex];
             roadSign.GetComponent<SpriteRenderer>().sortingOrder = roadSignAttribute[spawnRow].layer;
             roadSign.localScale = new Vector2(roadSignAttribute[spawnRow].scale, roadSignAttribute[spawnRow].scale);
 
-            if (spawnRow < 2)
-            {
-                roadSign.GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
-                roadSign.GetComponent<SpriteSelfWaterReflection>().ReflectionMaskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
-            }
-            else
-            {
-                roadSign.GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
-                roadSign.GetComponent<SpriteSelfWaterReflection>().ReflectionMaskInteraction = SpriteMaskInteraction.None;
-            }
+
 
             roadSign.GetComponent<SpriteSelfWaterReflection>().ClearAndInitReflectionRenderers();
             roadSign.GetComponent<SpriteSelfWaterReflection>().ReflectionProvider = FindObjectOfType<SSWaterReflectionProvider>();
