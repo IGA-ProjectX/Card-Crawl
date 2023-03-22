@@ -44,7 +44,8 @@ namespace IGDF
             {
                 productRecord.producedDate = "";
                 productRecord.productLevel = ProductLevel.None;
-                productRecord.useReviews = "";
+                productRecord.userReviewLevel = "";
+                productRecord.userReviewNumber = "";
             }
             UpdateCurrentExp();
         }

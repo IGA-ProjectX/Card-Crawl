@@ -18,7 +18,6 @@ namespace IGDF
         public Card[] cards_Code;
         [Header("Product Level")]
         public Product[] productLevels;
-        public string[] productUserTags;
         [Header("Narrative")]
         public TalkContent[] talkList;
     }
@@ -27,6 +26,8 @@ namespace IGDF
     public class Card
     {
         public CardType cardType;
+        public string cardOutNE;
+        public string cardOutNC;
         public string cardNameEng;
         public string cardNameChi;
         [TextArea(4,10)]
@@ -45,6 +46,7 @@ namespace IGDF
         [TextArea(2,2)]
         public string productDescription;
         public Sprite productImage;
+        public string[] productUserTags;
     }
 
     public class ChatContent

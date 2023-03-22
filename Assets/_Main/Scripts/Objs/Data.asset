@@ -17,12 +17,15 @@ MonoBehaviour:
   - levelType: 0
     productLevel: 0
     producedDate: 
-    useReviews: 
+    userReviewLevel: 
+    userReviewNumber: 
   - levelType: 1
     productLevel: 0
-    producedDate: 0
-    useReviews: 0
+    producedDate: 
+    userReviewLevel: 
+    userReviewNumber: 
   - levelType: 2
     productLevel: 0
     producedDate: 
-    useReviews: 
+    userReviewLevel: 
+    userReviewNumber: 

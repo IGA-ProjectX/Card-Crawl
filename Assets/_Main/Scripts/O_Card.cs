@@ -38,7 +38,7 @@ namespace IGDF
 
             if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese)
             {
-                transform.Find("Card Name").GetComponent<TMP_Text>().text = card.cardNameChi;
+                transform.Find("Card Name").GetComponent<TMP_Text>().text = card.cardOutNC;
                 switch (cardCurrentType)
                 {
                     case CardType.Production:
@@ -57,7 +57,7 @@ namespace IGDF
             }
             else 
             {
-                transform.Find("Card Name").GetComponent<TMP_Text>().text = card.cardNameEng;
+                transform.Find("Card Name").GetComponent<TMP_Text>().text = card.cardOutNE;
                 switch (cardCurrentType)
                 {
                     case CardType.Production:
@@ -234,6 +234,11 @@ namespace IGDF
             transform.parent.Find("Clipper").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
             transform.parent.Find("Handler").GetComponent<LineRenderer>().sortingOrder -= layerModifyAmount+4;
             transform.parent.Find("Handler").GetComponent<SpriteRenderer>().sortingOrder -= layerModifyAmount+3;
+        }
+
+        public Card GetCardData()
+        {
+            return cardData;
         }
     }
 }

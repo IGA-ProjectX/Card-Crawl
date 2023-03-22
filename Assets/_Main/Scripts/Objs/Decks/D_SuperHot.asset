@@ -18,38 +18,62 @@ MonoBehaviour:
   levelButtonImage: {fileID: 0}
   cards_Production:
   - cardType: 0
-    cardName: P_NULL
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: 
+    cardSummaryChi: 
     cardImage: {fileID: 0}
     cardValue: 3
   - cardType: 0
-    cardName: P_NULL
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: 
+    cardSummaryChi: 
     cardImage: {fileID: 0}
     cardValue: 4
   cards_Design:
   - cardType: 1
-    cardName: D_NULL+
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: 
+    cardSummaryChi: 
     cardImage: {fileID: 0}
     cardValue: -3
   - cardType: 1
-    cardName: D_NULL+
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: 
+    cardSummaryChi: 
     cardImage: {fileID: 0}
     cardValue: -4
   cards_Art:
   - cardType: 2
-    cardName: A_NULL+
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: 
+    cardSummaryChi: 
     cardImage: {fileID: 0}
     cardValue: -3
   - cardType: 2
-    cardName: A_NULL+
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: 
+    cardSummaryChi: 
     cardImage: {fileID: 0}
     cardValue: -4
   cards_Code:
   - cardType: 3
-    cardName: C_NULL+
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: 
+    cardSummaryChi: 
     cardImage: {fileID: 0}
     cardValue: -3
   - cardType: 3
-    cardName: C_NULL+
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: 
+    cardSummaryChi: 
     cardImage: {fileID: 0}
     cardValue: -4
   productLevels:
@@ -57,19 +81,29 @@ MonoBehaviour:
     productName: Hot Raw
     productDescription: Hot RawHot RawHot RawHot RawHot RawHot Raw
     productImage: {fileID: 21300000, guid: a7ae26bf11447c942ad3cdeb36138a2c, type: 3}
+    productUserTags:
+    - Rare
+    - 3D
+    - FPS
+    - Time Manipulation
   - productLevel: 2
     productName: Hot Medium
     productDescription: Hot MediumHot MediumHot MediumHot MediumHot MediumHot MediumHot
       Medium
     productImage: {fileID: 21300000, guid: a7ae26bf11447c942ad3cdeb36138a2c, type: 3}
+    productUserTags:
+    - Medium
+    - 3D
+    - FPS
+    - Time
   - productLevel: 3
     productName: Hot Welldone
     productDescription: Hot WelldoneHot WelldoneHot WelldoneHot WelldoneHot WelldoneHot
       WelldoneHot Welldone
     productImage: {fileID: 21300000, guid: a7ae26bf11447c942ad3cdeb36138a2c, type: 3}
-  productUserTags:
-  - Action
-  - FPS
-  - Time Manipulation
-  - Bullet Time
+    productUserTags:
+    - Welldone
+    - 3D
+    - FPS
+    - Time
   talkList: []

@@ -80,10 +80,10 @@ namespace IGDF
                 skillTrans.GetComponent<O_Skill>().OpenEye();
                 skillTrans.GetComponent<O_Skill>().UpdateMaskState(true);
             }
-            foreach (Transform  staffTrans in m_Staff.staffSlots)
-            {
-                staffTrans.GetComponent<O_HalfCat>().UpdateMaskState(true);
-            }
+            //foreach (Transform  staffTrans in m_Staff.staffSlots)
+            //{
+            //    staffTrans.GetComponent<O_HalfCat>().UpdateMaskState(true);
+            //}
         }
 
         public void InitializeLevel()

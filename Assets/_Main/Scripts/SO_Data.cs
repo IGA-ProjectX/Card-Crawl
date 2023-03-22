@@ -17,7 +17,8 @@ namespace IGDF
         public LevelType levelType;
         public ProductLevel productLevel;
         public string producedDate;
-        public string useReviews;
+        public string userReviewLevel;
+        public string userReviewNumber;
     }
 
 }

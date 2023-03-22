@@ -36,7 +36,7 @@ namespace IGDF
                 {
                     Product currentProduct = GetProductInfo(M_Global.instance.mainData.productShowcases[i].levelType, M_Global.instance.mainData.productShowcases[i].productLevel);
                     t_Name.text = currentProduct.productName;
-                    t_UserReview.text = M_Global.instance.mainData.productShowcases[i].useReviews;
+                    t_UserReview.text = M_Global.instance.mainData.productShowcases[i].userReviewLevel;
                     t_ReleaseDate.text = "Release Date: " + M_Global.instance.mainData.productShowcases[i].producedDate;
                     i_Game.sprite = currentProduct.productImage;
                 }

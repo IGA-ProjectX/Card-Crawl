@@ -10,19 +10,34 @@ namespace IGDF
     public class O_ResultSteam : MonoBehaviour
     {
         Image i_Game;
-        Text t_Name;
-        Text t_Summary;
-        Text t_Date;
-        Text t_Review;
-        List<GameObject> userTags = new List<GameObject>();
+        Image i_Review;
+        TMP_Text t_Name;
+        TMP_Text t_Summary;
+        TMP_Text t_Date;
+        TMP_Text t_ReviewLevel;
+        TMP_Text t_ReviewNumber;
+        List<TMP_Text> userTags = new List<TMP_Text>();
+        List<Slider> sliders = new List<Slider>();
 
         void Start()
         {
             i_Game = transform.Find("I_Game").GetComponent<Image>();
-            t_Name = transform.Find("T_Name").GetComponent<Text>();
-            t_Summary = transform.Find("T_Summary").GetComponent<Text>();
-            t_Date = transform.Find("T_Release Date").GetComponent<Text>();
-            t_Review = transform.Find("I_Review").Find("T_Review Content").GetComponent<Text>();
+            i_Review = transform.Find("I_Review").GetComponent<Image>();
+            t_Name = transform.Find("T_Name").GetComponent<TMP_Text>();
+            t_Summary = transform.Find("T_Summary").GetComponent<TMP_Text>();
+            t_Date = transform.Find("T_Release Date").GetComponent<TMP_Text>();
+            t_ReviewLevel = transform.Find("I_Review").Find("Layout Control").Find("T_Review Level").GetComponent<TMP_Text>();
+            t_ReviewNumber = transform.Find("I_Review").Find("Layout Control").Find("T_Review Number").GetComponent<TMP_Text>();
+            foreach (ContentSizeFitter userTagChild in transform.Find("User Tags").GetComponentsInChildren<ContentSizeFitter>())
+                userTags.Add(userTagChild.GetComponentInChildren<TMP_Text>());
+            sliders.Add(transform.Find("S_Name").GetComponent<Slider>());
+            sliders.Add(transform.Find("S_Sum").GetComponent<Slider>());
+            sliders.Add(transform.Find("S_Release Date").GetComponent<Slider>());
+        }
+
+        private void Update()
+        {
+            
         }
 
         public void GameProduced()
@@ -64,12 +79,10 @@ namespace IGDF
                     if (currentLevel == ProductLevel.None)
                     {
                         ProductUpgrade(toChangeProduct, ProductLevel.Raw);
-                        t_Date.text = "Release Date: " + GetCurrentDate();
                     }
                     else
                     {
-                        ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, currentLevel));
-                        t_Date.text = "Release Date: " + GetProductShowcase(M_Global.instance.levels[M_Global.instance.targetLevel].levelType).producedDate;
+                        ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, currentLevel),toChangeProduct);
                     }
                     M_Audio.PlaySound(SoundType.ProducedRare);
                     break;
@@ -77,12 +90,10 @@ namespace IGDF
                     if (currentLevel != ProductLevel.Welldone && currentLevel != ProductLevel.Medium)
                     {
                         ProductUpgrade(toChangeProduct, ProductLevel.Medium);
-                        t_Date.text = "Release Date: " + GetCurrentDate();
                     }
                     else
                     {
-                        ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, currentLevel));
-                        t_Date.text = "Release Date: " + GetProductShowcase(M_Global.instance.levels[M_Global.instance.targetLevel].levelType).producedDate;
+                        ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, currentLevel),toChangeProduct);
                     }
                     M_Audio.PlaySound(SoundType.ProducedMedium);
                     break;
@@ -90,12 +101,10 @@ namespace IGDF
                     if (currentLevel != ProductLevel.Welldone)
                     {
                         ProductUpgrade(toChangeProduct, ProductLevel.Welldone);
-                        t_Date.text = "Release Date: " + GetCurrentDate();
                     }
                     else
                     {
-                        ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, currentLevel));
-                        t_Date.text = "Release Date: " + GetProductShowcase(M_Global.instance.levels[M_Global.instance.targetLevel].levelType).producedDate;
+                        ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, currentLevel),toChangeProduct);
                     }
                     M_Audio.PlaySound(SoundType.ProducedWelldone);
                     break;
@@ -106,8 +115,61 @@ namespace IGDF
         void ProductUpgrade(ProductShowcase toChangeProduct, ProductLevel targetLevel)
         {
             toChangeProduct.productLevel = targetLevel;
+            switch (targetLevel)
+            {
+                case ProductLevel.Raw:
+                    toChangeProduct.userReviewLevel = "Mixed";
+                    toChangeProduct.userReviewNumber = "(" + Random.Range(5, 500) + " Reviews" + ")";
+                    break;
+                case ProductLevel.Medium:
+                    toChangeProduct.userReviewLevel = "Very Positive";
+                    toChangeProduct.userReviewNumber = "(" + Random.Range(1, 9) + "," + Random.Range(100, 900) + " Reviews" + ")";
+                    break;
+                case ProductLevel.Welldone:
+                    toChangeProduct.userReviewLevel = "Overwhelmingly Positive";
+                    toChangeProduct.userReviewNumber = "(" + Random.Range(1, 5) + "," + Random.Range(100, 900) + "," + Random.Range(100, 900) + " Reviews" + ")";
+                    break;
+            }
             toChangeProduct.producedDate = GetCurrentDate();
-            ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, toChangeProduct.productLevel));
+            ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, toChangeProduct.productLevel),toChangeProduct);
+        }
+
+        public void ProductInfoSync(Product toUpdateInfo, ProductShowcase targetProduct)
+        {
+            switch (toUpdateInfo.productLevel)
+            {
+                case ProductLevel.Raw:
+                    t_ReviewLevel.color = M_Global.instance.repository.stampColors[0];
+                    break;
+                case ProductLevel.Medium:
+                    t_ReviewLevel.color = M_Global.instance.repository.stampColors[1];
+                    break;
+                case ProductLevel.Welldone:
+                    t_ReviewLevel.color = M_Global.instance.repository.stampColors[2];
+                    break;
+            }
+            t_ReviewLevel.text = targetProduct.userReviewLevel;
+            t_ReviewNumber.text = targetProduct.userReviewNumber;
+            t_Date.text = targetProduct.producedDate;
+            i_Game.sprite = toUpdateInfo.productImage;
+            t_Name.text = toUpdateInfo.productName;
+            t_Summary.text = toUpdateInfo.productDescription;
+
+            for (int i = 0; i < toUpdateInfo.productUserTags.Length; i++)
+            {
+                userTags[i].text = toUpdateInfo.productUserTags[i];
+                
+                if (i == 0)
+                {
+                    userTags[i].GetComponentInParent<RectTransform>().anchoredPosition = new Vector3(userTags[i].GetComponentInParent<RectTransform>().rect.width / 2, 0, 0);
+                }
+                else
+                {
+                    userTags[i].GetComponentInParent<RectTransform>().anchoredPosition
+                        = new Vector3(userTags[i].GetComponentInParent<RectTransform>().rect.width
+                        + userTags[i - 1].GetComponentInParent<RectTransform>().anchoredPosition.x + 10, 0, 0);
+                }
+            }
         }
 
         Product GetProductInfo(LevelType targetGameType, ProductLevel targetProductLevel)
@@ -121,30 +183,6 @@ namespace IGDF
                 if (product.productLevel == targetProductLevel)
                     targetProductInfo = product;
             return targetProductInfo;
-        }
-
-        public void ProductInfoSync(Product toUpdateInfo)
-        {
-            switch (toUpdateInfo.productLevel)
-            {
-                case ProductLevel.None:
-                    break;
-                case ProductLevel.Raw:
-                    t_Review.text = "Mixed";
-                    t_Review.color = M_Global.instance.repository.stampColors[0];
-                    break;
-                case ProductLevel.Medium:
-                    t_Review.text = "Very Positive";
-                    t_Review.color = M_Global.instance.repository.stampColors[1];
-                    break;
-                case ProductLevel.Welldone:
-                    t_Review.text = "Overwhelmingly Positive";
-                    t_Review.color = M_Global.instance.repository.stampColors[2];
-                    break;
-            }
-            i_Game.sprite = toUpdateInfo.productImage;
-            t_Name.text = toUpdateInfo.productName;
-            t_Summary.text = toUpdateInfo.productDescription;
         }
 
         void ObjPopOut(Transform transToPop, float timeInTotal)
