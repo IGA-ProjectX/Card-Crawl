@@ -12,6 +12,7 @@ namespace IGDF
         public Sprite[] stamps;
         public Color[] stampColors;
         public Sprite[] cardBGImages;
+        public Sprite[] hoverTipBGs;
 
         [Header("Audio")]
         public SoundAudioClip[] bgMusics;

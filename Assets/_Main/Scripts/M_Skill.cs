@@ -79,6 +79,7 @@ namespace IGDF
 
         public void EnterTargetingState(string targetType)
         {
+            M_Main.instance.m_HoverTip.EnterState(HoverState.SkillTargeting);
             List<O_Card> cardObjs = new List<O_Card>();
             foreach (Transform cardTrans in M_Main.instance.m_Card.cardsInTurn)
             {
@@ -159,7 +160,6 @@ namespace IGDF
 
         public void EnterWaitForUseState()
         {
-
             skillUseState = SkillUseState.WaitForUse;
             activatedSkill = null;
             foreach (Transform cardTrans in M_Main.instance.m_Card.cardsInTurn)
@@ -171,6 +171,7 @@ namespace IGDF
                     DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.white, 0.3f);
                 }
             }
+            M_Main.instance.m_HoverTip.EnterState(HoverState.AllActive);
         }
 
         public void EnterCanNotUseState()

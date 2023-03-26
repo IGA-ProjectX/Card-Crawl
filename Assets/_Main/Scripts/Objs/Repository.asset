@@ -33,6 +33,11 @@ MonoBehaviour:
   cardBGImages:
   - {fileID: 21300000, guid: 54514f3651c300f4bbd728b874ada52f, type: 3}
   - {fileID: 21300000, guid: a064c03ee6a97ce4bb0ccd7c982098db, type: 3}
+  hoverTipBGs:
+  - {fileID: 21300000, guid: 9d7a505df4f30854cab5b454a7ed177b, type: 3}
+  - {fileID: 21300000, guid: e83d6eea87e2d9c43ba486a2af7fa511, type: 3}
+  - {fileID: 21300000, guid: 232a8bf947b067740b9bbc0adb1b0501, type: 3}
+  - {fileID: 21300000, guid: 2012f6901e28fdc46a1b4e1a9242814b, type: 3}
   bgMusics:
   - soundType: 9
     audioClip: {fileID: 8300000, guid: 3160e7645ff70904c923fe34209ce41b, type: 3}

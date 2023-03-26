@@ -58,34 +58,69 @@ namespace IGDF
 
         public void PopUpChatBubble(CharacterType chaType, TalkContent talkContent)
         {
-            foreach (O_Character characterObj in GameObject.Find("Environment").transform.Find("Characters").GetComponentsInChildren<O_Character>())
+            foreach (O_Character characterObj in M_Main.instance.transform.parent.Find("Studio Scene").Find("Characters").GetComponentsInChildren<O_Character>())
                 if (characterObj.thisCharacter == chaType)
                     transform.position = characterObj.transform.position;
             TextMeshProUGUI chatText = transform.Find("Chat Bubble").GetComponentInChildren<TextMeshProUGUI>();
             chatText.color = M_Main.instance.repository.chaColors[(int)chaType];
-            chatText.text = talkContent.talkContentEng;
+            if (M_Global.instance.GetLanguage() == SystemLanguage.English) chatText.text = talkContent.talkContentEng;
+            else chatText.text = talkContent.talkContentChi;
+
             chatText.maxVisibleCharacters = 0;
 
             Sequence s = DOTween.Sequence();
             s.Append(transform.DOScale(1.2f, 0.3f));
             s.Append(transform.DOScale(0.9f, 0.1f));
             s.Append(transform.DOScale(1f, 0.05f));
-            s.AppendCallback(() => StartCoroutine(DisplayLine(chatText,talkContent.talkContentEng)));
+            s.AppendCallback(() => StartCoroutine(DisplayLine(chatText)));
+            s.AppendCallback(() => StartCoroutine(PlayAudio(talkContent.talkContentEng)));
+            //s.AppendCallback(() => StartCoroutine(DisplayLine(chatText,talkContent.talkContentEng)));
         }
 
-        private IEnumerator DisplayLine(TextMeshProUGUI dialogueText,string line)
+        private IEnumerator DisplayLine(TextMeshProUGUI dialogueText)
         {
             //// set the text to the full line, but set the visible characters to 0
             //dialogueText.text = line;
             //dialogueText.maxVisibleCharacters = 0;
             ////display each letter one at a time
-            foreach (char letter in line.ToCharArray())
+            ///
+            foreach (char letter in dialogueText.text)
             {
-                PlayDialogueSound(dialogueText.maxVisibleCharacters, dialogueText.text[dialogueText.maxVisibleCharacters]);
                 dialogueText.maxVisibleCharacters++;
                 yield return new WaitForSeconds(typingSpeed);
             }
         }
+        //private IEnumerator DisplayLine(TextMeshProUGUI dialogueText, string line)
+        //{
+        //    //// set the text to the full line, but set the visible characters to 0
+        //    //dialogueText.text = line;
+        //    //dialogueText.maxVisibleCharacters = 0;
+        //    ////display each letter one at a time
+        //    ///
+        //    foreach (char letter in dialogueText.text)
+        //    {
+        //        dialogueText.maxVisibleCharacters++;
+        //        yield return new WaitForSeconds(typingSpeed);
+        //    }
+        //    foreach (char letter in line.ToCharArray())
+        //    {
+        //        PlayDialogueSound(dialogueText.maxVisibleCharacters, dialogueText.text[dialogueText.maxVisibleCharacters]);
+        //        dialogueText.maxVisibleCharacters++;
+        //        yield return new WaitForSeconds(typingSpeed);
+        //    }
+        //}
+        
+        private IEnumerator PlayAudio(string line)
+        {
+            int maxVisibleCharacters = 0;
+            foreach (char letter in line.ToCharArray())
+            {
+                PlayDialogueSound(line.ToCharArray().Length, letter);
+                maxVisibleCharacters++;
+                yield return new WaitForSeconds(typingSpeed);
+            }
+        }
+
         private void PlayDialogueSound(int currentDisplayedCharacterCount, char currentCharacter)
         {
             // set variables for the below based on our config

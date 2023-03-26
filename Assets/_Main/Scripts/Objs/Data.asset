@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8afa8cc8341104cb4c4dab935cc9eb, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  playExp: 123797
+  playExp: 176
   productShowcases:
   - levelType: 0
-    productLevel: 0
-    producedDate: 
-    userReviewLevel: 
-    userReviewNumber: 
+    productLevel: 1
+    producedDate: 2023.03.25
+    userReviewLevel: Mixed
+    userReviewNumber: (491 Reviews)
   - levelType: 1
     productLevel: 0
     producedDate: 

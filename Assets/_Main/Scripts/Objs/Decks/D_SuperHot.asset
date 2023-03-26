@@ -18,6 +18,8 @@ MonoBehaviour:
   levelButtonImage: {fileID: 0}
   cards_Production:
   - cardType: 0
+    cardOutNE: 
+    cardOutNC: 
     cardNameEng: 
     cardNameChi: 
     cardSummaryEng: 
@@ -25,6 +27,8 @@ MonoBehaviour:
     cardImage: {fileID: 0}
     cardValue: 3
   - cardType: 0
+    cardOutNE: 
+    cardOutNC: 
     cardNameEng: 
     cardNameChi: 
     cardSummaryEng: 
@@ -33,6 +37,8 @@ MonoBehaviour:
     cardValue: 4
   cards_Design:
   - cardType: 1
+    cardOutNE: 
+    cardOutNC: 
     cardNameEng: 
     cardNameChi: 
     cardSummaryEng: 
@@ -40,6 +46,8 @@ MonoBehaviour:
     cardImage: {fileID: 0}
     cardValue: -3
   - cardType: 1
+    cardOutNE: 
+    cardOutNC: 
     cardNameEng: 
     cardNameChi: 
     cardSummaryEng: 
@@ -48,6 +56,8 @@ MonoBehaviour:
     cardValue: -4
   cards_Art:
   - cardType: 2
+    cardOutNE: 
+    cardOutNC: 
     cardNameEng: 
     cardNameChi: 
     cardSummaryEng: 
@@ -55,6 +65,8 @@ MonoBehaviour:
     cardImage: {fileID: 0}
     cardValue: -3
   - cardType: 2
+    cardOutNE: 
+    cardOutNC: 
     cardNameEng: 
     cardNameChi: 
     cardSummaryEng: 
@@ -63,6 +75,8 @@ MonoBehaviour:
     cardValue: -4
   cards_Code:
   - cardType: 3
+    cardOutNE: 
+    cardOutNC: 
     cardNameEng: 
     cardNameChi: 
     cardSummaryEng: 
@@ -70,6 +84,8 @@ MonoBehaviour:
     cardImage: {fileID: 0}
     cardValue: -3
   - cardType: 3
+    cardOutNE: 
+    cardOutNC: 
     cardNameEng: 
     cardNameChi: 
     cardSummaryEng: 
@@ -78,32 +94,56 @@ MonoBehaviour:
     cardValue: -4
   productLevels:
   - productLevel: 1
-    productName: Hot Raw
-    productDescription: Hot RawHot RawHot RawHot RawHot RawHot Raw
-    productImage: {fileID: 21300000, guid: a7ae26bf11447c942ad3cdeb36138a2c, type: 3}
-    productUserTags:
-    - Rare
-    - 3D
-    - FPS
-    - Time Manipulation
+    nameEng: Superhot, Raw
+    nameChi: "\u9E21\u5EA6\u72C2\u70ED"
+    summaryEng: 'It was supposed to be a game in which you play as a border inspector,
+      checking the passports of all people leaving the country. Well, let''s say
+      thanks to the hurry production, the game has made it to the platform, but this
+      sh*t is so bungled that players won''t pay any price. Tip for all players:
+      get whatever the hell''s game junked along with your PC.'
+    summaryChi: "\u5728\u5236\u4F5C\u7EC4\u7684\u65E0\u60C5\u94C1\u624B\u7684\u8D76\u5236\u4E0B\uFF0C\u4E00\u6B3E\u201C\u820D\u547D\u4E4B\u4F5C\u201D\u7EC8\u4E8E\u95EE\u4E16\u3002\u5728\u6E38\u620F\u4E2D\u4F60\u5C06\u4E0D\u5F97\u4E0D\u52A8\u7528\u6240\u6709\u5BC4\u5DE7\uFF0C\u5E2E\u52A9\u5927\u6B8B\u7684\u4E3B\u4EBA\u516C\u5FEB\u901F\u5230\u8FBE\u201C\u7EC8\u70B9\u201D\uFF0C\u4EAB\u53D7\u201C\u7A0D\u7EB5\u5373\u901D\u201D\u7684\u6E38\u620F\u65F6\u5149\uFF0C\u4E0D\u77E5\u9053\u8FD9\u662F\u54EA\u4E2A\u5929\u624D\u8BBE\u8BA1\u7684\u6E38\u620F\u5462\uFF1F\u7ED9\u6240\u6709\u73A9\u5BB6\u7684\u6E38\u73A9\u5EFA\u8BAE\uFF1A\u4E0B\u8F7D\u6E38\u620F\u540E\u8FDE\u540C\u7535\u8111\u4E00\u8D77\u6254\u6389\u3002"
+    productImage: {fileID: 21300000, guid: 5975cafa724a3df4baf0ac2eecfc85fa, type: 3}
+    userTagsEng:
+    - Fraud
+    - Anti-Intellectual
+    - Puzzle
+    userTagsChi:
+    - "\u5185\u5BB9\u6B3A\u8BC8"
+    - "\u964D\u667A"
+    - "\u89E3\u5BC6"
   - productLevel: 2
-    productName: Hot Medium
-    productDescription: Hot MediumHot MediumHot MediumHot MediumHot MediumHot MediumHot
-      Medium
-    productImage: {fileID: 21300000, guid: a7ae26bf11447c942ad3cdeb36138a2c, type: 3}
-    productUserTags:
-    - Medium
-    - 3D
-    - FPS
-    - Time
+    nameEng: Superhot, Medium
+    nameChi: "\u975E\u5E38\u72C2\u70ED"
+    summaryEng: "After painstaking development, the standard version of the game
+      is now available. In the game you play as a border inspector, checking the
+      passports of all people leaving the country. There are often some terrorists
+      among them, so pick up ur submachine gun and be ready to fight! It's\_a\_tricky\_work\_that\_could\_easily\_piss\_off\_your\_little\_sis."
+    summaryChi: "\u7ECF\u8FC7\u78E8\u6D0B\u5DE5\u822C\u7684\u5236\u4F5C\uFF0C\u672C\u6E38\u620F\u7684\u6807\u51C6\u7248\u73B0\u5DF2\u63A8\u51FA\u3002\u5728\u6E38\u620F\u4E2D\u4F60\u5C06\u626E\u6F14\u4E00\u540D\u8FB9\u5883\u68C0\u5BDF\u5458\uFF0C\u5BA1\u6838\u6240\u6709\u51FA\u5883\u4EBA\u5458\u7684\u62A4\u7167\u3002\u4ED6\u4EEC\u4E2D\u65F6\u5E38\u6709\u4E00\u4E9B\u6050\u6016\u5206\u5B50\uFF0C\u56E0\u6B64\u4F60\u8981\u62FF\u8D77\u6CE2\u6CE2\u6C99\u505A\u597D\u594B\u8D77\u53CD\u6297\u7684\u51C6\u5907\uFF01\u8FD9\u662F\u4E00\u4E2A\u65E2\u8981\u7EC6\u8282\u4E5F\u51B3\u751F\u6B7B\u7684\u804C\u4E1A\uFF0C\u770B\u7740\u5341\u5206\u590D\u6742\uFF0C\u5176\u5B9E\u4E00\u70B9\u4E5F\u4E0D\u7B80\u5355\u3002\u7ED9\u6240\u6709\u73A9\u5BB6\u7684\u6E38\u73A9\u5EFA\u8BAE\uFF1A\u8981\u4E48\u522B\u73A9\uFF0C\u8981\u4E48\u88AB\u4E00\u5957\u5E26\u8D70\u3002"
+    productImage: {fileID: 21300000, guid: 5975cafa724a3df4baf0ac2eecfc85fa, type: 3}
+    userTagsEng:
+    - Simulation
+    - Anti-Utopia
+    - Puzzle
+    userTagsChi:
+    - "\u6A21\u62DF"
+    - "\u53CD\u4E4C\u6258\u90A6"
+    - "\u89E3\u5BC6"
   - productLevel: 3
-    productName: Hot Welldone
-    productDescription: Hot WelldoneHot WelldoneHot WelldoneHot WelldoneHot WelldoneHot
-      WelldoneHot Welldone
-    productImage: {fileID: 21300000, guid: a7ae26bf11447c942ad3cdeb36138a2c, type: 3}
-    productUserTags:
-    - Welldone
-    - 3D
-    - FPS
-    - Time
+    nameEng: Superhot, Welldone
+    nameChi: "\u6781\u5EA6\u72C2\u70ED"
+    summaryEng: 'After meticulous development, our splendid game is now launched.
+      In the game you play as a border inspector, checking the passports of all people
+      leaving the country. There are often some terrorists among them, so pick up
+      ur submachine gun and be ready to fight! Comments: players are going off about
+      every detail being just right! We bringing home all the success today.'
+    summaryChi: "\u6CA1\u6709\u91D1\u521A\u94BB\uFF0C\u4E0D\u63FD\u74F7\u5668\u6D3B\u513F\u3002\u7ECF\u8FC7\u7CBE\u5FC3\u4E14\u6210\u529F\u7684\u5236\u4F5C\uFF0C\u672C\u6E38\u620F\u4EE5\u4F17\u671B\u6240\u5F52\u7684\u59FF\u6001\u51FA\u73B0\u5728\u5927\u5BB6\u7684\u9762\u524D\u3002\u5728\u6E38\u620F\u4E2D\u4F60\u5C06\u626E\u6F14\u4E00\u540D\u8FB9\u5883\u68C0\u5BDF\u5458\uFF0C\u5BA1\u6838\u6240\u6709\u51FA\u5883\u4EBA\u5458\u7684\u62A4\u7167\u3002\u4ED6\u4EEC\u4E2D\u65F6\u5E38\u6709\u4E00\u4E9B\u6050\u6016\u5206\u5B50\uFF0C\u56E0\u6B64\u4F60\u8981\u62FF\u8D77\u6CE2\u6CE2\u6C99\u505A\u597D\u594B\u8D77\u53CD\u6297\u7684\u51C6\u5907\uFF01\u5236\u4F5C\u7EC4\u4E3A\u6E38\u620F\u7CBE\u5FC3\u51C6\u5907\u4E86\u51E0\u5341\u4E2A\u7ED3\u5C40\uFF0C\u6E38\u620F\u8D28\u91CF\u8BC4\u4EF7\uFF1A\u201C\u76D6\u4E86\u5192\u4E86\u6211\u7684\u8001\u5317\u9F3B\u201D\u3002"
+    productImage: {fileID: 21300000, guid: 5975cafa724a3df4baf0ac2eecfc85fa, type: 3}
+    userTagsEng:
+    - Anti-Utopia
+    - Puzzle
+    - Masterpiece
+    userTagsChi:
+    - "\u53CD\u4E4C\u6258\u90A6"
+    - "\u89E3\u5BC6"
+    - "\u5B9D\u85CF\u6E38\u620F"
   talkList: []

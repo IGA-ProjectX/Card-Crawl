@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: S007
   m_EditorClassIdentifier: 
   skillIndex: 7
-  skillName: Diminish Task
-  skillDescription: Half the value of one task card
+  skillNameChi: "\u780D\u9700\u6C42"
+  skillDescriptionChi: "\u5C06\u4E00\u5F20\u9700\u6C42\u5361\u6570\u503C\u51CF\u534A"
+  skillNameEng: Diminish Task
+  skillDescriptionEng: Half the value of one task card
   skillImage: {fileID: 21300000, guid: 887ec09437befc44ebc735d2cd40135a, type: 3}
   skillType: 7
   skillUseType: 2

@@ -16,6 +16,7 @@ namespace IGDF
         public static M_Global instance;
         [HideInInspector] public GameObject ui_HoverTip;
         [HideInInspector] public RectTransform ui_HoverContent;
+        [HideInInspector] public Transform chatBubbleParent;
 
         private void Awake()
         {
@@ -33,6 +34,7 @@ namespace IGDF
             ui_HoverTip = GameObject.Find("Canvas").transform.Find("Hover Tip").gameObject;
             ui_HoverContent = ui_HoverTip.transform.GetChild(0).GetComponent<RectTransform>();
             ui_HoverTip.SetActive(false);
+            chatBubbleParent = GameObject.Find("Canvas").transform.Find("ChatBubbles");
         }
 
         public void PlayerExpUp(int newExp) 

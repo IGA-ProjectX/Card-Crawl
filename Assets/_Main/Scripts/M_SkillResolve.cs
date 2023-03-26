@@ -54,6 +54,7 @@ namespace IGDF
                 case SkillType.SelectOneTaskNoDDL:
                     break;
                 case SkillType.ChangeOneTaskToHalf:
+                    Skill_ChangeOneTaskToHalf(targetCard);
                     break;
                 case SkillType.GainOneExpDoubleItsValue:
                     Skill_GainOneExpDoubleItsValue(targetCard);
@@ -170,6 +171,12 @@ namespace IGDF
             s.AppendCallback(() => DOTween.To(() => cardBG.color, x => cardBG.color = x, Color.yellow, 0.2f));
             s.AppendInterval(0.2f);
             //s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
+        }
+
+        private void Skill_ChangeOneTaskToHalf(O_Card targetCard)
+        {
+            int changedValue = (targetCard.cardCurrentValue + targetCard.cardCurrentValue % 2) / 2;
+            targetCard.ChangeCardValue(changedValue);
         }
 
         #region Programmer Skill

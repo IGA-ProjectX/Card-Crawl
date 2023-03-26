@@ -16,24 +16,16 @@ namespace IGDF
         }
         public ButtonType buttonType;
         private M_SceneTransition m_SceneTransition;
+        [HideInInspector]public bool isClickable;
 
         void Start()
         {
             m_SceneTransition = FindObjectOfType<M_SceneTransition>();
         }
 
-        void Update()
-        {
-
-        }
-
-        private void OnMouseEnter()
-        {
-
-        }
-
         private void OnMouseDown()
         {
+            if(isClickable)
             switch (buttonType)
             {
                 case ButtonType.StartGame:

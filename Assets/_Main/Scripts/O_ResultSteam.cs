@@ -35,11 +35,6 @@ namespace IGDF
             sliders.Add(transform.Find("S_Release Date").GetComponent<Slider>());
         }
 
-        private void Update()
-        {
-            
-        }
-
         public void GameProduced()
         {
             LevelType currentLevelType = M_Global.instance.levels[M_Global.instance.targetLevel].levelType;
@@ -152,22 +147,30 @@ namespace IGDF
             t_ReviewNumber.text = targetProduct.userReviewNumber;
             t_Date.text = targetProduct.producedDate;
             i_Game.sprite = toUpdateInfo.productImage;
-            t_Name.text = toUpdateInfo.productName;
-            t_Summary.text = toUpdateInfo.productDescription;
-
-            for (int i = 0; i < toUpdateInfo.productUserTags.Length; i++)
+            if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese)
             {
-                userTags[i].text = toUpdateInfo.productUserTags[i];
-                
-                if (i == 0)
+                t_Name.text = toUpdateInfo.nameChi;
+                t_Summary.text = toUpdateInfo.summaryChi;
+            }
+            else
+            {
+                t_Name.text = toUpdateInfo.nameEng;
+                t_Summary.text = toUpdateInfo.summaryEng;
+            }
+
+            userTags[0].transform.parent.parent.GetComponent<HorizontalLayoutGroup>().enabled = false;
+            for (int i = 0; i < 4; i++)
+            {
+                userTags[i].transform.parent.GetComponent<ContentSizeFitter>().enabled = true;
+                if (i<toUpdateInfo.userTagsEng.Length)
                 {
-                    userTags[i].GetComponentInParent<RectTransform>().anchoredPosition = new Vector3(userTags[i].GetComponentInParent<RectTransform>().rect.width / 2, 0, 0);
+                    if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese) userTags[i].text = toUpdateInfo.userTagsChi[i];
+                    else userTags[i].text = toUpdateInfo.userTagsEng[i];
                 }
                 else
                 {
-                    userTags[i].GetComponentInParent<RectTransform>().anchoredPosition
-                        = new Vector3(userTags[i].GetComponentInParent<RectTransform>().rect.width
-                        + userTags[i - 1].GetComponentInParent<RectTransform>().anchoredPosition.x + 10, 0, 0);
+                    Debug.Log(userTags[i].transform.parent.gameObject.name);
+                    userTags[i].transform.parent.gameObject.SetActive(false);
                 }
             }
         }
@@ -188,9 +191,21 @@ namespace IGDF
         void ObjPopOut(Transform transToPop, float timeInTotal)
         {
             Sequence s = DOTween.Sequence();
+            s.AppendInterval(0.5f);
+            s.AppendCallback(() => EnableHoriLayoutGroup());
+            s.AppendInterval(0.5f);
             s.Append(transToPop.DOScale(1.2f, 0.6f * timeInTotal));
             s.Append(transToPop.DOScale(0.9f, 0.3f * timeInTotal));
             s.Append(transToPop.DOScale(1f, 0.1f * timeInTotal));
+
+            void EnableHoriLayoutGroup()
+            {
+                for (int i = 0; i < userTags[0].transform.parent.parent.childCount; i++)
+                {
+                    userTags[i].transform.parent.GetComponent<ContentSizeFitter>().enabled = false;
+                }
+                userTags[0].transform.parent.parent.GetComponent<HorizontalLayoutGroup>().enabled = true;
+            }
         }
 
         string GetCurrentDate()

@@ -195,7 +195,8 @@ namespace IGDF
 
         public void ExitTargetingState()
         {
-            OpenEye();
+            if(!isUsed) OpenEye();
+
             eyeState = EyeState.LookAround;
             targetingLine.enabled = false;
             targetingArrow.SetActive(false);

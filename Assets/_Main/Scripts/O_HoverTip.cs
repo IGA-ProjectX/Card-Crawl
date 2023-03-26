@@ -14,11 +14,18 @@ namespace IGDF
         private float hoveringTime = 0.3f;
         private float timer;
         private bool isOpen;
-        public static bool isAllowOpen = true;
+        private bool isAllowOpenTip;
+        private bool isAllowOpenBox;
         private GameObject selectionBox;
+
+        private void OnDestroy()
+        {
+            M_Main.instance.m_HoverTip.HoverTipListAddOrRemove(this, false);
+        }
 
         private void Start()
         {
+            M_Main.instance.m_HoverTip.HoverTipListAddOrRemove(this, true);
             selectionBox = FindObjectOfType<M_Main>().transform.Find("Selection Box").gameObject;
             selectionBox.SetActive(false);
         }
@@ -26,7 +33,12 @@ namespace IGDF
         private void OnMouseEnter()
         {
             timer = hoveringTime;
-            if (isAllowOpen)
+            if (isAllowOpenBox)
+            {
+                OpenSelectionBoxInCertainPos();
+            }
+
+            void OpenSelectionBoxInCertainPos()
             {
                 var boxCollider = GetComponent<BoxCollider2D>();
                 var size = boxCollider.size;
@@ -59,7 +71,7 @@ namespace IGDF
 
         private void OnMouseOver()
         {
-            if (isAllowOpen)
+            if (isAllowOpenTip)
             {
                 timer -= Time.deltaTime;
                 if (timer < 0 && !isOpen)
@@ -85,12 +97,21 @@ namespace IGDF
             if (mouseWorldPos.x < boundaryPos.x) pivotX = 0;
             if (mouseWorldPos.y < boundaryPos.y) pivotY = 0;
             M_Global.instance.ui_HoverContent.pivot = new Vector2(pivotX, pivotY);
-     
-            float offsetPosX = -40;
-            float offsetPosY = -40;
-            if (pivotX == 0) offsetPosX = 40;
-            if (pivotY == 0) offsetPosY = 40;
+
+            float offsetAmount = -10;
+
+            float offsetPosX = -offsetAmount;
+            float offsetPosY = -offsetAmount;
+            if (pivotX == 0) offsetPosX = offsetAmount;
+            if (pivotY == 0) offsetPosY = offsetAmount;
             M_Global.instance.ui_HoverContent.anchoredPosition = new Vector2(offsetPosX, offsetPosY);
+
+            if (offsetPosX == -offsetAmount)
+                if (offsetPosY == -offsetAmount) M_Global.instance.ui_HoverTip.transform.GetChild(0).GetComponent<Image>().sprite = M_Global.instance.repository.hoverTipBGs[1];
+                else M_Global.instance.ui_HoverTip.transform.GetChild(0).GetComponent<Image>().sprite = M_Global.instance.repository.hoverTipBGs[3];
+            if (offsetPosX == offsetAmount)
+                if (offsetPosY == -offsetAmount) M_Global.instance.ui_HoverTip.transform.GetChild(0).GetComponent<Image>().sprite = M_Global.instance.repository.hoverTipBGs[0];
+                else M_Global.instance.ui_HoverTip.transform.GetChild(0).GetComponent<Image>().sprite = M_Global.instance.repository.hoverTipBGs[2];
         }
 
         private void ActiveHoverTip()
@@ -151,6 +172,17 @@ namespace IGDF
         private void SetTipDescription(string tipDescription)
         {
             M_Global.instance.ui_HoverContent.Find("Description").GetComponent<TMP_Text>().text = tipDescription;
+        }
+
+        public void ChangeAllowOpenState(bool tipState,bool boxState)
+        {
+            isAllowOpenTip = tipState;
+            isAllowOpenBox = boxState;
+        }
+
+        public void SetSelectionBoxState(bool targetState)
+        {
+            selectionBox.SetActive(targetState);
         }
     }
 }

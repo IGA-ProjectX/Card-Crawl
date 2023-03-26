@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: S001
   m_EditorClassIdentifier: 
   skillIndex: 1
-  skillNameChi: 
-  skillDescriptionChi: 
+  skillNameChi: "\u4E4B\u540E\u518D\u8BF4"
+  skillDescriptionChi: "\u5C06\u4E00\u5F20\u9700\u6C42\u5361\u9000\u56DE\u724C\u5E93"
   skillNameEng: Later
   skillDescriptionEng: Withdraw one task card
   skillImage: {fileID: 21300000, guid: 5236f7365fae1604a907c0a3321295fc, type: 3}

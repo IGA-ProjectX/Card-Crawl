@@ -254,6 +254,7 @@ namespace IGDF
             Transform cardTrans = clipperTrans.GetComponentInChildren<O_Card>().transform;
             cardTrans.position = new Vector3(cardTrans.position.x, cardTrans.position.y, 0.2f);
             clipperTrans.position = new Vector3(clipperTrans.position.x, clipperTrans.position.y, 0f);
+            CardLayerChange(clipperTrans, -10);
             //卡牌 夹子 滑轮颜色的获取和变灰 + 绳子
             SpriteRenderer handlerSprite = clipperTrans.Find("Handler").GetComponent<SpriteRenderer>();
             SpriteRenderer clipperSprite = clipperTrans.Find("Clipper").GetComponent<SpriteRenderer>();
@@ -266,6 +267,8 @@ namespace IGDF
             line.startColor = Color.gray;
             //卡牌+轮滑组的具体位移
             Sequence s = DOTween.Sequence();
+            s.AppendCallback(() => M_Main.instance.m_Skill.EnterCanNotUseState());
+            s.AppendCallback(() => M_Main.instance.m_HoverTip.EnterState(HoverState.CardDrawing));
             s.AppendCallback(() => M_Audio.PlayDelaySound(SoundType.PulleySlide,0.2f));
             s.Append(clipperTrans.DOMoveX(clipperTrans.position.x + horiDistance, horiTime));
             s.AppendCallback(() => CardMoveDownwards());
@@ -274,6 +277,8 @@ namespace IGDF
             s.AppendCallback(() => clipperTrans.GetComponentInChildren<O_ClipperLine>().isClipperInScreen = true);
             s.AppendCallback(() => cardTrans.GetComponent<O_Card>().SetDraggableState(true));
             s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
+            s.AppendCallback(() => M_Main.instance.m_HoverTip.EnterState(HoverState.AllActive));
+            s.AppendCallback(() => CardLayerChange(clipperTrans, 10));
 
             void CardMoveDownwards()
             {
@@ -289,6 +294,7 @@ namespace IGDF
 
         public void ClipperMiddleDownToLeftUpper(Transform clipperTrans)
         {
+            CardLayerChange(clipperTrans, -10);
             Transform cardTrans = clipperTrans.GetComponentInChildren<O_Card>().transform;
             cardTrans.position = new Vector3(cardTrans.position.x, cardTrans.position.y, 0.2f);
             clipperTrans.position = new Vector3(clipperTrans.position.x, clipperTrans.position.y, 0.1f);
@@ -299,10 +305,14 @@ namespace IGDF
             clipperTrans.GetComponentInChildren<O_ClipperLine>().isClipperInScreen  = false;
 
             Sequence s = DOTween.Sequence();
+            s.AppendCallback(() => M_Main.instance.m_Skill.EnterCanNotUseState());
+            s.AppendCallback(() => M_Main.instance.m_HoverTip.EnterState(HoverState.CardDrawing));
             s.AppendCallback(() => cardTrans.GetComponent<O_Card>().SetDraggableState(false));
             s.AppendCallback(() => CardUpDownwards());
             s.AppendInterval(verTime);
             s.Append(clipperTrans.DOMoveX(clipperTrans.position.x - horiDistance, horiTime));
+            s.AppendCallback(() => M_Main.instance.m_HoverTip.EnterState(HoverState.AllActive));
+            s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
 
             void CardUpDownwards()
             {
@@ -326,6 +336,7 @@ namespace IGDF
             if (clipperTrans.GetComponentInChildren<O_Card>()!=null)
                 clipperTrans.GetComponentInChildren<O_Card>().DestroyCardOutScene(horiTime + 0.1f);
             clipperTrans.GetComponentInChildren<O_ClipperLine>().DestroySlider(horiTime + 0.2f);
+           M_Main.instance.m_Skill.EnterCanNotUseState();
             Destroy(clipperTrans, horiTime + 0.2f);
         }
 
@@ -334,6 +345,23 @@ namespace IGDF
             Transform slider = Instantiate(pre_CardSlider, outScreenJoint.GetChild(index).position, Quaternion.identity, outScreenJoint.GetChild(index)).transform;
             taskSlots[index] = slider.Find("Card Pivot");
             slider.GetComponentInChildren<O_ClipperLine>().InitializeClipperLine();
+        }
+
+        public void CardLayerChange(Transform clipperTrans,int cardModifyOffsetedAmount)
+        {
+            Transform cardTrans = clipperTrans.GetComponentInChildren<O_Card>().transform;
+            cardTrans.Find("Card BG").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            cardTrans.Find("Card Image Content").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            cardTrans.Find("Card Image Type").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            cardTrans.Find("Name Bg").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            cardTrans.Find("Card Name").GetComponent<MeshRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            cardTrans.Find("Card Value").GetComponent<MeshRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            cardTrans.Find("Card Text Type").GetComponent<MeshRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            
+            cardTrans.Find("Card Image Mask").GetComponent<SpriteMask>().frontSortingOrder += cardModifyOffsetedAmount;
+            cardTrans.parent.Find("Clipper").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            cardTrans.parent.Find("Handler").GetComponent<LineRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            cardTrans.parent.Find("Handler").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
         }
     }
 }

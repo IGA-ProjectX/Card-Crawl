@@ -42,11 +42,15 @@ namespace IGDF
     public class Product
     {
         public ProductLevel productLevel;
-        public string productName;
-        [TextArea(2,2)]
-        public string productDescription;
+        public string nameEng;
+        public string nameChi;
+        [TextArea(3, 3)]
+        public string summaryEng;
+        [TextArea(3, 3)]
+        public string summaryChi;
         public Sprite productImage;
-        public string[] productUserTags;
+        public string[] userTagsEng;
+        public string[] userTagsChi;
     }
 
     public class ChatContent

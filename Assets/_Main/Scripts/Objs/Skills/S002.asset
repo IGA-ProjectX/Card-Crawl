@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: S002
   m_EditorClassIdentifier: 
   skillIndex: 2
-  skillNameChi: 
-  skillDescriptionChi: 
-  skillNameEng: Change Game
+  skillNameChi: "\u4F18\u5148\u7EA7\u53D8\u66F4"
+  skillDescriptionChi: "\u91CD\u65B0\u62BD\u53D6\u5F53\u524D\u6570\u91CF\u7684\u5361\u724C"
+  skillNameEng: Change Priority
   skillDescriptionEng: Redraw all card
   skillImage: {fileID: 21300000, guid: 68b31aeef98d03547a9343bbcaac3d69, type: 3}
   skillType: 2

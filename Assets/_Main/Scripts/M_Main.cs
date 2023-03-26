@@ -18,10 +18,11 @@ namespace IGDF
         [HideInInspector] public M_SkillResolve m_SkillResolve;
         [HideInInspector] public M_DDL m_DDL;
         [HideInInspector] public M_ChatBubble m_ChatBubble;
+        [HideInInspector] public M_HoverTip m_HoverTip;
 
-        bool isGameFinished = false;
+        [HideInInspector]public bool isGameFinished = false;
 
-        void Start()
+        private void Awake()
         {
             instance = this;
             m_Card = GetComponent<M_Card>();
@@ -30,10 +31,15 @@ namespace IGDF
             m_SkillResolve = GetComponent<M_SkillResolve>();
             m_DDL = GetComponent<M_DDL>();
             m_ChatBubble = GetComponent<M_ChatBubble>();
+            m_HoverTip = GetComponent<M_HoverTip>();
+        }
 
+        void Start()
+        {
             SpriteSelfWaterReflection studio = transform.parent.GetComponentInChildren<SpriteSelfWaterReflection>();
             studio.ReflectionProvider = FindObjectOfType<SSWaterReflectionProvider>();
             studio.ClearAndInitReflectionRenderers();
+            m_HoverTip.EnterState(HoverState.AllDisactive);
         }
 
         public void CheckDevCircumstance()
@@ -52,7 +58,7 @@ namespace IGDF
             if (m_Staff.GetDDLValue() <= 0)
             {
                 GameDevFailed();
-                isGameFinished = true;
+                isGameFinished = false;
             }
 
             void GameDevSucceed()
@@ -66,7 +72,11 @@ namespace IGDF
             void GameDevFailed()
             {
                 m_ChatBubble.TryTriggerTalkSpecialCondition(TalkConditionType.LoseGame);
-                FindObjectOfType<O_ResultSteam>().GameProduced();
+                Transform resultFailPanel = FindObjectOfType<O_ResultSteam>().transform.parent.Find("Result Fail");
+                if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese)
+                    resultFailPanel.Find("T_Result").GetComponent<TMP_Text>().text = "¿ª·¢Ê§°Ü¡£¡£¡£";
+                else resultFailPanel.Find("T_Result").GetComponent<TMP_Text>().text = "Project Unfinished...";
+                resultFailPanel.DOScale(1, 0.4f);
                 M_Audio.PlaySound(SoundType.MainMachineLose);
             }
         }

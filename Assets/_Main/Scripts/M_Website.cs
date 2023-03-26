@@ -35,7 +35,8 @@ namespace IGDF
                 if (i < M_Global.instance.mainData.productShowcases.Length && M_Global.instance.mainData.productShowcases[i].productLevel != ProductLevel.None)
                 {
                     Product currentProduct = GetProductInfo(M_Global.instance.mainData.productShowcases[i].levelType, M_Global.instance.mainData.productShowcases[i].productLevel);
-                    t_Name.text = currentProduct.productName;
+                    if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese) t_Name.text = currentProduct.nameChi;
+                    else t_Name.text = currentProduct.nameEng;
                     t_UserReview.text = M_Global.instance.mainData.productShowcases[i].userReviewLevel;
                     t_ReleaseDate.text = "Release Date: " + M_Global.instance.mainData.productShowcases[i].producedDate;
                     i_Game.sprite = currentProduct.productImage;

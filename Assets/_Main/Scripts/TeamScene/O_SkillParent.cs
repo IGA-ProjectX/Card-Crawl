@@ -26,7 +26,6 @@ namespace IGDF
             skillToSetObj.Find("Text").GetComponent<Text>().text = skillToSet.skillNameEng;
             skillToSetObj.localScale = Vector3.zero;
             skillToSetObj.DOScale(1, 0.4f);
-            O_HoverTip.isAllowOpen = false;
         }
 
         public void OnMouseDrag()
@@ -51,7 +50,6 @@ namespace IGDF
             }
             skillToSetObj = null;
             skillToSet = null;
-            O_HoverTip.isAllowOpen = true;
         }
 
         public void SetSkillToList()
