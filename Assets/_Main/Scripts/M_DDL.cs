@@ -15,17 +15,44 @@ namespace IGDF
         private DDLDot[,] ddlDots_Right;
         private Dictionary<int, List<int[]>> numberIndexList = new Dictionary<int, List<int[]>>();
 
+        #region
+        private Transform leftWindow;
+        private Transform rightWindow;
+        private float horiMoveDistance = 0.66f;
+        private float expandTime = 0.3f;
+        private float shrinkTime = 0.1f;
+        private float expandedLeftX;
+        private float shrinkedLeftX;
+        private float expandedRightX;
+        private float shrinkedRightX;
+
         private void Start()
         {
-            //CreateDots();
-            //InitializeNumberList();
+            leftWindow = ddlMachine.Find("Window Left");
+            rightWindow = ddlMachine.Find("Window Right");
+            expandedLeftX = leftWindow.position.x + horiMoveDistance;
+            shrinkedLeftX = leftWindow.position.x;
+            expandedRightX = rightWindow.position.x - horiMoveDistance;
+            shrinkedRightX = rightWindow.position.x;
         }
 
-        private void Update()
+        public void CatSlotChangeTo(SlotCondition targetState)
         {
-
+            switch (targetState)
+            {
+                case SlotCondition.Expanded:
+                    leftWindow.DOMoveX(expandedLeftX, expandTime);
+                    rightWindow.DOMoveX(expandedRightX, expandTime);
+                    break;
+                case SlotCondition.Shrinked:
+                    leftWindow.DOMoveX(shrinkedLeftX, shrinkTime);
+                    rightWindow.DOMoveX(shrinkedRightX, shrinkTime);
+                    break;
+            }
         }
+        #endregion
 
+        #region Dot
         public void CreateDots()
         {
             ddlDots_Left = new DDLDot[width, height];
@@ -287,7 +314,7 @@ namespace IGDF
                 FlipDot(ddlDots_Left, numberIndexList[9]);
             }
         }
-
+        #endregion
     }
 
     public class DDLDot
