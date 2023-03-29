@@ -104,7 +104,7 @@ namespace IGDF
                     Sequence s = DOTween.Sequence();
                     s.Append(panelToScaleDown.DOScale(0, 0.4f));
                     s.Append(cars[0].Find("Car Door").DOMoveY(cars[0].Find("Car Door").position.y - 12, transitionTime));
-                    s.AppendCallback(() => FindObjectOfType<M_Level>().RemoveExistingStudioScene());
+                    s.AppendCallback(() => FindObjectOfType<M_LevelUI>().RemoveExistingStudioScene());
                     currentView = CabinView.Studio;
                     break;
                 case CabinView.InSkill:

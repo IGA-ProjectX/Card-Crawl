@@ -15,7 +15,7 @@ MonoBehaviour:
   levelType: 1
   levelName: Super Hot
   staffValue: 0000000014000000140000001400000005000000
-  levelButtonImage: {fileID: 0}
+  levelButtonImage: {fileID: 21300000, guid: a7ae26bf11447c942ad3cdeb36138a2c, type: 3}
   cards_Production:
   - cardType: 0
     cardOutNE: 

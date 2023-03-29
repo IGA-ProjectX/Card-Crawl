@@ -6,7 +6,7 @@ using DG.Tweening;
 namespace IGDF
 {
     public enum SlotCondition { Expanded, Shrinked }
-    public enum IconCondition { Inactivated, Approved, Disapproved }
+
     public class O_HalfCat : MonoBehaviour
     {
         private IconCondition currentIconCondition = IconCondition.Inactivated;
@@ -27,16 +27,17 @@ namespace IGDF
 
         private void Start()
         {
-            formerBody = transform.Find("Cat Former");
-            behindBody = transform.Find("Cat Behind");
-            iconRight = formerBody.Find("Icon Right").GetComponent<SpriteRenderer>();
-            iconLeft = behindBody.Find("Icon Left").GetComponent<SpriteRenderer>();
-            expandedFormerX = formerBody.position.x + horiMoveDistance;
-            shrinkedFormerX = formerBody.position.x;
-            expandedBehindX = behindBody.position.x - horiMoveDistance;
-            shrinkedBehindX = behindBody.position.x;
-            catFormerMask = transform.Find("Cat Former").GetComponentInChildren<SpriteMask>();
-            catBehindMask = transform.Find("Cat Behind").GetComponentInChildren<SpriteMask>();
+            //formerBody = transform.Find("Cat Former");
+            //behindBody = transform.Find("Cat Behind");
+            //iconRight = formerBody.Find("Icon Right").GetComponent<SpriteRenderer>();
+            //iconLeft = behindBody.Find("Icon Left").GetComponent<SpriteRenderer>();
+            //expandedFormerX = formerBody.position.x + horiMoveDistance;
+            //shrinkedFormerX = formerBody.position.x;
+            //expandedBehindX = behindBody.position.x - horiMoveDistance;
+            //shrinkedBehindX = behindBody.position.x;
+            //catFormerMask = transform.Find("Cat Former").GetComponentInChildren<SpriteMask>();
+            //catBehindMask = transform.Find("Cat Behind").GetComponentInChildren<SpriteMask>();
+
             //UpdateMaskState(false);
         }
 

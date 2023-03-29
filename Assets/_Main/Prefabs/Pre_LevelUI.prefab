@@ -219,7 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4109007002505035524}
   m_Layer: 5
-  m_Name: Pre_Level
+  m_Name: Pre_LevelUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

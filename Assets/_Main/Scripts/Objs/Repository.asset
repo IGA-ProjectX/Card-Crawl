@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Repository
   m_EditorClassIdentifier: 
   cardTypeIcons:
-  - {fileID: 21300000, guid: 20fcc8be54a441a41a1ab8f4c8f49475, type: 3}
-  - {fileID: 21300000, guid: 39fa5b23c672cb545b64468f560d1645, type: 3}
-  - {fileID: 21300000, guid: 52d1e674d723c6644b6aea29374e8d08, type: 3}
-  - {fileID: 21300000, guid: 3ce795aa138c1f149a0fc133369a6b37, type: 3}
+  - {fileID: 21300000, guid: 7e816fa4d69f46640a339ea1600f20a4, type: 3}
+  - {fileID: 21300000, guid: a7475095016ffaf4dbc8dbf4e8ea7e68, type: 3}
+  - {fileID: 21300000, guid: d4e65e8ab5ed8474ba0c4752f327d242, type: 3}
+  - {fileID: 21300000, guid: f0d735d12ae018845aae7fe8bc9111c6, type: 3}
   chaColors:
   - {r: 0.7882353, g: 0.3647059, b: 0.3529412, a: 1}
   - {r: 0.3647059, g: 0.5882353, b: 0.49019608, a: 1}
@@ -38,6 +38,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e83d6eea87e2d9c43ba486a2af7fa511, type: 3}
   - {fileID: 21300000, guid: 232a8bf947b067740b9bbc0adb1b0501, type: 3}
   - {fileID: 21300000, guid: 2012f6901e28fdc46a1b4e1a9242814b, type: 3}
+  gameNameImages:
+  - {fileID: 21300000, guid: a87f40c458cdf454dab95d69bf4a108f, type: 3}
+  - {fileID: 21300000, guid: 613d5c0f122dac546bb5f3aa685ee113, type: 3}
   bgMusics:
   - soundType: 9
     audioClip: {fileID: 8300000, guid: 3160e7645ff70904c923fe34209ce41b, type: 3}

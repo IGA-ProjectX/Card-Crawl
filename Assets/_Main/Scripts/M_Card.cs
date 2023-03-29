@@ -47,14 +47,6 @@ namespace IGDF
             {
                 if (cardsInTurn[i] == null && inGameDeck.Count != 0)
                 {
-                    //InstantiateCardSlider(i);
-                    //Transform go = Instantiate(pre_Card, taskSlots[i].transform.position, Quaternion.identity,taskSlots[i].parent).transform;
-                    //cardsInTurn[i] = go;
-                    //go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], i);
-                    //inGameDeck.RemoveAt(0);
-                    //ClipperLeftUpperToMiddleDown(go.parent);
-                    //go.parent.GetComponentInChildren<O_ClipperLine>().cardTrans = go;
-                    //go.parent.GetComponentInChildren<O_ClipperLine>().SetLineState("Manuel");
                     InstantiateCard(i);
                 }
             }
@@ -67,12 +59,6 @@ namespace IGDF
             foreach (int slotIndex in toDrawSlots)
             {
                 InstantiateCard(slotIndex);
-                //InstantiateCardSlider(slotIndex);
-                //Transform go = Instantiate(pre_Card, taskSlots[slotIndex].transform.position, Quaternion.identity, taskSlots[slotIndex].parent).transform;
-                //cardsInTurn[slotIndex] = go;
-                //go.GetComponent<O_Card>().InitializeCard(inGameDeck[0], slotIndex);
-                //inGameDeck.RemoveAt(0);
-                //ClipperLeftUpperToMiddleDown(go.parent);
             }
         }
 
@@ -96,18 +82,21 @@ namespace IGDF
             {
                 if (targetType == CardType.Production)
                 {
-                    staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatIconChangeTo(IconCondition.Approved);
+                    //staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatIconChangeTo(IconCondition.Approved);
+                    M_Main.instance.m_Staff.StaffIconChangeTo((int)targetType, IconCondition.Approved);
                 }
                 else
                 {
                     int staffValue = M_Main.instance.m_Staff.GetStaffValue((int)targetType);
                     if (staffValue + cardValue >= 0)
                     {
-                        staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatIconChangeTo(IconCondition.Approved);
+                        //staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatIconChangeTo(IconCondition.Approved);
+                        M_Main.instance.m_Staff.StaffIconChangeTo((int)targetType, IconCondition.Approved);
                     }
                     else
                     {
-                        staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatIconChangeTo(IconCondition.Disapproved);
+                        //staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatIconChangeTo(IconCondition.Disapproved);
+                        M_Main.instance.m_Staff.StaffIconChangeTo((int)targetType, IconCondition.Disapproved);
                     }
                 }
             }
@@ -119,14 +108,17 @@ namespace IGDF
             foreach (CardType targetType in targetableTypes)
             {
                 float distanceFromSlot = Vector2.Distance(cardTrans.position, staffSlots[(int)targetType].position);
-                if (distanceFromSlot <= 0.6f)
-                {
-                    staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatSlotChangeTo(SlotCondition.Expanded);
-                }
-                else
-                {
-                    staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatSlotChangeTo(SlotCondition.Shrinked);
-                }
+                if (targetType == CardType.Production)
+                    if (distanceFromSlot <= 0.6f)
+                    {
+                        //staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatSlotChangeTo(SlotCondition.Expanded);
+                        M_Main.instance.m_DDL.DDLSlotChangeTo(SlotCondition.Expanded);
+                    }
+                    else
+                    {
+                        //staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatSlotChangeTo(SlotCondition.Shrinked);
+                        M_Main.instance.m_DDL.DDLSlotChangeTo(SlotCondition.Shrinked);
+                    }
             }
         }
 
@@ -136,22 +128,27 @@ namespace IGDF
             bool isUsed = false;
             foreach (CardType targetType in targetableTypes)
             {
-                float distanceFromSlot = Vector2.Distance(cardTrans.position, staffSlots[(int)targetType].position);
-                if (distanceFromSlot <= 0.6f)
+                //Vector2 targetPos = staffSlots[(int)targetType].position;
+                Vector2 targetPos = staffSlots[(int)targetType].GetComponent<BoxCollider2D>().offset + (Vector2)staffSlots[(int)targetType].position;
+                float distanceFromSlot = Vector2.Distance(cardTrans.position, targetPos);
+                if (distanceFromSlot <= 1f)
                 {
                     if (cardTrans.GetComponent<O_Card>().cardCurrentType!= CardType.Production && cardValue<0 && targetType == CardType.Production)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(cardTrans.DOMove(staffSlots[0].position, 0.2f));
+                        s.Append(cardTrans.DOMove(targetPos, 0.2f));
                         s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
                         s.AppendCallback(() => M_Main.instance.m_Staff.ChangeDeadLineValue(cardValue));
                         s.AppendCallback(() => CheckInTurnCardNumber());
                         s.AppendInterval(0.8f);
-                        s.AppendCallback(() => staffSlots[0].GetComponent<O_HalfCat>().CatSlotChangeTo(SlotCondition.Shrinked));
-                
+                        s.AppendCallback(() => Debug.Log("dsadaasdasddas"));
+                        s.AppendCallback(() => M_Main.instance.m_DDL.DDLSlotChangeTo(SlotCondition.Shrinked));
+                        //s.AppendCallback(() => staffSlots[0].GetComponent<O_HalfCat>().CatSlotChangeTo(SlotCondition.Shrinked));
+
 
                         cardTrans.GetComponent<O_Card>().SetLineStateAuto();
-                        staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatIconChangeTo(IconCondition.Inactivated);
+                        M_Main.instance.m_Staff.StaffIconChangeTo((int)targetType, IconCondition.Inactivated);
+                        //staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatIconChangeTo(IconCondition.Inactivated);
                         isUsed = true;
                     }
                     else
@@ -159,16 +156,18 @@ namespace IGDF
                         if (M_Main.instance.m_Staff.GetStaffValue((int)targetType) >= -cardValue)
                         {
                             Sequence s = DOTween.Sequence();
-                            s.Append(cardTrans.DOMove(staffSlots[(int)targetType].position, 0.2f));
+                            s.Append(cardTrans.DOMove(targetPos, 0.2f));
                             s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
                             s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue((int)targetType, cardValue));
                             s.AppendCallback(() => CheckInTurnCardNumber());
                             s.AppendInterval(0.8f);
-                            s.AppendCallback(() => staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatSlotChangeTo(SlotCondition.Shrinked));
-                
+                            s.AppendCallback(() => M_Main.instance.m_DDL.DDLSlotChangeTo(SlotCondition.Shrinked));
+                            //s.AppendCallback(() => staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatSlotChangeTo(SlotCondition.Shrinked));
+
 
                             cardTrans.GetComponent<O_Card>().SetLineStateAuto();
-                            staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatIconChangeTo(IconCondition.Inactivated);
+                            M_Main.instance.m_Staff.StaffIconChangeTo((int)targetType, IconCondition.Inactivated);
+                            //staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatIconChangeTo(IconCondition.Inactivated);
                             isUsed = true;
                         }
                     }
@@ -177,7 +176,8 @@ namespace IGDF
             }
             if (!isUsed) cardTrans.DOMove(cardTrans.parent.Find("Card Pivot").position + new Vector3(0, 0, 0.2f), 0.3f);
             foreach (CardType targetType in targetableTypes)
-                staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatIconChangeTo(IconCondition.Inactivated);
+                M_Main.instance.m_Staff.StaffIconChangeTo((int)targetType, IconCondition.Inactivated);
+            //staffSlots[(int)targetType].GetComponent<O_HalfCat>().CatIconChangeTo(IconCondition.Inactivated);
         }
 
 #endregion

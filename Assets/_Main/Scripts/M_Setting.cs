@@ -14,6 +14,7 @@ namespace IGDF
             Text t_ResetProgress = transform.Find("B_ResetProgress").Find("Text").GetComponent<Text>();
             Text t_LanguageTitle = transform.Find("Language").Find("Title").GetComponent<Text>();
             Text t_LanguageCurrent = transform.Find("Language").Find("Current Language").GetComponent<Text>();
+            SpriteRenderer i_GameName = GameObject.Find("Game Name").GetComponent<SpriteRenderer>();
 
             switch (targetLanguage)
             {
@@ -21,13 +22,15 @@ namespace IGDF
                     M_Global.instance.SetLanguage(SystemLanguage.Chinese);
                     t_ResetProgress.text = "重置进度";
                     t_LanguageTitle.text = "语言：";
-                    t_LanguageCurrent.text = "Splified Chinese";
+                    t_LanguageCurrent.text = "简体中文";
+                    i_GameName.sprite = M_Global.instance.repository.gameNameImages[1];
                     break;
                 case SystemLanguage.English:
                     M_Global.instance.SetLanguage(SystemLanguage.English);
                     t_ResetProgress.text = "Reset Progress";
                     t_LanguageTitle.text = "Language:";
-                    t_LanguageCurrent.text = "英文";
+                    t_LanguageCurrent.text = "English";
+                    i_GameName.sprite = M_Global.instance.repository.gameNameImages[0];
                     break;
             }
         }

@@ -61,7 +61,11 @@ namespace IGDF
         {
             SO_Level targetGame = null;
             foreach (SO_Level level in M_Global.instance.levels)
-                if (level.levelType == targetGameType) targetGame = level;
+            {
+                if (level!=null)
+                    if (level.levelType == targetGameType) targetGame = level;
+            }
+          
 
             Product targetProductInfo = null;
             foreach (Product product in targetGame.productLevels)

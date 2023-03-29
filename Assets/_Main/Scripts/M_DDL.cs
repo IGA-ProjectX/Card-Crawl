@@ -30,13 +30,13 @@ namespace IGDF
         {
             leftWindow = ddlMachine.Find("Window Left");
             rightWindow = ddlMachine.Find("Window Right");
-            expandedLeftX = leftWindow.position.x + horiMoveDistance;
+            expandedLeftX = leftWindow.position.x - horiMoveDistance;
             shrinkedLeftX = leftWindow.position.x;
-            expandedRightX = rightWindow.position.x - horiMoveDistance;
+            expandedRightX = rightWindow.position.x + horiMoveDistance;
             shrinkedRightX = rightWindow.position.x;
         }
 
-        public void CatSlotChangeTo(SlotCondition targetState)
+        public void DDLSlotChangeTo(SlotCondition targetState)
         {
             switch (targetState)
             {
@@ -57,8 +57,12 @@ namespace IGDF
         {
             ddlDots_Left = new DDLDot[width, height];
             ddlDots_Right = new DDLDot[width, height];
-            ddlDots_Left[0, 0] = new DDLDot(false, ddlMachine.Find("ddlDot UpperLeft").position, ddlMachine.Find("ddlDot UpperLeft"), new int[] { 0, 0 });
-            ddlDots_Right[0, 0] = new DDLDot(false, ddlMachine.Find("ddlDot UpperRight").position, ddlMachine.Find("ddlDot UpperRight"), new int[] { 0, 0 });
+
+            Transform LeftInitialDot = ddlMachine.Find("Window Left").Find("ddlDot UpperLeft");
+            Transform rightInitialDot = ddlMachine.Find("Window Right").Find("ddlDot UpperRight");
+
+            ddlDots_Left[0, 0] = new DDLDot(false, LeftInitialDot.position, LeftInitialDot, new int[] { 0, 0 });
+            ddlDots_Right[0, 0] = new DDLDot(false, rightInitialDot.position, rightInitialDot, new int[] { 0, 0 });
 
             InstantiateDots("Left");
             InstantiateDots("Right");
@@ -77,9 +81,17 @@ namespace IGDF
                         else
                         {
                             Vector3 newDotPos = dot11Pos + new Vector3(i * 0.22f, -j * 0.22f, 0);
-                            Transform newDotTrans = Instantiate(pre_dot, newDotPos, Quaternion.identity, ddlMachine).transform;
-                            if (location == "Left") newDotTrans.name = "Left" + i + "," + j;
-                            else newDotTrans.name = "Right" + i + "," + j;
+                            Transform newDotTrans;
+                            if (location == "Left")
+                            {
+                                newDotTrans = Instantiate(pre_dot, newDotPos, Quaternion.identity, LeftInitialDot.parent).transform;
+                                newDotTrans.name = "Left" + i + "," + j;
+                            }
+                            else
+                            {
+                                newDotTrans = Instantiate(pre_dot, newDotPos, Quaternion.identity, rightInitialDot.parent).transform;
+                                newDotTrans.name = "Right" + i + "," + j;
+                            }
                             if (location == "Left") ddlDots_Left[i, j] = new DDLDot(false, newDotPos, newDotTrans, new int[] { i, j });
                             else ddlDots_Right[i, j] = new DDLDot(false, newDotPos, newDotTrans, new int[] { i, j });
                         }
