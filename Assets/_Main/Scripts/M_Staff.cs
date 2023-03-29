@@ -12,6 +12,8 @@ namespace IGDF
         public Transform[] staffSlots;
         private int[] inTurnValues = { 0, 0, 0, 0};
         private int deadLine;
+        public GameObject pre_TargetBox;
+        public Transform parent_TargetBoxes;
 
         public void InitializeStaffValues(int[] valueArray)
         {
@@ -111,6 +113,60 @@ namespace IGDF
         public int GetDDLValue()
         {
             return deadLine;
+        }
+
+        public void OpenTargetBoxWithState(int targetStaff, IconCondition targetCondition)
+        {
+            GameObject targetBox = Instantiate(pre_TargetBox, parent_TargetBoxes).gameObject;
+            var boxCollider = staffSlots[targetStaff].GetComponent<BoxCollider2D>();
+            var size = boxCollider.size;
+            var offset = boxCollider.offset;
+
+            var topLeftLocal = offset + new Vector2(-size.x * 0.5f, size.y * 0.5f);
+            var topLeftWorld = boxCollider.transform.TransformPoint(topLeftLocal);
+            var topRightLocal = offset + new Vector2(size.x * 0.5f, size.y * 0.5f);
+            var topRightWorld = boxCollider.transform.TransformPoint(topRightLocal);
+            var bottomLeftLocal = offset + new Vector2(-size.x * 0.5f, -size.y * 0.5f);
+            var bottomLeftWorld = boxCollider.transform.TransformPoint(bottomLeftLocal);
+            var bottomRightLocal = offset + new Vector2(size.x * 0.5f, -size.y * 0.5f);
+            var bottomRightWorld = boxCollider.transform.TransformPoint(bottomRightLocal);
+
+            switch (targetCondition)
+            {
+                case IconCondition.Approved:
+                    ChangeColor(Color.green);
+                    break;
+                case IconCondition.Disapproved:
+                    ChangeColor(Color.red);
+                    break;
+            }
+
+            targetBox.transform.Find("TopLeft").transform.position = topLeftWorld;
+            targetBox.transform.Find("TopRight").transform.position = topRightWorld;
+            targetBox.transform.Find("BottomLeft").transform.position = bottomLeftWorld;
+            targetBox.transform.Find("BottomRight").transform.position = bottomRightWorld;
+
+            void ChangeColor(Color targetColor)
+            {
+                targetBox.transform.Find("TopLeft").GetChild(0).GetComponent<SpriteRenderer>().color = targetColor;
+                targetBox.transform.Find("TopRight").GetChild(0).GetComponent<SpriteRenderer>().color = targetColor;
+                targetBox.transform.Find("BottomLeft").GetChild(0).GetComponent<SpriteRenderer>().color = targetColor;
+                targetBox.transform.Find("BottomRight").GetChild(0).GetComponent<SpriteRenderer>().color = targetColor;
+            }
+        }
+
+        public void DeleteAllTargetBoxes()
+        {
+            List<GameObject> childBoxes = new List<GameObject>();
+            for (int i = 0; i < parent_TargetBoxes.childCount; i++)
+            {
+                childBoxes.Add(parent_TargetBoxes.GetChild(i).gameObject);
+            }
+            foreach (var item in childBoxes)
+            {
+                Destroy(item, 0.1f);
+                item.SetActive(false);
+            }
         }
     }
 }

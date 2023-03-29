@@ -126,15 +126,14 @@ namespace IGDF
                 M_Main.instance.m_Skill.activatedSkill.ExitTargetingState();
                 M_Main.instance.m_Skill.EnterWaitForUseState();
             }
-            else
+            else if (isDraggable && M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse)
             {
                 m_Card.ShowMovableState(transform, targetableType, cardCurrentValue);
                 M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Grabbed);
                 M_Audio.PlaySound(SoundType.SpringStretch);
-          
+                M_Main.instance.m_HoverTip.EnterState(HoverState.CardDragging);
+                CardLayerChangeToAbove();
             }
-            CardLayerChangeToAbove();
-            M_Main.instance.m_HoverTip.EnterState(HoverState.CardDragging);
             GetComponent<O_HoverTip>().SetSelectionBoxState(false);
         }
 
@@ -160,10 +159,10 @@ namespace IGDF
                 m_Card.CardUseOrMoveBack(transform, targetableType, cardCurrentValue);
                 M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Arrow);
                 M_Audio.PlaySound(SoundType.SpringShrink);
-        
+                M_Main.instance.m_HoverTip.EnterState(HoverState.AllActive);
             }
             CardLayerChangeToCommon();
-            M_Main.instance.m_HoverTip.EnterState(HoverState.AllActive);
+  
         }
 
         private void OnMouseExit()

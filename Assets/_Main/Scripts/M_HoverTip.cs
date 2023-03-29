@@ -22,7 +22,7 @@ namespace IGDF {
                 case HoverState.CardDragging:
                     foreach (O_HoverTip tip in hoverTips)
                     {
-                        if (tip.tipType == HoverTipType.Character) tip.ChangeAllowOpenState(false, true);
+                        if (tip.tipType == HoverTipType.Character) tip.ChangeAllowOpenState(false, false);
                         else tip.ChangeAllowOpenState(false, false);
                     }
                     break;

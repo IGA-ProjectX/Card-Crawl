@@ -12,7 +12,7 @@ namespace IGDF
         private IconCondition currentIconCondition = IconCondition.Inactivated;
         private Transform formerBody;
         private Transform behindBody;
-        private float horiMoveDistance = 0.6f;
+        //private float horiMoveDistance = 0.6f;
         private float expandTime = 0.3f;
         private float shrinkTime = 0.1f;
         private SpriteRenderer iconRight;
