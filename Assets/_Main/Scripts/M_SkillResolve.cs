@@ -97,12 +97,13 @@ namespace IGDF
 
         private void Skill_WithdrawOneTask(O_Card targetCard)
         {
+            M_Card.cardUsedNumInTurn++;
             targetCard.CardBackToDeck();
             targetCard.SetDraggableState(false);
             Sequence s = DOTween.Sequence();
             s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.3f);
             //s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
-            s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
+            //s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
         }
 
         private void Skill_ChangeOneCardProfessionRandomly(O_Card targetCard)
@@ -142,7 +143,7 @@ namespace IGDF
             s.AppendCallback(() => targetCard.DestroyCardInScreen());
             s.AppendInterval(0.1f);
             //s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
-            s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
+            //s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
         }
 
         private void Skill_SelectOneNoneExpCardMultitarget(O_Card targetCard)
@@ -190,7 +191,7 @@ namespace IGDF
             s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue(3, targetCard.cardCurrentValue * 2));
             s.AppendCallback(() => targetCard.DestroyCardInScreen());
             s.AppendInterval(0.1f);
-            s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
+            //s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
         }
         private void Skill_Pro_BasicGameEngine(O_Card targetCard)
         {
@@ -200,7 +201,7 @@ namespace IGDF
             targetCard.SetDraggableState(false);
             Sequence s = DOTween.Sequence();
             s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.3f);
-            s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
+            //s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
         }
         private void Skill_Pro_ScriptableObject()
         {
@@ -225,7 +226,7 @@ namespace IGDF
             targetCard.SetDraggableState(false);
             Sequence s = DOTween.Sequence();
             s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.3f);
-            s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
+            //s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
         }
         private void Skill_Pro_DesignPattern()
         {
@@ -245,7 +246,7 @@ namespace IGDF
                 //Sequence s = DOTween.Sequence();
                 //s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.3f);
                 //s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
-                M_Main.instance.m_Card.CheckInTurnCardNumber();
+                //M_Main.instance.m_Card.CheckInTurnCardNumber();
             }
         }
         private void Skill_Pro_Shader()

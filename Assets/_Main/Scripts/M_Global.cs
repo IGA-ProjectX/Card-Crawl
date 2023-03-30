@@ -26,6 +26,7 @@ namespace IGDF
                 instance = this;
                 DontDestroyOnLoad(this);
             }
+            M_Setting.globalVolumeOffset = 1;
             M_Audio.PlaySceneMusic(M_SceneTransition.CabinView.Overview);
         }
 

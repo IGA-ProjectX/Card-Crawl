@@ -56,7 +56,7 @@ namespace IGDF
                 audioSource.loop = true;
                 audioSource.volume = 0;
                 audioSource.Play();
-                DOTween.To(() => audioSource.volume, x => audioSource.volume = x, GetAudioClip(toPlaySoundType).volume, sceneAudioTransitionTime);
+                DOTween.To(() => audioSource.volume, x => audioSource.volume = x, GetAudioClip(toPlaySoundType).volume*M_Setting. globalVolumeOffset, sceneAudioTransitionTime);
                 currentSceneAudio = sceneAudioParent;
 
             }
@@ -67,7 +67,7 @@ namespace IGDF
             GameObject soundGameObject = new GameObject("Sound " + toPlaySoundType);
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
             audioSource.clip = GetAudioClip(toPlaySoundType).audioClip;
-            audioSource.volume = GetAudioClip(toPlaySoundType).volume;
+            audioSource.volume = GetAudioClip(toPlaySoundType).volume * M_Setting.globalVolumeOffset;
             audioSource.Play();
             Object.Destroy(soundGameObject, audioSource.clip.length);
         }
@@ -84,7 +84,7 @@ namespace IGDF
             GameObject soundGameObject = new GameObject("Sound " + toPlaySoundType);
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
             audioSource.clip = GetAudioClip(toPlaySoundType).audioClip;
-            audioSource.volume = GetAudioClip(toPlaySoundType).volume;
+            audioSource.volume = GetAudioClip(toPlaySoundType).volume * M_Setting.globalVolumeOffset;
             audioSource.Play();
             Sequence s = DOTween.Sequence();
             s.AppendInterval(time);
@@ -92,9 +92,11 @@ namespace IGDF
             Object.Destroy(soundGameObject, audioSource.clip.length);
         }
 
-        public static void GlobalVolumeChange()
+        public static void GlobalVolumeChange(float offest)
         {
-
+            AudioSource[] exsitingAudios = currentSceneAudio.GetComponentsInChildren<AudioSource>();
+            foreach (AudioSource audio in exsitingAudios)
+                audio.volume = GetAudioVolume(audio.clip) * M_Setting.globalVolumeOffset;
         }
 
         private static SoundAudioClip GetAudioClip(SoundType toPlaySoundType)
@@ -129,6 +131,40 @@ namespace IGDF
             }
             Debug.LogError("Sound " + toPlaySoundType + " not Found");
             return null;
+        }
+
+        private static float GetAudioVolume(AudioClip toGetClip)
+        {
+            foreach (SoundAudioClip soundAudioClip in M_Global.instance.repository.bgMusics)
+            {
+                if (soundAudioClip.audioClip == toGetClip)
+                {
+                    return soundAudioClip.volume;
+                }
+            }
+            foreach (SoundAudioClip soundAudioClip in M_Global.instance.repository.studioClips)
+            {
+                if (soundAudioClip.audioClip == toGetClip)
+                {
+                    return soundAudioClip.volume;
+                }
+            }
+            foreach (SoundAudioClip soundAudioClip in M_Global.instance.repository.openPageClips)
+            {
+                if (soundAudioClip.audioClip == toGetClip)
+                {
+                    return soundAudioClip.volume;
+                }
+            }
+            foreach (SoundAudioClip soundAudioClip in M_Global.instance.repository.uiClips)
+            {
+                if (soundAudioClip.audioClip == toGetClip)
+                {
+                    return soundAudioClip.volume;
+                }
+            }
+            Debug.LogError("Sound " + toGetClip + " not Found");
+            return 1;
         }
     }
 }

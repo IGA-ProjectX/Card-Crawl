@@ -16,6 +16,7 @@ namespace IGDF
         [HideInInspector] public bool isToPro = false;
         public GameObject pre_CardSlider;
         public Transform outScreenJoint;
+        public static int cardUsedNumInTurn;
 
         public void InitializeDeck(SO_Level deckData)
         {
@@ -157,51 +158,47 @@ namespace IGDF
                         s.Append(cardTrans.DOMove(targetPos, 0.2f));
                         s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
                         s.AppendCallback(() => M_Main.instance.m_Staff.ChangeDeadLineValue(cardValue));
-                        s.AppendCallback(() => CheckInTurnCardNumber());
+                        //s.AppendCallback(() => CheckInTurnCardNumber());
                         s.AppendInterval(0.8f);
-                        s.AppendCallback(() => Debug.Log("dsadaasdasddas"));
                         s.AppendCallback(() => M_Main.instance.m_DDL.DDLSlotChangeTo(SlotCondition.Shrinked));
 
                         cardTrans.GetComponent<O_Card>().SetLineStateAuto();
                         isUsed = true;
                     }
-                    else
+                    else if (M_Main.instance.m_Staff.GetStaffValue((int)targetType) >= -cardValue)
                     {
-                        if (M_Main.instance.m_Staff.GetStaffValue((int)targetType) >= -cardValue)
-                        {
-                            Sequence s = DOTween.Sequence();
-                            s.Append(cardTrans.DOMove(targetPos, 0.2f));
-                            s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
-                            s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue((int)targetType, cardValue));
-                            s.AppendCallback(() => CheckInTurnCardNumber());
-                            s.AppendInterval(0.8f);
-                            s.AppendCallback(() => M_Main.instance.m_DDL.DDLSlotChangeTo(SlotCondition.Shrinked));
+                        Sequence s = DOTween.Sequence();
+                        s.Append(cardTrans.DOMove(targetPos, 0.2f));
+                        s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
+                        s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue((int)targetType, cardValue));
+                        //s.AppendCallback(() => CheckInTurnCardNumber());
+                        s.AppendInterval(0.8f);
+                        s.AppendCallback(() => M_Main.instance.m_DDL.DDLSlotChangeTo(SlotCondition.Shrinked));
 
-                            cardTrans.GetComponent<O_Card>().SetLineStateAuto();
-                            isUsed = true;
-                        }
+                        cardTrans.GetComponent<O_Card>().SetLineStateAuto();
+                        isUsed = true;
                     }
-           
                 }
             }
             if (!isUsed) cardTrans.DOMove(cardTrans.parent.Find("Card Pivot").position + new Vector3(0, 0, 0.2f), 0.3f);
+            else cardUsedNumInTurn++;
             M_Main.instance.m_Staff.DeleteAllTargetBoxes();
         }
 
 #endregion
 
-        public void CheckInTurnCardNumber()
-        {
-            int nullCount = 0;
-            foreach (Transform transform in cardsInTurn)
-            {
-               if(transform == null) nullCount++;
-            }
-            if (nullCount>=3)
-            {
-                StartCoroutine(TurnEnd());
-            }
-        }
+        //public void CheckInTurnCardNumber()
+        //{
+        //    int nullCount = 0;
+        //    foreach (Transform transform in cardsInTurn)
+        //    {
+        //       if(transform == null) nullCount++;
+        //    }
+        //    if (nullCount>=3)
+        //    {
+        //        StartCoroutine(TurnEnd());
+        //    }
+        //}
 
         public IEnumerator TurnEnd()
         {
@@ -370,6 +367,20 @@ namespace IGDF
             cardTrans.parent.Find("Clipper").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
             cardTrans.parent.Find("Handler").GetComponent<LineRenderer>().sortingOrder += cardModifyOffsetedAmount;
             cardTrans.parent.Find("Handler").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
+        }
+
+        public void DetectTurnEndCondition()
+        {
+            if (cardUsedNumInTurn == 3)
+            {
+                StartCoroutine(TurnEnd());
+                cardUsedNumInTurn = 0;
+            }
+            else if (cardUsedNumInTurn > 0 && inGameDeck.Count == 0 && cardsInTurn.Count == 0)
+            {
+                StartCoroutine(TurnEnd());
+                cardUsedNumInTurn = 0;
+            }
         }
     }
 }

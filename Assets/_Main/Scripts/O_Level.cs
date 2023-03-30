@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace IGDF
 {
@@ -12,48 +13,38 @@ namespace IGDF
         SO_Level thisLevel;
         int levelIndex;
         TMP_Text levelName;
-        SpriteRenderer levelBG;
+        Image levelCover;
+        Image levelLock;
+        Button thisButton;
 
         public void InitializeLevelObj(SO_Level targetLevel,int targetIndex)
         {
-            levelName = transform.Find("Level Name").GetComponent<TMP_Text>();
+            levelName = transform.Find("Mask").Find("Level Name").GetComponent<TMP_Text>();
+            levelCover = transform.Find("Mask").Find("Level Cover").GetComponent<Image>();
+            levelLock = transform.Find("Mask").Find("Level Lock").GetComponent<Image>();
+            thisButton = transform.Find("Frame").GetComponent<Button>();
             if (targetLevel != null)
             {
                 thisLevel = targetLevel;
-                transform.Find("Level BG").GetComponent<SpriteRenderer>().sprite = thisLevel.levelButtonImage;
+                levelCover.sprite = thisLevel.levelButtonImage;
                 levelName.text = thisLevel.levelName;
+                levelLock.CrossFadeAlpha(0, 0, true);
             }
             else
             {
                 levelName.text = "Unlocked";
+                levelCover.CrossFadeAlpha(0, 0, true);
+                thisButton.enabled = false;
             }
         }
 
-        private void OnMouseDown()
-        {
-                EnterLevel(levelIndex);
-        }
-
-        void EnterLevel(int levelIndex)
+        public void EnterLevel()
         {
             M_Global.instance.targetLevel = levelIndex;
             Sequence s = DOTween.Sequence();
-            s.AppendCallback(() => LoadStudio());
+            s.AppendCallback(() => SceneManager.LoadScene(1, LoadSceneMode.Additive));
             s.AppendCallback(() => FindObjectOfType<M_SceneTransition>().EnterCurrentCabin());
-            //s.Append(GameObject.Find("Canvas").transform.Find("Level Selection").DOScale(0, 0.4f));
-
-
-            void LoadStudio()
-            {
-                SceneManager.LoadScene(1, LoadSceneMode.Additive);
-            }
-        }
-
-        public void ChangeTransparency(float targetValue, float time)
-        {
-            levelBG.DOFade(targetValue, time);
-            DOTween.To(() => levelName.alpha, x => levelName.alpha = x, targetValue, time);
-            //DOTween.To(() => levelBG.co, x => levelName.alpha = x, 0, 0.2f);
+            s.Append(GameObject.Find("Canvas").transform.Find("Level Selection").DOScale(0, 0.4f));
         }
     }
 }

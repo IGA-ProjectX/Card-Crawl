@@ -160,9 +160,8 @@ namespace IGDF
                 M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Arrow);
                 M_Audio.PlaySound(SoundType.SpringShrink);
                 M_Main.instance.m_HoverTip.EnterState(HoverState.AllActive);
+                CardLayerChangeToCommon();
             }
-            CardLayerChangeToCommon();
-  
         }
 
         private void OnMouseExit()
@@ -174,6 +173,7 @@ namespace IGDF
         public void DestroyCardOutScene(float destroyTime)
         {
             M_Main.instance.m_Card.cardsInTurn[inSlotIndex] = null;
+            M_Main.instance.m_Card.DetectTurnEndCondition();
             M_Main.instance.CheckDevCircumstance();
             Destroy(gameObject, destroyTime);
         }
@@ -182,6 +182,7 @@ namespace IGDF
         {
             transform.SetParent(null);
             M_Main.instance.m_Card.cardsInTurn[inSlotIndex] = null;
+            M_Main.instance.m_Card.DetectTurnEndCondition();
             transform.DOScale(0, 0.6f);
             transform.DORotate(new Vector3(0,0,180), 0.8f);
             M_Main.instance.CheckDevCircumstance();
