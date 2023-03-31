@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: D_SuperMario
   m_EditorClassIdentifier: 
   levelType: 2
-  levelName: Super Mario
+  levelNameChi: "\u8D85\u7EA7\u5A1C\u91CC\u5965"
+  levelNameEng: Super Nario
   staffValue: 0000000022000000160000002c00000007000000
-  levelButtonImage: {fileID: 21300000, guid: 8a4d8aa046182d746abd7e8ae31e6dc3, type: 3}
+  levelButtonImage: {fileID: 21300000, guid: 0198f36411a1bda4b9c767d657dd149d, type: 3}
   cards_Production:
   - cardType: 0
     cardOutNE: 

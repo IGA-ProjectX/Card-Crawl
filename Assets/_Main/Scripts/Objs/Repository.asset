@@ -41,6 +41,66 @@ MonoBehaviour:
   gameNameImages:
   - {fileID: 21300000, guid: a87f40c458cdf454dab95d69bf4a108f, type: 3}
   - {fileID: 21300000, guid: 613d5c0f122dac546bb5f3aa685ee113, type: 3}
+  orangeColor: {r: 0.8490566, g: 0.618616, b: 0.36445355, a: 1}
+  characterInfos:
+  - type: 0
+    nameEng: Producer
+    desEng: As a game producer, you will be responsible for coordinating the game
+      development team and ensuring that the project is completed on time, within
+      budget and to the highest quality standards. You will be the key point of contact
+      between the development team, management and stakeholders, and will ensure
+      that everyone is working towards the same vision and goals.
+    nameChi: "\u5236\u4F5C\u4EBA"
+    desChi: "\u4F5C\u4E3A\u6E38\u620F\u5236\u4F5C\u4EBA\uFF0C\u4F60\u5C06\u8D1F\u8D23\u534F\u8C03\u6E38\u620F\u5F00\u53D1\u56E2\u961F\uFF0C\u786E\u4FDD\u9879\u76EE\u6309\u65F6\u3001\u6309\u9884\u7B97\u548C\u6309\u6700\u9AD8\u8D28\u91CF\u6807\u51C6\u5B8C\u6210\u3002\u4F60\u5C06\u662F\u5F00\u53D1\u56E2\u961F\u3001\u7BA1\u7406\u5C42\u548C\u5229\u76CA\u76F8\u5173\u8005\u4E4B\u95F4\u7684\u5173\u952E\u8054\u7CFB\u4EBA\uFF0C\u5E76\u786E\u4FDD\u6BCF\u4E2A\u4EBA\u90FD\u671D\u7740\u76F8\u540C\u7684\u613F\u666F\u548C\u76EE\u6807\u52AA\u529B\u3002"
+  - type: 1
+    nameEng: Designer
+    desEng: As a game designer, you will be responsible for designing the gameplay
+      and systems of the game, including mechanics, rules, and progression systems.
+      You will work closely with the development team to ensure that the game is
+      engaging, balanced, and fun to play. You will also be responsible for analyzing
+      user feedback and making adjustments to the game design as needed.
+    nameChi: "\u8BBE\u8BA1\u5E08"
+    desChi: "\u4F5C\u4E3A\u4E00\u540D\u6E38\u620F\u8BBE\u8BA1\u5E08\uFF0C\u4F60\u5C06\u8D1F\u8D23\u8BBE\u8BA1\u6E38\u620F\u7684\u73A9\u6CD5\u548C\u7CFB\u7EDF\uFF0C\u5305\u62EC\u673A\u5236\u3001\u89C4\u5219\u548C\u8FDB\u5EA6\u7CFB\u7EDF\u3002\u4F60\u5C06\u4E0E\u5F00\u53D1\u56E2\u961F\u5BC6\u5207\u5408\u4F5C\uFF0C\u786E\u4FDD\u6E38\u620F\u5177\u6709\u5438\u5F15\u529B\u3001\u5E73\u8861\u6027\u548C\u5A31\u4E50\u6027\u3002\u4F60\u8FD8\u5C06\u8D1F\u8D23\u5206\u6790\u7528\u6237\u53CD\u9988\u5E76\u6839\u636E\u9700\u8981\u8C03\u6574\u6E38\u620F\u8BBE\u8BA1\u3002"
+  - type: 2
+    nameEng: Artist
+    desEng: As a game artist, you will be responsible for creating and designing
+      the visual elements of the game, including characters, environments, props,
+      and special effects. You will work closely with the game development team to
+      ensure that the visual style is consistent with the game design and that the
+      overall aesthetic is appealing to the target audience.
+    nameChi: "\u827A\u672F\u5BB6"
+    desChi: "\u4F5C\u4E3A\u4E00\u540D\u6E38\u620F\u7F8E\u672F\u8BBE\u8BA1\u5E08\uFF0C\u4F60\u5C06\u8D1F\u8D23\u521B\u5EFA\u548C\u8BBE\u8BA1\u6E38\u620F\u7684\u89C6\u89C9\u5143\u7D20\uFF0C\u5305\u62EC\u89D2\u8272\u3001\u73AF\u5883\u3001\u9053\u5177\u548C\u7279\u6548\u3002\u4F60\u5C06\u4E0E\u6E38\u620F\u5F00\u53D1\u56E2\u961F\u5BC6\u5207\u5408\u4F5C\uFF0C\u786E\u4FDD\u89C6\u89C9\u98CE\u683C\u4E0E\u6E38\u620F\u8BBE\u8BA1\u4E00\u81F4\uFF0C\u5E76\u4E14\u6574\u4F53\u7F8E\u5B66\u5438\u5F15\u76EE\u6807\u53D7\u4F17\u3002"
+  - type: 3
+    nameEng: Programmer
+    desEng: As a game programmer, you will be responsible for implementing the game
+      features and systems, including gameplay mechanics, AI, networking, and graphics.
+      You will work closely with the game development team to ensure that the game
+      runs smoothly and that all features are implemented on time and within budget.
+    nameChi: "\u7A0B\u5E8F\u5458"
+    desChi: "\u4F5C\u4E3A\u4E00\u540D\u6E38\u620F\u7A0B\u5E8F\u5458\uFF0C\u4F60\u5C06\u8D1F\u8D23\u5B9E\u73B0\u6E38\u620F\u7684\u529F\u80FD\u548C\u7CFB\u7EDF\uFF0C\u5305\u62EC\u6E38\u620F\u673A\u5236\u3001\u4EBA\u5DE5\u667A\u80FD\u3001\u7F51\u7EDC\u548C\u56FE\u5F62\u3002\u4F60\u5C06\u4E0E\u6E38\u620F\u5F00\u53D1\u56E2\u961F\u5BC6\u5207\u5408\u4F5C\uFF0C\u786E\u4FDD\u6E38\u620F\u8FD0\u884C\u987A\u7545\uFF0C\u5E76\u5728\u9884\u7B97\u548C\u65F6\u95F4\u8303\u56F4\u5185\u5B9E\u73B0\u6240\u6709\u529F\u80FD\u3002"
+  hoverTipInfos:
+  - type: 2
+    nameEng: Deadline Machine
+    desEng: Deadline Machine displays the remaining days you have to complete your
+      game project. If you let the timer reach zero, your game development will fail!
+      Additionally, you can drag task cards onto the Deadline Machine to outsource
+      your work, but be aware that using task cards like this will deduct DDL points
+      equal to the value of the card.
+    nameChi: "\u6B7B\u7EBF\u673A\u5668"
+    desChi: "\u6B7B\u7EBF\u673A\u5668\u4F1A\u663E\u793A\u4F60\u5B8C\u6210\u6E38\u620F\u9879\u76EE\u7684\u5269\u4F59\u5929\u6570\u3002\u5982\u679C\u4F60\u8BA9\u8BA1\u65F6\u5668\u5F52\u96F6\uFF0C\u4F60\u7684\u6E38\u620F\u5F00\u53D1\u5C06\u4F1A\u5931\u8D25\uFF01\u540C\u65F6\uFF0C\u4F60\u53EF\u4EE5\u5C06\u4EFB\u52A1\u5361\u62FD\u81F3\u622A\u81F3\u65E5\u671F\u673A\u5668\u6765\u5916\u5305\u5DE5\u4F5C\uFF0C\u53EA\u662F\u8981\u6CE8\u610F\u8FD9\u6837\u4F1A\u6263\u9664\u4E0E\u4EFB\u52A1\u5361\u6570\u503C\u76F8\u7B49\u7684DDL\u70B9\u6570\uFF01"
+  - type: 3
+    nameEng: Skill Rack
+    desEng: The development team's skill rack has four adorable skill robots with
+      bright, shiny eyes! Simply left-click on their eyes to activate a skill. If
+      you want to cancel the skill, right-click will do the trick! Just keep in mind
+      that each skill can only be used once~
+    nameChi: "\u6280\u80FD\u722C\u67B6"
+    desChi: "\u5F00\u53D1\u7EC4\u7684\u6280\u80FD\u722C\u67B6\u4E0A\u6709\u56DB\u4E2A\u53EF\u7231\u7684\u6280\u80FD\u5C0F\u673A\u5668\u4EBA\uFF0C\u4ED6\u4EEC\u7684\u773C\u7403\u95EA\u95EA\u53D1\u5149\uFF01\u53EA\u9700\u8981\u5DE6\u952E\u70B9\u51FB\u4ED6\u4EEC\u7684\u773C\u7403\uFF0C\u5C31\u80FD\u4F7F\u7528\u6280\u80FD\u5566\uFF01\u5982\u679C\u4F60\u60F3\u53D6\u6D88\u6280\u80FD\uFF0C\u53F3\u952E\u5C31\u53EF\u4EE5\u5566\uFF01\u6BCF\u4E2A\u6280\u80FD\u53EA\u80FD\u4F7F\u7528\u4E00\u6B21\u54E6~"
+  - type: 6
+    nameEng: 
+    desEng: 
+    nameChi: "\u4EFB\u52A1\u6307\u793A\u724C"
+    desChi: "\u5B83\u4F1A\u663E\u793A\u5F53\u524D\u6E38\u620F\u5F00\u53D1\u8FD8\u9700\u8981\u5B8C\u6210\u591A\u5C11\u4EFB\u52A1\u5361\u3002\u5F53\u6240\u6709\u4EFB\u52A1\u90FD\u5B8C\u6210\u540E\uFF0C\u4F60\u7684\u6E38\u620F\u5C31\u53EF\u4EE5\u6210\u529F\u4E0A\u7EBF\u5566\uFF01"
   bgMusics:
   - soundType: 9
     audioClip: {fileID: 8300000, guid: 3160e7645ff70904c923fe34209ce41b, type: 3}

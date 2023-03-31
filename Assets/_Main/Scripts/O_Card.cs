@@ -99,7 +99,15 @@ namespace IGDF
         public void ChangeCardValue(int targetValue)
         {
             cardCurrentValue = targetValue;
-            transform.Find("Card Value").GetComponent<TMP_Text>().text = cardCurrentValue.ToString();
+            TMP_Text valueText = transform.Find("Card Value").GetComponent<TMP_Text>();
+
+            Sequence s = DOTween.Sequence();
+            s.Append(valueText.transform.DOScale(1.2f, 0.3f));
+            s.Append(valueText.DOColor(M_Global.instance.repository.orangeColor, 0.2f));
+            s.AppendCallback(() => valueText.text = cardCurrentValue.ToString());
+            s.Append(valueText.transform.DOScale(1f, 0.3f));
+            s.Append(valueText.DOColor(Color.white, 0.2f));
+            //transform.Find("Card Value").GetComponent<TMP_Text>().text = cardCurrentValue.ToString();
         }
 
         public void SetDraggableState(bool isForDrag)

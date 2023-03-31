@@ -16,6 +16,7 @@ namespace IGDF
         Image levelCover;
         Image levelLock;
         Button thisButton;
+        bool isLocked = false;
 
         public void InitializeLevelObj(SO_Level targetLevel,int targetIndex)
         {
@@ -27,14 +28,33 @@ namespace IGDF
             {
                 thisLevel = targetLevel;
                 levelCover.sprite = thisLevel.levelButtonImage;
-                levelName.text = thisLevel.levelName;
+                if (M_Global.instance.GetLanguage() == SystemLanguage.English) levelName.text = thisLevel.levelNameEng;
+                else levelName.text = thisLevel.levelNameChi;
+
                 levelLock.CrossFadeAlpha(0, 0, true);
+                isLocked = false;
             }
             else
             {
                 levelName.text = "Unlocked";
                 levelCover.CrossFadeAlpha(0, 0, true);
                 thisButton.enabled = false;
+                isLocked = true;
+            }
+            levelIndex = targetIndex;
+        }
+
+        public void UpdateNameLanguage()
+        {
+            if (isLocked)
+            {
+                if (M_Global.instance.GetLanguage() == SystemLanguage.English) levelName.text = "Locked";
+                else levelName.text = "Î´½âËø";
+            }
+            else
+            {
+                if (M_Global.instance.GetLanguage() == SystemLanguage.English) levelName.text = thisLevel.levelNameEng;
+                else levelName.text = thisLevel.levelNameChi;
             }
         }
 

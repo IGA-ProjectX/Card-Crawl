@@ -13,26 +13,46 @@ namespace IGDF
         private RectMask2D mask_Language;
         public static float globalVolumeOffset;
 
+        private TMP_Text t_Start;
+        private TMP_Text t_Exit;
+        private TMP_Text t_Credits;
+        private TMP_Text t_Setting;
+
         private void Start()
         {
             mask_Language = transform.Find("Language").Find("Capsule").Find("Rect Mask").GetComponent<RectMask2D>();
+            t_Start = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Start Game").GetComponent<TMP_Text>();
+            t_Exit = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Exit").GetComponent<TMP_Text>();
+            t_Credits = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Credits").GetComponent<TMP_Text>();
+            t_Setting = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Setting").GetComponent<TMP_Text>();
         }
 
         void LanguageUpdate(SystemLanguage targetLanguage)
         {
             TMP_Text t_ResetProgress = transform.Find("B_ResetProgress").Find("Text").GetComponent<TMP_Text>();
             SpriteRenderer i_GameName = GameObject.Find("Game Name").GetComponent<SpriteRenderer>();
+            TMP_Text t_ExpTitle = transform.Find("Exp").Find("T_ExpTitle").GetComponent<TMP_Text>();
 
             switch (targetLanguage)
             {
                 case SystemLanguage.Chinese:
                     M_Global.instance.SetLanguage(SystemLanguage.Chinese);
                     t_ResetProgress.text = "重置进度";
+                    t_ExpTitle.text = "当前经验：";
+                    t_Start.text = "开始";
+                    t_Exit.text = "退出";
+                    t_Credits.text = "开发者名单";
+                    t_Setting.text = "设置";
                     i_GameName.sprite = M_Global.instance.repository.gameNameImages[1];
                     break;
                 case SystemLanguage.English:
                     M_Global.instance.SetLanguage(SystemLanguage.English);
                     t_ResetProgress.text = "Reset Progress";
+                    t_ExpTitle.text = "Current EXP:";
+                    t_Start.text = "Start";
+                    t_Exit.text = "Exit";
+                    t_Credits.text = "Credits";
+                    t_Setting.text = "Setting";
                     i_GameName.sprite = M_Global.instance.repository.gameNameImages[0];
                     break;
             }
@@ -40,7 +60,13 @@ namespace IGDF
 
         public void ClickClose()
         {
-            transform.DOScale(Vector3.zero, 1);
+            transform.DOScale(Vector3.zero, 0.4f);
+        }
+
+        public void OpenSettingPanel()
+        {
+            UpdateCurrentExp();
+            transform.DOScale(Vector3.one, 0.4f);
         }
 
         public void ClickResetProgress()
@@ -72,7 +98,7 @@ namespace IGDF
 
         public void UpdateCurrentExp()
         {
-            transform.Find("T_Exp").GetComponent<TMPro.TMP_Text>().text = "Current Exp: " + M_Global.instance.mainData.playExp;
+            transform.Find("Exp").Find("T_ExpValue").GetComponent<TMP_Text>().text = M_Global.instance.mainData.playExp.ToString();
         }
 
         public void GlobalVolumeChange()

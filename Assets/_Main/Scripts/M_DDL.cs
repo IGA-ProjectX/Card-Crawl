@@ -15,7 +15,7 @@ namespace IGDF
         private DDLDot[,] ddlDots_Right;
         private Dictionary<int, List<int[]>> numberIndexList = new Dictionary<int, List<int[]>>();
 
-        #region
+        #region Window
         private Transform leftWindow;
         private Transform rightWindow;
         private float horiMoveDistance = 0.66f;
@@ -327,6 +327,22 @@ namespace IGDF
             }
         }
         #endregion
+
+        public void UpdateName()
+        {
+            if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese)
+            {
+                ddlMachine.Find("T_DDL").GetComponent<TMPro.TMP_Text>().text = "死线";
+                ddlMachine.parent.Find("Skill Board").Find("T_Skill").GetComponent<TMPro.TMP_Text>().text = "技能";
+                ddlMachine.parent.Find("Residue Card Counter").Find("T_ResidueTitle").GetComponent<TMPro.TMP_Text>().text = "剩余任务";
+            }
+            else 
+            {
+                ddlMachine.Find("T_DDL").GetComponent<TMPro.TMP_Text>().text = "DDL";
+                ddlMachine.parent.Find("Skill Board").Find("T_Skill").GetComponent<TMPro.TMP_Text>().text = "Skill";
+                ddlMachine.parent.Find("Residue Card Counter").Find("T_ResidueTitle").GetComponent<TMPro.TMP_Text>().text = "Residue Task Number";
+            }
+        }
     }
 
     public class DDLDot

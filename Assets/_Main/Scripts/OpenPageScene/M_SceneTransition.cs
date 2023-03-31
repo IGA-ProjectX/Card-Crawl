@@ -14,10 +14,13 @@ namespace IGDF
         public Transform[] cars;
         private float transitionTime = 2;
         public Transform windContainer;
+        public GameObject p_ResultFail;
+        public GameObject p_ResultSteam;
 
         public void EnterCabinView(CabinView targetCabin)
         {
             FindObjectOfType<M_Button>().EnterButtonState(M_Button.ButtonState.Train);
+      
             switch (targetCabin)
             {
                 case CabinView.Overview:
@@ -26,7 +29,7 @@ namespace IGDF
                     FindObjectOfType<M_Button>().EnterButtonState(M_Button.ButtonState.Overview);
                     break;
                 case CabinView.Studio:
-                    DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime);
+                    BackToCabinView();
                     WindDepthChange("Car");
                     Camera.main.transform.DOMoveX(0, transitionTime);
                     transform.Find("Train").Find("Plat_SS").Find("Button").DORotate(Vector3.zero, transitionTime/2);
@@ -34,14 +37,14 @@ namespace IGDF
                     currentView = CabinView.Studio;
                     break;
                 case CabinView.Skill:
-                    DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime);
+                    BackToCabinView();
                     WindDepthChange("Car");
                     Camera.main.transform.DOMoveX(-32f, transitionTime);
                     transform.Find("Train").Find("Plat_SS").Find("Button").DORotate(new Vector3(0, 0, 180), transitionTime/2);
                     currentView = CabinView.Skill;
                     break;
                 case CabinView.Website:
-                    DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime);
+                    BackToCabinView();
                     WindDepthChange("Car");
                     Camera.main.transform.DOMoveX(32f, transitionTime);
                     transform.Find("Train").Find("Plat_SW").Find("Button").DORotate(new Vector3(0, 0, 180), transitionTime/2);
@@ -53,6 +56,7 @@ namespace IGDF
         public void EnterCurrentCabin()
         {
             FindObjectOfType<M_Button>().EnterButtonState(M_Button.ButtonState.InCar);
+            ReturnOverviewScaleChangeTo(0);
             DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 5.1f, transitionTime);
             WindDepthChange("InRoom");
             M_Audio.PlayFixedTimeSound(SoundType.ShutterDoor, transitionTime);
@@ -64,6 +68,8 @@ namespace IGDF
                     s.AppendInterval(transitionTime);
                     //s.AppendCallback(() => TransitToRoomState());
                     s.AppendCallback(() => M_Main.instance.GameStart());
+                    s.AppendCallback(() => p_ResultSteam.SetActive(true));
+                    s.AppendCallback(() => p_ResultFail.SetActive(true));
                     currentView = CabinView.InStudio;
                     M_Audio.PlaySceneMusic(CabinView.InStudio);
                     break;
@@ -91,7 +97,7 @@ namespace IGDF
         public void ExitCurrentCabin()
         {
             FindObjectOfType<M_Button>().EnterButtonState(M_Button.ButtonState.Train);
-            DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime);
+            BackToCabinView();
             WindDepthChange("Car");
             M_Audio.PlayFixedTimeSound(SoundType.ShutterDoor, transitionTime);
             switch (currentView)
@@ -101,10 +107,12 @@ namespace IGDF
                     Transform panelToScaleDown;
                     if (M_Main.instance.isGameFinished) panelToScaleDown = GameObject.Find("Canvas").transform.Find("Result Steam");
                     else panelToScaleDown = GameObject.Find("Canvas").transform.Find("Result Fail");
-                    Sequence s = DOTween.Sequence();
-                    s.Append(panelToScaleDown.DOScale(0, 0.4f));
-                    s.Append(cars[0].Find("Car Door").DOMoveY(cars[0].Find("Car Door").position.y - 12, transitionTime));
-                    s.AppendCallback(() => FindObjectOfType<M_LevelUI>().RemoveExistingStudioScene());
+                    Sequence ss = DOTween.Sequence();
+                    ss.Append(panelToScaleDown.DOScale(0, 0.4f));
+                    ss.AppendCallback(() => p_ResultSteam.SetActive(false));
+                    ss.AppendCallback(() => p_ResultFail.SetActive(false));
+                    ss.Append(cars[0].Find("Car Door").DOMoveY(cars[0].Find("Car Door").position.y - 12, transitionTime));
+                    ss.AppendCallback(() => SceneManager.UnloadSceneAsync(1));
                     currentView = CabinView.Studio;
                     break;
                 case CabinView.InSkill:
@@ -142,6 +150,26 @@ namespace IGDF
             }
             windContainer.DOMoveY(windYpos, transitionTime);
             windContainer.DOScale(windScale, transitionTime);
+        }
+
+        public void BackToOverview()
+        {
+            EnterCabinView(CabinView.Overview);
+            ReturnOverviewScaleChangeTo(0);
+            Camera.main.transform.DOMoveX(0, transitionTime);
+        }
+
+        public void BackToCabinView()
+        {
+            Sequence s = DOTween.Sequence();
+            s.AppendCallback(() => DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11f, transitionTime));
+            s.AppendInterval(transitionTime);
+            s.AppendCallback(() => ReturnOverviewScaleChangeTo(1));
+        }
+
+        void ReturnOverviewScaleChangeTo(float targetScale)
+        {
+            GameObject.Find("Canvas").transform.Find("B_ReturnToOverview").DOScale(targetScale, 0.4f);
         }
     }
 }

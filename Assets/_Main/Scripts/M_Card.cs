@@ -17,6 +17,8 @@ namespace IGDF
         public GameObject pre_CardSlider;
         public Transform outScreenJoint;
         public static int cardUsedNumInTurn;
+        public static int residueTaskNum;
+        public TMPro.TMP_Text t_ResidueTaskCounter;
 
         public void InitializeDeck(SO_Level deckData)
         {
@@ -26,6 +28,8 @@ namespace IGDF
             foreach (Card card in deckData.cards_Art) tempList.Add(card);
             foreach (Card card in deckData.cards_Code) tempList.Add(card);
             ShuffleDeck(tempList);
+            foreach (Card card in tempList) if (card.cardValue < 0) residueTaskNum++;
+            t_ResidueTaskCounter.text = residueTaskNum.ToString();
         }
 
         public void ShuffleDeck(List<Card> deckToShuffle)
@@ -181,24 +185,18 @@ namespace IGDF
                 }
             }
             if (!isUsed) cardTrans.DOMove(cardTrans.parent.Find("Card Pivot").position + new Vector3(0, 0, 0.2f), 0.3f);
-            else cardUsedNumInTurn++;
+            else
+            {
+                if (cardValue<0)
+                {
+                    ResidueCardNumberDecrease();
+                }
+                cardUsedNumInTurn++;
+            }
             M_Main.instance.m_Staff.DeleteAllTargetBoxes();
         }
 
 #endregion
-
-        //public void CheckInTurnCardNumber()
-        //{
-        //    int nullCount = 0;
-        //    foreach (Transform transform in cardsInTurn)
-        //    {
-        //       if(transform == null) nullCount++;
-        //    }
-        //    if (nullCount>=3)
-        //    {
-        //        StartCoroutine(TurnEnd());
-        //    }
-        //}
 
         public IEnumerator TurnEnd()
         {
@@ -381,6 +379,12 @@ namespace IGDF
                 StartCoroutine(TurnEnd());
                 cardUsedNumInTurn = 0;
             }
+        }
+
+        public void ResidueCardNumberDecrease()
+        {
+            residueTaskNum--;
+            t_ResidueTaskCounter.text = residueTaskNum.ToString();
         }
     }
 }

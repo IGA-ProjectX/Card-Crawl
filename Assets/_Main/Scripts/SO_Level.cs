@@ -8,7 +8,8 @@ namespace IGDF
     public class SO_Level : ScriptableObject
     {
         public LevelType levelType;
-        public string levelName;
+        public string levelNameChi;
+        public string levelNameEng;
         public int[] staffValue;
         public Sprite levelButtonImage;
         [Header("Deck")]

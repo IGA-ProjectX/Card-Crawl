@@ -6,7 +6,7 @@ using TMPro;
 
 namespace IGDF
 {
-    public enum HoverTipType { Card, Skill, DDLMachine, SkillMachine ,SkillParent,Character}
+    public enum HoverTipType { Card, Skill, DDLMachine, SkillMachine ,SkillParent,Character,ResidueTask}
     public class O_HoverTip : MonoBehaviour
     {
         public HoverTipType tipType;
@@ -43,14 +43,15 @@ namespace IGDF
                 var boxCollider = GetComponent<BoxCollider2D>();
                 var size = boxCollider.size;
                 var offset = boxCollider.offset;
+                float sizeOffset = 0.15f;
 
-                var topLeftLocal = offset + new Vector2(-size.x * 0.5f, size.y * 0.5f);
+                var topLeftLocal = offset + new Vector2(-size.x * 0.5f, size.y * 0.5f) + new Vector2(sizeOffset, -sizeOffset);
                 var topLeftWorld = transform.TransformPoint(topLeftLocal);
-                var topRightLocal = offset + new Vector2(size.x * 0.5f, size.y * 0.5f);
+                var topRightLocal = offset + new Vector2(size.x * 0.5f, size.y * 0.5f) + new Vector2(-sizeOffset, -sizeOffset);
                 var topRightWorld = transform.TransformPoint(topRightLocal);
-                var bottomLeftLocal = offset + new Vector2(-size.x * 0.5f, -size.y * 0.5f);
+                var bottomLeftLocal = offset + new Vector2(-size.x * 0.5f, -size.y * 0.5f) + new Vector2(sizeOffset, sizeOffset);
                 var bottomLeftWorld = transform.TransformPoint(bottomLeftLocal);
-                var bottomRightLocal = offset + new Vector2(size.x * 0.5f, -size.y * 0.5f);
+                var bottomRightLocal = offset + new Vector2(size.x * 0.5f, -size.y * 0.5f) + new Vector2(-sizeOffset, sizeOffset);
                 var bottomRightWorld = transform.TransformPoint(bottomRightLocal);
 
                 selectionBox.SetActive(true);
@@ -130,14 +131,24 @@ namespace IGDF
                         SetTipDescription(GetComponent<O_Skill>().skillData.skillDescriptionEng);
                         break;
                     case HoverTipType.DDLMachine:
+                        SetTipName(GetHoverTipInfo(HoverTipType.DDLMachine).nameEng);
+                        SetTipDescription(GetHoverTipInfo(HoverTipType.DDLMachine).desEng);
                         break;
                     case HoverTipType.SkillMachine:
+                        SetTipName(GetHoverTipInfo(HoverTipType.SkillMachine).nameEng);
+                        SetTipDescription(GetHoverTipInfo(HoverTipType.SkillMachine).desEng);
                         break;
                     case HoverTipType.SkillParent:
                         SetTipName(GetComponent<O_SkillParent>().nodeInfo.childSkills[0].skillNameEng);
                         SetTipDescription(GetComponent<O_SkillParent>().nodeInfo.childSkills[0].skillDescriptionEng);
                         break;
                     case HoverTipType.Character:
+                        SetTipName(GetComponent<O_Character>().GetCharacterInfo().nameEng);
+                        SetTipDescription(GetComponent<O_Character>().GetCharacterInfo().desEng);
+                        break;
+                    case HoverTipType.ResidueTask:
+                        SetTipName(GetHoverTipInfo(HoverTipType.ResidueTask).nameEng);
+                        SetTipDescription(GetHoverTipInfo(HoverTipType.ResidueTask).desEng);
                         break;
                 }
             else if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese)
@@ -152,14 +163,24 @@ namespace IGDF
                         SetTipDescription(GetComponent<O_Skill>().skillData.skillDescriptionChi);
                         break;
                     case HoverTipType.DDLMachine:
+                        SetTipName(GetHoverTipInfo(HoverTipType.DDLMachine).nameChi);
+                        SetTipDescription(GetHoverTipInfo(HoverTipType.DDLMachine).desChi);
                         break;
                     case HoverTipType.SkillMachine:
+                        SetTipName(GetHoverTipInfo(HoverTipType.SkillMachine).nameChi);
+                        SetTipDescription(GetHoverTipInfo(HoverTipType.SkillMachine).desChi);
                         break;
                     case HoverTipType.SkillParent:
                         SetTipName(GetComponent<O_SkillParent>().nodeInfo.childSkills[0].skillNameChi);
                         SetTipDescription(GetComponent<O_SkillParent>().nodeInfo.childSkills[0].skillDescriptionChi);
                         break;
                     case HoverTipType.Character:
+                        SetTipName(GetComponent<O_Character>().GetCharacterInfo().nameChi);
+                        SetTipDescription(GetComponent<O_Character>().GetCharacterInfo().desChi);
+                        break;
+                    case HoverTipType.ResidueTask:
+                        SetTipName(GetHoverTipInfo(HoverTipType.ResidueTask).nameChi);
+                        SetTipDescription(GetHoverTipInfo(HoverTipType.ResidueTask).desChi);
                         break;
                 }
         }
@@ -183,6 +204,19 @@ namespace IGDF
         public void SetSelectionBoxState(bool targetState)
         {
             selectionBox.SetActive(targetState);
+        }
+
+        public HoverTipInfo GetHoverTipInfo(HoverTipType targetTipType)
+        {
+            foreach (HoverTipInfo hoverTipInfo in M_Global.instance.repository.hoverTipInfos)
+            {
+                if (hoverTipInfo.type == targetTipType)
+                {
+                    return hoverTipInfo;
+                }
+            }
+            Debug.LogError("No Tip Info");
+            return null;
         }
     }
 }

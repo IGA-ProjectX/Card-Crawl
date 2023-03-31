@@ -40,6 +40,7 @@ namespace IGDF
             studio.ReflectionProvider = FindObjectOfType<SSWaterReflectionProvider>();
             studio.ClearAndInitReflectionRenderers();
             m_HoverTip.EnterState(HoverState.AllDisactive);
+            InitializeLevel();
         }
 
         public void CheckDevCircumstance()
@@ -83,13 +84,12 @@ namespace IGDF
 
         public void GameStart()
         {
-            InitializeLevel();
+          
             m_Card.DrawCard();
-            foreach (Transform skillTrans in m_Skill.skillObjects)
-            {
-                skillTrans.GetComponent<O_Skill>().OpenEye();
-                skillTrans.GetComponent<O_Skill>().UpdateMaskState(true);
-            }
+            foreach (Transform skillTrans in m_Skill.skillObjects) skillTrans.GetComponent<O_Skill>().OpenEye();
+            //{
+            //    
+            //}
             //foreach (Transform  staffTrans in m_Staff.staffSlots)
             //{
             //    staffTrans.GetComponent<O_HalfCat>().UpdateMaskState(true);
@@ -105,6 +105,8 @@ namespace IGDF
             m_DDL.InitializeNumberList();
             m_Staff.InitializeStaffValues(M_Global.instance.levels[M_Global.instance.targetLevel].staffValue);
             m_Skill.InitializeSkills(M_Global.instance.skillList);
+
+            m_DDL.UpdateName();
         }
     }
 }

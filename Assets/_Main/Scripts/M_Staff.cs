@@ -121,15 +121,17 @@ namespace IGDF
             var boxCollider = staffSlots[targetStaff].GetComponent<BoxCollider2D>();
             var size = boxCollider.size;
             var offset = boxCollider.offset;
+            float sizeOffset = 0.15f;
 
-            var topLeftLocal = offset + new Vector2(-size.x * 0.5f, size.y * 0.5f);
+            var topLeftLocal = offset + new Vector2(-size.x * 0.5f, size.y * 0.5f) + new Vector2(sizeOffset, -sizeOffset);
             var topLeftWorld = boxCollider.transform.TransformPoint(topLeftLocal);
-            var topRightLocal = offset + new Vector2(size.x * 0.5f, size.y * 0.5f);
+            var topRightLocal = offset + new Vector2(size.x * 0.5f, size.y * 0.5f) + new Vector2(-sizeOffset, -sizeOffset);
             var topRightWorld = boxCollider.transform.TransformPoint(topRightLocal);
-            var bottomLeftLocal = offset + new Vector2(-size.x * 0.5f, -size.y * 0.5f);
+            var bottomLeftLocal = offset + new Vector2(-size.x * 0.5f, -size.y * 0.5f) + new Vector2(sizeOffset, sizeOffset);
             var bottomLeftWorld = boxCollider.transform.TransformPoint(bottomLeftLocal);
-            var bottomRightLocal = offset + new Vector2(size.x * 0.5f, -size.y * 0.5f);
+            var bottomRightLocal = offset + new Vector2(size.x * 0.5f, -size.y * 0.5f) + new Vector2(-sizeOffset, sizeOffset);
             var bottomRightWorld = boxCollider.transform.TransformPoint(bottomRightLocal);
+
 
             switch (targetCondition)
             {

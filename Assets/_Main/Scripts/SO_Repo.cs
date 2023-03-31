@@ -14,12 +14,39 @@ namespace IGDF
         public Sprite[] cardBGImages;
         public Sprite[] hoverTipBGs;
         public Sprite[] gameNameImages;
+        public Color orangeColor;
+        public CharacterInfo[] characterInfos;
+        public HoverTipInfo[] hoverTipInfos;
 
         [Header("Audio")]
         public SoundAudioClip[] bgMusics;
         public SoundAudioClip[] studioClips;
         public SoundAudioClip[] openPageClips;
         public SoundAudioClip[] uiClips;
+    }
+
+    [System.Serializable]
+    public class CharacterInfo
+    {
+        public CharacterType type;
+        public string nameEng;
+        [TextArea(3,3)]
+        public string desEng;
+        public string nameChi;
+        [TextArea(3, 3)]
+        public string desChi;
+    }
+
+    [System.Serializable]
+    public class HoverTipInfo
+    {
+        public HoverTipType type;
+        public string nameEng;
+        [TextArea(3, 3)]
+        public string desEng;
+        public string nameChi;
+        [TextArea(3, 3)]
+        public string desChi;
     }
 
     [System.Serializable]

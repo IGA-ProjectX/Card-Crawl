@@ -13,6 +13,7 @@ namespace IGDF
         [SerializeField] private Transform obj_Logo;
         [SerializeField] private Transform ui_ShowcaseParent;
         private List<Transform> products = new List<Transform>();
+        [SerializeField] private GameObject p_Website;
 
         private void Start()
         {
@@ -20,10 +21,12 @@ namespace IGDF
             {
                 products.Add(ui_ShowcaseParent.GetChild(i));
             }
+            p_Website.SetActive(false);
         }
 
         public void OpenWeb()
         {
+            p_Website.SetActive(true);
             for (int i = 0; i < products.Count; i++)
             {
                 TMP_Text t_Name = products[i].Find("T_Name").GetComponent<TMP_Text>();
@@ -55,6 +58,7 @@ namespace IGDF
         public void CloseWeb()
         {
             ui_ShowcaseGroup.alpha = 0;
+            p_Website.SetActive(false);
         }
 
         Product GetProductInfo(LevelType targetGameType, ProductLevel targetProductLevel)

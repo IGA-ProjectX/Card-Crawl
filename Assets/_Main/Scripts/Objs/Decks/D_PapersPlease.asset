@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: D_PapersPlease
   m_EditorClassIdentifier: 
   levelType: 0
-  levelName: Papers. Please!
+  levelNameChi: "\u8BF7\u51FA\u793A\u6587\u4EF6"
+  levelNameEng: Documents, Please
   staffValue: 000000000a0000000a0000000a0000000f000000
   levelButtonImage: {fileID: 21300000, guid: 5975cafa724a3df4baf0ac2eecfc85fa, type: 3}
   cards_Production:

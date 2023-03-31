@@ -25,41 +25,59 @@ namespace IGDF
 
         private void OnMouseDown()
         {
-            if(isClickable)
-            switch (buttonType)
+            if (isClickable)
             {
-                case ButtonType.StartGame:
-                    StartGame();
-                    break;
-                case ButtonType.ExitGame:
-                    ExitGame();
-                    break;
-                case ButtonType.Credits:
-                    break;
-                case ButtonType.CabinBetweenStudioSkill:
-                    CabinBetweenStudioSkill();
-                    break;
-                case ButtonType.CabinBetweenStudioWebsite:
-                    CabinBetweenStudioWebsite();
-                    break;
-                case ButtonType.BackToOverview:
-                    BackToOverview();
-                    break;
-                case ButtonType.EnterRoom:
-                    EnterRoom();
-                    break;
-                case ButtonType.OpenSettingPanel:
-                    OpenSettingPanel();
-                    break;
-                case ButtonType.ExitRoom:
-                    m_SceneTransition.ExitCurrentCabin();
-                    break;
-                case ButtonType.CallOutLevelList:
-                    GameObject.Find("Canvas").transform.Find("Level Selection").DOScale(1, 0.4f);
-                    break;
-                default:
-                    break;
+                switch (buttonType)
+                {
+                    case ButtonType.StartGame:
+                        StartGame();
+                        break;
+                    case ButtonType.ExitGame:
+                        ExitGame();
+                        break;
+                    case ButtonType.Credits:
+                        break;
+                    case ButtonType.CabinBetweenStudioSkill:
+                        CabinBetweenStudioSkill();
+                        break;
+                    case ButtonType.CabinBetweenStudioWebsite:
+                        CabinBetweenStudioWebsite();
+                        break;
+                    case ButtonType.EnterRoom:
+                        EnterRoom();
+                        break;
+                    case ButtonType.OpenSettingPanel:
+                        OpenSettingPanel();
+                        break;
+                    case ButtonType.ExitRoom:
+                        m_SceneTransition.ExitCurrentCabin();
+                        break;
+                    case ButtonType.CallOutLevelList:
+                        FindObjectOfType<M_Level>().OpenLevelSelectionPanel();
+                        break;
+                    default:
+                        break;
+                }
+                RoadBaseButtonColorChangeTo(Color.white);
             }
+        }
+
+        private void OnMouseEnter()
+        {
+            if (isClickable)
+                RoadBaseButtonColorChangeTo(M_Global.instance.repository.orangeColor);
+        }
+
+        private void OnMouseExit()
+        {
+            if (isClickable)
+                RoadBaseButtonColorChangeTo(Color.white);
+        }
+
+        void RoadBaseButtonColorChangeTo(Color targetColor)
+        {
+            if (buttonType == ButtonType.StartGame || buttonType == ButtonType.ExitGame || buttonType == ButtonType.Credits || buttonType == ButtonType.OpenSettingPanel)
+                DOTween.To(() => GetComponent<TMPro.TMP_Text>().color, x => GetComponent<TMPro.TMP_Text>().color = x, targetColor, 0.3f);
         }
 
         void StartGame()
@@ -97,11 +115,6 @@ namespace IGDF
             }
         }
 
-        void BackToOverview()
-        {
-            m_SceneTransition.EnterCabinView(M_SceneTransition.CabinView.Overview);
-        }
-
         public void EnterRoom()
         {
             m_SceneTransition.EnterCurrentCabin();
@@ -109,8 +122,7 @@ namespace IGDF
 
         void OpenSettingPanel()
         {
-            GameObject.Find("Canvas").transform.Find("Setting Panel").DOScale(Vector3.one, 1);
-            FindObjectOfType<M_Setting>().UpdateCurrentExp();
+            FindObjectOfType<M_Setting>().OpenSettingPanel();
         }
     }
 }
