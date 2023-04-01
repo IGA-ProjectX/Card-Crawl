@@ -125,7 +125,6 @@ namespace IGDF
                         s.Append(eyeball.DOScale(1.2f, 0.3f));
                         s.Append(eyeball.DOScale(1f, 0.1f));
                     }
-
                 }
             }
         }
