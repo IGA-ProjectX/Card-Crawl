@@ -16,6 +16,7 @@ namespace IGDF
         public Transform windContainer;
         public GameObject p_ResultFail;
         public GameObject p_ResultSteam;
+        public GameObject p_Pause;
 
         public void EnterCabinView(CabinView targetCabin)
         {
@@ -68,8 +69,7 @@ namespace IGDF
                     s.AppendInterval(transitionTime);
                     //s.AppendCallback(() => TransitToRoomState());
                     s.AppendCallback(() => M_Main.instance.GameStart());
-                    s.AppendCallback(() => p_ResultSteam.SetActive(true));
-                    s.AppendCallback(() => p_ResultFail.SetActive(true));
+                    s.AppendCallback(() => SetInStudioPanelState(true));
                     currentView = CabinView.InStudio;
                     M_Audio.PlaySceneMusic(CabinView.InStudio);
                     break;
@@ -109,8 +109,7 @@ namespace IGDF
                     else panelToScaleDown = GameObject.Find("Canvas").transform.Find("Result Fail");
                     Sequence ss = DOTween.Sequence();
                     ss.Append(panelToScaleDown.DOScale(0, 0.4f));
-                    ss.AppendCallback(() => p_ResultSteam.SetActive(false));
-                    ss.AppendCallback(() => p_ResultFail.SetActive(false));
+                    ss.AppendCallback(() => SetInStudioPanelState(false));
                     ss.Append(cars[0].Find("Car Door").DOMoveY(cars[0].Find("Car Door").position.y - 12, transitionTime));
                     ss.AppendCallback(() => SceneManager.UnloadSceneAsync(1));
                     currentView = CabinView.Studio;
@@ -170,6 +169,13 @@ namespace IGDF
         void ReturnOverviewScaleChangeTo(float targetScale)
         {
             GameObject.Find("Canvas").transform.Find("B_ReturnToOverview").DOScale(targetScale, 0.4f);
+        }
+
+        void SetInStudioPanelState(bool targetState)
+        {
+            p_ResultSteam.SetActive(targetState);
+            p_ResultFail.SetActive(targetState);
+            p_Pause.SetActive(targetState);
         }
     }
 }

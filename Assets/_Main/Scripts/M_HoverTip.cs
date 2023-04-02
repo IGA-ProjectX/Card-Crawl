@@ -8,9 +8,11 @@ namespace IGDF {
     public class M_HoverTip : MonoBehaviour
     {
         private List<O_HoverTip> hoverTips = new List<O_HoverTip>();
+        private HoverState currentState;
 
         public void EnterState(HoverState targetState)
         {
+            currentState = targetState;
             switch (targetState)
             {
                 case HoverState.AllDisactive:
@@ -47,6 +49,11 @@ namespace IGDF {
         {
             if (isAdd) hoverTips.Add(targetObj);
             else hoverTips.Remove(targetObj);
+        }
+
+        public HoverState GetCurrentState()
+        {
+            return currentState;
         }
     }
 }

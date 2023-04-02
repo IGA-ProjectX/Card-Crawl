@@ -22,6 +22,7 @@ namespace IGDF
 
         public void InitializeDeck(SO_Level deckData)
         {
+            residueTaskNum = 0;
             List<Card> tempList = new List<Card>();
             foreach (Card card in deckData.cards_Production) tempList.Add(card);
             foreach (Card card in deckData.cards_Design) tempList.Add(card);
@@ -48,6 +49,7 @@ namespace IGDF
 
         public void DrawCard()
         {
+            cardUsedNumInTurn = 0;
             for (int i = 0; i < 4; i++)
             {
                 if (cardsInTurn[i] == null && inGameDeck.Count != 0)

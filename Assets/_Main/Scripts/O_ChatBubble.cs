@@ -48,12 +48,17 @@ namespace IGDF
         {
             if (!isDrag && !isProcessDestroy)
             {
-                isProcessDestroy = true;
-                Sequence s = DOTween.Sequence();
-                s.Append(transform.DOScale(1.2f, 0.1f));
-                s.Append(transform.DOScale(0, 0.3f));
-                Destroy(gameObject, 0.5f);
+                DestroyBubble();
             }
+        }
+
+        public void DestroyBubble()
+        {
+            isProcessDestroy = true;
+            Sequence s = DOTween.Sequence();
+            s.Append(transform.DOScale(1.2f, 0.1f));
+            s.Append(transform.DOScale(0, 0.3f));
+            Destroy(gameObject, 0.5f);
         }
 
         public void PopUpChatBubble(CharacterType chaType, TalkContent talkContent)

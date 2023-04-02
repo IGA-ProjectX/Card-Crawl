@@ -84,16 +84,8 @@ namespace IGDF
 
         public void GameStart()
         {
-          
             m_Card.DrawCard();
             foreach (Transform skillTrans in m_Skill.skillObjects) skillTrans.GetComponent<O_Skill>().OpenEye();
-            //{
-            //    
-            //}
-            //foreach (Transform  staffTrans in m_Staff.staffSlots)
-            //{
-            //    staffTrans.GetComponent<O_HalfCat>().UpdateMaskState(true);
-            //}
         }
 
         public void InitializeLevel()
