@@ -18,6 +18,7 @@ namespace IGDF
         private TMP_Text t_Credits;
         private TMP_Text t_Setting;
 
+
         private void Start()
         {
             mask_Language = transform.Find("Language").Find("Capsule").Find("Rect Mask").GetComponent<RectMask2D>();
@@ -25,6 +26,7 @@ namespace IGDF
             t_Exit = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Exit").GetComponent<TMP_Text>();
             t_Credits = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Credits").GetComponent<TMP_Text>();
             t_Setting = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Setting").GetComponent<TMP_Text>();
+
         }
 
         void LanguageUpdate(SystemLanguage targetLanguage)

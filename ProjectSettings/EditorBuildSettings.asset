@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Main/Scenes/Studio.unity
     guid: 831ef85ebf8b44443af5dc22da738e10
+  - enabled: 1
+    path: Assets/_Main/Scenes/Vivarium.unity
+    guid: 2205ab8dbeb0ed141936b816ced4b9f4
   m_configObjects: {}

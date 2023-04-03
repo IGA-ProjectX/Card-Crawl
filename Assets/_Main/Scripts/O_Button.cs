@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 namespace IGDF
 { 
@@ -117,12 +118,24 @@ namespace IGDF
 
         public void EnterRoom()
         {
-            m_SceneTransition.EnterCurrentCabin();
+            SceneManager.LoadScene(2, LoadSceneMode.Additive);
+         
+            Sequence s = DOTween.Sequence();
+            s.AppendInterval(0.2f);
+            s.AppendCallback(() => ResetRoomPosition());
+            s.AppendCallback(() => FindObjectOfType<M_SceneTransition>().EnterCurrentCabin());
+
+            void ResetRoomPosition()
+            {
+                FindObjectOfType<M_Vivarium>().transform.position = new Vector3(-32, 0, 0);
+            }
         }
 
         void OpenSettingPanel()
         {
             FindObjectOfType<M_Setting>().OpenSettingPanel();
+             
+
         }
     }
 }

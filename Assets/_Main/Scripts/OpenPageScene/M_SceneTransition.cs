@@ -74,6 +74,7 @@ namespace IGDF
                     M_Audio.PlaySceneMusic(CabinView.InStudio);
                     break;
                 case CabinView.Skill:
+                    Debug.Log("dadasdas");
                     cars[1].Find("Car Door").DOMoveY(cars[1].Find("Car Door").position.y + 12, transitionTime);
                     currentView = CabinView.InSkill;
                     break;
