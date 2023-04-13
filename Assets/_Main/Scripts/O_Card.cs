@@ -35,6 +35,7 @@ namespace IGDF
             cardCurrentType = cardData.cardType;
             if (card.cardImage != null)
                 transform.Find("Card Image Content").GetComponent<SpriteRenderer>().sprite = card.cardImage;
+            transform.Find("Card Image Content").GetComponent<SpriteRenderer>().color = M_Global.instance.levels[M_Global.instance.targetLevel].colorFilter;
 
             if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese)
             {
@@ -81,11 +82,13 @@ namespace IGDF
             {
                 transform.Find("Card Value").GetComponent<TMP_Text>().text = "+" + card.cardValue.ToString();
                 transform.Find("Card BG").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardBGImages[0];
+                CardElementsColorAdjustment(0);
             }
             else
             {
                 transform.Find("Card Value").GetComponent<TMP_Text>().text = card.cardValue.ToString();
                 transform.Find("Card BG").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardBGImages[1];
+                CardElementsColorAdjustment(1);
             }
 
             transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardTypeIcons[(int)card.cardType];
@@ -94,6 +97,14 @@ namespace IGDF
             targetableType.Add(card.cardType);
             if (card.cardType!=0 && card.cardValue<0) targetableType.Add(CardType.Production);
             inSlotIndex = index;
+
+            void CardElementsColorAdjustment(int targetColor)
+            {
+               transform.Find("Card Image Type").GetComponent<SpriteRenderer>().color = M_Global.instance.repository.cardElementsColor[targetColor];
+               transform.Find("Card Name").GetComponent<TMPro.TMP_Text>().color = M_Global.instance.repository.cardElementsColor[targetColor];
+               transform.Find("Card Value").GetComponent<TMPro.TMP_Text>().color = M_Global.instance.repository.cardElementsColor[targetColor];
+               transform.Find("Card Text Type").GetComponent<TMPro.TMP_Text>().color = M_Global.instance.repository.cardElementsColor[targetColor];
+            }
         }
 
         public void ChangeCardValue(int targetValue)
@@ -228,7 +239,7 @@ namespace IGDF
             transform.Find("Card BG").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
             transform.Find("Card Image Content").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
             transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
-            transform.Find("Name Bg").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            //transform.Find("Name Bg").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
             transform.Find("Card Name").GetComponent<MeshRenderer>().sortingOrder += cardModifyOffsetedAmount;
             transform.Find("Card Value").GetComponent<MeshRenderer>().sortingOrder += cardModifyOffsetedAmount;
             transform.Find("Card Text Type").GetComponent<MeshRenderer>().sortingOrder += cardModifyOffsetedAmount;
@@ -245,7 +256,7 @@ namespace IGDF
             transform.Find("Card BG").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
             transform.Find("Card Image Content").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
             transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
-            transform.Find("Name Bg").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            //transform.Find("Name Bg").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
             transform.Find("Card Name").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
             transform.Find("Card Value").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
             transform.Find("Card Text Type").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;

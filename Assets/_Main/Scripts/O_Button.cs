@@ -32,11 +32,14 @@ namespace IGDF
                 {
                     case ButtonType.StartGame:
                         StartGame();
+                        transform.DORotate(new Vector3(0, 0, 0), 0.4f);
                         break;
                     case ButtonType.ExitGame:
                         ExitGame();
+                        transform.DORotate(new Vector3(0, 0, 0), 0.4f);
                         break;
                     case ButtonType.Credits:
+                        transform.DORotate(new Vector3(0, 0, 0), 0.4f);
                         break;
                     case ButtonType.CabinBetweenStudioSkill:
                         CabinBetweenStudioSkill();
@@ -49,6 +52,7 @@ namespace IGDF
                         break;
                     case ButtonType.OpenSettingPanel:
                         OpenSettingPanel();
+                        transform.DORotate(new Vector3(0, 0, 0), 0.4f);
                         break;
                     case ButtonType.ExitRoom:
                         m_SceneTransition.ExitCurrentCabin();
@@ -59,20 +63,24 @@ namespace IGDF
                     default:
                         break;
                 }
-                RoadBaseButtonColorChangeTo(Color.white);
+                //RoadBaseButtonColorChangeTo(Color.white);
             }
         }
 
         private void OnMouseEnter()
         {
             if (isClickable)
-                RoadBaseButtonColorChangeTo(M_Global.instance.repository.orangeColor);
+                if (buttonType == ButtonType.StartGame || buttonType == ButtonType.ExitGame|| buttonType == ButtonType.Credits|| buttonType == ButtonType.OpenSettingPanel)
+                transform.DORotate(new Vector3(0, 0, Random.Range(10, 15)), 0.4f);
+            //RoadBaseButtonColorChangeTo(M_Global.instance.repository.orangeColor);
         }
 
         private void OnMouseExit()
         {
             if (isClickable)
-                RoadBaseButtonColorChangeTo(Color.white);
+                if (buttonType == ButtonType.StartGame || buttonType == ButtonType.ExitGame || buttonType == ButtonType.Credits || buttonType == ButtonType.OpenSettingPanel) 
+                    transform.DORotate(new Vector3(0, 0, 0), 0.4f);
+                //RoadBaseButtonColorChangeTo(Color.white);
         }
 
         void RoadBaseButtonColorChangeTo(Color targetColor)

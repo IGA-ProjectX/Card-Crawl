@@ -12,6 +12,7 @@ namespace IGDF
         public string levelNameEng;
         public int[] staffValue;
         public Sprite levelButtonImage;
+        public Color colorFilter;
         [Header("Deck")]
         public Card[] cards_Production;
         public Card[] cards_Design;

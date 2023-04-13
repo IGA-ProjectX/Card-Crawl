@@ -12,6 +12,7 @@ namespace IGDF
         public Sprite[] stamps;
         public Color[] stampColors;
         public Sprite[] cardBGImages;
+        public Color[] cardElementsColor;
         public Sprite[] hoverTipBGs;
         public Sprite[] gameNameImages;
         public Color orangeColor;
