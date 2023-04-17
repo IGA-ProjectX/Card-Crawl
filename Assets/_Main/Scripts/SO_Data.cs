@@ -7,8 +7,10 @@ namespace IGDF
     [CreateAssetMenu(fileName = "New Data", menuName = "IGDF/New Data")]
     public class SO_Data : ScriptableObject
     {
+        public int gameTimeInTotal;
         public int playExp;
         public ProductShowcase[] productShowcases;
+        public List<UnlockedSkillNode> unlockedSkillNodes;
     }
 
     [System.Serializable]

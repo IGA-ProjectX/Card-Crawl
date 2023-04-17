@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using Psychoflow.SSWaterReflection2D;
+using System;
 
 namespace IGDF
 {
@@ -18,6 +19,10 @@ namespace IGDF
         public GameObject p_ResultSteam;
         public GameObject p_Pause;
 
+        public Action ToOverView;
+        public Action ToCabinView;
+        public Action<CabinView> ToRoom;
+
         public void EnterCabinView(CabinView targetCabin)
         {
             FindObjectOfType<M_Button>().EnterButtonState(M_Button.ButtonState.Train);
@@ -28,6 +33,7 @@ namespace IGDF
                     DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 50f, transitionTime);
                     WindDepthChange("Overview");
                     FindObjectOfType<M_Button>().EnterButtonState(M_Button.ButtonState.Overview);
+                    ToOverView();
                     break;
                 case CabinView.Studio:
                     BackToCabinView();
@@ -52,6 +58,7 @@ namespace IGDF
                     currentView = CabinView.Website;
                     break;
             }
+            if (targetCabin != CabinView.Overview) ToCabinView();
         }
 
         public void EnterCurrentCabin()
@@ -74,8 +81,10 @@ namespace IGDF
                     M_Audio.PlaySceneMusic(CabinView.InStudio);
                     break;
                 case CabinView.Skill:
-                    Debug.Log("dadasdas");
                     cars[1].Find("Car Door").DOMoveY(cars[1].Find("Car Door").position.y + 12, transitionTime);
+                    Sequence ss = DOTween.Sequence();
+                    ss.AppendInterval(transitionTime);
+                    ss.AppendCallback(() =>M_Vivarium.instance.AliveTheScene());
                     currentView = CabinView.InSkill;
                     break;
                 case CabinView.Website:
@@ -88,6 +97,7 @@ namespace IGDF
 
                     break;
             }
+            ToRoom(currentView);
             //void TransitToRoomState()
             //{
             //    cars[0].Find("Door Mask").GetComponent<SpriteMask>().enabled = false;
@@ -122,11 +132,11 @@ namespace IGDF
                 case CabinView.InWebsite:
                     FindObjectOfType<M_Website>().CloseWeb();
                     cars[2].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y - 12, transitionTime);
-
                     currentView = CabinView.Website;
                     break;
             }
             M_Audio.PlaySceneMusic(CabinView.Overview);
+            ToCabinView();
         }
 
         public void WindDepthChange(string view)

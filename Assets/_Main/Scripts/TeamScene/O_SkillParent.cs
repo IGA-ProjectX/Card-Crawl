@@ -19,13 +19,13 @@ namespace IGDF
 
         public void OnMouseDown()
         {
-            skillToSetObj = Instantiate(M_SkillTree.instance.pre_SkillToSet, 
-                Camera.main.ScreenToWorldPoint(Input.mousePosition), 
-                Quaternion.identity,GameObject.Find("Canvas").transform).transform;
-            skillToSet = nodeInfo.childSkills[0];
-            skillToSetObj.Find("Text").GetComponent<Text>().text = skillToSet.skillNameEng;
-            skillToSetObj.localScale = Vector3.zero;
-            skillToSetObj.DOScale(1, 0.4f);
+            //skillToSetObj = Instantiate(M_SkillTree.instance.pre_SkillToSet, 
+            //    Camera.main.ScreenToWorldPoint(Input.mousePosition), 
+            //    Quaternion.identity,GameObject.Find("Canvas").transform).transform;
+            //skillToSet = nodeInfo.childSkills[0];
+            //skillToSetObj.Find("Text").GetComponent<Text>().text = skillToSet.skillNameEng;
+            //skillToSetObj.localScale = Vector3.zero;
+            //skillToSetObj.DOScale(1, 0.4f);
         }
 
         public void OnMouseDrag()
@@ -56,49 +56,5 @@ namespace IGDF
         {
           
         }
-
-        //public void UpdateSelectSkillSlot()
-        //{
-        //    float distanceValut = 1;
-        //    int minDistanceSlotIndex = 0;
-        //    bool isCertainSlotAttachable = false;
-        //    float currentSlotDistance = 100;
-        //    List<float> distances = new List<float>();
-        //    foreach (Transform slotTrans in M_SkillTree.instance.skillSlots)
-        //    {
-        //        distances.Add(Vector2.Distance(skillToSetObj.position, slotTrans.position));
-        //    }
-        //    for (int i = 0; i < distances.Count; i++)
-        //    {
-        //        if (distances[i] < distanceValut)
-        //        {
-        //            isCertainSlotAttachable = true;
-        //            if (currentSlotDistance>distances[i])
-        //            {
-        //                minDistanceSlotIndex = i;
-        //                currentSlotDistance = distances[i];
-        //            }
-        //        }
-        //    }
-        //    if (isCertainSlotAttachable)
-        //    {
-        //        skillSlotToSet = M_SkillTree.instance.skillSlots[minDistanceSlotIndex];
-
-        //    }
-        //    else
-        //    {
-                
-        //    }
-        //}
-
-        //public void SetSkillSlotToDefault()
-        //{
-
-        //}
-
-        //public void SetSkillSlotToSelected()
-        //{
-
-        //}
     }
 }

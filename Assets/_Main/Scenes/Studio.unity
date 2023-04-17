@@ -1213,6 +1213,22 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5241774219023634621, guid: e229a5db741055e44bce4e9fca9b6e07, type: 3}
+      propertyPath: m_text
+      value: Art
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241774219023634621, guid: e229a5db741055e44bce4e9fca9b6e07, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241774219023634621, guid: e229a5db741055e44bce4e9fca9b6e07, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241774219023634621, guid: e229a5db741055e44bce4e9fca9b6e07, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5523038795741746128, guid: e229a5db741055e44bce4e9fca9b6e07, type: 3}
       propertyPath: m_Name
       value: NP_Artist
@@ -1455,6 +1471,14 @@ PrefabInstance:
     - target: {fileID: 264023290027867327, guid: e229a5db741055e44bce4e9fca9b6e07, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241774219023634621, guid: e229a5db741055e44bce4e9fca9b6e07, type: 3}
+      propertyPath: m_text
+      value: Design
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241774219023634621, guid: e229a5db741055e44bce4e9fca9b6e07, type: 3}
+      propertyPath: m_fontSize
+      value: 8.1
       objectReference: {fileID: 0}
     - target: {fileID: 5523038795741746128, guid: e229a5db741055e44bce4e9fca9b6e07, type: 3}
       propertyPath: m_Name

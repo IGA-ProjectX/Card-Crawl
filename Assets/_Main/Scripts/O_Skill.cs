@@ -69,6 +69,9 @@ namespace IGDF
             eyelidUpper = transform.Find("Eye White").Find("Eyelid Upper");
             eyelidBottom = transform.Find("Eye White").Find("Eyelid Bottom");
             eyeball = transform.Find("Eye White").Find("Eye Black");
+
+            eyeball.GetComponent<SpriteRenderer>().sprite = skillData.skillImage;
+
             upperLidOpenPos = eyelidUpper.position;
             bottomLidOpenPos = eyelidBottom.position;
             eyelidUpper.localPosition = upperLidClosePos;

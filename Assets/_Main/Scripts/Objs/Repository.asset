@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Repository
   m_EditorClassIdentifier: 
   cardTypeIcons:
-  - {fileID: 21300000, guid: 7e816fa4d69f46640a339ea1600f20a4, type: 3}
-  - {fileID: 21300000, guid: a7475095016ffaf4dbc8dbf4e8ea7e68, type: 3}
-  - {fileID: 21300000, guid: d4e65e8ab5ed8474ba0c4752f327d242, type: 3}
-  - {fileID: 21300000, guid: f0d735d12ae018845aae7fe8bc9111c6, type: 3}
+  - {fileID: 21300000, guid: acb39782ac97970499b6ebc3b889eeea, type: 3}
+  - {fileID: 21300000, guid: fd2e92ac6a93e45498485a17d901f1fc, type: 3}
+  - {fileID: 21300000, guid: 32e695ba99ecf4846acd464d90cb9855, type: 3}
+  - {fileID: 21300000, guid: 26a1a66ce5dd98e4e92815413cb6cfdc, type: 3}
   chaColors:
   - {r: 0.7882353, g: 0.3647059, b: 0.3529412, a: 1}
   - {r: 0.3647059, g: 0.5882353, b: 0.49019608, a: 1}

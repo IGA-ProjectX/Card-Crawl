@@ -6,7 +6,7 @@ using TMPro;
 
 namespace IGDF
 {
-    public enum HoverTipType { Card, Skill, DDLMachine, SkillMachine ,SkillParent,Character,ResidueTask}
+    public enum HoverTipType { Card, Skill, DDLMachine, SkillMachine ,SkillParent,Character,ResidueTask,SkillInVivarium}
     public class O_HoverTip : MonoBehaviour
     {
         public HoverTipType tipType;
@@ -20,14 +20,17 @@ namespace IGDF
 
         private void OnDestroy()
         {
-            M_Main.instance.m_HoverTip.HoverTipListAddOrRemove(this, false);
+           M_HoverTip.instance.HoverTipListAddOrRemove(this, false);
         }
 
         private void Start()
         {
-            M_Main.instance.m_HoverTip.HoverTipListAddOrRemove(this, true);
-            selectionBox = FindObjectOfType<M_Main>().transform.Find("Selection Box").gameObject;
-            selectionBox.SetActive(false);
+            M_HoverTip.instance.HoverTipListAddOrRemove(this, true);
+            if (FindObjectOfType<M_Main>()!=null)
+            {
+                selectionBox = FindObjectOfType<M_Main>().transform.Find("Selection Box").gameObject;
+                selectionBox.SetActive(false);
+            }
         }
 
         private void OnMouseEnter()
@@ -67,7 +70,7 @@ namespace IGDF
         {
             isOpen = false;
             M_Global.instance.ui_HoverTip.SetActive(false);
-            selectionBox.SetActive(false);
+            if (FindObjectOfType<M_Main>()!=null) selectionBox.SetActive(false);
         }
 
         private void OnMouseOver()

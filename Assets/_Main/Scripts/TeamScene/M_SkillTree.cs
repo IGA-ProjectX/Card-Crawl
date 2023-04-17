@@ -9,22 +9,13 @@ namespace IGDF
         public static M_SkillTree instance;
         public GameObject[] skillTrees;
         public SO_SkillParent[] skillParents;
-        public GameObject pre_SkillToSet;
+        public GameObject pre_FlowerBud;
+        public GameObject pre_FruitSkill;
 
         void Start()
         {
             instance = this;
             InitializeSkillTrees();
-            OpenSkillTreePanel(3);
-        }
-
-        public void OpenSkillTreePanel(int toOpenIndex)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                if (i == toOpenIndex) skillTrees[i].SetActive(true);
-                else skillTrees[i].SetActive(false);
-            }
         }
 
         public void InitializeSkillTrees()
@@ -33,26 +24,22 @@ namespace IGDF
             {
                 for (int j = 0; j < skillParents[i].nodeList.Length; j++)
                 {
-                    NodeInfo nodeInfo = skillParents[i].nodeList[j];
-                    string childName = "Null";
-                    switch (nodeInfo.thisNodeIndex)
-                    {
-                        case NodeIndex.C1: childName = "C1"; break;
-                        case NodeIndex.C2: childName = "C2"; break;
-                        case NodeIndex.C3: childName = "C3"; break;
-                        case NodeIndex.B1: childName = "B1"; break;
-                        case NodeIndex.B2: childName = "B2"; break;
-                        case NodeIndex.B3: childName = "B3"; break;
-                        case NodeIndex.A1: childName = "A1"; break;
-                        case NodeIndex.A2: childName = "A2"; break;
-                        case NodeIndex.A3: childName = "A3"; break;
-                    }
-                    GameObject nodeTrans = skillTrees[i].transform.Find(childName).gameObject;
-                    nodeTrans.GetComponent<O_SkillParent>().InitializeSkillParent(nodeInfo);
+                    //NodeInfo nodeInfo = skillParents[i].nodeList[j];
+                    //Transform newBud = Instantiate(pre_FlowerBud, skillTrees[i].transform.Find("FlowerPivots").GetChild(j)).transform;
+                    //newBud.GetComponent<O_FlowerBud>().InitializeBud(nodeInfo, skillParents[i].characterType);
+                    //newBud.name = skillParents[i].characterType + " " + (j + 1);
+                    InstantiateNewBud(i, j);
                 }
             }
         }
 
+        public void InstantiateNewBud(int treeIndex,int flowerIndex)
+        {
+            NodeInfo nodeInfo = skillParents[treeIndex].nodeList[flowerIndex];
+            Transform newBud = Instantiate(pre_FlowerBud, skillTrees[treeIndex].transform.Find("FlowerPivots").GetChild(flowerIndex)).transform;
+            newBud.GetComponent<O_FlowerBud>().InitializeBud(nodeInfo, skillParents[treeIndex].characterType);
+            newBud.name = skillParents[treeIndex].characterType + " " + (flowerIndex + 1);
+        }
 
     }
 }

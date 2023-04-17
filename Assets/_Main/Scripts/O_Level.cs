@@ -22,7 +22,7 @@ namespace IGDF
         {
             levelName = transform.Find("Mask").Find("Level Name").GetComponent<TMP_Text>();
             levelCover = transform.Find("Mask").Find("Level Cover").GetComponent<Image>();
-            levelLock = transform.Find("Mask").Find("Level Lock").GetComponent<Image>();
+            levelLock = transform.Find("Level Lock").GetComponent<Image>();
             thisButton = transform.Find("Frame").GetComponent<Button>();
             if (targetLevel != null)
             {

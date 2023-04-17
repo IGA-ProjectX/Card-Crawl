@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class M_Vivarium : MonoBehaviour
+public class O_SkillTree : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

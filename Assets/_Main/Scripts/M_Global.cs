@@ -41,6 +41,8 @@ namespace IGDF
         public void PlayerExpUp(int newExp) 
         {
             mainData.playExp += newExp;
+            FindObjectOfType<O_UpperUIBar>().ChangeExp();
+            O_UpperUIBar.instance.UIBarSlideDownwardsHandlerUpwards();
         }
 
         public SystemLanguage GetLanguage()

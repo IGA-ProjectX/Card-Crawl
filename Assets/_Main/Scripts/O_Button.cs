@@ -131,6 +131,7 @@ namespace IGDF
             Sequence s = DOTween.Sequence();
             s.AppendInterval(0.2f);
             s.AppendCallback(() => ResetRoomPosition());
+            s.AppendCallback(() => M_Vivarium.instance.InitializeVivarium());
             s.AppendCallback(() => FindObjectOfType<M_SceneTransition>().EnterCurrentCabin());
 
             void ResetRoomPosition()

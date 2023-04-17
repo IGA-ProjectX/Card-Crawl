@@ -4,11 +4,17 @@ using UnityEngine;
 
 namespace IGDF {
 
-    public enum HoverState { AllDisactive, AllActive, CardDragging, SkillTargeting, CardDrawing }
+    public enum HoverState { AllDisactive, AllActive, CardDragging, SkillTargeting, CardDrawing,InVivarium }
     public class M_HoverTip : MonoBehaviour
     {
         private List<O_HoverTip> hoverTips = new List<O_HoverTip>();
         private HoverState currentState;
+        public static M_HoverTip instance;
+
+        private void Awake()
+        {
+            instance = this;
+        }
 
         public void EnterState(HoverState targetState)
         {
@@ -41,6 +47,9 @@ namespace IGDF {
                         if (tip.tipType == HoverTipType.Card) tip.ChangeAllowOpenState(false, false);
                         else tip.ChangeAllowOpenState(true, true);
                     }
+                    break;
+                case HoverState.InVivarium:
+                    foreach (O_HoverTip tip in hoverTips) tip.ChangeAllowOpenState(true, false);
                     break;
             }
         }

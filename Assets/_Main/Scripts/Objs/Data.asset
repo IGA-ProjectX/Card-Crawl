@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8afa8cc8341104cb4c4dab935cc9eb, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
+  gameTimeInTotal: 362
   playExp: 176
   productShowcases:
   - levelType: 0
@@ -29,3 +30,12 @@ MonoBehaviour:
     producedDate: 
     userReviewLevel: 
     userReviewNumber: 
+  unlockedSkillNodes:
+  - characterType: 0
+    thisNodeIndex: 1
+  - characterType: 0
+    thisNodeIndex: 2
+  - characterType: 0
+    thisNodeIndex: 4
+  - characterType: 0
+    thisNodeIndex: 5
