@@ -22,6 +22,7 @@ namespace IGDF
         public Action ToOverView;
         public Action ToCabinView;
         public Action<CabinView> ToRoom;
+        
 
         public void EnterCabinView(CabinView targetCabin)
         {
