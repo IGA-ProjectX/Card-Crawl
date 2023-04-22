@@ -16,6 +16,11 @@ namespace IGDF {
             instance = this;
         }
 
+        private void Update()
+        {
+
+        }
+
         public void EnterState(HoverState targetState)
         {
             currentState = targetState;

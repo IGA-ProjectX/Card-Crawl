@@ -75,7 +75,8 @@ namespace IGDF
             UnlockedSkillNode respawnBud = FindFlowerBudToRespawn(currentSkill);
 
             currentSkill = newSkill;
-            M_Global.instance.skillList[skillIndex] = currentSkill;
+            //M_Global.instance.skillList[skillIndex] = currentSkill;
+            M_Global.instance.mainData.inUseSkills[skillIndex] = currentSkill;
 
             Sequence s = DOTween.Sequence();
             s.AppendCallback(() => CloseEye());
@@ -107,11 +108,11 @@ namespace IGDF
                 foreach (SO_SkillParent skillParent in M_SkillTree.instance.skillParents)
                     foreach (NodeInfo node in skillParent.nodeList)
                         if (node.childSkills[0] == replacedSkill)
-                            return new UnlockedSkillNode
-                            {
-                                thisNodeIndex = node.thisNodeIndex,
-                                characterType = skillParent.characterType
-                            };
+                            return new UnlockedSkillNode(skillParent.characterType, node.thisNodeIndex);
+                            //{
+                            //    thisNodeIndex = node.thisNodeIndex,
+                            //    characterType = skillParent.characterType
+                            //};
                 return null;
             }
 

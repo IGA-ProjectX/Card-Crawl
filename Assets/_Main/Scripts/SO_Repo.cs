@@ -18,6 +18,7 @@ namespace IGDF
         public Color orangeColor;
         public CharacterInfo[] characterInfos;
         public HoverTipInfo[] hoverTipInfos;
+        public SO_Skill[] defaultSkills;
 
         [Header("Audio")]
         public SoundAudioClip[] bgMusics;

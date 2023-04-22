@@ -49,7 +49,7 @@ namespace IGDF
             SpriteRenderer slotBG = transform.GetComponent<SpriteRenderer>();
             DOTween.To(() => slotBG.color, x => slotBG.color = x, Color.white, 0.2f);
             transform.Find("Text").GetComponent<TMP_Text>().text = skillToSet.skillNameEng;
-            M_Global.instance.skillList[slotIndex] = skillToSet;
+            //M_Global.instance.skillList[slotIndex] = skillToSet;
         }
     }
 }

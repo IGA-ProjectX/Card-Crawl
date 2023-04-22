@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8afa8cc8341104cb4c4dab935cc9eb, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  gameTimeInTotal: 362
-  playExp: 176
+  gameTimeInTotal: 413
+  playExp: 0
   productShowcases:
   - levelType: 0
-    productLevel: 1
-    producedDate: 2023.03.25
-    userReviewLevel: Mixed
-    userReviewNumber: (491 Reviews)
+    productLevel: 0
+    producedDate: 
+    userReviewLevel: 
+    userReviewNumber: 
   - levelType: 1
     productLevel: 0
     producedDate: 
@@ -39,3 +39,8 @@ MonoBehaviour:
     thisNodeIndex: 4
   - characterType: 0
     thisNodeIndex: 5
+  inUseSkills:
+  - {fileID: 11400000, guid: c874a23b8ea850d44a387fc288826e76, type: 2}
+  - {fileID: 11400000, guid: ac8840154f2420d4890bfff9068a0578, type: 2}
+  - {fileID: 11400000, guid: 68cec2f932fd4ee479abe7025e5fb455, type: 2}
+  - {fileID: 11400000, guid: 90029eefc41025047befcc805a175090, type: 2}

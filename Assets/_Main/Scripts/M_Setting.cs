@@ -81,7 +81,16 @@ namespace IGDF
                 productRecord.userReviewLevel = "";
                 productRecord.userReviewNumber = "";
             }
+
+            M_Global.instance.mainData.unlockedSkillNodes.Clear();
+            M_Global.instance.mainData.unlockedSkillNodes.Add(new UnlockedSkillNode(CharacterType.Producer, NodeIndex.C1));
+            M_Global.instance.mainData.unlockedSkillNodes.Add(new UnlockedSkillNode(CharacterType.Producer, NodeIndex.C2));
+            M_Global.instance.mainData.unlockedSkillNodes.Add(new UnlockedSkillNode(CharacterType.Producer, NodeIndex.B1));
+            M_Global.instance.mainData.unlockedSkillNodes.Add(new UnlockedSkillNode(CharacterType.Producer, NodeIndex.B2));
+
+            M_Global.instance.mainData.inUseSkills = M_Global.instance.repository.defaultSkills;
             UpdateCurrentExp();
+            FindObjectOfType<O_UpperUIBar>().ChangeExp();
         }
 
         public void ClickLanguageChange()

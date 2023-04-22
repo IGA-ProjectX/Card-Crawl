@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3778708368789812801}
   - component: {fileID: 3778708368789812813}
   - component: {fileID: 3778708368789812802}
+  - component: {fileID: 2043853533998740578}
   m_Layer: 0
   m_Name: Pre_FlowerBud
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -1546066797
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 492152831960886160, guid: 37caa3695c34c5c4e863dc70b2b1cda6, type: 3}
+  m_Sprite: {fileID: -3976125371756549711, guid: 9ea8bceff29d64144a062c3789f86b09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,7 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe65a2d226973742a72dc9ba34c2a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blossimAnim: {fileID: 7400000, guid: eaa74b08acf91514e98cf7fd340db3b6, type: 2}
+  animClips:
+  - {fileID: 7400000, guid: eaa74b08acf91514e98cf7fd340db3b6, type: 2}
+  - {fileID: 7400000, guid: 6f20af686034a0348bf6120a008184dd, type: 2}
 --- !u!61 &3778708368789812802
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -143,3 +146,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
+--- !u!114 &2043853533998740578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3778708368789812806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df100e8468531fb44b3366714a23fa90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipType: 8

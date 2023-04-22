@@ -10,6 +10,7 @@ namespace IGDF
 {
     public class M_SceneTransition : MonoBehaviour
     {
+        public static M_SceneTransition instance;
         public enum CabinView { Overview, Studio, Skill, Website, InStudio, InSkill, InWebsite }
         [HideInInspector]public CabinView currentView = CabinView.Overview;
         public Transform[] cars;
@@ -22,7 +23,11 @@ namespace IGDF
         public Action ToOverView;
         public Action ToCabinView;
         public Action<CabinView> ToRoom;
-        
+
+        private void Awake()
+        {
+            instance = this;
+        }
 
         public void EnterCabinView(CabinView targetCabin)
         {

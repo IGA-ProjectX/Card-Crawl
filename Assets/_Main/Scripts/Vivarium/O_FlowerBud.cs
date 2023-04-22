@@ -7,12 +7,15 @@ namespace IGDF
 {
     public class O_FlowerBud : MonoBehaviour
     {
-        public AnimationClip blossimAnim;
+        private AnimationClip blossomAnim;
+        public AnimationClip[] animClips;
         private float animTime;
         private bool isBlooming = false;
         private bool isBlossomy = false;
         private NodeInfo thisNode;
         private CharacterType treeType;
+        private bool isDataBlossomy = false;
+
 
         void Update()
         {
@@ -25,44 +28,61 @@ namespace IGDF
         {
             thisNode = infoToSet;
             treeType = whichTree;
-            CheckIsFlowerBlossomy();
-
-            void CheckIsFlowerBlossomy()
+            switch (treeType)
             {
-                foreach (var unlockedNode in M_Global.instance.mainData.unlockedSkillNodes)
-                    if (unlockedNode.characterType == treeType && unlockedNode.thisNodeIndex == thisNode.thisNodeIndex)
-                        FlowerTurnIntoBlossomy();
+                case CharacterType.Producer:
+                    blossomAnim = animClips[0];
+                    blossomAnim.SampleAnimation(gameObject, 0);
+                    break;
+                case CharacterType.Designer:
+                    break;
+                case CharacterType.Artist:
+                    break;
+                case CharacterType.Programmer:
+                    blossomAnim = animClips[1];
+                    blossomAnim.SampleAnimation(gameObject, 0);
+                    break;
             }
+  
+            isDataBlossomy = CheckIsFlowerBlossomy();
+            if (isDataBlossomy) FlowerTurnIntoBlossomy();
         }
 
         private void OnMouseDown()
         {
-            isBlooming = true;
+            if (M_SkillTree.instance.GetTreeState(treeType)) isBlooming = true;
         }
 
         private void OnMouseUp()
         {
-            isBlooming = false;
+            if (M_SkillTree.instance.GetTreeState(treeType)) isBlooming = false;
         }
 
         private void TimeForward()
         {
-            if (blossimAnim!=null)
+            float stepPerAnim = animTime / thisNode.expToUnlock;
+            if (blossomAnim!=null)
             {
                 animTime += Time.deltaTime;
-                if (animTime > blossimAnim.length) FlowerTurnIntoBlossomy();
-                blossimAnim.SampleAnimation(gameObject, animTime);
+                if (animTime > blossomAnim.length)
+                {
+                    FlowerTurnIntoBlossomy();
+           
+                }
+                blossomAnim.SampleAnimation(gameObject, animTime);
+
+            
             }
         }
 
         private void TimeRewind()
         {
-            if (blossimAnim != null)
+            if (blossomAnim != null)
             {
                 if (animTime>0)
                 {
                     animTime -= Time.deltaTime;
-                    blossimAnim.SampleAnimation(gameObject, animTime);
+                    blossomAnim.SampleAnimation(gameObject, animTime);
                 }
                 else animTime = 0;
             }
@@ -71,9 +91,10 @@ namespace IGDF
         private void FlowerTurnIntoBlossomy()
         {
             isBlossomy = true;
-            blossimAnim.SampleAnimation(gameObject, blossimAnim.length);
+            blossomAnim.SampleAnimation(gameObject, blossomAnim.length);
             FluctifySkills();
             transform.GetComponent<BoxCollider2D>().enabled = false;
+            if (!isDataBlossomy) UpdateUnlockedSkillToData();
         }
 
         public void FluctifySkills()
@@ -91,11 +112,46 @@ namespace IGDF
             bool CheckIsSkillLoaded()
             {
                 List<SO_Skill> tempList = new List<SO_Skill>();
-                foreach (SO_Skill skill in M_Global.instance.skillList) tempList.Add(skill);
+                foreach (SO_Skill skill in M_Global.instance.mainData.inUseSkills) tempList.Add(skill);
 
                 if (tempList.Contains(thisNode.childSkills[0])) return true;
                 else return false;
             }
+        }
+
+        public SO_Skill GetBudSkillInfo()
+        {
+            return thisNode.childSkills[0];
+        }
+
+        public CharacterType GetBudParentTreeType()
+        {
+            return treeType;
+        }
+
+        public string GetBudPriceToUnlock()
+        {
+            if (!isBlossomy)
+            {
+                return thisNode.expToUnlock.ToString() + "Exp";
+            }
+            else return "";
+        }
+
+        bool CheckIsFlowerBlossomy()
+        {
+            foreach (var unlockedNode in M_Global.instance.mainData.unlockedSkillNodes)
+                if (unlockedNode.characterType == treeType && unlockedNode.thisNodeIndex == thisNode.thisNodeIndex)
+                   return isDataBlossomy = true;
+            return false;
+        }
+
+        void UpdateUnlockedSkillToData()
+        {
+            M_Global.instance.mainData.unlockedSkillNodes.Add(new UnlockedSkillNode(treeType, thisNode.thisNodeIndex));
+            M_Global.instance.PlayerExpUp(-thisNode.expToUnlock);
+            O_UpperUIBar.instance.ChangeExp();
+            isDataBlossomy = true;
         }
     }
 }

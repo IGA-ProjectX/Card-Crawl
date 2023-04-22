@@ -6,7 +6,7 @@ using TMPro;
 
 namespace IGDF
 {
-    public enum HoverTipType { Card, Skill, DDLMachine, SkillMachine ,SkillParent,Character,ResidueTask,SkillInVivarium}
+    public enum HoverTipType { Card, Skill, DDLMachine, SkillMachine ,SkillParent,Character,ResidueTask,SkillInVivarium,BudInVivarium}
     public class O_HoverTip : MonoBehaviour
     {
         public HoverTipType tipType;
@@ -25,7 +25,13 @@ namespace IGDF
 
         private void Start()
         {
-            M_HoverTip.instance.HoverTipListAddOrRemove(this, true);
+            if (tipType == HoverTipType.BudInVivarium)
+            {
+                if (M_SkillTree.instance.GetTreeState(GetComponent<O_FlowerBud>().GetBudParentTreeType()))
+                    M_HoverTip.instance.HoverTipListAddOrRemove(this, true);
+            }
+            else M_HoverTip.instance.HoverTipListAddOrRemove(this, true);
+
             if (FindObjectOfType<M_Main>()!=null)
             {
                 selectionBox = FindObjectOfType<M_Main>().transform.Find("Selection Box").gameObject;
@@ -96,9 +102,13 @@ namespace IGDF
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             M_Global.instance.ui_HoverTip.transform.position = new Vector3(mouseWorldPos.x, mouseWorldPos.y, 0);
 
+            float xOffset = boundaryPos.x;
+            if (M_SceneTransition.instance.currentView == M_SceneTransition.CabinView.InSkill) xOffset -= 32;
+            else if (M_SceneTransition.instance.currentView == M_SceneTransition.CabinView.InWebsite) xOffset += 32;
+
             float pivotX = 1;
             float pivotY = 1;
-            if (mouseWorldPos.x < boundaryPos.x) pivotX = 0;
+            if (mouseWorldPos.x < xOffset) pivotX = 0;
             if (mouseWorldPos.y < boundaryPos.y) pivotY = 0;
             M_Global.instance.ui_HoverContent.pivot = new Vector2(pivotX, pivotY);
 
@@ -153,6 +163,10 @@ namespace IGDF
                         SetTipName(GetHoverTipInfo(HoverTipType.ResidueTask).nameEng);
                         SetTipDescription(GetHoverTipInfo(HoverTipType.ResidueTask).desEng);
                         break;
+                    case HoverTipType.BudInVivarium:
+                        SetTipName(GetComponent<O_FlowerBud>().GetBudSkillInfo().skillNameEng + " " + GetComponent<O_FlowerBud>().GetBudPriceToUnlock());
+                        SetTipDescription(GetComponent<O_FlowerBud>().GetBudSkillInfo().skillDescriptionEng);
+                        break;
                 }
             else if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese)
                 switch (tipType)
@@ -184,6 +198,10 @@ namespace IGDF
                     case HoverTipType.ResidueTask:
                         SetTipName(GetHoverTipInfo(HoverTipType.ResidueTask).nameChi);
                         SetTipDescription(GetHoverTipInfo(HoverTipType.ResidueTask).desChi);
+                        break;
+                    case HoverTipType.BudInVivarium:
+                        SetTipName(GetComponent<O_FlowerBud>().GetBudSkillInfo().skillNameChi + " " + GetComponent<O_FlowerBud>().GetBudPriceToUnlock());
+                        SetTipDescription(GetComponent<O_FlowerBud>().GetBudSkillInfo().skillDescriptionChi);
                         break;
                 }
         }

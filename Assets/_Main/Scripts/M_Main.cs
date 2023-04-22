@@ -96,7 +96,7 @@ namespace IGDF
             m_DDL.CreateDots();
             m_DDL.InitializeNumberList();
             m_Staff.InitializeStaffValues(M_Global.instance.levels[M_Global.instance.targetLevel].staffValue);
-            m_Skill.InitializeSkills(M_Global.instance.skillList);
+            m_Skill.InitializeSkills(M_Global.instance.mainData.inUseSkills);
 
             m_DDL.UpdateName();
         }

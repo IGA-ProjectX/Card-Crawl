@@ -104,6 +104,11 @@ MonoBehaviour:
     desEng: 
     nameChi: "\u4EFB\u52A1\u6307\u793A\u724C"
     desChi: "\u5B83\u4F1A\u663E\u793A\u5F53\u524D\u6E38\u620F\u5F00\u53D1\u8FD8\u9700\u8981\u5B8C\u6210\u591A\u5C11\u4EFB\u52A1\u5361\u3002\u5F53\u6240\u6709\u4EFB\u52A1\u90FD\u5B8C\u6210\u540E\uFF0C\u4F60\u7684\u6E38\u620F\u5C31\u53EF\u4EE5\u6210\u529F\u4E0A\u7EBF\u5566\uFF01"
+  defaultSkills:
+  - {fileID: 11400000, guid: c874a23b8ea850d44a387fc288826e76, type: 2}
+  - {fileID: 11400000, guid: ac8840154f2420d4890bfff9068a0578, type: 2}
+  - {fileID: 11400000, guid: 68cec2f932fd4ee479abe7025e5fb455, type: 2}
+  - {fileID: 11400000, guid: 90029eefc41025047befcc805a175090, type: 2}
   bgMusics:
   - soundType: 9
     audioClip: {fileID: 8300000, guid: 3160e7645ff70904c923fe34209ce41b, type: 3}

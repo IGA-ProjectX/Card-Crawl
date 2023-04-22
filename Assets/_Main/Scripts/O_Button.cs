@@ -12,7 +12,7 @@ namespace IGDF
         { 
             StartGame, ExitGame, Credits, 
             CabinBetweenStudioSkill, CabinBetweenStudioWebsite ,BackToOverview,
-            EnterRoom,OpenSettingPanel,ExitRoom,
+            EnterVivarium,EnterWebsite,OpenSettingPanel,ExitRoom,
             CallOutLevelList
         }
         public ButtonType buttonType;
@@ -47,8 +47,11 @@ namespace IGDF
                     case ButtonType.CabinBetweenStudioWebsite:
                         CabinBetweenStudioWebsite();
                         break;
-                    case ButtonType.EnterRoom:
-                        EnterRoom();
+                    case ButtonType.EnterVivarium:
+                        EnterVivarium();
+                        break;
+                    case ButtonType.EnterWebsite:
+                        EnterWebsite();
                         break;
                     case ButtonType.OpenSettingPanel:
                         OpenSettingPanel();
@@ -72,7 +75,6 @@ namespace IGDF
             if (isClickable)
                 if (buttonType == ButtonType.StartGame || buttonType == ButtonType.ExitGame|| buttonType == ButtonType.Credits|| buttonType == ButtonType.OpenSettingPanel)
                 transform.DORotate(new Vector3(0, 0, Random.Range(10, 15)), 0.4f);
-            //RoadBaseButtonColorChangeTo(M_Global.instance.repository.orangeColor);
         }
 
         private void OnMouseExit()
@@ -80,7 +82,6 @@ namespace IGDF
             if (isClickable)
                 if (buttonType == ButtonType.StartGame || buttonType == ButtonType.ExitGame || buttonType == ButtonType.Credits || buttonType == ButtonType.OpenSettingPanel) 
                     transform.DORotate(new Vector3(0, 0, 0), 0.4f);
-                //RoadBaseButtonColorChangeTo(Color.white);
         }
 
         void RoadBaseButtonColorChangeTo(Color targetColor)
@@ -124,7 +125,7 @@ namespace IGDF
             }
         }
 
-        public void EnterRoom()
+        public void EnterVivarium()
         {
             SceneManager.LoadScene(2, LoadSceneMode.Additive);
          
@@ -140,11 +141,25 @@ namespace IGDF
             }
         }
 
+        public void EnterWebsite()
+        {
+            SceneManager.LoadScene(3, LoadSceneMode.Additive);
+
+            Sequence s = DOTween.Sequence();
+            s.AppendInterval(0.2f);
+            s.AppendCallback(() => ResetRoomPosition());
+            s.AppendCallback(() => M_WebsiteRoom.instance.InitializeWebsiteRoom());
+            s.AppendCallback(() => FindObjectOfType<M_SceneTransition>().EnterCurrentCabin());
+
+            void ResetRoomPosition()
+            {
+                FindObjectOfType<M_WebsiteRoom>().transform.position = new Vector3(32, 0, 0);
+            }
+        }
+
         void OpenSettingPanel()
         {
             FindObjectOfType<M_Setting>().OpenSettingPanel();
-             
-
         }
     }
 }

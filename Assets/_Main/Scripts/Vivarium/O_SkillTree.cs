@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class O_SkillTree : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private GameObject glassCover;
+
     void Start()
     {
-        
+        glassCover = transform.Find("GlassCover").gameObject;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateGlassState(bool glassState)
     {
-        
+        glassCover.SetActive(!glassState);
     }
 }

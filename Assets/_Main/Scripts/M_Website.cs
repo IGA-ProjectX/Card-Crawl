@@ -9,11 +9,17 @@ namespace IGDF
 {
     public class M_Website : MonoBehaviour
     {
+        public static M_Website instance;
         [SerializeField] private CanvasGroup ui_ShowcaseGroup;
         [SerializeField] private Transform obj_Logo;
         [SerializeField] private Transform ui_ShowcaseParent;
         private List<Transform> products = new List<Transform>();
         [SerializeField] private GameObject p_Website;
+
+        private void Awake()
+        {
+            instance = this;
+        }
 
         private void Start()
         {
@@ -22,6 +28,11 @@ namespace IGDF
                 products.Add(ui_ShowcaseParent.GetChild(i));
             }
             p_Website.SetActive(false);
+        }
+
+        public void InitializeWebsiteRoom()
+        {
+
         }
 
         public void OpenWeb()

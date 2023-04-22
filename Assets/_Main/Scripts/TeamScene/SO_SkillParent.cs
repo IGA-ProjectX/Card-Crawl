@@ -24,6 +24,12 @@ namespace IGDF
     {
         public CharacterType characterType;
         public NodeIndex thisNodeIndex;
+
+        public UnlockedSkillNode(CharacterType toSetType, NodeIndex toSetIndex)
+        {
+            characterType = toSetType;
+            thisNodeIndex = toSetIndex;
+        }
     }
 
     public enum NodeIndex { None, C1, C2, C3, B1, B2, B3, A1, A2, A3 }

@@ -43,7 +43,10 @@ namespace IGDF
                             case O_Button.ButtonType.BackToOverview:
                                 button.isClickable = false;
                                 break;
-                            case O_Button.ButtonType.EnterRoom:
+                            case O_Button.ButtonType.EnterVivarium:
+                                button.isClickable = false;
+                                break;
+                            case O_Button.ButtonType.EnterWebsite:
                                 button.isClickable = false;
                                 break;
                             case O_Button.ButtonType.OpenSettingPanel:
@@ -81,7 +84,10 @@ namespace IGDF
                             case O_Button.ButtonType.BackToOverview:
                                 button.isClickable = true;
                                 break;
-                            case O_Button.ButtonType.EnterRoom:
+                            case O_Button.ButtonType.EnterVivarium:
+                                button.isClickable = true;
+                                break;
+                            case O_Button.ButtonType.EnterWebsite:
                                 button.isClickable = true;
                                 break;
                             case O_Button.ButtonType.OpenSettingPanel:
@@ -119,7 +125,10 @@ namespace IGDF
                             case O_Button.ButtonType.BackToOverview:
                                 button.isClickable = false;
                                 break;
-                            case O_Button.ButtonType.EnterRoom:
+                            case O_Button.ButtonType.EnterVivarium:
+                                button.isClickable = false;
+                                break;
+                            case O_Button.ButtonType.EnterWebsite:
                                 button.isClickable = false;
                                 break;
                             case O_Button.ButtonType.OpenSettingPanel:
