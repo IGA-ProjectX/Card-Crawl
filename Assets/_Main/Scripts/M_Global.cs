@@ -36,6 +36,8 @@ namespace IGDF
             ui_HoverContent = ui_HoverTip.transform.GetChild(0).GetComponent<RectTransform>();
             ui_HoverTip.SetActive(false);
             chatBubbleParent = GameObject.Find("Canvas").transform.Find("ChatBubbles");
+
+            SaveTheGameFromJson();
         }
 
         public void PlayerExpUp(int newExp) 
@@ -53,6 +55,25 @@ namespace IGDF
         public void SetLanguage(SystemLanguage targetLanguage)
         {
             currentLanguage = targetLanguage;
+        }
+
+        public void SaveTheGameFromJson()
+        {
+            //string json = JsonUtility.ToJson(mainData);
+            //Debug.Log(json);
+            //SO_Data newdata = JsonUtility.FromJson<SO_Data>(json);
+            //Debug.Log(mainData.playExp);
+            //Debug.Log(newdata.playExp);
+        }
+
+        public void LoadTheGameFromJson()
+        {
+            
+        }
+
+        private void OnApplicationQuit()
+        {
+            Debug.Log("dsadasda");
         }
     }
 }
