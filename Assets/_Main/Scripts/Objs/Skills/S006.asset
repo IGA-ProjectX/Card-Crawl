@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: S006
   m_EditorClassIdentifier: 
   skillIndex: 6
-  skillName: Interesting Task
-  skillDescription: Select one task card, keep this card would not decrease your
-    ddl
-  skillImage: {fileID: 21300000, guid: 2ac7031115abf30458e0672cee1e638f, type: 3}
+  skillNameChi: "\u5408\u7406\u62D6\u5EF6"
+  skillDescriptionChi: "\u9009\u62E9\u4E00\u5F20\u4EFB\u52A1\u5361\uFF0C\u8BE5\u5361\u5728\u56DE\u5408\u7ED3\u675F\u65F6\u4E0D\u4F1A\u9020\u6210\u6B7B\u7EBF\u635F\u5931\u3002"
+  skillNameEng: DDL Master
+  skillDescriptionEng: Select one task card, your ddl value will not decrease when
+    it left on board.
+  skillImage: {fileID: 21300000, guid: bd76726ffb1eb94429fb8143429bd978, type: 3}
   skillType: 6
   skillUseType: 2

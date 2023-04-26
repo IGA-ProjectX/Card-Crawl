@@ -6,7 +6,7 @@ using TMPro;
 
 namespace IGDF
 {
-    public enum HoverTipType { Card, Skill, DDLMachine, SkillMachine ,SkillParent,Character,ResidueTask,SkillInVivarium,BudInVivarium}
+    public enum HoverTipType { Card, Skill, DDLMachine, SkillMachine ,SkillParent,Character,ResidueTask,SkillInVivarium,BudInVivarium, SkillFruit }
     public class O_HoverTip : MonoBehaviour
     {
         public HoverTipType tipType;
@@ -167,6 +167,14 @@ namespace IGDF
                         SetTipName(GetComponent<O_FlowerBud>().GetBudSkillInfo().skillNameEng + " " + GetComponent<O_FlowerBud>().GetBudPriceToUnlock());
                         SetTipDescription(GetComponent<O_FlowerBud>().GetBudSkillInfo().skillDescriptionEng);
                         break;
+                    case HoverTipType.SkillInVivarium:
+                        SetTipName(GetComponent<O_V_SkillRobot>().CurrentSkillInfo().skillNameEng);
+                        SetTipDescription(GetComponent<O_V_SkillRobot>().CurrentSkillInfo().skillDescriptionEng);
+                        break;
+                    case HoverTipType.SkillFruit:
+                        SetTipName(GetComponent<O_V_SkillFruit>().CurrentSkillInfo().skillNameEng);
+                        SetTipDescription(GetComponent<O_V_SkillFruit>().CurrentSkillInfo().skillDescriptionEng);
+                        break;
                 }
             else if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese)
                 switch (tipType)
@@ -202,6 +210,14 @@ namespace IGDF
                     case HoverTipType.BudInVivarium:
                         SetTipName(GetComponent<O_FlowerBud>().GetBudSkillInfo().skillNameChi + " " + GetComponent<O_FlowerBud>().GetBudPriceToUnlock());
                         SetTipDescription(GetComponent<O_FlowerBud>().GetBudSkillInfo().skillDescriptionChi);
+                        break;
+                    case HoverTipType.SkillInVivarium:
+                        SetTipName(GetComponent<O_V_SkillRobot>().CurrentSkillInfo().skillNameChi);
+                        SetTipDescription(GetComponent<O_V_SkillRobot>().CurrentSkillInfo().skillDescriptionChi);
+                        break;
+                    case HoverTipType.SkillFruit:
+                        SetTipName(GetComponent<O_V_SkillFruit>().CurrentSkillInfo().skillNameChi);
+                        SetTipDescription(GetComponent<O_V_SkillFruit>().CurrentSkillInfo().skillDescriptionChi);
                         break;
                 }
         }

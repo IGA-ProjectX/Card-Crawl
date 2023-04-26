@@ -17,6 +17,6 @@ MonoBehaviour:
   skillDescriptionChi: "\u91CD\u65B0\u62BD\u53D6\u5F53\u524D\u6570\u91CF\u7684\u5361\u724C"
   skillNameEng: Change Priority
   skillDescriptionEng: Redraw all card
-  skillImage: {fileID: 21300000, guid: f311bb86970aafe4ca089dee7ef70ae6, type: 3}
+  skillImage: {fileID: 21300000, guid: d00334557881bc849b9b4a9b47f7d306, type: 3}
   skillType: 2
   skillUseType: 1

@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: S010
   m_EditorClassIdentifier: 
   skillIndex: 10
-  skillName: Communication
-  skillDescription: Evenly distribute all profession value
-  skillImage: {fileID: 21300000, guid: bb39c74370e6c064d8d1374b212cc9e2, type: 3}
+  skillNameChi: "\u4E92\u76F8\u534F\u52A9"
+  skillDescriptionChi: "\u5E73\u5747\u5206\u914D\u4E09\u4E2A\u804C\u4E1A\u7684\u6280\u80FD\u6570\u503C"
+  skillNameEng: Corporation
+  skillDescriptionEng: Evenly distribute skill values of three professions
+  skillImage: {fileID: 21300000, guid: bb668641abe10a64891e26613cf530ee, type: 3}
   skillType: 10
   skillUseType: 1

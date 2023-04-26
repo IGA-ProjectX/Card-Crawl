@@ -17,7 +17,7 @@ namespace IGDF
         public Transform parent_TargetBoxes;
         public GameObject pre_ValueUp;
 
-        private Action<int> ValueUpEffet;
+        public Action<int, bool> EffectChange;
 
         public void InitializeStaffValues(int[] valueArray)
         {
@@ -26,7 +26,7 @@ namespace IGDF
                 if (i < 4) ChangeStaffValue(i, valueArray[i]);
                 else ChangeDeadLineValue(valueArray[i]);
             }
-            ValueUpEffet += ValueUpPopAndFade;
+            EffectChange += ValueChangePopAndFade;
         }
 
         public void ChangeStaffValue(int index, int value)
@@ -41,18 +41,14 @@ namespace IGDF
             if (index == 0) staffSlots[0].GetChild(2).Find("Number").GetComponent<TMP_Text>().text = inTurnValues[0].ToString();
             else 
             {
-                if (value > 0 && ValueUpEffet!=null) ValueUpEffet(index);
+                if (EffectChange != null) EffectChange(index, (value > 0) ? true : false);
 
                 staffSlots[index].GetChild(0).Find("Number").GetComponent<TMP_Text>().text = inTurnValues[index].ToString();
                 if (inTurnValues[index] > 5)
                     staffSlots[index].GetChild(0).Find("Alert").GetComponent<SpriteRenderer>().enabled = false;
                 else
                     staffSlots[index].GetChild(0).Find("Alert").GetComponent<SpriteRenderer>().enabled = true;
-
             }
-
-
-            //staffSlots[index].Find("Cat Behind").Find("Text Value").GetComponent<TMP_Text>().text = inTurnValues[index].ToString();
 
             switch (index)
             {
@@ -71,25 +67,24 @@ namespace IGDF
             }
         }
 
-        public void ValueUpPopAndFade(int targetStaff)
+        public void ValueChangePopAndFade(int targetStaff,bool isValueUp)
         {
             var boxCollider = staffSlots[targetStaff].GetComponent<BoxCollider2D>();
             var size = boxCollider.size;
             var offset = boxCollider.offset;
 
-            var topMidLocal = offset + new Vector2(0, size.y * 0.5f);
+            var topMidLocal = offset + new Vector2(0, size.y * (isValueUp ? 0.5f : 0.7f));
             var topMidWorld = staffSlots[targetStaff].TransformPoint(topMidLocal);
 
             Transform newValueUp = Instantiate(pre_ValueUp, topMidWorld, Quaternion.identity).transform;
             newValueUp.localScale = Vector3.zero;
-
             SpriteRenderer valueSprite = newValueUp.GetComponent<SpriteRenderer>();
+            valueSprite.sprite = isValueUp ? M_Global.instance.repository.valueChanges[0] : M_Global.instance.repository.valueChanges[1];
 
             Sequence s = DOTween.Sequence();
             s.Append(newValueUp.DOScale(1, 0.4f));
-            s.Append(newValueUp.DOMoveY(newValueUp.position.y + 0.2f, 0.4f));
+            s.Append(newValueUp.DOMoveY(newValueUp.position.y + (isValueUp ? 0.2f : -0.2f), 0.4f));
             s.AppendCallback(() => DOTween.To(()=>valueSprite.color, x => valueSprite.color = x, new Color(0, 0, 0, 0), 0.4f));
-            //s.AppendCallback(() => DOTween.To(() => valueSprite.color, x => valueSprite.color = x, new Color(0, 0, 0, 0), 0.2f));
         }
 
         public void StaffIconChangeTo(int targetStaff,IconCondition targetCondition)

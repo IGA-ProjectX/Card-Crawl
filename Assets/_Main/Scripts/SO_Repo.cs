@@ -19,6 +19,7 @@ namespace IGDF
         public CharacterInfo[] characterInfos;
         public HoverTipInfo[] hoverTipInfos;
         public SO_Skill[] defaultSkills;
+        public Sprite[] valueChanges;
 
         [Header("Audio")]
         public SoundAudioClip[] bgMusics;

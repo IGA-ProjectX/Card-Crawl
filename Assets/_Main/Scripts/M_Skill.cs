@@ -10,6 +10,7 @@ namespace IGDF
     public class M_Skill : MonoBehaviour
     {
         public Transform[] skillObjects;
+        public TMPro.TMP_Text[] skillNames;
         private SkillUseState skillUseState = SkillUseState.CanNotUse;
         [HideInInspector]public O_Skill activatedSkill;
 
@@ -29,7 +30,11 @@ namespace IGDF
         public void InitializeSkills(SO_Skill[] skillArray)
         {
             for (int i = 0; i < skillArray.Length; i++)
+            {
                 skillObjects[i].GetComponent<O_Skill>().InitializeSkill(skillArray[i]);
+                skillNames[i].text = (M_Global.instance.GetLanguage() == SystemLanguage.Chinese) ? skillArray[i].skillNameChi : skillArray[i].skillNameEng;
+            }
+
         }
 
         public void UseSkill(O_Skill receivedSkill)

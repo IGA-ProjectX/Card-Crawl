@@ -15,14 +15,16 @@ namespace IGDF
         TMP_Text levelName;
         Image levelCover;
         Image levelLock;
+        Image levelLockBack;
         Button thisButton;
         bool isLocked = false;
 
         public void InitializeLevelObj(SO_Level targetLevel,int targetIndex)
         {
-            levelName = transform.Find("Mask").Find("Level Name").GetComponent<TMP_Text>();
+            levelName = transform.Find("Level Name").GetComponent<TMP_Text>();
             levelCover = transform.Find("Mask").Find("Level Cover").GetComponent<Image>();
             levelLock = transform.Find("Level Lock").GetComponent<Image>();
+            levelLockBack = transform.Find("Level Lock Back").GetComponent<Image>();
             thisButton = transform.Find("Frame").GetComponent<Button>();
             if (targetLevel != null)
             {
@@ -32,6 +34,7 @@ namespace IGDF
                 else levelName.text = thisLevel.levelNameChi;
 
                 levelLock.CrossFadeAlpha(0, 0, true);
+                levelLockBack.CrossFadeAlpha(0, 0, true);
                 isLocked = false;
             }
             else

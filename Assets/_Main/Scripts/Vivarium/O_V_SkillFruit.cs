@@ -46,5 +46,10 @@ namespace IGDF
             if (isPlugined == false) transform.DOMove(initialPosition, 0.7f);
             selectedSkill = null;
         }
+
+        public SO_Skill CurrentSkillInfo()
+        {
+            return skillInfo;
+        }
     }
 }

@@ -17,6 +17,6 @@ MonoBehaviour:
   skillDescriptionChi: "\u5C06\u4E00\u5F20\u9700\u6C42\u5361\u9000\u56DE\u724C\u5E93"
   skillNameEng: Later
   skillDescriptionEng: Withdraw one task card
-  skillImage: {fileID: 21300000, guid: 220cbb2d4a5db6f4da432b8fc9c307d6, type: 3}
+  skillImage: {fileID: 21300000, guid: 74658be234d7e68438cf72de657b4eb0, type: 3}
   skillType: 1
   skillUseType: 2

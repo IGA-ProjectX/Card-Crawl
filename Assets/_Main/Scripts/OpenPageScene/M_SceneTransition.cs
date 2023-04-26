@@ -99,16 +99,12 @@ namespace IGDF
                     Sequence ws = DOTween.Sequence();
                     ws.AppendInterval(transitionTime);
                     ws.AppendCallback(() => FindObjectOfType<M_Website>().OpenWeb());
+                    ws.AppendCallback(() => WebsiteSceneCullingMaskChangeTo(currentView));
                     M_Audio.PlaySceneMusic(CabinView.InWebsite);
-
+              
                     break;
             }
             ToRoom(currentView);
-            //void TransitToRoomState()
-            //{
-            //    cars[0].Find("Door Mask").GetComponent<SpriteMask>().enabled = false;
-            //    //Camera.main.cullingMask = mask_WaterScene;
-            //}
         }
 
         public void ExitCurrentCabin()
@@ -137,8 +133,14 @@ namespace IGDF
                     break;
                 case CabinView.InWebsite:
                     FindObjectOfType<M_Website>().CloseWeb();
-                    cars[2].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y - 12, transitionTime);
-                    currentView = CabinView.Website;
+                    //cars[2].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y - 12, transitionTime);
+                    //currentView = CabinView.Website;
+                    //WebsiteSceneCullingMaskChangeTo(currentView);
+                    Sequence sw = DOTween.Sequence();
+                    sw.Append(cars[2].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y - 12, transitionTime));
+                    sw.AppendCallback(() => currentView = CabinView.Website);
+                    sw.AppendInterval(transitionTime);
+                    sw.AppendCallback(() => WebsiteSceneCullingMaskChangeTo(currentView));
                     break;
             }
             M_Audio.PlaySceneMusic(CabinView.Overview);
@@ -193,6 +195,19 @@ namespace IGDF
             p_ResultSteam.SetActive(targetState);
             p_ResultFail.SetActive(targetState);
             p_Pause.SetActive(targetState);
+        }
+
+        void WebsiteSceneCullingMaskChangeTo(CabinView cabinView)
+        {
+            switch (cabinView)
+            {
+                case CabinView.Website:
+                    Camera.main.cullingMask = ~(1 << 0);
+                    break;
+                case CabinView.InWebsite:
+                    Camera.main.cullingMask = ~(1 << LayerMask.NameToLayer("AboveSign"));
+                    break;
+            }
         }
     }
 }

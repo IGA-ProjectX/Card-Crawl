@@ -76,6 +76,17 @@ namespace IGDF
             t_Realtime.text = currentTime;
         }
 
+        public void ExpConsumed()
+        {
+
+        }
+
+        public void ExpObtained()
+        {
+
+        }
+
+        #region UI Bar Movement
         public void UIBarSlideDownwardsHandlerUpwards()
         {
             DOTween.To(()=>thisRect.anchoredPosition, x => thisRect.anchoredPosition = x, new Vector2(0, -70), 1);
@@ -116,5 +127,6 @@ namespace IGDF
                 previousOpenState = isOpen;
             }
         }
+        #endregion
     }
 }

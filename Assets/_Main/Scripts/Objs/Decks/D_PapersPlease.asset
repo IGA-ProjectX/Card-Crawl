@@ -17,7 +17,7 @@ MonoBehaviour:
   levelNameEng: Documents, Please
   staffValue: 000000000a0000000a0000000a0000000f000000
   levelButtonImage: {fileID: 21300000, guid: 5975cafa724a3df4baf0ac2eecfc85fa, type: 3}
-  colorFilter: {r: 0.6871326, g: 0.6000801, b: 0.8773585, a: 1}
+  colorFilter: {r: 1, g: 1, b: 1, a: 1}
   cards_Production:
   - cardType: 0
     cardOutNE: Functionality

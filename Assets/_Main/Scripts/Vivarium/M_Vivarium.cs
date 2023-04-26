@@ -8,7 +8,10 @@ namespace IGDF {
     {
         public static M_Vivarium instance;
         public GameObject[] skillRobots;
-        public TMPro.TMP_Text[] text_WaterSupplys;
+        public Transform[] waterSupplys;
+        private TMPro.TMP_Text[] text_WaterSupplys = new TMPro.TMP_Text[4];
+        private GameObject[] water_Animators = new GameObject[4];
+        public AnimationClip waterAnim;
 
         private void Awake()
         {
@@ -17,6 +20,12 @@ namespace IGDF {
 
         void Start()
         {
+            for (int i = 0; i < waterSupplys.Length; i++)
+            {
+                text_WaterSupplys[i] = waterSupplys[i].Find("Text").GetComponent<TMPro.TMP_Text>();
+                water_Animators[i] = waterSupplys[i].Find("Water Anim").gameObject;
+            }
+
             for (int i = 0; i < text_WaterSupplys.Length; i++)
             {
                 switch (i)
@@ -40,10 +49,6 @@ namespace IGDF {
             s.AppendCallback(() => M_HoverTip.instance.EnterState(HoverState.InVivarium));
         }
 
-        void Update()
-        {
-        }
-
         public void InitializeVivarium()
         {
             for (int i = 0; i < skillRobots.Length; i++)
@@ -57,6 +62,23 @@ namespace IGDF {
             for (int i = 0; i < skillRobots.Length; i++)
             {
                 skillRobots[i].GetComponent<O_V_SkillRobot>().OpenEye();
+            }
+        }
+
+        public GameObject GetCharacterWaterAnim(CharacterType targetType)
+        {
+            switch (targetType)
+            {
+                case CharacterType.Producer:
+                    return water_Animators[0];
+                case CharacterType.Designer:
+                    return water_Animators[1];
+                case CharacterType.Artist:
+                    return water_Animators[2];
+                case CharacterType.Programmer:
+                    return water_Animators[3];
+                default:     
+                    return water_Animators[0];
             }
         }
     }

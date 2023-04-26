@@ -20,6 +20,7 @@ namespace IGDF
                 case SkillType.RemoveAllTaskChangeDDLTo1:
                     break;
                 case SkillType.EvenDistributeProfessionValue:
+                    Skill_EvenDistributeProfessionValue();
                     break;
                 case SkillType.Shader:
                     Skill_Pro_Shader();
@@ -52,6 +53,7 @@ namespace IGDF
                 case SkillType.RemoveOneTaskGainHalfExp:
                     break;
                 case SkillType.SelectOneTaskNoDDL:
+                    Skill_SelectOneTaskNoDDL(targetCard);
                     break;
                 case SkillType.ChangeOneTaskToHalf:
                     Skill_ChangeOneTaskToHalf(targetCard);
@@ -77,6 +79,7 @@ namespace IGDF
             activatedSkill.SetSkillUninteractable();
         }
 
+        #region Producer Skills
         private void Skill_RedrawAllCard()
         {
             List<int> toDrawIndexes = new List<int>();
@@ -102,8 +105,6 @@ namespace IGDF
             targetCard.SetDraggableState(false);
             Sequence s = DOTween.Sequence();
             s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.3f);
-            //s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
-            //s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
         }
 
         private void Skill_ChangeOneCardProfessionRandomly(O_Card targetCard)
@@ -135,15 +136,16 @@ namespace IGDF
 
         private void Skill_GainOneExpDoubleItsValue(O_Card targetCard)
         {
+            M_Card.cardUsedNumInTurn++;
             Sequence s = DOTween.Sequence();
+            s.AppendCallback(() => M_Main.instance.m_DDL.DDLSlotChangeTo(SlotCondition.Expanded));
             s.AppendCallback(() => targetCard.SetLineStateAuto());
             s.AppendCallback(() => targetCard.SetDraggableState(false));
-            s.Append(targetCard.transform.DOMove(M_Main.instance.m_Staff.staffSlots[0].position, 0.4f));
+            s.Append(targetCard.transform.DOMove(M_Main.instance.m_Staff.staffSlots[0].position, 0.6f));
             s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue(0, targetCard.cardCurrentValue * 2));
             s.AppendCallback(() => targetCard.DestroyCardInScreen());
-            s.AppendInterval(0.1f);
-            //s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
-            //s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
+            s.AppendInterval(1f);
+            s.AppendCallback(() => M_Main.instance.m_DDL.DDLSlotChangeTo(SlotCondition.Shrinked));
         }
 
         private void Skill_SelectOneNoneExpCardMultitarget(O_Card targetCard)
@@ -171,7 +173,6 @@ namespace IGDF
             s.AppendInterval(0.2f);
             s.AppendCallback(() => DOTween.To(() => cardBG.color, x => cardBG.color = x, Color.yellow, 0.2f));
             s.AppendInterval(0.2f);
-            //s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
         }
 
         private void Skill_ChangeOneTaskToHalf(O_Card targetCard)
@@ -180,9 +181,33 @@ namespace IGDF
             targetCard.ChangeCardValue(changedValue);
         }
 
-        #region Programmer Skill
+        private void Skill_EvenDistributeProfessionValue()
+        {
+            M_Staff ms = M_Main.instance.m_Staff;
+            int totalValue = ms.GetStaffValue(1) + ms.GetStaffValue(2) + ms.GetStaffValue(3);
+            int evenValue = totalValue / 3;
+
+            int valueChange_Des = evenValue - ms.GetStaffValue(1);
+            int valueChange_Art = evenValue - ms.GetStaffValue(2);
+            int valueChange_Cod = totalValue - evenValue * 2 - ms.GetStaffValue(3);
+
+            ms.ChangeStaffValue(1, valueChange_Des);
+            ms.ChangeStaffValue(2, valueChange_Art);
+            ms.ChangeStaffValue(3, valueChange_Cod);
+        }
+
+        private void Skill_SelectOneTaskNoDDL(O_Card targetCard)
+        {
+            targetCard.ChangeDDLAffected(false);
+            TMPro.TMP_Text targetName =  targetCard.transform.Find("Card Name").GetComponent<TMPro.TMP_Text>();
+            DOTween.To(() => targetName.color, x => targetName.color = x, Color.cyan, 0.7f);
+        }
+        #endregion
+
+        #region Programmer Skills
         private void Skill_Pro_BasicSyntax(O_Card targetCard)
         {
+            M_Card.cardUsedNumInTurn++;
             //双倍价值获取一张程序技能提升卡
             Sequence s = DOTween.Sequence();
             s.AppendCallback(() => targetCard.SetLineStateAuto());
@@ -195,12 +220,15 @@ namespace IGDF
         }
         private void Skill_Pro_BasicGameEngine(O_Card targetCard)
         {
+            M_Card.cardUsedNumInTurn++;
             //移除一个程序需求，并获得对应项目经验
+            SpriteRenderer targetBG = targetCard.transform.Find("Card BG").GetComponent<SpriteRenderer>();
+            DOTween.To(() => targetBG.color, x => targetBG.color = x, Color.white, 0.2f);
             M_Main.instance.m_Staff.GainExpDirectly(-targetCard.cardCurrentValue);
             targetCard.CardMoveOutOfScreenRightWards();
             targetCard.SetDraggableState(false);
-            Sequence s = DOTween.Sequence();
-            s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.3f);
+            //Sequence s = DOTween.Sequence();
+            //s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.3f);
             //s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
         }
         private void Skill_Pro_ScriptableObject()
@@ -220,6 +248,7 @@ namespace IGDF
         }
         private void Skill_Pro_GamePhysics(O_Card targetCard)
         {
+            M_Card.cardUsedNumInTurn++;
             //移除一张程序需求，无经验，并增加对应的绝对值的技能点数
             M_Main.instance.m_Staff.ChangeStaffValue(3, -targetCard.cardCurrentValue);
             targetCard.CardMoveOutOfScreenRightWards();
@@ -230,6 +259,7 @@ namespace IGDF
         }
         private void Skill_Pro_DesignPattern()
         {
+            int codeTaskCount = 0;
             //无损耗解决该轮内所有程序需求
             for (int i = 0; i < M_Main.instance.m_Card.cardsInTurn.Count; i++)
             {
@@ -239,15 +269,13 @@ namespace IGDF
                     cardEntity = M_Main.instance.m_Card.cardsInTurn[i].GetComponent<O_Card>();
                     if (cardEntity.cardCurrentType == CardType.Code && cardEntity.cardCurrentValue < 0)
                     {
+                        codeTaskCount++;
                         cardEntity.CardMoveOutOfScreenRightWards();
                         cardEntity.SetDraggableState(false);
                     }
                 }
-                //Sequence s = DOTween.Sequence();
-                //s.AppendInterval(M_Main.instance.m_Card.horiTime + M_Main.instance.m_Card.verTime + 0.3f);
-                //s.AppendCallback(() => M_Main.instance.m_Card.CheckInTurnCardNumber());
-                //M_Main.instance.m_Card.CheckInTurnCardNumber();
             }
+            M_Card.cardUsedNumInTurn += codeTaskCount;
         }
         private void Skill_Pro_Shader()
         {

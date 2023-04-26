@@ -23,6 +23,8 @@ namespace IGDF
 
         private M_Card m_Card;
 
+        private bool isDDLAffect = true;
+
         private void Start()
         {
             m_Card = FindObjectOfType<M_Card>();
@@ -81,13 +83,17 @@ namespace IGDF
             if (card.cardValue > 0)
             {
                 transform.Find("Card Value").GetComponent<TMP_Text>().text = "+" + card.cardValue.ToString();
-                transform.Find("Card BG").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardBGImages[0];
+                //transform.Find("Card BG").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardBGImages[0];
+                transform.Find("Card Value Back").GetComponent<SpriteRenderer>().color = M_Main.instance.repository.cardElementsColor[0];
+                transform.Find("Card Image Type").GetComponent<SpriteRenderer>().color = M_Main.instance.repository.cardElementsColor[0];
                 CardElementsColorAdjustment(0);
             }
             else
             {
                 transform.Find("Card Value").GetComponent<TMP_Text>().text = card.cardValue.ToString();
-                transform.Find("Card BG").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardBGImages[1];
+                //transform.Find("Card BG").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardBGImages[1];
+                transform.Find("Card Value Back").GetComponent<SpriteRenderer>().color = M_Main.instance.repository.cardElementsColor[1];
+                transform.Find("Card Image Type").GetComponent<SpriteRenderer>().color = M_Main.instance.repository.cardElementsColor[1];
                 CardElementsColorAdjustment(1);
             }
 
@@ -100,10 +106,10 @@ namespace IGDF
 
             void CardElementsColorAdjustment(int targetColor)
             {
-               transform.Find("Card Image Type").GetComponent<SpriteRenderer>().color = M_Global.instance.repository.cardElementsColor[targetColor];
-               transform.Find("Card Name").GetComponent<TMPro.TMP_Text>().color = M_Global.instance.repository.cardElementsColor[targetColor];
-               transform.Find("Card Value").GetComponent<TMPro.TMP_Text>().color = M_Global.instance.repository.cardElementsColor[targetColor];
-               transform.Find("Card Text Type").GetComponent<TMPro.TMP_Text>().color = M_Global.instance.repository.cardElementsColor[targetColor];
+               //transform.Find("Card Image Type").GetComponent<SpriteRenderer>().color = M_Global.instance.repository.cardElementsColor[targetColor];
+               //transform.Find("Card Name").GetComponent<TMPro.TMP_Text>().color = M_Global.instance.repository.cardElementsColor[targetColor];
+               //transform.Find("Card Value").GetComponent<TMPro.TMP_Text>().color = M_Global.instance.repository.cardElementsColor[targetColor];
+               //transform.Find("Card Text Type").GetComponent<TMPro.TMP_Text>().color = M_Global.instance.repository.cardElementsColor[targetColor];
             }
         }
 
@@ -141,9 +147,12 @@ namespace IGDF
         {
             if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.Targeting)
             {
-                M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
-                M_Main.instance.m_Skill.activatedSkill.ExitTargetingState();
-                M_Main.instance.m_Skill.EnterWaitForUseState();
+                if (isCardReadyForSkill)
+                {
+                    M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
+                    M_Main.instance.m_Skill.activatedSkill.ExitTargetingState();
+                    M_Main.instance.m_Skill.EnterWaitForUseState();
+                }
             }
             else if (isDraggable && M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse)
             {
@@ -239,10 +248,11 @@ namespace IGDF
             transform.Find("Card BG").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
             transform.Find("Card Image Content").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
             transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
-            //transform.Find("Name Bg").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            transform.Find("Card Value Back").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
             transform.Find("Card Name").GetComponent<MeshRenderer>().sortingOrder += cardModifyOffsetedAmount;
             transform.Find("Card Value").GetComponent<MeshRenderer>().sortingOrder += cardModifyOffsetedAmount;
             transform.Find("Card Text Type").GetComponent<MeshRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            transform.Find("Card Dark").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
 
             transform.Find("Card Image Mask").GetComponent<SpriteMask>().frontSortingOrder += cardModifyOffsetedAmount;
             transform.parent.Find("Clipper").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
@@ -256,10 +266,11 @@ namespace IGDF
             transform.Find("Card BG").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
             transform.Find("Card Image Content").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
             transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
-            //transform.Find("Name Bg").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.Find("Card Value Back").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
             transform.Find("Card Name").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
             transform.Find("Card Value").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
             transform.Find("Card Text Type").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.Find("Card Dark").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
 
             transform.Find("Card Image Mask").GetComponent<SpriteMask>().frontSortingOrder -= cardModifyOffsetedAmount;
             transform.parent.Find("Clipper").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
@@ -270,6 +281,16 @@ namespace IGDF
         public Card GetCardData()
         {
             return cardData;
+        }
+
+        public void ChangeDDLAffected(bool targetState)
+        {
+            isDDLAffect = targetState;
+        }
+
+        public bool GetDDLAffected()
+        {
+            return isDDLAffect;
         }
     }
 }

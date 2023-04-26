@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 namespace IGDF
 {
@@ -15,7 +16,20 @@ namespace IGDF
         private NodeInfo thisNode;
         private CharacterType treeType;
         private bool isDataBlossomy = false;
+        //public ShakeData sd;
 
+        //private void Start()
+        //{
+        //    sd = new ShakeData
+        //    {
+        //        duration = 0.7f,
+        //        strength = 20,
+        //        vibrato = 10,
+        //        randomness = 0,
+        //        fade = false,
+        //        targetMode = ShakeRandomnessMode.Harmonic
+        //    };
+        //}
 
         void Update()
         {
@@ -33,6 +47,7 @@ namespace IGDF
                 case CharacterType.Producer:
                     blossomAnim = animClips[0];
                     blossomAnim.SampleAnimation(gameObject, 0);
+                    M_Vivarium.instance.waterAnim.SampleAnimation(M_Vivarium.instance.GetCharacterWaterAnim(CharacterType.Producer), 0);
                     break;
                 case CharacterType.Designer:
                     break;
@@ -41,6 +56,7 @@ namespace IGDF
                 case CharacterType.Programmer:
                     blossomAnim = animClips[1];
                     blossomAnim.SampleAnimation(gameObject, 0);
+                    M_Vivarium.instance.waterAnim.SampleAnimation(M_Vivarium.instance.GetCharacterWaterAnim(CharacterType.Programmer), 0);
                     break;
             }
   
@@ -50,7 +66,21 @@ namespace IGDF
 
         private void OnMouseDown()
         {
-            if (M_SkillTree.instance.GetTreeState(treeType)) isBlooming = true;
+            if (M_SkillTree.instance.GetTreeState(treeType))
+            {
+                if (CheckUnlockable())
+                {
+                    isBlooming = true;
+                }
+                else
+                {
+                    Sequence s = DOTween.Sequence();
+                    //s.Append(transform.DOShakeRotation(sd.duration, sd.strength, sd.vibrato, sd.randomness, sd.fade, sd.targetMode));
+                    s.Append(transform.DORotate(new Vector3(0, 0, -5), 0.1f));
+                    s.Append(transform.DORotate(new Vector3(0, 0, 10), 0.2f));
+                    s.Append(transform.DORotate(new Vector3(0, 0, 0), 0.1f));
+                }
+            } 
         }
 
         private void OnMouseUp()
@@ -67,11 +97,9 @@ namespace IGDF
                 if (animTime > blossomAnim.length)
                 {
                     FlowerTurnIntoBlossomy();
-           
                 }
                 blossomAnim.SampleAnimation(gameObject, animTime);
-
-            
+                M_Vivarium.instance.waterAnim.SampleAnimation(M_Vivarium.instance.GetCharacterWaterAnim(treeType), animTime);
             }
         }
 
@@ -83,6 +111,7 @@ namespace IGDF
                 {
                     animTime -= Time.deltaTime;
                     blossomAnim.SampleAnimation(gameObject, animTime);
+                    M_Vivarium.instance.waterAnim.SampleAnimation(M_Vivarium.instance.GetCharacterWaterAnim(treeType), animTime);
                 }
                 else animTime = 0;
             }
@@ -92,6 +121,7 @@ namespace IGDF
         {
             isBlossomy = true;
             blossomAnim.SampleAnimation(gameObject, blossomAnim.length);
+            M_Vivarium.instance.waterAnim.SampleAnimation(M_Vivarium.instance.GetCharacterWaterAnim(treeType), 0);
             FluctifySkills();
             transform.GetComponent<BoxCollider2D>().enabled = false;
             if (!isDataBlossomy) UpdateUnlockedSkillToData();
@@ -153,5 +183,22 @@ namespace IGDF
             O_UpperUIBar.instance.ChangeExp();
             isDataBlossomy = true;
         }
+
+        bool CheckUnlockable()
+        {
+            if (M_Global.instance.mainData.playExp >= thisNode.expToUnlock) return true;
+            else return false;
+        }
+    }
+
+    [System.Serializable]
+    public class ShakeData
+    {
+        public float duration;
+        public float strength;
+        public int vibrato;
+        public float randomness;
+        public bool fade;
+        public ShakeRandomnessMode targetMode;
     }
 }

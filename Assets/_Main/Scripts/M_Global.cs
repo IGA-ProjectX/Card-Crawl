@@ -2,27 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 namespace IGDF
 {
     public class M_Global : MonoBehaviour
     {
-        public SO_Data mainData;
+        public SO_Data soData;
         public SO_Level[] levels;
         public int targetLevel = 1;
-        public SO_Skill[] skillList;
+        //public SO_Skill[] skillList;
         public SO_Repo repository;
         private SystemLanguage currentLanguage = SystemLanguage.Chinese;
         public static M_Global instance;
         [HideInInspector] public GameObject ui_HoverTip;
         [HideInInspector] public RectTransform ui_HoverContent;
         [HideInInspector] public Transform chatBubbleParent;
+        public JsonData mainData;
 
         private void Awake()
         {
             if (instance != null) Destroy(this);
             else
             {
+                LoadTheGameFromJson();
                 instance = this;
                 DontDestroyOnLoad(this);
             }
@@ -36,8 +39,6 @@ namespace IGDF
             ui_HoverContent = ui_HoverTip.transform.GetChild(0).GetComponent<RectTransform>();
             ui_HoverTip.SetActive(false);
             chatBubbleParent = GameObject.Find("Canvas").transform.Find("ChatBubbles");
-
-            SaveTheGameFromJson();
         }
 
         public void PlayerExpUp(int newExp) 
@@ -57,23 +58,27 @@ namespace IGDF
             currentLanguage = targetLanguage;
         }
 
-        public void SaveTheGameFromJson()
+        public void SaveTheGameToJson()
         {
-            //string json = JsonUtility.ToJson(mainData);
-            //Debug.Log(json);
-            //SO_Data newdata = JsonUtility.FromJson<SO_Data>(json);
-            //Debug.Log(mainData.playExp);
-            //Debug.Log(newdata.playExp);
+            string json = JsonUtility.ToJson(mainData);
+            string filePath = Application.persistentDataPath + "/DataSave.json";
+            File.WriteAllText(filePath, json);
         }
 
         public void LoadTheGameFromJson()
         {
-            
+            string filePath = Application.persistentDataPath + "/DataSave.json";
+            mainData = JsonUtility.FromJson<JsonData>(File.ReadAllText(filePath));
+
+            //mainData = JsonUtility.FromJson<JsonData>(File.ReadAllText(Application.dataPath + "/SaveFile/Save.json"));
+            //Debug.Log(mainData.unlockedSkillNodes[2].thisNodeIndex);
+
         }
 
         private void OnApplicationQuit()
         {
-            Debug.Log("dsadasda");
+            SaveTheGameToJson();
+            //FindObjectOfType<M_DataSave>().WriteFile(mainData);
         }
     }
 }

@@ -24,4 +24,14 @@ namespace IGDF
         public string userReviewNumber;
     }
 
+    [System.Serializable]
+    public class JsonData
+    {
+        public int gameTimeInTotal;
+        public int playExp;
+        public ProductShowcase[] productShowcases;
+        public List<UnlockedSkillNode> unlockedSkillNodes;
+        public SO_Skill[] inUseSkills;
+        public int targetUnlockedLevelNum;
+    }
 }

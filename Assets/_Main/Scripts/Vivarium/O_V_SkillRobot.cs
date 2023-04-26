@@ -23,11 +23,6 @@ namespace IGDF
 
         private int skillIndex;
 
-        void Start()
-        {
-
-        }
-
         public void InitializeSkillRobot(SO_Skill initialSkill,int toSetIndex)
         {
             currentSkill = initialSkill;
@@ -36,7 +31,7 @@ namespace IGDF
             eyelidBottom = transform.Find("Eye White").Find("Eyelid Bottom");
             eyeball = transform.Find("Eye White").Find("Eye Black");
 
-            eyeball.GetComponent<SpriteRenderer>().sprite = currentSkill.skillImage;
+            eyeball.Find("Eye Pupil").GetComponent<SpriteRenderer>().sprite = currentSkill.skillImage;
 
             upperLidOpenPos = eyelidUpper.position;
             bottomLidOpenPos = eyelidBottom.position;
@@ -47,7 +42,6 @@ namespace IGDF
             eyeballMiddlePos = eyeball.position;
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (O_V_SkillFruit.selectedSkill!=null)
@@ -58,16 +52,6 @@ namespace IGDF
                 }
             }
         }
-
-        //private void OnMouseEnter()
-        //{
-        //    selectedtSkillRobot = this;
-        //}
-
-        //private void OnMouseExit()
-        //{
-        //    selectedtSkillRobot = null;
-        //}
 
         public void LoadNewSkillIntoThis(SO_Skill newSkill)
         {
@@ -81,11 +65,10 @@ namespace IGDF
             Sequence s = DOTween.Sequence();
             s.AppendCallback(() => CloseEye());
             s.AppendInterval(0.7f);
-            s.AppendCallback(() => eyeball.GetComponent<SpriteRenderer>().sprite = currentSkill.skillImage);
+            s.AppendCallback(() => eyeball.Find("Eye Pupil").GetComponent<SpriteRenderer>().sprite = currentSkill.skillImage);
             s.AppendCallback(() => OpenEye());
             s.AppendCallback(() => isReadyForLoadNewSkill = true);
 
-            Debug.Log(respawnBud.characterType + " " + respawnBud.thisNodeIndex);
             //Respawn Bud
             switch (respawnBud.characterType)
             {
@@ -109,10 +92,6 @@ namespace IGDF
                     foreach (NodeInfo node in skillParent.nodeList)
                         if (node.childSkills[0] == replacedSkill)
                             return new UnlockedSkillNode(skillParent.characterType, node.thisNodeIndex);
-                            //{
-                            //    thisNodeIndex = node.thisNodeIndex,
-                            //    characterType = skillParent.characterType
-                            //};
                 return null;
             }
 
@@ -156,6 +135,9 @@ namespace IGDF
             eyeball.DOMove(eyeballMiddlePos + new Vector2(direction.normalized.x / 5, direction.normalized.y / 5), 0.2f);
         }
 
-
+        public SO_Skill CurrentSkillInfo()
+        {
+            return currentSkill;
+        }
     }
 }

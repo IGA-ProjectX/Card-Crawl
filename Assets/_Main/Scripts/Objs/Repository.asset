@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Repository
   m_EditorClassIdentifier: 
   cardTypeIcons:
-  - {fileID: 21300000, guid: acb39782ac97970499b6ebc3b889eeea, type: 3}
-  - {fileID: 21300000, guid: fd2e92ac6a93e45498485a17d901f1fc, type: 3}
-  - {fileID: 21300000, guid: 32e695ba99ecf4846acd464d90cb9855, type: 3}
-  - {fileID: 21300000, guid: 26a1a66ce5dd98e4e92815413cb6cfdc, type: 3}
+  - {fileID: 21300000, guid: 4b15e9d9c220a8341b8df781d0b948b0, type: 3}
+  - {fileID: 21300000, guid: 91a5a5e93344b484f944d94424d12b99, type: 3}
+  - {fileID: 21300000, guid: 68a2208f3007ad443aa526e829e1504e, type: 3}
+  - {fileID: 21300000, guid: 8150b253016e19a40ab94f5969488a1e, type: 3}
   chaColors:
   - {r: 0.7882353, g: 0.3647059, b: 0.3529412, a: 1}
   - {r: 0.3647059, g: 0.5882353, b: 0.49019608, a: 1}
@@ -31,11 +31,11 @@ MonoBehaviour:
   - {r: 0.2171591, g: 0.754717, b: 0.3107812, a: 1}
   - {r: 0.31287822, g: 0.634188, b: 0.8396226, a: 1}
   cardBGImages:
-  - {fileID: 21300000, guid: 7bcfa239788b7c749b59450e88e5c101, type: 3}
-  - {fileID: 21300000, guid: 531bfe73bebdea1419777f3293099c42, type: 3}
+  - {fileID: 21300000, guid: bbe7a4810c3b8374dae05f44f68069fa, type: 3}
+  - {fileID: 21300000, guid: bbe7a4810c3b8374dae05f44f68069fa, type: 3}
   cardElementsColor:
-  - {r: 0.20784315, g: 0.20784315, b: 0.20784315, a: 1}
-  - {r: 0.9433962, g: 0.89253926, b: 0.83214664, a: 1}
+  - {r: 0.54509807, g: 0.627451, b: 0.654902, a: 1}
+  - {r: 0.87058824, g: 0.57254905, b: 0.5647059, a: 1}
   hoverTipBGs:
   - {fileID: 21300000, guid: 9d7a505df4f30854cab5b454a7ed177b, type: 3}
   - {fileID: 21300000, guid: e83d6eea87e2d9c43ba486a2af7fa511, type: 3}
@@ -109,6 +109,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ac8840154f2420d4890bfff9068a0578, type: 2}
   - {fileID: 11400000, guid: 68cec2f932fd4ee479abe7025e5fb455, type: 2}
   - {fileID: 11400000, guid: 90029eefc41025047befcc805a175090, type: 2}
+  valueChanges:
+  - {fileID: 21300000, guid: c0862ad18bad5f342bcc2c12356cc51b, type: 3}
+  - {fileID: 21300000, guid: afb4dff6f10230246a83ad9471e393b8, type: 3}
   bgMusics:
   - soundType: 9
     audioClip: {fileID: 8300000, guid: 3160e7645ff70904c923fe34209ce41b, type: 3}
