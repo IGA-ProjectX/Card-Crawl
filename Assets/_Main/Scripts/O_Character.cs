@@ -16,7 +16,6 @@ namespace IGDF
             }
         }
 
-
         private void InitializeNameTemplate()
         {
             switch (thisCharacter)
@@ -32,11 +31,11 @@ namespace IGDF
                     break;
             }
 
-            void ChangeName(string eng,string chi)
+            void ChangeName(string eng, string chi)
             {
                 TMPro.TMP_Text targetText = transform.GetChild(0).Find("Icon").GetComponent<TMPro.TMP_Text>();
                 if (M_Global.instance.GetLanguage() == SystemLanguage.English) targetText.text = eng;
-          else targetText.text = chi;
+                else targetText.text = chi;
             }
         }
 

@@ -17,6 +17,6 @@ MonoBehaviour:
   skillDescriptionChi: "\u7A0B\u5E8F\u5458\u7684\u6280\u80FD\u70B9\u6570 += \u7F8E\u672F\u7684\u6280\u80FD\u70B9\u6570"
   skillNameEng: Shader
   skillDescriptionEng: Programmer's skill points += Art's skill points
-  skillImage: {fileID: 21300000, guid: ed130aac49764ad4f9d35454c297b75a, type: 3}
+  skillImage: {fileID: 21300000, guid: 2e1a7093e1f1fa748b2771087ea3aff5, type: 3}
   skillType: 21
   skillUseType: 1

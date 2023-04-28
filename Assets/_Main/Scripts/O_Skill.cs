@@ -117,8 +117,8 @@ namespace IGDF
                         s.Append(eyeball.DOScale(1.2f, 0.3f));
                         s.Append(eyeball.DOScale(1f, 0.1f));
                         s.AppendCallback(() => eyeState = EyeState.FollowMouse);
-                        s.AppendCallback(() => Cursor.visible = false);
-                        s.AppendCallback(() => targetingArrow.SetActive(true));
+                        //s.AppendCallback(() => Cursor.visible = false);
+                        //s.AppendCallback(() => targetingArrow.SetActive(true));
                     }
                     else 
                     {
@@ -164,35 +164,40 @@ namespace IGDF
         public void SetSkillUninteractable()
         {
             isUsed = true;
+            ExitTargetingState();
             CloseEye();
         }
 
         public void EyeAndTrajectoryFollow()
         {
-            if (targetingLine.enabled == false)
+            if (isUsed == false)
             {
-                targetingLine.enabled = true;
-            }
-            Vector2 direction = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)eyeball.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            targetingArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
+                if (targetingLine.enabled == false)
+                {
+                    targetingLine.enabled = true;
+                }
+                Vector2 direction = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)eyeball.position;
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                targetingArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-            eyeball.DOMove(eyeballMiddlePos + new Vector2(direction.normalized.x / 5, direction.normalized.y / 5), 0.2f);
-            if (Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), eyeballMiddlePos) < 0.5f)
-            {
-                targetingLine.enabled = false;
-                targetingArrow.SetActive(false);
-                Cursor.visible = true;
+                eyeball.DOMove(eyeballMiddlePos + new Vector2(direction.normalized.x / 5, direction.normalized.y / 5), 0.2f);
+                if (Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), eyeballMiddlePos) < 0.5f)
+                {
+                    targetingLine.enabled = false;
+                    targetingArrow.SetActive(false);
+                    Cursor.visible = true;
+                }
+                else
+                {
+                    targetingLine.enabled = true;
+                    targetingArrow.SetActive(true);
+                    Cursor.visible = false;
+                }
+                targetingArrow.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                targetingLine.SetPosition(0, (Vector2)eyeball.position);
+                targetingLine.SetPosition(1, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition));
             }
-            else
-            {
-                targetingLine.enabled = true;
-                targetingArrow.SetActive(true);
-                Cursor.visible = false;
-            }
-            targetingArrow.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetingLine.SetPosition(0, (Vector2)eyeball.position);
-            targetingLine.SetPosition(1, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
         }
 
         public void ExitTargetingState()

@@ -145,17 +145,28 @@ namespace IGDF
 
         public void OnMouseDown()
         {
-            if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.Targeting)
+            //if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.Targeting)
+            //{
+            //    Debug.Log("StateIsRight");
+            //    if (isCardReadyForSkill)
+            //    {
+            //        Debug.Log("UseSkill");
+            //        M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
+            //        M_Main.instance.m_Skill.activatedSkill.ExitTargetingState();
+            //        M_Main.instance.m_Skill.EnterWaitForUseState();
+            //    }
+            //}
+
+            if (isCardReadyForSkill)
             {
-                if (isCardReadyForSkill)
-                {
-                    M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
-                    M_Main.instance.m_Skill.activatedSkill.ExitTargetingState();
-                    M_Main.instance.m_Skill.EnterWaitForUseState();
-                }
+                Debug.Log("UseSkill");
+                M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
+                M_Main.instance.m_Skill.activatedSkill.ExitTargetingState();
+                M_Main.instance.m_Skill.EnterWaitForUseState();
             }
             else if (isDraggable && M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse)
             {
+                Debug.Log("Draggable");
                 m_Card.ShowMovableState(transform, targetableType, cardCurrentValue);
                 M_Cursor.instance.SetActiveCursorState(M_Cursor.CursorType.Grabbed);
                 M_Audio.PlaySound(SoundType.SpringStretch);
@@ -270,7 +281,25 @@ namespace IGDF
             transform.Find("Card Name").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
             transform.Find("Card Value").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
             transform.Find("Card Text Type").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
-            transform.Find("Card Dark").GetComponent<SpriteRenderer>().sortingOrder += cardModifyOffsetedAmount;
+            transform.Find("Card Dark").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+
+            transform.Find("Card Image Mask").GetComponent<SpriteMask>().frontSortingOrder -= cardModifyOffsetedAmount;
+            transform.parent.Find("Clipper").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.parent.Find("Handler").GetComponent<LineRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.parent.Find("Handler").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+        }
+
+        public void CardLayerChangeToUnder()
+        {
+            int cardModifyOffsetedAmount = layerModifyAmount + 2;
+            transform.Find("Card BG").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.Find("Card Image Content").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.Find("Card Value Back").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.Find("Card Name").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.Find("Card Value").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.Find("Card Text Type").GetComponent<MeshRenderer>().sortingOrder -= cardModifyOffsetedAmount;
+            transform.Find("Card Dark").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;
 
             transform.Find("Card Image Mask").GetComponent<SpriteMask>().frontSortingOrder -= cardModifyOffsetedAmount;
             transform.parent.Find("Clipper").GetComponent<SpriteRenderer>().sortingOrder -= cardModifyOffsetedAmount;

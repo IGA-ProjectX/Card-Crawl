@@ -60,7 +60,8 @@ namespace IGDF
 
             currentSkill = newSkill;
             //M_Global.instance.skillList[skillIndex] = currentSkill;
-            M_Global.instance.mainData.inUseSkills[skillIndex] = currentSkill;
+            //M_Global.instance.mainData.inUseSkills[skillIndex] = currentSkill;
+            M_Global.instance.LoadSkillIntoInUse(skillIndex, currentSkill);
 
             Sequence s = DOTween.Sequence();
             s.AppendCallback(() => CloseEye());

@@ -87,9 +87,9 @@ namespace IGDF
             M_Main.instance.m_HoverTip.EnterState(HoverState.SkillTargeting);
             List<O_Card> cardObjs = new List<O_Card>();
             foreach (Transform cardTrans in M_Main.instance.m_Card.cardsInTurn)
-            {
-                if (cardTrans!=null) cardObjs.Add(cardTrans.GetComponent<O_Card>());
-            }
+                if (cardTrans != null) cardObjs.Add(cardTrans.GetComponent<O_Card>());
+            //foreach (O_Card card in cardObjs)
+            //    card.SetDraggableState(false);
 
             if (targetType == "Task")
             {
@@ -156,11 +156,19 @@ namespace IGDF
         public void SetCardForSkillState(O_Card targetCard,bool targetState)
         {
             targetCard.isCardReadyForSkill = targetState;
-            SpriteRenderer targetCardBG = targetCard.transform.Find("Card BG").GetComponent<SpriteRenderer>();
+            //SpriteRenderer targetCardBG = targetCard.transform.Find("Card BG").GetComponent<SpriteRenderer>();
+      
+            //if (targetState)
+            //    DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.green, 0.3f);
+            //else
+            //    DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.red, 0.3f);
+
+            SpriteRenderer targetCardCover = targetCard.transform.Find("Card Dark").GetComponent<SpriteRenderer>();
+
             if (targetState)
-                DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.green, 0.3f);
+                DOTween.To(() => targetCardCover.color, x => targetCardCover.color = x, new Color(0, 0, 0, 0), 0.3f);
             else
-                DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.red, 0.3f);
+                DOTween.To(() => targetCardCover.color, x => targetCardCover.color = x, new Color(0, 0, 0, 0.6f), 0.3f);
         }
 
         public void EnterWaitForUseState()
@@ -171,9 +179,14 @@ namespace IGDF
             {
                 if (cardTrans!=null)
                 {
+                    //cardTrans.GetComponent<O_Card>().SetDraggableState(true);
                     cardTrans.GetComponent<O_Card>().isCardReadyForSkill = false;
-                    SpriteRenderer targetCardBG = cardTrans.transform.Find("Card BG").GetComponent<SpriteRenderer>();
-                    DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.white, 0.3f);
+
+                    SpriteRenderer targetCardCover = cardTrans.transform.Find("Card Dark").GetComponent<SpriteRenderer>();
+                    DOTween.To(() => targetCardCover.color, x => targetCardCover.color = x, new Color(0, 0, 0, 0), 0.3f);
+
+                    //SpriteRenderer targetCardBG = cardTrans.transform.Find("Card BG").GetComponent<SpriteRenderer>();
+                    //DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.white, 0.3f);
                 }
             }
             M_Main.instance.m_HoverTip.EnterState(HoverState.AllActive);

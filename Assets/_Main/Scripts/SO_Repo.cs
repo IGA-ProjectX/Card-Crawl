@@ -20,6 +20,8 @@ namespace IGDF
         public HoverTipInfo[] hoverTipInfos;
         public SO_Skill[] defaultSkills;
         public Sprite[] valueChanges;
+        public SO_Skill[] skillList;
+        public Sprite defaultWebImage;
 
         [Header("Audio")]
         public SoundAudioClip[] bgMusics;

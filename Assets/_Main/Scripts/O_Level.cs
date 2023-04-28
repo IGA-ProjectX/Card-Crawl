@@ -21,12 +21,13 @@ namespace IGDF
 
         public void InitializeLevelObj(SO_Level targetLevel,int targetIndex)
         {
+            levelIndex = targetIndex;
             levelName = transform.Find("Level Name").GetComponent<TMP_Text>();
             levelCover = transform.Find("Mask").Find("Level Cover").GetComponent<Image>();
             levelLock = transform.Find("Level Lock").GetComponent<Image>();
             levelLockBack = transform.Find("Level Lock Back").GetComponent<Image>();
             thisButton = transform.Find("Frame").GetComponent<Button>();
-            if (targetLevel != null)
+            if (targetLevel != null && levelIndex + 1 <= M_Global.instance.mainData.targetUnlockedLevelNum)
             {
                 thisLevel = targetLevel;
                 levelCover.sprite = thisLevel.levelButtonImage;
@@ -44,7 +45,6 @@ namespace IGDF
                 thisButton.enabled = false;
                 isLocked = true;
             }
-            levelIndex = targetIndex;
         }
 
         public void UpdateNameLanguage()
@@ -67,7 +67,8 @@ namespace IGDF
             Sequence s = DOTween.Sequence();
             s.AppendCallback(() => SceneManager.LoadScene(1, LoadSceneMode.Additive));
             s.AppendCallback(() => FindObjectOfType<M_SceneTransition>().EnterCurrentCabin());
-            s.Append(GameObject.Find("Canvas").transform.Find("Level Selection").DOScale(0, 0.4f));
+            //s.Append(GameObject.Find("Canvas").transform.Find("Level Selection").DOScale(0, 0.4f));
+            s.AppendCallback(() => FindObjectOfType<M_Level>().CloseLevelSelectionPanel());
         }
     }
 }

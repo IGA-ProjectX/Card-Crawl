@@ -31,7 +31,7 @@ namespace IGDF
         public int playExp;
         public ProductShowcase[] productShowcases;
         public List<UnlockedSkillNode> unlockedSkillNodes;
-        public SO_Skill[] inUseSkills;
+        public int[] inUseSkills;
         public int targetUnlockedLevelNum;
     }
 }

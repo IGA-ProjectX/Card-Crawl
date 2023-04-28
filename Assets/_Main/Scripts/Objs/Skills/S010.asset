@@ -17,6 +17,6 @@ MonoBehaviour:
   skillDescriptionChi: "\u5E73\u5747\u5206\u914D\u4E09\u4E2A\u804C\u4E1A\u7684\u6280\u80FD\u6570\u503C"
   skillNameEng: Corporation
   skillDescriptionEng: Evenly distribute skill values of three professions
-  skillImage: {fileID: 21300000, guid: bb668641abe10a64891e26613cf530ee, type: 3}
+  skillImage: {fileID: 21300000, guid: 964a862d5ee882543948437a82d92e04, type: 3}
   skillType: 10
   skillUseType: 1

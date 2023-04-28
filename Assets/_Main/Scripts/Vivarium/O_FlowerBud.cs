@@ -16,20 +16,6 @@ namespace IGDF
         private NodeInfo thisNode;
         private CharacterType treeType;
         private bool isDataBlossomy = false;
-        //public ShakeData sd;
-
-        //private void Start()
-        //{
-        //    sd = new ShakeData
-        //    {
-        //        duration = 0.7f,
-        //        strength = 20,
-        //        vibrato = 10,
-        //        randomness = 0,
-        //        fade = false,
-        //        targetMode = ShakeRandomnessMode.Harmonic
-        //    };
-        //}
 
         void Update()
         {
@@ -135,14 +121,15 @@ namespace IGDF
                 float targetScale = newSkill.localScale.x;
                 newSkill.transform.localPosition = Vector3.zero;
                 newSkill.localScale = Vector3.zero;
-                newSkill.GetComponent<O_V_SkillFruit>().InitializeSkillFruit(thisNode.childSkills[0]);
+                Sequence s = DOTween.Sequence();
+                newSkill.GetComponent<O_V_SkillFruit>().InitializeSkillFruit(thisNode.childSkills[0],transform);
                 newSkill.DOScale(targetScale, 0.7f);
             }
 
             bool CheckIsSkillLoaded()
             {
                 List<SO_Skill> tempList = new List<SO_Skill>();
-                foreach (SO_Skill skill in M_Global.instance.mainData.inUseSkills) tempList.Add(skill);
+                foreach (int skillIndex in M_Global.instance.mainData.inUseSkills) tempList.Add(M_Global.instance.GetSingleSkillInUse(skillIndex));
 
                 if (tempList.Contains(thisNode.childSkills[0])) return true;
                 else return false;

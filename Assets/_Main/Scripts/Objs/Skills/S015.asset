@@ -17,6 +17,6 @@ MonoBehaviour:
   skillDescriptionChi: "\u53CC\u500D\u4EF7\u503C\u83B7\u53D6\u4E00\u5F20\u7A0B\u5E8F\u6280\u80FD\u63D0\u5347\u5361"
   skillNameEng: Basic Synax
   skillDescriptionEng: Double the value to get a procedural skill improvement card
-  skillImage: {fileID: 21300000, guid: 62053ed690017d143bd2cfa8e5dc3ff5, type: 3}
+  skillImage: {fileID: 21300000, guid: a06bb7415943aba469fd835ddcf93452, type: 3}
   skillType: 15
   skillUseType: 7

@@ -32,6 +32,11 @@ namespace IGDF
             }
             else M_HoverTip.instance.HoverTipListAddOrRemove(this, true);
 
+            if (tipType == HoverTipType.SkillFruit)
+            {
+                isAllowOpenTip = true;
+            }
+
             if (FindObjectOfType<M_Main>()!=null)
             {
                 selectionBox = FindObjectOfType<M_Main>().transform.Find("Selection Box").gameObject;
@@ -45,31 +50,32 @@ namespace IGDF
             if (isAllowOpenBox)
             {
                 OpenSelectionBoxInCertainPos();
-            }
-
-            void OpenSelectionBoxInCertainPos()
-            {
-                var boxCollider = GetComponent<BoxCollider2D>();
-                var size = boxCollider.size;
-                var offset = boxCollider.offset;
-                float sizeOffset = 0.15f;
-
-                var topLeftLocal = offset + new Vector2(-size.x * 0.5f, size.y * 0.5f) + new Vector2(sizeOffset, -sizeOffset);
-                var topLeftWorld = transform.TransformPoint(topLeftLocal);
-                var topRightLocal = offset + new Vector2(size.x * 0.5f, size.y * 0.5f) + new Vector2(-sizeOffset, -sizeOffset);
-                var topRightWorld = transform.TransformPoint(topRightLocal);
-                var bottomLeftLocal = offset + new Vector2(-size.x * 0.5f, -size.y * 0.5f) + new Vector2(sizeOffset, sizeOffset);
-                var bottomLeftWorld = transform.TransformPoint(bottomLeftLocal);
-                var bottomRightLocal = offset + new Vector2(size.x * 0.5f, -size.y * 0.5f) + new Vector2(-sizeOffset, sizeOffset);
-                var bottomRightWorld = transform.TransformPoint(bottomRightLocal);
-
                 selectionBox.SetActive(true);
-
-                selectionBox.transform.Find("TopLeft").transform.position = topLeftWorld;
-                selectionBox.transform.Find("TopRight").transform.position = topRightWorld;
-                selectionBox.transform.Find("BottomLeft").transform.position = bottomLeftWorld;
-                selectionBox.transform.Find("BottomRight").transform.position = bottomRightWorld;
             }
+        }
+
+        void OpenSelectionBoxInCertainPos()
+        {
+            var boxCollider = GetComponent<BoxCollider2D>();
+            var size = boxCollider.size;
+            var offset = boxCollider.offset;
+            float sizeOffset = 0.15f;
+
+            var topLeftLocal = offset + new Vector2(-size.x * 0.5f, size.y * 0.5f) + new Vector2(sizeOffset, -sizeOffset);
+            var topLeftWorld = transform.TransformPoint(topLeftLocal);
+            var topRightLocal = offset + new Vector2(size.x * 0.5f, size.y * 0.5f) + new Vector2(-sizeOffset, -sizeOffset);
+            var topRightWorld = transform.TransformPoint(topRightLocal);
+            var bottomLeftLocal = offset + new Vector2(-size.x * 0.5f, -size.y * 0.5f) + new Vector2(sizeOffset, sizeOffset);
+            var bottomLeftWorld = transform.TransformPoint(bottomLeftLocal);
+            var bottomRightLocal = offset + new Vector2(size.x * 0.5f, -size.y * 0.5f) + new Vector2(-sizeOffset, sizeOffset);
+            var bottomRightWorld = transform.TransformPoint(bottomRightLocal);
+
+
+
+            selectionBox.transform.Find("TopLeft").transform.position = topLeftWorld;
+            selectionBox.transform.Find("TopRight").transform.position = topRightWorld;
+            selectionBox.transform.Find("BottomLeft").transform.position = bottomLeftWorld;
+            selectionBox.transform.Find("BottomRight").transform.position = bottomRightWorld;
         }
 
         private void OnMouseExit()
@@ -94,6 +100,11 @@ namespace IGDF
             else
             {
                 M_Global.instance.ui_HoverTip.SetActive(false);
+            }
+
+            if (isAllowOpenBox)
+            {
+                OpenSelectionBoxInCertainPos();
             }
         }
 

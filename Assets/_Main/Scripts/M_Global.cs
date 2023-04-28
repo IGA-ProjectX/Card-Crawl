@@ -70,15 +70,39 @@ namespace IGDF
             string filePath = Application.persistentDataPath + "/DataSave.json";
             mainData = JsonUtility.FromJson<JsonData>(File.ReadAllText(filePath));
 
-            //mainData = JsonUtility.FromJson<JsonData>(File.ReadAllText(Application.dataPath + "/SaveFile/Save.json"));
-            //Debug.Log(mainData.unlockedSkillNodes[2].thisNodeIndex);
-
         }
 
         private void OnApplicationQuit()
         {
             SaveTheGameToJson();
-            //FindObjectOfType<M_DataSave>().WriteFile(mainData);
+        }
+
+        public void LoadSkillIntoInUse(int skillSequance, SO_Skill toLoad)
+        {
+            mainData.inUseSkills[skillSequance] = toLoad.skillIndex;
+        }
+
+        public SO_Skill[] GetSkillListInUse()
+        {
+            SO_Skill[] currentList = new SO_Skill[4];
+            for (int i = 0; i < currentList.Length; i++)
+            {
+                currentList[i] = GetSingleSkillInUse(mainData.inUseSkills[i]);
+            }
+            return currentList;
+        }
+
+        public SO_Skill GetSingleSkillInUse(int targetIndex)
+        {
+            SO_Skill skillToGet = null;
+            foreach (SO_Skill skill in repository.skillList)
+            {
+                if (skill.skillIndex == targetIndex)
+                {
+                    skillToGet = skill;
+                }
+            }
+            return skillToGet;
         }
     }
 }

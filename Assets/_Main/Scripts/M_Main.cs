@@ -21,6 +21,7 @@ namespace IGDF
         [HideInInspector] public M_HoverTip m_HoverTip;
 
         [HideInInspector]public bool isGameFinished = false;
+        private bool isResultComingOut = false;
 
         private void Awake()
         {
@@ -51,16 +52,19 @@ namespace IGDF
                 if (transform == null) nullCount++;
             }
 
-            if (m_Card.inGameDeck.Count == 0 && nullCount == 4)
-            {
-                GameDevSucceed();
-                isGameFinished = true;
-            }
-            if (m_Staff.GetDDLValue() <= 0)
-            {
-                GameDevFailed();
-                isGameFinished = false;
-            }
+            if (!isResultComingOut)
+                if (m_Staff.GetDDLValue() <= 0)
+                {
+                    GameDevFailed();
+                    isGameFinished = false;
+                    isResultComingOut = true;
+                }
+                else if (m_Card.inGameDeck.Count == 0 && nullCount == 4)
+                {
+                    GameDevSucceed();
+                    isGameFinished = true;
+                    isResultComingOut = true;
+                }
 
             void GameDevSucceed()
             {
@@ -96,7 +100,8 @@ namespace IGDF
             m_DDL.CreateDots();
             m_DDL.InitializeNumberList();
             m_Staff.InitializeStaffValues(M_Global.instance.levels[M_Global.instance.targetLevel].staffValue);
-            m_Skill.InitializeSkills(M_Global.instance.mainData.inUseSkills);
+            //m_Skill.InitializeSkills(M_Global.instance.mainData.inUseSkills);
+            m_Skill.InitializeSkills(M_Global.instance.GetSkillListInUse());
 
             m_DDL.UpdateName();
         }

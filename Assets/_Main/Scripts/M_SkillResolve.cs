@@ -221,6 +221,7 @@ namespace IGDF
         private void Skill_Pro_BasicGameEngine(O_Card targetCard)
         {
             M_Card.cardUsedNumInTurn++;
+            targetCard.CardLayerChangeToUnder();
             //移除一个程序需求，并获得对应项目经验
             SpriteRenderer targetBG = targetCard.transform.Find("Card BG").GetComponent<SpriteRenderer>();
             DOTween.To(() => targetBG.color, x => targetBG.color = x, Color.white, 0.2f);
@@ -249,6 +250,7 @@ namespace IGDF
         private void Skill_Pro_GamePhysics(O_Card targetCard)
         {
             M_Card.cardUsedNumInTurn++;
+            targetCard.CardLayerChangeToUnder();
             //移除一张程序需求，无经验，并增加对应的绝对值的技能点数
             M_Main.instance.m_Staff.ChangeStaffValue(3, -targetCard.cardCurrentValue);
             targetCard.CardMoveOutOfScreenRightWards();
@@ -260,6 +262,7 @@ namespace IGDF
         private void Skill_Pro_DesignPattern()
         {
             int codeTaskCount = 0;
+           
             //无损耗解决该轮内所有程序需求
             for (int i = 0; i < M_Main.instance.m_Card.cardsInTurn.Count; i++)
             {
@@ -270,6 +273,7 @@ namespace IGDF
                     if (cardEntity.cardCurrentType == CardType.Code && cardEntity.cardCurrentValue < 0)
                     {
                         codeTaskCount++;
+                        cardEntity.CardLayerChangeToUnder();
                         cardEntity.CardMoveOutOfScreenRightWards();
                         cardEntity.SetDraggableState(false);
                     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using System;
 
 namespace IGDF
 { 
@@ -19,9 +20,13 @@ namespace IGDF
         private M_SceneTransition m_SceneTransition;
         [HideInInspector]public bool isClickable;
 
+        public Action StartGameFunc;
+
         void Start()
         {
             m_SceneTransition = FindObjectOfType<M_SceneTransition>();
+            StartGameFunc += FindObjectOfType<M_Setting>().ClickClose;
+            StartGameFunc += FindObjectOfType<M_Setting>().ReturnCredits;
         }
 
         private void OnMouseDown()
@@ -32,6 +37,7 @@ namespace IGDF
                 {
                     case ButtonType.StartGame:
                         StartGame();
+                        StartGameFunc();
                         transform.DORotate(new Vector3(0, 0, 0), 0.4f);
                         break;
                     case ButtonType.ExitGame:
@@ -39,6 +45,7 @@ namespace IGDF
                         transform.DORotate(new Vector3(0, 0, 0), 0.4f);
                         break;
                     case ButtonType.Credits:
+                        FindObjectOfType<M_Setting>().CallOutCredits();
                         transform.DORotate(new Vector3(0, 0, 0), 0.4f);
                         break;
                     case ButtonType.CabinBetweenStudioSkill:
@@ -66,7 +73,6 @@ namespace IGDF
                     default:
                         break;
                 }
-                //RoadBaseButtonColorChangeTo(Color.white);
             }
         }
 
@@ -74,7 +80,7 @@ namespace IGDF
         {
             if (isClickable)
                 if (buttonType == ButtonType.StartGame || buttonType == ButtonType.ExitGame|| buttonType == ButtonType.Credits|| buttonType == ButtonType.OpenSettingPanel)
-                transform.DORotate(new Vector3(0, 0, Random.Range(10, 15)), 0.4f);
+                transform.DORotate(new Vector3(0, 0, UnityEngine.Random.Range(10, 15)), 0.4f);
         }
 
         private void OnMouseExit()

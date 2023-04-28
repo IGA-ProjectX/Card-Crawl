@@ -42,8 +42,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 232a8bf947b067740b9bbc0adb1b0501, type: 3}
   - {fileID: 21300000, guid: 2012f6901e28fdc46a1b4e1a9242814b, type: 3}
   gameNameImages:
-  - {fileID: 21300000, guid: a87f40c458cdf454dab95d69bf4a108f, type: 3}
-  - {fileID: 21300000, guid: 613d5c0f122dac546bb5f3aa685ee113, type: 3}
+  - {fileID: 21300000, guid: 2e5bc8d105b49034bacdf5ff7c153f78, type: 3}
+  - {fileID: 21300000, guid: 9f7aabb33939ab144ae019b16bf9b2ab, type: 3}
   orangeColor: {r: 0.8490566, g: 0.618616, b: 0.36445355, a: 1}
   characterInfos:
   - type: 0
@@ -112,6 +112,22 @@ MonoBehaviour:
   valueChanges:
   - {fileID: 21300000, guid: c0862ad18bad5f342bcc2c12356cc51b, type: 3}
   - {fileID: 21300000, guid: afb4dff6f10230246a83ad9471e393b8, type: 3}
+  skillList:
+  - {fileID: 11400000, guid: c874a23b8ea850d44a387fc288826e76, type: 2}
+  - {fileID: 11400000, guid: ac8840154f2420d4890bfff9068a0578, type: 2}
+  - {fileID: 11400000, guid: 68cec2f932fd4ee479abe7025e5fb455, type: 2}
+  - {fileID: 11400000, guid: 90029eefc41025047befcc805a175090, type: 2}
+  - {fileID: 11400000, guid: d8c39b6b242fbbe4cb1ac4ac15a27c6d, type: 2}
+  - {fileID: 11400000, guid: ce2e7235bec99ba40840c66c91bad824, type: 2}
+  - {fileID: 11400000, guid: 94c034dde3f9f804c9b119fc95f72c02, type: 2}
+  - {fileID: 11400000, guid: 523ad8c581d9a634b8b0a0856fe8d412, type: 2}
+  - {fileID: 11400000, guid: 2176a9d8b0ac8e842aac897e3701af5c, type: 2}
+  - {fileID: 11400000, guid: 32bf1c459ea49d942b5a65e1ce2f57ba, type: 2}
+  - {fileID: 11400000, guid: 9ee0df2c245540941bb3eb48c421e9ff, type: 2}
+  - {fileID: 11400000, guid: f423a1c413d82624bb981c4f6e1d14e8, type: 2}
+  - {fileID: 11400000, guid: d3fda1319dd9c65459b74a6b023219dd, type: 2}
+  - {fileID: 11400000, guid: 8b2f326d5be300e4da2509988be780af, type: 2}
+  defaultWebImage: {fileID: 21300000, guid: 235a4f8dece08bb49b8ace33565e17b8, type: 3}
   bgMusics:
   - soundType: 9
     audioClip: {fileID: 8300000, guid: 3160e7645ff70904c923fe34209ce41b, type: 3}

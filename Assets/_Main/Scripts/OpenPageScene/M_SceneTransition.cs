@@ -83,6 +83,7 @@ namespace IGDF
                     //s.AppendCallback(() => TransitToRoomState());
                     s.AppendCallback(() => M_Main.instance.GameStart());
                     s.AppendCallback(() => SetInStudioPanelState(true));
+                    s.AppendCallback(() => MaxmizeOpenSettingInStudio());
                     currentView = CabinView.InStudio;
                     M_Audio.PlaySceneMusic(CabinView.InStudio);
                     break;
@@ -91,6 +92,7 @@ namespace IGDF
                     Sequence ss = DOTween.Sequence();
                     ss.AppendInterval(transitionTime);
                     ss.AppendCallback(() =>M_Vivarium.instance.AliveTheScene());
+                    ss.AppendCallback(() => MaxmizeInRoomExitButton());
                     currentView = CabinView.InSkill;
                     break;
                 case CabinView.Website:
@@ -98,8 +100,9 @@ namespace IGDF
                     currentView = CabinView.InWebsite;
                     Sequence ws = DOTween.Sequence();
                     ws.AppendInterval(transitionTime);
-                    ws.AppendCallback(() => FindObjectOfType<M_Website>().OpenWeb());
+                    ws.AppendCallback(() => FindObjectOfType<M_WebsiteRoom>().WebsiteScaleUp());
                     ws.AppendCallback(() => WebsiteSceneCullingMaskChangeTo(currentView));
+                    ws.AppendCallback(() => MaxmizeInRoomExitButton());
                     M_Audio.PlaySceneMusic(CabinView.InWebsite);
               
                     break;
@@ -117,6 +120,7 @@ namespace IGDF
             {
                 case CabinView.InStudio:
                     FindObjectOfType<M_HoverTip>().EnterState(HoverState.AllDisactive);
+                    MinimizeOpenSettingInStudio();
                     Transform panelToScaleDown;
                     if (M_Main.instance.isGameFinished) panelToScaleDown = GameObject.Find("Canvas").transform.Find("Result Steam");
                     else panelToScaleDown = GameObject.Find("Canvas").transform.Find("Result Fail");
@@ -133,9 +137,6 @@ namespace IGDF
                     break;
                 case CabinView.InWebsite:
                     FindObjectOfType<M_Website>().CloseWeb();
-                    //cars[2].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y - 12, transitionTime);
-                    //currentView = CabinView.Website;
-                    //WebsiteSceneCullingMaskChangeTo(currentView);
                     Sequence sw = DOTween.Sequence();
                     sw.Append(cars[2].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y - 12, transitionTime));
                     sw.AppendCallback(() => currentView = CabinView.Website);
@@ -187,7 +188,15 @@ namespace IGDF
 
         void ReturnOverviewScaleChangeTo(float targetScale)
         {
-            GameObject.Find("Canvas").transform.Find("B_ReturnToOverview").DOScale(targetScale, 0.4f);
+            if (targetScale == 1)
+            {
+                if (currentView == CabinView.InStudio || currentView == CabinView.InSkill || currentView == CabinView.InWebsite)
+                {
+
+                }
+                else GameObject.Find("Canvas").transform.Find("B_ReturnToOverview").DOScale(targetScale, 0.4f);
+            }
+            else GameObject.Find("Canvas").transform.Find("B_ReturnToOverview").DOScale(targetScale, 0.4f);
         }
 
         void SetInStudioPanelState(bool targetState)
@@ -199,15 +208,29 @@ namespace IGDF
 
         void WebsiteSceneCullingMaskChangeTo(CabinView cabinView)
         {
-            switch (cabinView)
-            {
-                case CabinView.Website:
-                    Camera.main.cullingMask = ~(1 << 0);
-                    break;
-                case CabinView.InWebsite:
-                    Camera.main.cullingMask = ~(1 << LayerMask.NameToLayer("AboveSign"));
-                    break;
-            }
+            if (cabinView == CabinView.InWebsite) Camera.main.cullingMask = ~(1 << LayerMask.NameToLayer("AboveSign"));
+            else Camera.main.cullingMask = LayerMask.NameToLayer("Everything");
+        }
+
+        public void MinimizeInRoomExitButton()
+        {
+            GameObject.Find("Canvas").transform.Find("B_ReturnToCabin").DOScale(0, 0.4f);
+            ExitCurrentCabin();
+        }
+
+        void MaxmizeInRoomExitButton()
+        {
+            GameObject.Find("Canvas").transform.Find("B_ReturnToCabin").DOScale(1, 0.4f);
+        }
+
+        public void MinimizeOpenSettingInStudio()
+        {
+            GameObject.Find("Canvas").transform.Find("B_OpenSettingInStudio").DOScale(0, 0.4f);
+        }
+
+        public void MaxmizeOpenSettingInStudio()
+        {
+            GameObject.Find("Canvas").transform.Find("B_OpenSettingInStudio").DOScale(1, 0.4f);
         }
     }
 }

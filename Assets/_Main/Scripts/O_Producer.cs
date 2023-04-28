@@ -53,10 +53,19 @@ namespace IGDF
 
         void EnterWalkIn()
         {
+            GetComponent<BoxCollider2D>().enabled = false;
             currentState = ProducerState.Walking;
             int randomInt = Random.Range(0, 2);
-            if (randomInt == 0) isLeftWalkIn = true;
-            else isLeftWalkIn = false;
+            if (randomInt == 0)
+            {
+ 
+                isLeftWalkIn = true;
+            }
+            else
+            {
+
+                isLeftWalkIn = false;
+            }
 
             if (isLeftWalkIn) WalkIn(-11, -5, 1);
             else WalkIn(11, 5, -1);
@@ -75,10 +84,13 @@ namespace IGDF
         {
             inScreenTimer = GetObserveTime();
             currentState = ProducerState.InScreenIdle;
+            if (isLeftWalkIn) GetComponent<BoxCollider2D>().enabled = true;
+
         }
 
         void EnterLeave()
         {
+            GetComponent<BoxCollider2D>().enabled = false;
             currentState = ProducerState.Walking;
             if (isLeftWalkIn) Leave(-11, -1);
             else Leave(11, 1);

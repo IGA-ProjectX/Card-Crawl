@@ -53,7 +53,7 @@ namespace IGDF {
         {
             for (int i = 0; i < skillRobots.Length; i++)
             {
-                skillRobots[i].GetComponent<O_V_SkillRobot>().InitializeSkillRobot(M_Global.instance.mainData.inUseSkills[i], i);
+                skillRobots[i].GetComponent<O_V_SkillRobot>().InitializeSkillRobot(M_Global.instance.GetSkillListInUse()[i], i);
             }
         }
 

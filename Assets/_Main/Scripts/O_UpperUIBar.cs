@@ -52,7 +52,7 @@ namespace IGDF
 
         public void ChangeDevTime()
         {
-            M_Global.instance.mainData.gameTimeInTotal++;
+            //M_Global.instance.mainData.gameTimeInTotal++;
             int minutes = M_Global.instance.mainData.gameTimeInTotal % 60;
             int hour = M_Global.instance.mainData.gameTimeInTotal / 60;
             if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese) t_DevTime.text = "开发时长：" + hour + "H ";

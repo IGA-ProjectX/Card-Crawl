@@ -12,9 +12,11 @@ namespace IGDF
         private Vector3 initialPosition;
         private bool isPlugined = false;
         public static O_V_SkillFruit selectedSkill;
+        private Transform parentBud;
 
-        public void InitializeSkillFruit(SO_Skill skillToSet)
+        public void InitializeSkillFruit(SO_Skill skillToSet,Transform targetParent)
         {
+            parentBud = targetParent;
             skillInfo = skillToSet;
             transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = skillInfo.skillImage;
             initialPosition = transform.position;
@@ -37,13 +39,14 @@ namespace IGDF
 
             if (O_V_SkillRobot.selectedtSkillRobot != null && O_V_SkillRobot.selectedtSkillRobot.isReadyForLoadNewSkill)
             {
+                Debug.Log("dasdasd");
                 O_V_SkillRobot.selectedtSkillRobot.LoadNewSkillIntoThis(skillInfo);
                 isPlugined = true;
                 transform.DOScale(0, 0.3f);
                 Destroy(gameObject, 0.4f);
             }
 
-            if (isPlugined == false) transform.DOMove(initialPosition, 0.7f);
+            if (isPlugined == false) transform.DOMove(parentBud.position, 0.7f);
             selectedSkill = null;
         }
 

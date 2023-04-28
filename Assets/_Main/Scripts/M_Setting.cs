@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using System;
 
 namespace IGDF
 {
@@ -18,16 +19,25 @@ namespace IGDF
         private TMP_Text t_Exit;
         private TMP_Text t_Credits;
         private TMP_Text t_Setting;
+        private TMP_Text t_SettingOnPanel;
+
+        private Action LanguageChange;
+
+        private GameObject creditsPanel;
 
 
         private void Start()
         {
+            creditsPanel = GameObject.Find("Canvas").transform.Find("Credits").gameObject;
             mask_Language = transform.Find("Language").Find("Capsule").Find("Rect Mask").GetComponent<RectMask2D>();
-            t_Start = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Start Game").GetComponent<TMP_Text>();
-            t_Exit = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Exit").GetComponent<TMP_Text>();
-            t_Credits = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Credits").GetComponent<TMP_Text>();
-            t_Setting = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Setting").GetComponent<TMP_Text>();
+            t_Start = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Start").GetChild(0).GetComponent<TMP_Text>();
+            t_Exit = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Exit").GetChild(0).GetComponent<TMP_Text>();
+            t_Credits = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Credits").GetChild(0).GetComponent<TMP_Text>();
+            t_Setting = FindObjectOfType<M_SceneTransition>().transform.Find("Road").Find("SignBase").Find("B_Setting").GetChild(0).GetComponent<TMP_Text>();
+            t_SettingOnPanel = transform.Find("T_Setting").GetComponent<TMP_Text>();
 
+            LanguageChange += FindObjectOfType<O_UpperUIBar>().UpdateOnBarInfo;
+            LanguageChange += UpdateCreditsLanguage;
         }
 
         void LanguageUpdate(SystemLanguage targetLanguage)
@@ -46,6 +56,7 @@ namespace IGDF
                     t_Exit.text = "退出";
                     t_Credits.text = "开发者名单";
                     t_Setting.text = "设置";
+                    t_SettingOnPanel.text = "设置";
                     i_GameName.sprite = M_Global.instance.repository.gameNameImages[1];
                     break;
                 case SystemLanguage.English:
@@ -56,6 +67,7 @@ namespace IGDF
                     t_Exit.text = "Exit";
                     t_Credits.text = "Credits";
                     t_Setting.text = "Setting";
+                    t_SettingOnPanel.text = "Setting";
                     i_GameName.sprite = M_Global.instance.repository.gameNameImages[0];
                     break;
             }
@@ -97,9 +109,14 @@ namespace IGDF
             M_Global.instance.mainData.unlockedSkillNodes.Add(new UnlockedSkillNode(CharacterType.Producer, NodeIndex.B1));
             M_Global.instance.mainData.unlockedSkillNodes.Add(new UnlockedSkillNode(CharacterType.Producer, NodeIndex.B2));
 
-            M_Global.instance.mainData.inUseSkills = M_Global.instance.repository.defaultSkills;
+            //M_Global.instance.mainData.inUseSkills = M_Global.instance.repository.defaultSkills;
+            int[] defaultSkills = new int[] { 1, 2, 7, 12 };
+            M_Global.instance.mainData.inUseSkills = defaultSkills;
+
+            M_Global.instance.mainData.targetUnlockedLevelNum = 1;
+            M_Global.instance.mainData.gameTimeInTotal = 0;
             //UpdateCurrentExp();
-            FindObjectOfType<O_UpperUIBar>().ChangeExp();
+            FindObjectOfType<O_UpperUIBar>().UpdateOnBarInfo();
             Sequence s = DOTween.Sequence();
             s.Append(reminder_Panel.DOScale(0, 0.4f));
             s.AppendCallback(() => reminder_Panel.gameObject.SetActive(false));
@@ -109,6 +126,10 @@ namespace IGDF
         {
             reminder_Panel.gameObject.SetActive(true);
             reminder_Panel.DOScale(1, 0.4f);
+            TMP_Text reminderText = reminder_Panel.Find("T_Reminder").GetComponent<TMP_Text>();
+            reminderText.text = (M_Global.instance.GetLanguage() == SystemLanguage.Chinese) ?
+                   "该行为不可逆，您确定要重置存档？" : "Irreversable Action! Are you sure want to reset Progress？";
+
         }
 
         public void ClickLanguageChange()
@@ -123,17 +144,71 @@ namespace IGDF
                 LanguageUpdate(SystemLanguage.Chinese);
                 DOTween.To(() => mask_Language.padding, x => mask_Language.padding = x, new Vector4(0, 0, 0, 0), 0.5f);
             }
+            LanguageChange();
         }
-
-        //public void UpdateCurrentExp()
-        //{
-        //    transform.Find("Exp").Find("T_ExpValue").GetComponent<TMP_Text>().text = M_Global.instance.mainData.playExp.ToString();
-        //}
 
         public void GlobalVolumeChange()
         {
             globalVolumeOffset = transform.Find("Audio Volume").GetComponentInChildren<Slider>().value;
             M_Audio.GlobalVolumeChange(globalVolumeOffset);
+        }
+
+        public void ReturnCredits()
+        {
+            RectTransform credits = creditsPanel.GetComponent<RectTransform>();
+            Sequence s = DOTween.Sequence();
+            s.AppendCallback(() => DOTween.To(() => credits.anchoredPosition, x => credits.anchoredPosition = x, new Vector2(140, 0), 0.7f));
+            s.AppendInterval(0.7f);
+            s.AppendCallback(()=>creditsPanel.SetActive(false));
+        }
+
+        public void CallOutCredits()
+        {
+            creditsPanel.SetActive(true);
+            UpdateCreditsLanguage();
+
+            RectTransform credits = GameObject.Find("Canvas").transform.Find("Credits").GetComponent<RectTransform>();
+            DOTween.To(() => credits.anchoredPosition, x => credits.anchoredPosition = x, new Vector2(-130, 0), 0.7f);
+        }
+
+        void UpdateCreditsLanguage()
+        {
+            RectTransform credits =creditsPanel.GetComponent<RectTransform>();
+            TMP_Text creditsText = credits.Find("Scroll Back").Find("Text").GetComponent<TMP_Text>();
+            creditsText.text = (M_Global.instance.GetLanguage() == SystemLanguage.English) ?
+                "From IGA Studio" +
+                "\n\n- Director -" +
+                "\nBrad Li" +
+                "\n\n- Designer -" +
+                "\nBrad Li" +
+                "\n\n- Lead Artist " +
+                "\n-Friedegg Freddy" +
+                "\n\n- Programmer -" +
+                "\nEric Jiang" +
+                "\n\n- Artist -" +
+                "\nDer" +
+                "\nMaipian" +
+                "\n\n- Narrative -" +
+                "\nShu Li" +
+                "\n\n- Audio -" +
+                "\nWeibin Du" :
+
+                "IGA 呈现" +
+                "\n\n- 制作人 -" +
+                "\n布拉德" +
+                "\n\n- 主设计 -" +
+                "\n布拉德" +
+                "\n\n- 主美术 -" +
+                "\n弗雷迪" +
+                "\n\n- 程序 -" +
+                "\n艾瑞克" +
+                "\n\n- 美术 -" +
+                "\n掌柜的" +
+                "\n麦片" +
+                "\n\n- 叙事 -" +
+                "\n李树" +
+                "\n\n- 音乐 -" +
+                "\n杜伟彬";
         }
     }
 }

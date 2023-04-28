@@ -85,6 +85,7 @@ namespace IGDF
             s.Append(newValueUp.DOScale(1, 0.4f));
             s.Append(newValueUp.DOMoveY(newValueUp.position.y + (isValueUp ? 0.2f : -0.2f), 0.4f));
             s.AppendCallback(() => DOTween.To(()=>valueSprite.color, x => valueSprite.color = x, new Color(0, 0, 0, 0), 0.4f));
+            s.AppendCallback(() => Destroy(newValueUp.gameObject, 1));
         }
 
         public void StaffIconChangeTo(int targetStaff,IconCondition targetCondition)

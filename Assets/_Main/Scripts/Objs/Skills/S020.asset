@@ -17,6 +17,6 @@ MonoBehaviour:
   skillDescriptionChi: "\u65E0\u635F\u8017\u89E3\u51B3\u8BE5\u8F6E\u5185\u6240\u6709\u7A0B\u5E8F\u9700\u6C42"
   skillNameEng: Design Pattern
   skillDescriptionEng: Solve all program requirements in this round without loss
-  skillImage: {fileID: 21300000, guid: 7a1683154a74c9d4e9f993bd6c54f947, type: 3}
+  skillImage: {fileID: 21300000, guid: 349b423d581883442b3add38f977f491, type: 3}
   skillType: 20
   skillUseType: 1

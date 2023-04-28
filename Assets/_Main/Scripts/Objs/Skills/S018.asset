@@ -17,6 +17,6 @@ MonoBehaviour:
   skillDescriptionChi: "\u5F53\u524D\u7A0B\u5E8F\u5458\u6280\u80FD\u70B9\u6570\u7FFB\u500D"
   skillNameEng: Finite State Machine
   skillDescriptionEng: Double the skill points of the current programmer
-  skillImage: {fileID: 21300000, guid: 4f3a106299767d146975053c7be09b97, type: 3}
+  skillImage: {fileID: 21300000, guid: 6b2a30cfab2ce1e43b72fe630b395772, type: 3}
   skillType: 18
   skillUseType: 1

@@ -66,6 +66,8 @@ namespace IGDF
         void ProductStateUpdate(ProductShowcase toChangeProduct, ProductLevel toChangeLevel)
         {
             ProductLevel currentLevel = toChangeProduct.productLevel;
+ 
+
             switch (toChangeLevel)
             {
                 case ProductLevel.None:
@@ -105,6 +107,12 @@ namespace IGDF
                     break;
             }
             ObjPopOut(transform, 1);
+
+            if (currentLevel == ProductLevel.None)
+            {
+                FindObjectOfType<M_Level>().RefleshNewUnlockedLevelState(M_Global.instance.mainData.targetUnlockedLevelNum);
+                FindObjectOfType<O_UpperUIBar>().ChangeReleasedGameNum();
+            }
         }
 
         void ProductUpgrade(ProductShowcase toChangeProduct, ProductLevel targetLevel)

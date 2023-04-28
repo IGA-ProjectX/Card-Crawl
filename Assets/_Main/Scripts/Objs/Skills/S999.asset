@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c054bdda59a8544f876c28a7ca5b690, type: 3}
   m_Name: S999
   m_EditorClassIdentifier: 
-  skillIndex: 0
+  skillIndex: 999
   skillNameChi: 
   skillDescriptionChi: 
   skillNameEng: 

@@ -60,7 +60,7 @@ namespace IGDF
                     t_Name.text = "Unproduced";
                     t_UserReview.text = "None Review";
                     t_ReleaseDate.text = "Release Date: ----.--.--";
-                    i_Game.sprite = null;
+                    i_Game.sprite = M_Global.instance.repository.defaultWebImage;
                 }
             }
             DOTween.To(() => ui_ShowcaseGroup.alpha, x => ui_ShowcaseGroup.alpha = x, 1, 1f);
