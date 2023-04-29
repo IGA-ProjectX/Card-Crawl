@@ -37,5 +37,12 @@ namespace IGDF {
             s.AppendInterval(openSpeed);
             s.AppendCallback(() => M_Website.instance.OpenWeb());
         }
+
+        public void WebsiteScaleDown()
+        {
+            webBG.DOScale(Vector3.zero, openSpeed);
+            DOTween.To(() => webBG.localPosition, x => webBG.localPosition = x, intialPos, openSpeed);
+            Sequence s = DOTween.Sequence();
+        }
     }
 }

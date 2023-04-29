@@ -128,20 +128,29 @@ namespace IGDF
                     ss.Append(panelToScaleDown.DOScale(0, 0.4f));
                     ss.AppendCallback(() => SetInStudioPanelState(false));
                     ss.Append(cars[0].Find("Car Door").DOMoveY(cars[0].Find("Car Door").position.y - 12, transitionTime));
+                    ss.AppendCallback(() => M_Main.instance.DestroyAllChatbubble());
                     ss.AppendCallback(() => SceneManager.UnloadSceneAsync(1));
                     currentView = CabinView.Studio;
                     break;
                 case CabinView.InSkill:
-                    cars[1].Find("Car Door").DOMoveY(cars[1].Find("Car Door").position.y - 12, transitionTime);
+                    Sequence s = DOTween.Sequence();
+                    s.AppendCallback(() =>
+                    cars[1].Find("Car Door").DOMoveY(cars[1].Find("Car Door").position.y - 12, transitionTime));
+                    s.AppendInterval(transitionTime);
+                    s.AppendCallback(() => SceneManager.UnloadSceneAsync(2));
                     currentView = CabinView.Skill;
                     break;
                 case CabinView.InWebsite:
-                    FindObjectOfType<M_Website>().CloseWeb();
+                    //FindObjectOfType<M_Website>().CloseWeb();
                     Sequence sw = DOTween.Sequence();
+                    sw.AppendCallback(() => FindObjectOfType<M_Website>().CloseWeb());
+                    sw.AppendInterval(0.5f);
                     sw.Append(cars[2].Find("Car Door").DOMoveY(cars[2].Find("Car Door").position.y - 12, transitionTime));
                     sw.AppendCallback(() => currentView = CabinView.Website);
                     sw.AppendInterval(transitionTime);
+                    sw.AppendCallback(() => SceneManager.UnloadSceneAsync(3));
                     sw.AppendCallback(() => WebsiteSceneCullingMaskChangeTo(currentView));
+                   
                     break;
             }
             M_Audio.PlaySceneMusic(CabinView.Overview);

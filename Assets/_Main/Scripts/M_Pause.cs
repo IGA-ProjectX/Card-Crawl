@@ -75,6 +75,7 @@ namespace IGDF
             s.Append(studioCarParent.Find("Car Door").DOMoveY(studioCarParent.Find("Car Door").position.y - 12, 1));
             s.AppendCallback(() => SceneManager.UnloadSceneAsync(1));
             s.AppendInterval(0.2f);
+            s.AppendCallback(() => M_Main.instance.DestroyAllChatbubble());
             s.AppendCallback(() => SceneManager.LoadScene(1, LoadSceneMode.Additive));
             s.AppendInterval(0.2f);
             s.AppendCallback(() => M_Main.instance.GameStart());

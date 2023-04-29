@@ -105,5 +105,14 @@ namespace IGDF
 
             m_DDL.UpdateName();
         }
+
+        public void DestroyAllChatbubble()
+        {
+            Transform bubbleParent = GameObject.Find("Canvas").transform.Find("ChatBubbles");
+            for (int i = 0; i < bubbleParent.childCount; i++)
+            {
+                Destroy(bubbleParent.GetChild(i).gameObject, 0.1f);
+            }
+        }
     }
 }

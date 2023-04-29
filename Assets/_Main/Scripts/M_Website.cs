@@ -68,8 +68,13 @@ namespace IGDF
 
         public void CloseWeb()
         {
-            ui_ShowcaseGroup.alpha = 0;
-            p_Website.SetActive(false);
+            Sequence s = DOTween.Sequence();
+            s.AppendCallback(()=> DOTween.To(() => ui_ShowcaseGroup.alpha, x => ui_ShowcaseGroup.alpha = x, 0, 0.2f));
+            s.AppendInterval(0.3f);
+            s.AppendCallback(() => FindObjectOfType<M_WebsiteRoom>().WebsiteScaleDown());
+            s.AppendInterval(0.4f);
+            s.AppendCallback(() =>
+            p_Website.SetActive(false));
         }
 
         Product GetProductInfo(LevelType targetGameType, ProductLevel targetProductLevel)
