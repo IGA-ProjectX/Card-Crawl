@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c487008e91e61fe4b8cd9f306f4d1365, type: 3}
+  m_Name: D_Tutorial
+  m_EditorClassIdentifier: 
+  levelType: 2
+  levelNameChi: "\u6559\u5B66"
+  levelNameEng: Tutorial
+  staffValue: 000000001400000014000000140000000f000000
+  levelButtonImage: {fileID: 21300000, guid: 235a4f8dece08bb49b8ace33565e17b8, type: 3}
+  colorFilter: {r: 1, g: 1, b: 1, a: 1}
+  cards_Production:
+  - cardType: 0
+    cardOutNE: On Board!!
+    cardOutNC: "\u542F\u7A0B\u5427\uFF01\uFF01"
+    cardNameEng: On Board!!
+    cardNameChi: "\u542F\u7A0B\u5427\uFF01\uFF01"
+    cardSummaryEng: hhhhhhh
+    cardSummaryChi: hhhhhh
+    cardImage: {fileID: 21300000, guid: e1cd239ef2400ef49ab8147e95847445, type: 3}
+    cardValue: 10
+  cards_Design:
+  - cardType: 1
+    cardOutNE: 
+    cardOutNC: "\u601D\u8DEF\u6CC9\u6D8C"
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: hdsdfsd
+    cardSummaryChi: hsfdasasds
+    cardImage: {fileID: 21300000, guid: 3bda77854a629934a8e95a6c959d8857, type: 3}
+    cardValue: 10
+  - cardType: 1
+    cardOutNE: 
+    cardOutNC: "\u6587\u601D\u67AF\u7AED"
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: fgsdfdsdffd
+    cardSummaryChi: fsdfdsdsfsdfg
+    cardImage: {fileID: 21300000, guid: ef49aca531299b340b8ab72e68ccd9ae, type: 3}
+    cardValue: -10
+  cards_Art:
+  - cardType: 2
+    cardOutNE: 
+    cardOutNC: 
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: sdffdsdsgsdgsfd
+    cardSummaryChi: sdfsfdsdfgsdfsd
+    cardImage: {fileID: 21300000, guid: 3b34f9a5a5b4cf24a8c74ec1acef1400, type: 3}
+    cardValue: 10
+  - cardType: 2
+    cardOutNE: 
+    cardOutNC: "\u7F8E\u672F"
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: sdfggddsffsdsdf
+    cardSummaryChi: sfgdgsdasdA
+    cardImage: {fileID: 21300000, guid: 15507d19da76313438bb0da67aabb7ad, type: 3}
+    cardValue: -10
+  cards_Code:
+  - cardType: 3
+    cardOutNE: 
+    cardOutNC: "\u7A0B\u5E8F\u8BED\u8A00\u5B66\u4E60"
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: "ASDASF\tfsdfsdfds"
+    cardSummaryChi: sdgsdcxv vsdsvxc
+    cardImage: {fileID: 21300000, guid: 5dcb7bfc5ed485a48b9a0479eaf0c753, type: 3}
+    cardValue: 10
+  - cardType: 3
+    cardOutNE: 
+    cardOutNC: "Bug \u4FEE\u590D"
+    cardNameEng: 
+    cardNameChi: 
+    cardSummaryEng: 'sdfdgvbxcvfg '
+    cardSummaryChi: dsfsf  sdfsdfs
+    cardImage: {fileID: 21300000, guid: 994a6361475560244af5101e13e330a3, type: 3}
+    cardValue: -10
+  productLevels:
+  - productLevel: 1
+    nameEng: 
+    nameChi: 
+    summaryEng: 
+    summaryChi: 
+    productImage: {fileID: 21300000, guid: 0198f36411a1bda4b9c767d657dd149d, type: 3}
+    userTagsEng: []
+    userTagsChi: []
+  - productLevel: 2
+    nameEng: 
+    nameChi: 
+    summaryEng: 
+    summaryChi: 
+    productImage: {fileID: 21300000, guid: 8a4d8aa046182d746abd7e8ae31e6dc3, type: 3}
+    userTagsEng: []
+    userTagsChi: []
+  - productLevel: 3
+    nameEng: 
+    nameChi: 
+    summaryEng: 
+    summaryChi: 
+    productImage: {fileID: 21300000, guid: 8a4d8aa046182d746abd7e8ae31e6dc3, type: 3}
+    userTagsEng: []
+    userTagsChi: []
+  talkList: []
