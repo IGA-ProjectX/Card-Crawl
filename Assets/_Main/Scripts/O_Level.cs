@@ -67,7 +67,6 @@ namespace IGDF
             Sequence s = DOTween.Sequence();
             s.AppendCallback(() => SceneManager.LoadScene(1, LoadSceneMode.Additive));
             s.AppendCallback(() => FindObjectOfType<M_SceneTransition>().EnterCurrentCabin());
-            //s.Append(GameObject.Find("Canvas").transform.Find("Level Selection").DOScale(0, 0.4f));
             s.AppendCallback(() => FindObjectOfType<M_Level>().CloseLevelSelectionPanel());
         }
     }

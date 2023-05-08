@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 using Psychoflow.SSWaterReflection2D;
+using System;
 
 namespace IGDF
 {
@@ -22,6 +23,8 @@ namespace IGDF
 
         [HideInInspector]public bool isGameFinished = false;
         private bool isResultComingOut = false;
+        public GameObject pre_Tutorial;
+        public Action GameProduced;
 
         private void Awake()
         {
@@ -58,12 +61,14 @@ namespace IGDF
                     GameDevFailed();
                     isGameFinished = false;
                     isResultComingOut = true;
+                    if (GameProduced != null) GameProduced();
                 }
                 else if (m_Card.inGameDeck.Count == 0 && nullCount == 4)
                 {
                     GameDevSucceed();
                     isGameFinished = true;
                     isResultComingOut = true;
+                    if (GameProduced != null) GameProduced();
                 }
 
             void GameDevSucceed()
@@ -96,14 +101,23 @@ namespace IGDF
         {
             m_ChatBubble.PrepareTalkList(M_Global.instance.levels[M_Global.instance.targetLevel].talkList);
             m_Card.InitializeDeck(M_Global.instance.levels[M_Global.instance.targetLevel]);
+            CheckIsTutorial();
             m_Card.InitializeMoveValue();
             m_DDL.CreateDots();
             m_DDL.InitializeNumberList();
             m_Staff.InitializeStaffValues(M_Global.instance.levels[M_Global.instance.targetLevel].staffValue);
-            //m_Skill.InitializeSkills(M_Global.instance.mainData.inUseSkills);
             m_Skill.InitializeSkills(M_Global.instance.GetSkillListInUse());
-
             m_DDL.UpdateName();
+
+            void CheckIsTutorial()
+            {
+                if (M_Global.instance.targetLevel == 0)
+                {
+                    GameObject tutorialObj = Instantiate(pre_Tutorial, Vector3.zero, Quaternion.identity);
+                    M_Tutorial tutorial = tutorialObj.GetComponent<M_Tutorial>();
+                    tutorial.EnterTurnManager();
+                }
+            }
         }
 
         public void DestroyAllChatbubble()

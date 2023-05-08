@@ -85,6 +85,17 @@ namespace IGDF
 
         public void OpenEye()
         {
+            if (M_Global.instance.targetLevel == 0)
+            {
+                if (skillData.skillType != SkillType.RedrawAllCard)
+                {
+                    SetSkillUninteractable();
+                    return;
+                }
+
+            }
+            
+
             float speed = Random.Range(0.45f, 1.2f);
             eyeball.DOMove(eyeballMiddlePos, 0.3f);
             eyelidUpper.DOMoveY(upperLidOpenPos.y, speed);
@@ -103,6 +114,7 @@ namespace IGDF
 
         private void OnMouseDown()
         {
+            if (eyeState != EyeState.Close && M_Tutorial.instance != null) M_Tutorial.instance.IntroSkill();
             if (eyeState != EyeState.FollowMouse)
             {
                 if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse && !isUsed)

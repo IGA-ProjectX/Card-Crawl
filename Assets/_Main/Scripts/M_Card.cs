@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using System;
 
 namespace IGDF
 {
@@ -39,7 +40,7 @@ namespace IGDF
             Card tempValue;
             for (int i = deckToShuffle.Count - 1; i >= 0; i--)
             {
-                rand = Random.Range(0, i + 1);
+                rand = UnityEngine.Random.Range(0, i + 1);
                 tempValue = deckToShuffle[rand];
                 deckToShuffle[rand] = deckToShuffle[i];
                 deckToShuffle[i] = tempValue;
@@ -51,13 +52,7 @@ namespace IGDF
         {
             cardUsedNumInTurn = 0;
             for (int i = 0; i < 4; i++)
-            {
-                if (cardsInTurn[i] == null && inGameDeck.Count != 0)
-                {
-                    InstantiateCard(i);
-                }
-            }
-
+                if (cardsInTurn[i] == null && inGameDeck.Count != 0) InstantiateCard(i);
             StopCoroutine(TurnEnd());
         }
 
@@ -177,7 +172,6 @@ namespace IGDF
                         s.Append(cardTrans.DOMove(targetPos, 0.2f));
                         s.AppendCallback(() => cardTrans.GetComponent<O_Card>().DestroyCardInScreen());
                         s.AppendCallback(() => M_Main.instance.m_Staff.ChangeStaffValue((int)targetType, cardValue));
-                        //s.AppendCallback(() => CheckInTurnCardNumber());
                         s.AppendInterval(0.8f);
                         s.AppendCallback(() => M_Main.instance.m_DDL.DDLSlotChangeTo(SlotCondition.Shrinked));
 
@@ -224,6 +218,7 @@ namespace IGDF
             {
                 if (!moveIndex.Contains(i) && cardsInTurn[i].GetComponent<O_Card>().GetDDLAffected())
                 {
+                    if (M_Tutorial.instance != null) M_Tutorial.instance.IntroDDL(cardsInTurn[i].GetComponent<O_Card>());
                     SpriteRenderer residueCardSprite = cardsInTurn[i].Find("Card BG").GetComponent<SpriteRenderer>();
                     DOTween.To(() => residueCardSprite.color, x => residueCardSprite.color = x, Color.red, 0.1f);
                     yield return new WaitForSeconds(0.1f);
@@ -285,7 +280,12 @@ namespace IGDF
             s.AppendCallback(() => M_Main.instance.m_Skill.EnterWaitForUseState());
             s.AppendCallback(() => M_Main.instance.m_HoverTip.EnterState(HoverState.AllActive));
             s.AppendCallback(() => CardLayerChange(clipperTrans, 10));
+            s.AppendCallback(() => CheckIsTutorial());
 
+            void CheckIsTutorial()
+            {
+                if (M_Tutorial.instance != null) M_Tutorial.instance.IntroBegin();
+            }
             void CardMoveDownwards()
             {
                 clipperTrans.DOMoveY(clipperTrans.position.y - verDistance, verTime);

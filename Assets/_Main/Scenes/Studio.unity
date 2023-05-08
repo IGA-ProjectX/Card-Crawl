@@ -5809,6 +5809,7 @@ MonoBehaviour:
   m_ChatBubble: {fileID: 0}
   m_HoverTip: {fileID: 0}
   isGameFinished: 0
+  pre_Tutorial: {fileID: 1554647299730708348, guid: d196fcbe64206024b86d58f16ec0be98, type: 3}
 --- !u!4 &8164597492522616091
 Transform:
   m_ObjectHideFlags: 0

@@ -80,7 +80,6 @@ namespace IGDF
                     cars[0].Find("Car Door").DOMoveY(cars[0].Find("Car Door").position.y + 12, transitionTime);
                     Sequence s = DOTween.Sequence();
                     s.AppendInterval(transitionTime);
-                    //s.AppendCallback(() => TransitToRoomState());
                     s.AppendCallback(() => M_Main.instance.GameStart());
                     s.AppendCallback(() => SetInStudioPanelState(true));
                     s.AppendCallback(() => MaxmizeOpenSettingInStudio());

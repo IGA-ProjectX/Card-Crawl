@@ -128,6 +128,56 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d3fda1319dd9c65459b74a6b023219dd, type: 2}
   - {fileID: 11400000, guid: 8b2f326d5be300e4da2509988be780af, type: 2}
   defaultWebImage: {fileID: 21300000, guid: 235a4f8dece08bb49b8ace33565e17b8, type: 3}
+  tutorialTexts:
+  - type: 0
+    textChi: "\u5C06<color=#D97C5E>\u4EFB\u52A1\u9700\u6C42\u5361</color>\u62D6\u52A8\u81F3\u5BF9\u5E94\u804C\u4F4D\u89D2\u8272\uFF0C\u6263\u9664\u5BF9\u5E94\u89D2\u8272\u6280\u80FD\u503C\u3002\u540C\u65F6\u8BE5\u89D2\u8272\u5B8C\u6210\u4EFB\u52A1\u540E\uFF0C\u4F1A\u63D0\u5347\u5BF9\u5E94\u70B9\u6570\u7684\u5F00\u53D1\u7ECF\u9A8C\u503C\u3002<color=#ff0000ff>\u6CE8\uFF1A\u538B\u529B\u503C\u4E0D\u80FD\u964D\u4F4E\u81F3\u8D1F\u6570\u3002</color>"
+    textEng: 'Drag the Task Requirements Card to the corresponding developer, deducting
+      the corresponding developer''s stress value. After completing the task, the
+      role will gain experience points in the corresponding field. Note: Stress values
+      cannot be reduced to negative numbers.'
+    video: {fileID: 32900000, guid: cc17679240b61b147a86ade414f9c266, type: 3}
+  - type: 1
+    textChi: "\u62D6\u52A8<color=#B7E071>\u7ECF\u9A8C\u5361</color>\u81F3<color=#D97C5E>\u6B7B\u7EBF\u673A\u5668</color>\uFF0C\u53EF\u4EE5\u76F4\u63A5\u83B7\u53D6\u7B49\u989D\u7684\u7ECF\u9A8C\u503C\u3002"
+    textEng: Drag the Direct Experience Card to the Deadline Machine to directly
+      obtain an equivalent amount of experience.
+    video: {fileID: 32900000, guid: 03055571b4d5bfd43a44c29450d0407e, type: 3}
+  - type: 8
+    textChi: "\u6E38\u620F\u5F00\u53D1\u5F00\u59CB\u5566\uFF01\uFF01\n\u62D6\u52A8\u5361\u724C\u81F3\u5BF9\u5E94\u5F00\u53D1\u8005\u4F4D\u7F6E\uFF0C\u7136\u540E\u677E\u5F00\u9F20\u6807\u8FDB\u884C\u4F7F\u7528\n<color=#67BAE0>\u6CE8\uFF1A\u518D\u6B21\u70B9\u51FB\u9F20\u6807\u5DE6\u952E\u53EF\u4EE5\u7ED3\u675F\u5F53\u524D\u6559\u7A0B\u8BF4\u660E\u7684\u89C2\u770B\u3002</color>"
+    textEng: Drag card to use card. Right-click the mouse to end the current tutorial
+      instructions.
+    video: {fileID: 32900000, guid: 618167b0433639547b3a2b210da6334b, type: 3}
+  - type: 3
+    textChi: "<color=#B7E071>\u5269\u4F59\u4EFB\u52A1\u6307\u793A\u5668</color>\u4F1A\u663E\u793A\u79BB\u6E38\u620F\u5F00\u53D1\u5B8C\u6210\u6240\u5269\u4F59\u7684<color=#D97C5E>\u4EFB\u52A1\u5361</color>\u6570\u91CF\u3002"
+    textEng: The remaining task indicator shows the number of task cards left until
+      the game development is complete.
+    video: {fileID: 32900000, guid: 4dd0f4bd386f3574da3fe7f5a3d3bc19, type: 3}
+  - type: 4
+    textChi: "\u4E00\u56DE\u5408\u5185\uFF0C\u62BD\u53D6\u56DB\u5F20\u5361\uFF0C\u4F7F\u7528\u4E09\u5F20\u5361\u540E\u56DE\u5408\u7ED3\u675F\u3002\u6B8B\u7559\u5361\u4E3A<color=#D97C5E>\u4EFB\u52A1\u5361</color>\u65F6\uFF0C\u4F1A\u6263\u96641\u70B9\u6B7B\u7EBF\u503C\uFF0C\u6B8B\u7559\u5361\u4E3A<color=#67BAE0>\u6280\u80FD\u63D0\u5347\u5361</color>\u65F6\uFF0C\u4F1A\u76F4\u63A5\u5F03\u7F6E\u8BE5\u5361\uFF0C\u4E0D\u5F71\u54CD<color=#D97C5E>\u6B7B\u7EBF\u503C</color>\u3002"
+    textEng: In one round, draw four cards and end the round after using three cards.
+      When the remaining card is a task card, it deducts 1 point from the deadline
+      value. When the remaining card is a skill upgrade card, it is directly discarded
+      without affecting the deadline value.
+    video: {fileID: 32900000, guid: 73daa823147f8364fb630de60726353f, type: 3}
+  - type: 5
+    textChi: "\u53EF\u4EE5\u9009\u62E9\u5C06<color=#D97C5E>\u4EFB\u52A1\u5361</color>\u62D6\u52A8\u81F3<color=#D97C5E>\u6B7B\u7EBF\u673A\u5668</color>\uFF0C\u8BE5\u884C\u4E3A\u4F1A\u76F4\u63A5\u6263\u9664\u5BF9\u5E94\u70B9\u6570\u7684<color=#D97C5E>\u6B7B\u7EBF\u503C</color>\uFF0C\u4E14\u65E0\u7ECF\u9A8C\u83B7\u53D6\u3002<color=#ff0000ff>\u6CE8\uFF1A\u6B7B\u7EBF\u503C\u5F52\u96F6\u540E\uFF0C\u6E38\u620F\u5F00\u53D1\u5931\u8D25\u3002</color>"
+    textEng: 'You can choose to drag the Task Requirements Card to the Deadline Machine,
+      which will directly deduct the corresponding number of deadline points without
+      gaining any experience. Note: If the deadline value reaches zero, the game
+      development fails.'
+    video: {fileID: 32900000, guid: 451ccbb06155994469540b40bb3a9f83, type: 3}
+  - type: 7
+    textChi: "\u5C06<color=#67BAE0>\u6280\u80FD\u63D0\u5347\u5361</color>\u62D6\u52A8\u81F3\u5BF9\u5E94\u804C\u4F4D\u89D2\u8272\uFF0C\u63D0\u5347\u5BF9\u5E94\u89D2\u8272\u6280\u80FD\u503C\u3002"
+    textEng: Drag the Skill Upgrade Card to the corresponding role to increase their
+      stress tolerance.
+    video: {fileID: 32900000, guid: 618167b0433639547b3a2b210da6334b, type: 3}
+  - type: 6
+    textChi: "\u70B9\u51FB\u9F20\u6807\u53F3\u952E\u53EF\u4EE5\u7ED3\u675F\u5F53\u524D\u6559\u7A0B\u8BF4\u660E\u7684\u89C2\u770B\u3002"
+    textEng: Right-click the mouse to end the current tutorial instructions.
+    video: {fileID: 0}
+  - type: 2
+    textChi: "\u5355\u51FB\u9F20\u6807\u5DE6\u952E\u6233\u773C\u7403\u673A\u5668\u4EBA\u4EE5\u4F7F\u7528\u6280\u80FD"
+    textEng: Click left mouse button to poke skill robot's eye to use skil
+    video: {fileID: 32900000, guid: 53724633b321128439034d9c3e5b6b28, type: 3}
   bgMusics:
   - soundType: 9
     audioClip: {fileID: 8300000, guid: 3160e7645ff70904c923fe34209ce41b, type: 3}

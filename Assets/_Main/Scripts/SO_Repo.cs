@@ -22,6 +22,7 @@ namespace IGDF
         public Sprite[] valueChanges;
         public SO_Skill[] skillList;
         public Sprite defaultWebImage;
+        public TutorialText[] tutorialTexts;
 
         [Header("Audio")]
         public SoundAudioClip[] bgMusics;
@@ -84,5 +85,16 @@ namespace IGDF
         ProducedWelldone,
         Wind,
         ShutterDoor
+    }
+
+    [System.Serializable]
+    public class TutorialText
+    {
+        public TutorialType type;
+        [TextArea (3,3)]
+        public string textChi;
+        [TextArea(3, 3)]
+        public string textEng;
+        public UnityEngine.Video.VideoClip video;
     }
 }

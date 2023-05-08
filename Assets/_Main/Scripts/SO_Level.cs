@@ -66,6 +66,7 @@ namespace IGDF
 
     public enum LevelType
     {
+        Tutorial,
         PapersPlease,
         SuperHot,
         SuperMario

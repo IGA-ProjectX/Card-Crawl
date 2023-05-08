@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c487008e91e61fe4b8cd9f306f4d1365, type: 3}
   m_Name: D_SuperMario
   m_EditorClassIdentifier: 
-  levelType: 2
+  levelType: 3
   levelNameChi: "\u8D85\u7EA7\u5A1C\u91CC\u5965"
   levelNameEng: Super Nario
   staffValue: 0000000022000000160000002c00000007000000
   levelButtonImage: {fileID: 21300000, guid: 0198f36411a1bda4b9c767d657dd149d, type: 3}
+  colorFilter: {r: 0, g: 0, b: 0, a: 0}
   cards_Production:
   - cardType: 0
     cardOutNE: 

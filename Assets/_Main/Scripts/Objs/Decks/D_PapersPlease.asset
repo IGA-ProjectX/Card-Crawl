@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c487008e91e61fe4b8cd9f306f4d1365, type: 3}
   m_Name: D_PapersPlease
   m_EditorClassIdentifier: 
-  levelType: 0
+  levelType: 1
   levelNameChi: "\u8BF7\u51FA\u793A\u6587\u4EF6"
   levelNameEng: Documents, Please
   staffValue: 000000000a0000000a0000000a0000000f000000

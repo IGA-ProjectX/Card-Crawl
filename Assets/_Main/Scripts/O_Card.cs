@@ -5,6 +5,7 @@ using TMPro;
 using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 namespace IGDF
 {
@@ -83,18 +84,14 @@ namespace IGDF
             if (card.cardValue > 0)
             {
                 transform.Find("Card Value").GetComponent<TMP_Text>().text = "+" + card.cardValue.ToString();
-                //transform.Find("Card BG").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardBGImages[0];
                 transform.Find("Card Value Back").GetComponent<SpriteRenderer>().color = M_Main.instance.repository.cardElementsColor[0];
                 transform.Find("Card Image Type").GetComponent<SpriteRenderer>().color = M_Main.instance.repository.cardElementsColor[0];
-                CardElementsColorAdjustment(0);
             }
             else
             {
                 transform.Find("Card Value").GetComponent<TMP_Text>().text = card.cardValue.ToString();
-                //transform.Find("Card BG").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardBGImages[1];
                 transform.Find("Card Value Back").GetComponent<SpriteRenderer>().color = M_Main.instance.repository.cardElementsColor[1];
                 transform.Find("Card Image Type").GetComponent<SpriteRenderer>().color = M_Main.instance.repository.cardElementsColor[1];
-                CardElementsColorAdjustment(1);
             }
 
             transform.Find("Card Image Type").GetComponent<SpriteRenderer>().sprite = M_Main.instance.repository.cardTypeIcons[(int)card.cardType];
@@ -103,14 +100,6 @@ namespace IGDF
             targetableType.Add(card.cardType);
             if (card.cardType!=0 && card.cardValue<0) targetableType.Add(CardType.Production);
             inSlotIndex = index;
-
-            void CardElementsColorAdjustment(int targetColor)
-            {
-               //transform.Find("Card Image Type").GetComponent<SpriteRenderer>().color = M_Global.instance.repository.cardElementsColor[targetColor];
-               //transform.Find("Card Name").GetComponent<TMPro.TMP_Text>().color = M_Global.instance.repository.cardElementsColor[targetColor];
-               //transform.Find("Card Value").GetComponent<TMPro.TMP_Text>().color = M_Global.instance.repository.cardElementsColor[targetColor];
-               //transform.Find("Card Text Type").GetComponent<TMPro.TMP_Text>().color = M_Global.instance.repository.cardElementsColor[targetColor];
-            }
         }
 
         public void ChangeCardValue(int targetValue)
@@ -124,7 +113,6 @@ namespace IGDF
             s.AppendCallback(() => valueText.text = cardCurrentValue.ToString());
             s.Append(valueText.transform.DOScale(1f, 0.3f));
             s.Append(valueText.DOColor(Color.white, 0.2f));
-            //transform.Find("Card Value").GetComponent<TMP_Text>().text = cardCurrentValue.ToString();
         }
 
         public void SetDraggableState(bool isForDrag)
@@ -145,17 +133,7 @@ namespace IGDF
 
         public void OnMouseDown()
         {
-            //if (M_Main.instance.m_Skill.GetSkillState() == SkillUseState.Targeting)
-            //{
-            //    Debug.Log("StateIsRight");
-            //    if (isCardReadyForSkill)
-            //    {
-            //        Debug.Log("UseSkill");
-            //        M_Main.instance.m_SkillResolve.EffectResolve(M_Main.instance.m_Skill.activatedSkill, this);
-            //        M_Main.instance.m_Skill.activatedSkill.ExitTargetingState();
-            //        M_Main.instance.m_Skill.EnterWaitForUseState();
-            //    }
-            //}
+            if (M_Tutorial.instance != null) M_Tutorial.instance.GetCardInfoAndDetermineTutorial(this);
 
             if (isCardReadyForSkill)
             {
@@ -228,6 +206,8 @@ namespace IGDF
             Destroy(gameObject, 0.9f);
             M_Audio.PlaySound(SoundType.CardIndraft);
             GetComponent<O_HoverTip>().ChangeAllowOpenState(false, false);
+
+            if (M_Tutorial.instance != null) M_Tutorial.instance.IntroResidue(this);
         }
 
         public void CardBackToDeck()

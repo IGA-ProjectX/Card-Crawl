@@ -34,7 +34,6 @@ namespace IGDF
                 skillObjects[i].GetComponent<O_Skill>().InitializeSkill(skillArray[i]);
                 skillNames[i].text = (M_Global.instance.GetLanguage() == SystemLanguage.Chinese) ? skillArray[i].skillNameChi : skillArray[i].skillNameEng;
             }
-
         }
 
         public void UseSkill(O_Skill receivedSkill)
@@ -156,12 +155,6 @@ namespace IGDF
         public void SetCardForSkillState(O_Card targetCard,bool targetState)
         {
             targetCard.isCardReadyForSkill = targetState;
-            //SpriteRenderer targetCardBG = targetCard.transform.Find("Card BG").GetComponent<SpriteRenderer>();
-      
-            //if (targetState)
-            //    DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.green, 0.3f);
-            //else
-            //    DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.red, 0.3f);
 
             SpriteRenderer targetCardCover = targetCard.transform.Find("Card Dark").GetComponent<SpriteRenderer>();
 
@@ -179,14 +172,10 @@ namespace IGDF
             {
                 if (cardTrans!=null)
                 {
-                    //cardTrans.GetComponent<O_Card>().SetDraggableState(true);
                     cardTrans.GetComponent<O_Card>().isCardReadyForSkill = false;
 
                     SpriteRenderer targetCardCover = cardTrans.transform.Find("Card Dark").GetComponent<SpriteRenderer>();
                     DOTween.To(() => targetCardCover.color, x => targetCardCover.color = x, new Color(0, 0, 0, 0), 0.3f);
-
-                    //SpriteRenderer targetCardBG = cardTrans.transform.Find("Card BG").GetComponent<SpriteRenderer>();
-                    //DOTween.To(() => targetCardBG.color, x => targetCardBG.color = x, Color.white, 0.3f);
                 }
             }
             M_Main.instance.m_HoverTip.EnterState(HoverState.AllActive);

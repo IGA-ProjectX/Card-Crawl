@@ -14,7 +14,8 @@ namespace IGDF
             StartGame, ExitGame, Credits, 
             CabinBetweenStudioSkill, CabinBetweenStudioWebsite ,BackToOverview,
             EnterVivarium,EnterWebsite,OpenSettingPanel,ExitRoom,
-            CallOutLevelList
+            CallOutLevelList,
+            CloseTutorial, PlayVideo
         }
         public ButtonType buttonType;
         private M_SceneTransition m_SceneTransition;
@@ -74,6 +75,7 @@ namespace IGDF
                         break;
                 }
             }
+            TutorialButtonClick();
         }
 
         private void OnMouseEnter()
@@ -81,6 +83,7 @@ namespace IGDF
             if (isClickable)
                 if (buttonType == ButtonType.StartGame || buttonType == ButtonType.ExitGame|| buttonType == ButtonType.Credits|| buttonType == ButtonType.OpenSettingPanel)
                 transform.DORotate(new Vector3(0, 0, UnityEngine.Random.Range(10, 15)), 0.4f);
+            //TutorialButtonEnter();
         }
 
         private void OnMouseExit()
@@ -88,6 +91,7 @@ namespace IGDF
             if (isClickable)
                 if (buttonType == ButtonType.StartGame || buttonType == ButtonType.ExitGame || buttonType == ButtonType.Credits || buttonType == ButtonType.OpenSettingPanel) 
                     transform.DORotate(new Vector3(0, 0, 0), 0.4f);
+            //TutorialButtonExit();
         }
 
         void RoadBaseButtonColorChangeTo(Color targetColor)
@@ -167,6 +171,31 @@ namespace IGDF
         void OpenSettingPanel()
         {
             FindObjectOfType<M_Setting>().OpenSettingPanel();
+        }
+
+        private void TutorialButtonEnter()
+        {
+            if (M_Tutorial.instance != null)
+                if (buttonType == ButtonType.CloseTutorial || buttonType == ButtonType.PlayVideo)
+                {
+                    transform.DOMoveX(5, 0.5f);
+                }
+        }
+
+        private void TutorialButtonClick()
+        {
+            if (M_Tutorial.instance != null)
+                if (buttonType == ButtonType.CloseTutorial) M_Tutorial.instance.ExitTutorialState();
+                else if (buttonType == ButtonType.PlayVideo) M_Tutorial.instance.PlayTutorialVideo();
+        }
+
+        private void TutorialButtonExit()
+        {
+            if (M_Tutorial.instance != null)
+                if (buttonType == ButtonType.CloseTutorial || buttonType == ButtonType.PlayVideo)
+                {
+                    transform.DOMoveX(4.9f, 0.5f);
+                }
         }
     }
 }
