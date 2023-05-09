@@ -139,13 +139,9 @@ MonoBehaviour:
   - productLevel: 1
     nameEng: Tutorial
     nameChi: "\u6559\u7A0B"
-    summaryEng: This is a game that allows players to experience the process of how
-      a game is created. Through the collaboration between art, producers, programmers,
-      and designers, you will complete the development of a game. In the game, you
-      can learn various knowledge related to game development. By solving requirements
-      and learning skills through your actions, you can ultimately complete the level
-      and have your game showcased on the web. Now, are you ready to embark on this
-      journey?
+    summaryEng: "This game lets you create your own game by collaborating with artists,
+      producers, programmers, and designers. Learn game development, solve challenges,
+      and showcase your game online. Ready to start?\r"
     summaryChi: "\u8FD9\u662F\u4E00\u6B3E\u8BA9\u73A9\u5BB6\u4F53\u9A8C\u4E00\u6B3E\u6E38\u620F\u662F\u5982\u4F55\u8BDE\u751F\u7684\u6D41\u7A0B\u7684\u6E38\u620F\uFF0C\u901A\u8FC7\u7F8E\u672F\uFF0C\u5236\u4F5C\u4EBA\uFF0C\u7A0B\u5E8F\uFF0C\u8BBE\u8BA1\u4E4B\u95F4\u7684\u914D\u5408\uFF0C\u5B8C\u6210\u4E00\u6B3E\u6E38\u620F\u7684\u5F00\u53D1\u3002\u5728\u6E38\u620F\u4E2D\uFF0C\u4F60\u53EF\u4EE5\u4E86\u89E3\u6E38\u620F\u5F00\u53D1\u76F8\u5173\u7684\u5404\u79CD\u77E5\u8BC6\uFF0C\u901A\u8FC7\u4F60\u7684\u64CD\u4F5C\u6765\u89E3\u51B3\u9700\u6C42\u548C\u5B66\u4E60\u6280\u80FD\uFF0C\u6700\u7EC8\u8FBE\u6210\u901A\u5173\uFF0C\u8BA9\u4F60\u7684\u6E38\u620F\u88AB\u5C55\u793A\u5728\u7F51\u9875\u4E0A\u3002\u73B0\u5728\uFF0C\u4F60\u51C6\u5907\u597D\u51FA\u53D1\u4E86\u5417\uFF01"
     productImage: {fileID: 21300000, guid: ea1125f5bd964ff40802e4f48b5c6ad5, type: 3}
     userTagsEng:
@@ -159,13 +155,9 @@ MonoBehaviour:
   - productLevel: 2
     nameEng: Tutorial
     nameChi: "\u6559\u7A0B"
-    summaryEng: This is a game that allows players to experience the process of how
-      a game is created. Through the collaboration between art, producers, programmers,
-      and designers, you will complete the development of a game. In the game, you
-      can learn various knowledge related to game development. By solving requirements
-      and learning skills through your actions, you can ultimately complete the level
-      and have your game showcased on the web. Now, are you ready to embark on this
-      journey?
+    summaryEng: "This game lets you create your own game by collaborating with artists,
+      producers, programmers, and designers. Learn game development, solve challenges,
+      and showcase your game online. Ready to start?\r"
     summaryChi: "\u8FD9\u662F\u4E00\u6B3E\u8BA9\u73A9\u5BB6\u4F53\u9A8C\u4E00\u6B3E\u6E38\u620F\u662F\u5982\u4F55\u8BDE\u751F\u7684\u6D41\u7A0B\u7684\u6E38\u620F\uFF0C\u901A\u8FC7\u7F8E\u672F\uFF0C\u5236\u4F5C\u4EBA\uFF0C\u7A0B\u5E8F\uFF0C\u8BBE\u8BA1\u4E4B\u95F4\u7684\u914D\u5408\uFF0C\u5B8C\u6210\u4E00\u6B3E\u6E38\u620F\u7684\u5F00\u53D1\u3002\u5728\u6E38\u620F\u4E2D\uFF0C\u4F60\u53EF\u4EE5\u4E86\u89E3\u6E38\u620F\u5F00\u53D1\u76F8\u5173\u7684\u5404\u79CD\u77E5\u8BC6\uFF0C\u901A\u8FC7\u4F60\u7684\u64CD\u4F5C\u6765\u89E3\u51B3\u9700\u6C42\u548C\u5B66\u4E60\u6280\u80FD\uFF0C\u6700\u7EC8\u8FBE\u6210\u901A\u5173\uFF0C\u8BA9\u4F60\u7684\u6E38\u620F\u88AB\u5C55\u793A\u5728\u7F51\u9875\u4E0A\u3002\u73B0\u5728\uFF0C\u4F60\u51C6\u5907\u597D\u51FA\u53D1\u4E86\u5417\uFF01"
     productImage: {fileID: 21300000, guid: ea1125f5bd964ff40802e4f48b5c6ad5, type: 3}
     userTagsEng:
@@ -179,13 +171,9 @@ MonoBehaviour:
   - productLevel: 3
     nameEng: Tutorial
     nameChi: "\u6559\u7A0B"
-    summaryEng: This is a game that allows players to experience the process of how
-      a game is created. Through the collaboration between art, producers, programmers,
-      and designers, you will complete the development of a game. In the game, you
-      can learn various knowledge related to game development. By solving requirements
-      and learning skills through your actions, you can ultimately complete the level
-      and have your game showcased on the web. Now, are you ready to embark on this
-      journey?
+    summaryEng: "This game lets you create your own game by collaborating with artists,
+      producers, programmers, and designers. Learn game development, solve challenges,
+      and showcase your game online. Ready to start?\r"
     summaryChi: "\u8FD9\u662F\u4E00\u6B3E\u8BA9\u73A9\u5BB6\u4F53\u9A8C\u4E00\u6B3E\u6E38\u620F\u662F\u5982\u4F55\u8BDE\u751F\u7684\u6D41\u7A0B\u7684\u6E38\u620F\uFF0C\u901A\u8FC7\u7F8E\u672F\uFF0C\u5236\u4F5C\u4EBA\uFF0C\u7A0B\u5E8F\uFF0C\u8BBE\u8BA1\u4E4B\u95F4\u7684\u914D\u5408\uFF0C\u5B8C\u6210\u4E00\u6B3E\u6E38\u620F\u7684\u5F00\u53D1\u3002\u5728\u6E38\u620F\u4E2D\uFF0C\u4F60\u53EF\u4EE5\u4E86\u89E3\u6E38\u620F\u5F00\u53D1\u76F8\u5173\u7684\u5404\u79CD\u77E5\u8BC6\uFF0C\u901A\u8FC7\u4F60\u7684\u64CD\u4F5C\u6765\u89E3\u51B3\u9700\u6C42\u548C\u5B66\u4E60\u6280\u80FD\uFF0C\u6700\u7EC8\u8FBE\u6210\u901A\u5173\uFF0C\u8BA9\u4F60\u7684\u6E38\u620F\u88AB\u5C55\u793A\u5728\u7F51\u9875\u4E0A\u3002\u73B0\u5728\uFF0C\u4F60\u51C6\u5907\u597D\u51FA\u53D1\u4E86\u5417\uFF01"
     productImage: {fileID: 21300000, guid: ea1125f5bd964ff40802e4f48b5c6ad5, type: 3}
     userTagsEng:

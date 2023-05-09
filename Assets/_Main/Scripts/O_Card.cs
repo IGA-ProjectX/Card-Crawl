@@ -133,7 +133,7 @@ namespace IGDF
 
         public void OnMouseDown()
         {
-            if (M_Tutorial.instance != null) M_Tutorial.instance.GetCardInfoAndDetermineTutorial(this);
+            if (M_Tutorial.instance != null && !M_Tutorial.instance.GetTutorialState()) M_Tutorial.instance.GetCardInfoAndDetermineTutorial(this);
 
             if (isCardReadyForSkill)
             {
@@ -156,6 +156,8 @@ namespace IGDF
 
         public void OnMouseDrag()
         {
+            if (M_Tutorial.instance != null && M_Tutorial.instance.GetTutorialState()) { return; }
+
             if (isDraggable && M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse) 
             { 
                 if (lastMousePosition != Vector3.zero)

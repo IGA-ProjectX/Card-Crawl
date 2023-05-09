@@ -178,6 +178,7 @@ namespace IGDF
             isUsed = true;
             ExitTargetingState();
             CloseEye();
+            GetComponent<BoxCollider2D>().enabled = false;
         }
 
         public void EyeAndTrajectoryFollow()

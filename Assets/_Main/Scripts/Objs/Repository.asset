@@ -130,7 +130,7 @@ MonoBehaviour:
   defaultWebImage: {fileID: 21300000, guid: 235a4f8dece08bb49b8ace33565e17b8, type: 3}
   tutorialTexts:
   - type: 0
-    textChi: "\u5C06<color=#D97C5E>\u4EFB\u52A1\u9700\u6C42\u5361</color>\u62D6\u52A8\u81F3\u5BF9\u5E94\u804C\u4F4D\u89D2\u8272\uFF0C\u6263\u9664\u5BF9\u5E94\u89D2\u8272\u6280\u80FD\u503C\u3002\u540C\u65F6\u8BE5\u89D2\u8272\u5B8C\u6210\u4EFB\u52A1\u540E\uFF0C\u4F1A\u63D0\u5347\u5BF9\u5E94\u70B9\u6570\u7684\u5F00\u53D1\u7ECF\u9A8C\u503C\u3002<color=#ff0000ff>\u6CE8\uFF1A\u538B\u529B\u503C\u4E0D\u80FD\u964D\u4F4E\u81F3\u8D1F\u6570\u3002</color>"
+    textChi: "\u5C06<color=#D97C5E>\u4EFB\u52A1\u9700\u6C42\u5361</color>\u62D6\u52A8\u81F3\u5BF9\u5E94\u804C\u4F4D\u89D2\u8272\uFF0C\u6263\u9664\u5BF9\u5E94\u89D2\u8272\u6280\u80FD\u503C\u3002\u540C\u65F6\u8BE5\u89D2\u8272\u5B8C\u6210\u4EFB\u52A1\u540E\uFF0C\u4F1A\u63D0\u5347\u5BF9\u5E94\u70B9\u6570\u7684\u5F00\u53D1\u7ECF\u9A8C\u503C\u3002<color=#ff0000ff>\u6CE8\uFF1A\u6280\u80FD\u503C\u4E0D\u80FD\u964D\u4F4E\u81F3\u8D1F\u6570\u3002</color>"
     textEng: 'Drag the Task Requirements Card to the corresponding developer, deducting
       the corresponding developer''s stress value. After completing the task, the
       role will gain experience points in the corresponding field. Note: Stress values
@@ -142,7 +142,7 @@ MonoBehaviour:
       obtain an equivalent amount of experience.
     video: {fileID: 32900000, guid: 03055571b4d5bfd43a44c29450d0407e, type: 3}
   - type: 8
-    textChi: "\u6E38\u620F\u5F00\u53D1\u5F00\u59CB\u5566\uFF01\uFF01\n\u62D6\u52A8\u5361\u724C\u81F3\u5BF9\u5E94\u5F00\u53D1\u8005\u4F4D\u7F6E\uFF0C\u7136\u540E\u677E\u5F00\u9F20\u6807\u8FDB\u884C\u4F7F\u7528\n<color=#67BAE0>\u6CE8\uFF1A\u518D\u6B21\u70B9\u51FB\u9F20\u6807\u5DE6\u952E\u53EF\u4EE5\u7ED3\u675F\u5F53\u524D\u6559\u7A0B\u8BF4\u660E\u7684\u89C2\u770B\u3002</color>"
+    textChi: "\u6E38\u620F\u5F00\u53D1\u5F00\u59CB\u5566\uFF01\uFF01\n\u62D6\u52A8\u5361\u724C\u81F3\u5BF9\u5E94\u5F00\u53D1\u8005\u4F4D\u7F6E\uFF0C\u7136\u540E\u677E\u5F00\u9F20\u6807\u8FDB\u884C\u4F7F\u7528"
     textEng: Drag card to use card. Right-click the mouse to end the current tutorial
       instructions.
     video: {fileID: 32900000, guid: 618167b0433639547b3a2b210da6334b, type: 3}

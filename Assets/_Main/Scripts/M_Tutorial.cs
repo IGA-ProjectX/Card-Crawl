@@ -55,6 +55,11 @@ namespace IGDF
             videoPlayer = videoParent.GetComponentInChildren<VideoPlayer>();
         }
 
+        private void Update()
+        {
+            M_HoverTip.instance.EnterState(HoverState.CardDragging);
+        }
+
         public void TurnCounterIncrease()
         {
             EnterTurnManager();
@@ -80,6 +85,11 @@ namespace IGDF
             foreach (Card card in tutorial.cards_Code) tempList.Add(card);
             foreach (Card card in tutorial.cards_Production) tempList.Add(card);
             M_Main.instance.m_Card.inGameDeck = tempList;
+        }
+
+        public bool GetTutorialState()
+        {
+            return isTutorialState;
         }
 
         private void AssignHighlightObjs()
@@ -317,6 +327,8 @@ namespace IGDF
         private IEnumerator HighlightElement(Transform trans)
         {
             toShrinkElements.Add(trans);
+            TextTitleSync(trans);
+
             float scale = 0f;
             while (scale < 1)
             {
@@ -353,7 +365,7 @@ namespace IGDF
             foreach (char letter in desText.text)
             {
                 desText.maxVisibleCharacters++;
-                yield return new WaitForSecondsRealtime(0.05f);
+                yield return new WaitForSecondsRealtime(0.02f);
             }
         }
 
@@ -401,6 +413,20 @@ namespace IGDF
                 b_Play.position = new Vector3(xPos, b_Play.position.y, b_Play.position.z);
                 yield return null;
             }
+        }
+
+        private void TextTitleSync(Transform trans)
+        {
+            bool isChinese = M_Global.instance.GetLanguage() == SystemLanguage.Chinese ? true : false;
+            TMPro.TMP_Text textArea = trans.GetComponentInChildren<TMPro.TMP_Text>() != null ? trans.GetComponentInChildren<TMPro.TMP_Text>() : null;
+            if (trans == hl_AllCard) textArea.text = isChinese ? "技能与任务卡区域" : "Card Area";
+            else if (trans == hl_AllCha) textArea.text = isChinese ? "开发者角色区域" : "Developer Area";
+            else if (trans == hl_Card) textArea.text = isChinese ? "目标卡牌" : "Card";
+            else if (trans == hl_Character) textArea.text = isChinese ? "对应角色" : "Developer";
+            else if (trans == hl_DDL) textArea.text = isChinese ? "死线机器" : "Deadline Machine";
+            else if (trans == hl_Exp) textArea.text = isChinese ? "已获得经验" : "Obtained Exp";
+            else if (trans == hl_Residue) textArea.text = isChinese ? "剩余任务指示器" : "Residue Task Number";
+            else if (trans == hl_Skill) textArea.text = isChinese ? "眼球技能机器人" : "Skill Eye Robot";
         }
     }
 }

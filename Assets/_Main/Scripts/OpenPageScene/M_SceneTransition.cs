@@ -183,6 +183,7 @@ namespace IGDF
         {
             EnterCabinView(CabinView.Overview);
             ReturnOverviewScaleChangeTo(0);
+            FindObjectOfType<M_Level>().CloseLevelSelectionPanel();
             Camera.main.transform.DOMoveX(0, transitionTime);
         }
 
