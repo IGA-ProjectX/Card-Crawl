@@ -46,7 +46,7 @@ namespace IGDF
                 Image i_Game = products[i].Find("I_Game").GetComponent<Image>();
 
 
-                if (i < M_Global.instance.mainData.productShowcases.Length && M_Global.instance.mainData.productShowcases[i].productLevel != ProductLevel.None)
+                if (i < M_Global.instance.mainData.productShowcases.Count && M_Global.instance.mainData.productShowcases[i].productLevel != ProductLevel.None)
                 {
                     Product currentProduct = GetProductInfo(M_Global.instance.mainData.productShowcases[i].levelType, M_Global.instance.mainData.productShowcases[i].productLevel);
                     if (M_Global.instance.GetLanguage() == SystemLanguage.Chinese) t_Name.text = currentProduct.nameChi;

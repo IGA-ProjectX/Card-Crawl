@@ -43,7 +43,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2012f6901e28fdc46a1b4e1a9242814b, type: 3}
   gameNameImages:
   - {fileID: 21300000, guid: 2e5bc8d105b49034bacdf5ff7c153f78, type: 3}
-  - {fileID: 21300000, guid: 9f7aabb33939ab144ae019b16bf9b2ab, type: 3}
+  - {fileID: 21300000, guid: d71a68e1f87c2b648bc47bdd33f059d5, type: 3}
   orangeColor: {r: 0.8490566, g: 0.618616, b: 0.36445355, a: 1}
   characterInfos:
   - type: 0
@@ -178,6 +178,11 @@ MonoBehaviour:
     textChi: "\u5355\u51FB\u9F20\u6807\u5DE6\u952E\u6233\u773C\u7403\u673A\u5668\u4EBA\u4EE5\u4F7F\u7528\u6280\u80FD"
     textEng: Click left mouse button to poke skill robot's eye to use skil
     video: {fileID: 32900000, guid: 53724633b321128439034d9c3e5b6b28, type: 3}
+  skillParents:
+  - {fileID: 11400000, guid: fcca57a2d8aa764449728ad8390deb58, type: 2}
+  - {fileID: 11400000, guid: cbc4420f3099d064aa9848f71e89f593, type: 2}
+  - {fileID: 11400000, guid: d8c70c8e3149e684da9de22fff8e8b29, type: 2}
+  - {fileID: 11400000, guid: 1d236650074cd114bad126f21d25a192, type: 2}
   bgMusics:
   - soundType: 9
     audioClip: {fileID: 8300000, guid: 3160e7645ff70904c923fe34209ce41b, type: 3}

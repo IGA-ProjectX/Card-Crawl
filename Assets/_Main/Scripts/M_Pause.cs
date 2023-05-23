@@ -80,12 +80,16 @@ namespace IGDF
             s.AppendInterval(0.2f);
             s.AppendCallback(() => M_Main.instance.GameStart());
             s.Append(studioCarParent.Find("Car Door").DOMoveY(studioCarParent.Find("Car Door").position.y, 1));
+
+            if (M_Tutorial.instance != null) M_Tutorial.instance.DeleteTutorial();
         }
 
         public void B_ReturnToOpenPage()
         {
             ClosePanel();
             FindObjectOfType<M_SceneTransition>().ExitCurrentCabin();
+
+            if (M_Tutorial.instance != null) M_Tutorial.instance.DeleteTutorial();
         }
     }
 }

@@ -87,8 +87,6 @@ namespace IGDF
             List<O_Card> cardObjs = new List<O_Card>();
             foreach (Transform cardTrans in M_Main.instance.m_Card.cardsInTurn)
                 if (cardTrans != null) cardObjs.Add(cardTrans.GetComponent<O_Card>());
-            //foreach (O_Card card in cardObjs)
-            //    card.SetDraggableState(false);
 
             if (targetType == "Task")
             {

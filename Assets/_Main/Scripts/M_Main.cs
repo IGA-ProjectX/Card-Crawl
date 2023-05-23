@@ -74,7 +74,9 @@ namespace IGDF
             void GameDevSucceed()
             {
                 m_ChatBubble.TryTriggerTalkSpecialCondition(TalkConditionType.WinGame);
+                M_Global.instance.OpenDebugPanel("Before ExpUp");
                 M_Global.instance.PlayerExpUp(m_Staff.GetStaffValue(0));
+                M_Global.instance.OpenDebugPanel(" - Before Panel");
                 FindObjectOfType<O_ResultSteam>().GameProduced();
                 M_Audio.PlaySound(SoundType.MainMachineSuccess);
             }

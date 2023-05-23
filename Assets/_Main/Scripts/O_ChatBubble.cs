@@ -23,6 +23,11 @@ namespace IGDF
             audioSource = this.gameObject.AddComponent<AudioSource>();
         }
 
+        void Start()
+        {
+            Invoke("DestroyBubble", 10f);
+        }
+
         public void OnBeginDrag(PointerEventData eventData)
         {
             isDrag = true;

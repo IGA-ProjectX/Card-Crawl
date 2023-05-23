@@ -53,6 +53,7 @@ namespace IGDF
         {
             videoParent = GameObject.Find("Canvas").transform.Find("Video");
             videoPlayer = videoParent.GetComponentInChildren<VideoPlayer>();
+
         }
 
         private void Update()
@@ -383,7 +384,7 @@ namespace IGDF
             return "";
         }
 
-        private void DeleteTutorial()
+        public void DeleteTutorial()
         {
             Destroy(gameObject, 0.5f);
         }

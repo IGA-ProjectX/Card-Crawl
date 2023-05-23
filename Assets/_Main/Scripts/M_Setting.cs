@@ -95,13 +95,14 @@ namespace IGDF
         public void ClickResetConfirm()
         {
             M_Global.instance.mainData.playExp = 0;
-            foreach (ProductShowcase productRecord in M_Global.instance.mainData.productShowcases)
-            {
-                productRecord.producedDate = "";
-                productRecord.productLevel = ProductLevel.None;
-                productRecord.userReviewLevel = "";
-                productRecord.userReviewNumber = "";
-            }
+            //foreach (ProductShowcase productRecord in M_Global.instance.mainData.productShowcases)
+            //{
+            //    productRecord.producedDate = "";
+            //    productRecord.productLevel = ProductLevel.None;
+            //    productRecord.userReviewLevel = "";
+            //    productRecord.userReviewNumber = "";
+            //}
+            M_Global.instance.mainData.productShowcases.Clear();
 
             M_Global.instance.mainData.unlockedSkillNodes.Clear();
             M_Global.instance.mainData.unlockedSkillNodes.Add(new UnlockedSkillNode(CharacterType.Producer, NodeIndex.C1));
@@ -109,13 +110,11 @@ namespace IGDF
             M_Global.instance.mainData.unlockedSkillNodes.Add(new UnlockedSkillNode(CharacterType.Producer, NodeIndex.B1));
             M_Global.instance.mainData.unlockedSkillNodes.Add(new UnlockedSkillNode(CharacterType.Producer, NodeIndex.B2));
 
-            //M_Global.instance.mainData.inUseSkills = M_Global.instance.repository.defaultSkills;
             int[] defaultSkills = new int[] { 1, 2, 7, 12 };
             M_Global.instance.mainData.inUseSkills = defaultSkills;
 
             M_Global.instance.mainData.targetUnlockedLevelNum = 1;
             M_Global.instance.mainData.gameTimeInTotal = 0;
-            //UpdateCurrentExp();
             FindObjectOfType<O_UpperUIBar>().UpdateOnBarInfo();
             Sequence s = DOTween.Sequence();
             s.Append(reminder_Panel.DOScale(0, 0.4f));
@@ -129,7 +128,6 @@ namespace IGDF
             TMP_Text reminderText = reminder_Panel.Find("T_Reminder").GetComponent<TMP_Text>();
             reminderText.text = (M_Global.instance.GetLanguage() == SystemLanguage.Chinese) ?
                    "该行为不可逆，您确定要重置存档？" : "Irreversable Action! Are you sure want to reset Progress？";
-
         }
 
         public void ClickLanguageChange()
@@ -150,6 +148,8 @@ namespace IGDF
         public void GlobalVolumeChange()
         {
             globalVolumeOffset = transform.Find("Audio Volume").GetComponentInChildren<Slider>().value;
+            TMP_Text valueText = transform.Find("Audio Volume").Find("Text").GetComponent<TMP_Text>();
+            valueText.text = Mathf.RoundToInt(globalVolumeOffset*100)+"%";
             M_Audio.GlobalVolumeChange(globalVolumeOffset);
         }
 

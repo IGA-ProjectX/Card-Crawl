@@ -137,14 +137,19 @@ namespace IGDF
 
         public void EnterVivarium()
         {
-            SceneManager.LoadScene(2, LoadSceneMode.Additive);
-         
-            Sequence s = DOTween.Sequence();
-            s.AppendInterval(0.2f);
-            s.AppendCallback(() => ResetRoomPosition());
-            s.AppendInterval(0.1f);
-            s.AppendCallback(() => M_Vivarium.instance.InitializeVivarium());
-            s.AppendCallback(() => FindObjectOfType<M_SceneTransition>().EnterCurrentCabin());
+            if (m_SceneTransition.currentView!= M_SceneTransition.CabinView.InSkill)
+            {
+                m_SceneTransition.currentView = M_SceneTransition.CabinView.InSkill;
+                SceneManager.LoadScene(2, LoadSceneMode.Additive);
+
+                Sequence s = DOTween.Sequence();
+                s.AppendInterval(0.2f);
+                s.AppendCallback(() => ResetRoomPosition());
+                s.AppendInterval(0.1f);
+                s.AppendCallback(() => M_Vivarium.instance.InitializeVivarium());
+                s.AppendCallback(() => FindObjectOfType<M_SceneTransition>().EnterCurrentCabin());
+            }
+
 
             void ResetRoomPosition()
             {
@@ -154,14 +159,17 @@ namespace IGDF
 
         public void EnterWebsite()
         {
-            SceneManager.LoadScene(3, LoadSceneMode.Additive);
+            if (m_SceneTransition.currentView != M_SceneTransition.CabinView.InWebsite)
+            {
+                m_SceneTransition.currentView = M_SceneTransition.CabinView.InWebsite;
+                SceneManager.LoadScene(3, LoadSceneMode.Additive);
 
-            Sequence s = DOTween.Sequence();
-            s.AppendInterval(0.2f);
-            s.AppendCallback(() => ResetRoomPosition());
-            s.AppendCallback(() => M_WebsiteRoom.instance.InitializeWebsiteRoom());
-            s.AppendCallback(() => FindObjectOfType<M_SceneTransition>().EnterCurrentCabin());
-
+                Sequence s = DOTween.Sequence();
+                s.AppendInterval(0.2f);
+                s.AppendCallback(() => ResetRoomPosition());
+                s.AppendCallback(() => M_WebsiteRoom.instance.InitializeWebsiteRoom());
+                s.AppendCallback(() => FindObjectOfType<M_SceneTransition>().EnterCurrentCabin());
+            }
             void ResetRoomPosition()
             {
                 FindObjectOfType<M_WebsiteRoom>().transform.position = new Vector3(32, 0, 0);

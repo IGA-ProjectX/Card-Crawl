@@ -8,12 +8,13 @@ public class O_SkillTree : MonoBehaviour
 
     void Start()
     {
-        glassCover = transform.Find("GlassCover").gameObject;
+    
 
     }
 
     public void UpdateGlassState(bool glassState)
     {
+        glassCover = transform.Find("GlassCover").gameObject;
         glassCover.SetActive(!glassState);
     }
 }

@@ -37,8 +37,12 @@ namespace IGDF
 
         public void GameProduced()
         {
+            M_Global.instance.OpenDebugPanel(" - Before Level Get");
             LevelType currentLevelType = M_Global.instance.levels[M_Global.instance.targetLevel].levelType;
+            M_Global.instance.OpenDebugPanel(" - " + currentLevelType);
+            M_Global.instance.OpenDebugPanel(" - Before MaxDDL Get");
             int maxDDL = M_Global.instance.levels[M_Global.instance.targetLevel].staffValue[4];
+            M_Global.instance.OpenDebugPanel(" - " + maxDDL);
 
             if (M_Main.instance.m_Staff.GetDDLValue() == maxDDL)
             {
@@ -57,17 +61,27 @@ namespace IGDF
         ProductShowcase GetProductShowcase(LevelType currentLevelType)
         {
             ProductShowcase onShowProduct = null;
+            M_Global.instance.OpenDebugPanel(" - OnShowcaseLength" + M_Global.instance.mainData.productShowcases.Count);
+
+            if (M_Global.instance.mainData.productShowcases.Count < (M_Global.instance.targetLevel + 1))
+            {
+                ProductShowcase newProduct = new ProductShowcase(currentLevelType, ProductLevel.None, "", "", "");
+                M_Global.instance.mainData.productShowcases.Add(newProduct);
+            }
+
+            M_Global.instance.OpenDebugPanel(" - OnShowcaseCreated" + M_Global.instance.mainData.productShowcases.Count);
             foreach (ProductShowcase product in M_Global.instance.mainData.productShowcases)
                 if (product.levelType == currentLevelType)
                     onShowProduct = product;
+            M_Global.instance.OpenDebugPanel(" - OnShowProCurrentLevel" + onShowProduct.levelType);
             return onShowProduct;
         }
 
         void ProductStateUpdate(ProductShowcase toChangeProduct, ProductLevel toChangeLevel)
         {
             ProductLevel currentLevel = toChangeProduct.productLevel;
- 
 
+            M_Global.instance.OpenDebugPanel(" - OnShowProToChangeLevel" + toChangeLevel);
             switch (toChangeLevel)
             {
                 case ProductLevel.None:
@@ -106,6 +120,7 @@ namespace IGDF
                     M_Audio.PlaySound(SoundType.ProducedWelldone);
                     break;
             }
+            M_Global.instance.OpenDebugPanel(" - Panel" + transform.gameObject.name);
             ObjPopOut(transform, 1);
 
             if (currentLevel == ProductLevel.None)
@@ -117,6 +132,8 @@ namespace IGDF
 
         void ProductUpgrade(ProductShowcase toChangeProduct, ProductLevel targetLevel)
         {
+
+            M_Global.instance.OpenDebugPanel(" - UpgradeStarted");
             toChangeProduct.productLevel = targetLevel;
             switch (targetLevel)
             {
@@ -134,11 +151,15 @@ namespace IGDF
                     break;
             }
             toChangeProduct.producedDate = GetCurrentDate();
+            M_Global.instance.OpenDebugPanel(" - UpgradeFinished");
             ProductInfoSync(GetProductInfo(M_Global.instance.levels[M_Global.instance.targetLevel].levelType, toChangeProduct.productLevel),toChangeProduct);
+
+           
         }
 
         public void ProductInfoSync(Product toUpdateInfo, ProductShowcase targetProduct)
         {
+            M_Global.instance.OpenDebugPanel(" - ProInfoSync Start");
             switch (toUpdateInfo.productLevel)
             {
                 case ProductLevel.Raw:
@@ -180,6 +201,7 @@ namespace IGDF
                     userTags[i].transform.parent.gameObject.SetActive(false);
                 }
             }
+            M_Global.instance.OpenDebugPanel(" - ProInfoSync Finished");
         }
 
         Product GetProductInfo(LevelType targetGameType, ProductLevel targetProductLevel)

@@ -23,6 +23,7 @@ namespace IGDF
         public SO_Skill[] skillList;
         public Sprite defaultWebImage;
         public TutorialText[] tutorialTexts;
+        public SO_SkillParent[] skillParents;
 
         [Header("Audio")]
         public SoundAudioClip[] bgMusics;

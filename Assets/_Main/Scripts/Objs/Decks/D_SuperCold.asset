@@ -18,7 +18,48 @@ MonoBehaviour:
   staffValue: 000000000a0000000a0000000a0000000f000000
   levelButtonImage: {fileID: 21300000, guid: d1ec9fe41a2ffac419b90da0f07e4473, type: 3}
   colorFilter: {r: 1, g: 1, b: 1, a: 1}
-  cards_Production: []
+  cards_Production:
+  - cardType: 0
+    cardOutNE: Homage to Superhot
+    cardOutNC: "\u81F4\u656CSuperhot"
+    cardNameEng: Homage to Superhot
+    cardNameChi: "\u81F4\u656CSuperhot"
+    cardSummaryEng: "Superhot\_was originally developed for the 2013 7 Day FPS Challenge.\_Superhot
+      team was inspired by the\_Flash\_game \"Time4Cat\", in which the player controls
+      a cat trying to collect food on a busy road intersection; time only moves when
+      the player moves the cat. They also were inspired by the music video for the
+      2013 song \"Bad Motherfucker\" by the Russian band\_Biting Elbows, which shows
+      a special agent from a\_first-person perspective\_escaping from a hostage situation
+      through parkour and gunplay. They combined these ideas for their Challenge
+      prototype. The name of the game is based on how the two words \"super\" and
+      \"hot\" best represent the game being \"positive\" and \"intense\"."
+    cardSummaryChi: "\u706B\u7206\u7684FPS\u6E38\u620FSuperhot\u6700\u521D\u662F\u4E3A
+      2013 \u5E74 7 \u5929 FPS \u6311\u6218\u8D5B\u800C\u5F00\u53D1\u7684\u3002\u6E38\u620F\u7684\u7075\u611F\u53D7\u5230\u4E86Flash\u6E38\u620F\u201CTime4Cat\u201D\u7684\u542F\u53D1\uFF0C\u5728\u8BE5\u6E38\u620F\u4E2D\uFF0C\u73A9\u5BB6\u63A7\u5236\u4E00\u53EA\u732B\u8BD5\u56FE\u5728\u7E41\u5FD9\u7684\u8DEF\u53E3\u6536\u96C6\u98DF\u7269\uFF1B\u53EA\u6709\u5F53\u73A9\u5BB6\u79FB\u52A8\u732B\u65F6\uFF0C\u65F6\u95F4\u624D\u4F1A\u6D41\u901D\u3002\u4ED6\u4EEC\u8FD8\u53D7\u5230\u4FC4\u7F57\u65AF\u4E50\u961FBiting
+      Elbows\_2013\u5E74\u6B4C\u66F2\u7684\u542F\u53D1\uFF0C\u8BE5\u6B4C\u66F2MV\u4EE5\u7B2C\u4E00\u4EBA\u79F0\u89C6\u89D2\u5C55\u793A\u4E86\u4E00\u540D\u7279\u5DE5\u901A\u8FC7\u8DD1\u9177\u548C\u67AA\u6218\u9003\u79BB\u4EBA\u8D28\u4E8B\u4EF6\u3002\u968F\u7740\u5C06\u8FD9\u4E9B\u60F3\u6CD5\u7ED3\u5408\u5230\u4ED6\u4EEC\u7684Challenge\u539F\u578B\u4E2D\uFF0C\u5E76\u5C06\u65B0\u6E38\u620F\u53D6\u540D\u4E3ASuperhot\u4EE5\u4F53\u73B0\u6E38\u620F\u6FC0\u70C8\u7684\u7279\u6027\u3002"
+    cardImage: {fileID: 21300000, guid: ac85ac4f72ed03849a5c4ba8056ae7fb, type: 3}
+    cardValue: 6
+  - cardType: 0
+    cardOutNE: Producer-MK2
+    cardOutNC: "\u4E13\u4E1A\u5236\u4F5C\u4EBA"
+    cardNameEng: Producer-MK2
+    cardNameChi: "\u4E13\u4E1A\u5236\u4F5C\u4EBA"
+    cardSummaryEng: "What is a game producer good at?\r\n\xB7Relationships: be able
+      to work with people from a wide range of backgrounds, be able to negotiate
+      and keep clients\r\n\xB7Marketing: understand who a game is for and create
+      a game they will want to play\r\n\xB7Project management:\_\_understand how
+      a game is made and know what needs to happen when\r\n\xB7Knowledge of rights
+      and licensing: be aware of law and able to negotiate\r\n\xB7Knowledge of games
+      industry: have an in-depth understanding of its different stores, platforms
+      and games and direction\r\n\xB7Budget handling: be able to handle a significant
+      budget and work within it"
+    cardSummaryChi: "\u4E00\u540D\u4E13\u4E1A\u7684\u6E38\u620F\u5236\u4F5C\u4EBA\u5177\u5907\u4F55\u79CD\u6280\u80FD?
+      \r\n\xB7\u4EBA\u9645\u5173\u7CFB\uFF1A\u80FD\u591F\u4E0E\u6765\u81EA\u4E0D\u540C\u80CC\u666F\u7684\u4EBA\u4E00\u8D77\u5DE5\u4F5C\uFF0C\u80FD\u5546\u8C08\u5E76\u7559\u4F4F\u5BA2\u6237
+      \r\n\xB7\u5E02\u573A\u8425\u9500\uFF1A\u4E86\u89E3\u6E38\u620F\u7684\u76EE\u6807\u7528\u6237\uFF0C\u505A\u51FA\u4ED6\u4EEC\u60F3\u73A9\u7684\u6E38\u620F
+      \r\n\xB7\u9879\u76EE\u7BA1\u7406\uFF1A\u4E86\u89E3\u6E38\u620F\u662F\u5982\u4F55\u5236\u4F5C\u7684\uFF0C\u77E5\u9053\u4EC0\u4E48\u65F6\u5019\u9700\u8981\u505A\u4EC0\u4E48
+      \r\n\xB7\u7248\u6743\u548C\u8BB8\u53EF\u77E5\u8BC6\uFF1A\u4E86\u89E3\u6CD5\u5F8B\u5E76\u5584\u4E8E\u5546\u8C08\r\n\xB7\u6E38\u620F\u884C\u4E1A\u77E5\u8BC6\uFF1A\u5BF9\u6E38\u620F\u884C\u4E1A\u7684\u4E0D\u540C\u95E8\u5E97\u3001\u5E73\u53F0\u3001\u6E38\u620F\u53CA\u65B9\u5411\u6709\u6DF1\u5165\u4E86\u89E3
+      \r\n\xB7\u9884\u7B97\u5904\u7406\uFF1A\u80FD\u591F\u5904\u7406\u91CD\u5927\u9884\u7B97\u5E76\u5C06\u8D44\u91D1\u59A5\u5584\u5B89\u6392"
+    cardImage: {fileID: 21300000, guid: 4a3808d889a913744b7ccf8bee0e16ea, type: 3}
+    cardValue: 8
   cards_Design:
   - cardType: 1
     cardOutNE: Crowbar
@@ -91,7 +132,7 @@ MonoBehaviour:
       from the first-person perspective, and other designs are designed to make the
       game experience richer.
     cardSummaryChi: "\u7B2C\u4E00\u4EBA\u79F0\u5C04\u51FB\u7C7B\uFF08FPS\uFF09\u662F\u7535\u5B50\u6E38\u620F\u9886\u57DF\u5F53\u4E2D\u6240\u5360\u7528\u6237\u6570\u91CF\u6700\u591A\u7684\u6E38\u620F\u7C7B\u578B\u4E4B\u4E00\uFF0C\u6E38\u620F\u7684\u98CE\u683C\u4ECE\u590D\u53E4\u5230\u79D1\u5E7B\uFF0C\u4ECE\u5FEB\u8282\u594F\u65E0\u8111\u5C04\u5230\u6162\u8282\u594F\u65E0\u6240\u4E0D\u6709\uFF0C\u7531\u4E8E\u5176\u80FD\u591F\u63D0\u4F9B\u8F83\u4E3A\u76F4\u89C2\u7684\u6E38\u620F\u4F53\u9A8C\uFF0C\u52A0\u4E0A\u5176\u6BD4\u8F83\u6613\u4E8E\u4E0A\u624B\u7684\u64CD\u4F5C\u63A7\u5236\uFF0C\u4F7F\u5176\u5E38\u5E74\u7A33\u5750\u6E38\u620F\u73A9\u6CD5\u4E2D\u7684\u5E38\u9752\u6811\u4E4B\u4F4D\u3002\u5373\u4FBFFPS\u7684\u79CD\u7C7B\u5404\u5F02\u82B1\u6837\u7E41\u591A\uFF0C\u5176\u81EA\u59CB\u81F3\u7EC8\u5374\u90FD\u79C9\u627F\u7740\u5B8C\u5168\u76F8\u540C\u7684\u6E38\u620F\u673A\u5236\uFF0C\u5373\u5728\u7B2C\u4E00\u4EBA\u79F0\u89C6\u89D2\u4E0B\u7684\u79FB\u52A8\u3001\u7784\u51C6\u548C\u5C04\u51FB\uFF0C\u9664\u6B64\u4E4B\u5916\u7684\u5176\u4ED6\u8BBE\u8BA1\u90FD\u662F\u4E3A\u4E86\u8BA9\u6E38\u620F\u4F53\u9A8C\u66F4\u52A0\u4E30\u5BCC\u800C\u5F15\u5165\u3002"
-    cardImage: {fileID: 21300000, guid: 67c8486fa2b733549a0f76c46b9d1930, type: 3}
+    cardImage: {fileID: 21300000, guid: 1b6f37b0075d70b408d441c69a67852b, type: 3}
     cardValue: 6
   - cardType: 1
     cardOutNE: Metanarrative
@@ -223,6 +264,37 @@ MonoBehaviour:
     cardSummaryChi: "Supercold\u4F5C\u4E3A\u4E00\u6B3E\u5728\u5173\u5361\u6D41\u7A0B\u548C\u6587\u5B57\u5267\u60C5\u65B9\u9762\u522B\u51FA\u5FC3\u88C1\u7684\u6E38\u620F\uFF0C\u8BBE\u8BA1\u5E08\u6709\u5FC5\u8981\u5145\u5206\u9A8C\u8BC1\u4ED6\u4EEC\u4EA7\u51FA\u7684\u6E38\u620F\u4F5C\u54C1\u662F\u5426\u7B26\u5408\u9884\u671F\u7684\u89C4\u5212\u3002\u8054\u7CFB\u4F60\u7684Playtest\u56E2\u961F\uFF0C\u8BB0\u5F55\u4ED6\u4EEC\u6E38\u73A9\u65F6\u611F\u60F3\u548C\u4F53\u9A8C\uFF0C\u5C06\u5176\u548C\u4F60\u7684\u8BBE\u8BA1\u76EE\u6807\u505A\u5BF9\u6BD4\uFF1B\u540C\u65F6\uFF0C\u4F60\u81EA\u8EAB\u4E00\u6709\u65F6\u95F4\u4E5F\u5E94\u5F53\u591A\u73A9\u4E00\u73A9\u8FD9\u4E2A\u6E38\u620F\uFF0C\u6700\u597D\u662F\u5C06\u6574\u4E2A\u6E38\u620F\u4ECE\u5934\u5230\u5C3E\u5B8C\u6574\u7684\u8FDB\u884C\u6E38\u73A9\u4F53\u9A8C\u3002\u8BB0\u5F97\u5145\u5206\u68C0\u67E5\u4F60\u7684\u6E38\u620F\uFF1A\u8FD9\u4E00\u5173\u63D0\u4F9B\u7684\u9053\u5177\u662F\u5426\u6570\u91CF\u8DB3\u591F\uFF1F\u73A9\u5BB6\u80FD\u5426\u987A\u5229\u901A\u5173\uFF1F\u8FD9\u4E00\u5173\u63D0\u4F9B\u7684\u5F39\u836F\u662F\u5426\u592A\u591A\u4E86\uFF0C\u5BFC\u81F4\u901A\u5173\u53D8\u5F97\u8FC7\u4E8E\u7B80\u5355\uFF1F\u65C1\u767D\u6709\u6CA1\u6709\u4EC0\u4E48\u7A81\u5140\u7684\u5730\u65B9\uFF0C\u6574\u4E2A\u5267\u60C5\u6D41\u7A0B\u5BF9\u4E8E\u73A9\u5BB6\u60C5\u611F\u5E26\u6765\u7684\u5F71\u54CD\u662F\u5426\u6709\u6548\uFF1F"
     cardImage: {fileID: 21300000, guid: aae04d26e7a0ea34c807c3796a26459f, type: 3}
     cardValue: -10
+  - cardType: 1
+    cardOutNE: FPS Microgames
+    cardOutNC: "Unity\u5FAE\u6E38\u620F"
+    cardNameEng: FPS Microgames
+    cardNameChi: "Unity\u5FAE\u6E38\u620F"
+    cardSummaryEng: As a game designer, you know the importance of playtesting. But
+      you don't have to build your digital prototype from scratch every time you
+      make a game. There is a feature called Unity Microgames that allows you and
+      your team to quickly download an FPS game prototype and modify the game rules
+      directly on it to quickly test your gameplay. The FPS Microgame Template is
+      a 3D First Person Shooter game that you can mod and customize. Complete the
+      Creative Mods to build on the project and make it more your own, while learning
+      the basics of Unity.
+    cardSummaryChi: "\u4F5C\u4E3A\u4E00\u540D\u6E38\u620F\u8BBE\u8BA1\u5E08\uFF0C\u4F60\u6DF1\u8C19\u5BF9\u73A9\u6CD5\u8FDB\u884C\u6D4B\u8BD5\u7684\u91CD\u8981\u6027\u3002\u4F46\u5176\u5B9E\uFF0C\u5E76\u4E0D\u662F\u6BCF\u6B21\u5236\u4F5C\u6E38\u620F\u90FD\u9700\u8981\u4ECE\u96F6\u5F00\u59CB\u642D\u5EFA\u4F60\u7684\u7535\u5B50\u539F\u578B\u3002\u6709\u8FD9\u6837\u4E00\u4E2A\u53EBUnity
+      Microgames\u7684\u529F\u80FD\uFF0C\u5B83\u5141\u8BB8\u4F60\u548C\u4F60\u7684\u56E2\u961F\u5FEB\u901F\u4E0B\u8F7D\u4E00\u4E2AFPS\u7684\u6E38\u620F\u539F\u578B\uFF0C\u5E76\u4E14\u76F4\u63A5\u5728\u4E0A\u9762\u4FEE\u6539\u6E38\u620F\u89C4\u5219\u4EE5\u5FEB\u901F\u6D4B\u8BD5\u4F60\u4EEC\u7684\u73A9\u6CD5\u3002FPS 
+      Microgames\u6A21\u677F\u662F\u4E00\u4E2Aunity\u5B98\u65B9\u63D0\u4F9B\u76843D\u7B2C\u4E00\u4EBA\u79F0\u5C04\u51FB\u6E38\u620F\uFF0C\u901A\u8FC7\u5FEB\u901F\u6DFB\u52A0mod\u548C\u81EA\u5B9A\u4E49\u811A\u672C\uFF0C\u8FD9\u4E9B\u6A21\u677F\u5BF9\u4E8E\u6D4B\u8BD5\u4F60\u7684\u521D\u671F\u73A9\u6CD5\u6846\u67B6\u6709\u7740\u5F88\u5927\u7684\u5E2E\u52A9\u3002\u5BF9\u4E8E\u521D\u5B66\u8005\u6765\u8BF4\uFF0C\u8FD8\u80FD\u591F\u987A\u8DEF\u5B66\u4E60Unity\u7684\u57FA\u7840\u77E5\u8BC6\u3002"
+    cardImage: {fileID: 21300000, guid: 4e721693aa371d64bbb46c83ca90235f, type: 3}
+    cardValue: 7
+  - cardType: 1
+    cardOutNE: Foreshadowing
+    cardOutNC: "\u94FA\u57AB&\u4F0F\u7B14"
+    cardNameEng: Foreshadowing
+    cardNameChi: "\u94FA\u57AB&\u4F0F\u7B14"
+    cardSummaryEng: In order to highlight the theme of the game as much as possible,
+      put as much foreshadowing into the early levels and narrative sections of the
+      game as possible so that the player can complete the game with a sense of "aha!".
+      Remember what your friend texted at the beginning of the game? And what does
+      the hero say to his friend when he finishes the game?
+    cardSummaryChi: "\u4E3A\u4E86\u5C3D\u53EF\u80FD\u7A81\u51FA\u6E38\u620F\u7684\u4E3B\u9898\uFF0C\u5728\u6E38\u620F\u524D\u9762\u7684\u5173\u5361\u548C\u53D9\u4E8B\u90E8\u5206\u4E2D\u5C3D\u53EF\u80FD\u7684\u57CB\u4E0B\u66F4\u591A\u4F0F\u7B14\uFF0C\u8FD9\u6837\u624D\u80FD\u8BA9\u73A9\u5BB6\u901A\u5173\u65F6\u6709\u4E00\u79CD\u604D\u7136\u5927\u609F\u7684\u611F\u89C9\u3002\u8FD8\u8BB0\u5F97\u6E38\u620F\u5F00\u59CB\u65F6\u670B\u53CB\u53D1\u6765\u6D88\u606F\u65F6\u8BF4\u4E86\u4EC0\u4E48\u5417\uFF1F\u901A\u5173\u65F6\u4E3B\u89D2\u5411\u4ED6\u7684\u670B\u53CB\u8BF4\u7684\u8BDD\u53C8\u662F\u4EC0\u4E48\u5462\uFF1F"
+    cardImage: {fileID: 21300000, guid: 4e721693aa371d64bbb46c83ca90235f, type: 3}
+    cardValue: 7
   cards_Art:
   - cardType: 2
     cardOutNE: VFX
@@ -345,6 +417,112 @@ MonoBehaviour:
     cardSummaryChi: "CG\u662F\u82F1\u6587computer graphics\u7684\u7F29\u5199\u3002\u662F\u901A\u8FC7\u8BA1\u7B97\u673A\u8F6F\u4EF6\u6240\u7ED8\u5236\u7684\u4E00\u5207\u56FE\u5F62\u7684\u603B\u79F0\u3002CG\u6D89\u53CA\u5EFA\u7B51\uFF0C\u5F71\u89C6\uFF0C\u52A8\u6F2B\u9886\u57DF\u3002\u4E00\u822C\u6E38\u620F\u4E2D\u7684CG\u662F\u6307\u6709\u6536\u85CF\u4EF7\u503C\u7684\u56FE\u7247\u6216\u8005\u6E38\u620F\u5267\u60C5\u91CC\u64AD\u653E\u7684\u52A8\u753B\u3002\u6E38\u620FCG\u662F\u4E00\u79CD\u4F7F\u7528\u6570\u5B66\u7B97\u6CD5\u5C06\u4E8C\u7EF4\u6216\u4E09\u7EF4\u56FE\u5F62\u8F6C\u5316\u4E3A\u8BA1\u7B97\u673A\u663E\u793A\u5668\u7684\u6805\u683C\u5F62\u5F0F\u7684\u79D1\u5B66\u3002"
     cardImage: {fileID: 21300000, guid: b26dd50657a64414e82e6d63cc008cda, type: 3}
     cardValue: 9
+  - cardType: 2
+    cardOutNE: New Experience
+    cardOutNC: "\u5168\u65B0\u7684\u4F53\u9A8C"
+    cardNameEng: New Experience
+    cardNameChi: "\u5168\u65B0\u7684\u4F53\u9A8C"
+    cardSummaryEng: Due to the requirements of perspective and immersive experience,
+      UI is usually placed in a 3D space, and designing good effects can be a headache
+      for artists. Additionally, the introduction of dual controllers heavily relies
+      on the physics simulation, with many actions like pushing, throwing, hitting,
+      and grabbing closely related to physics. It also involves collision issues,
+      such as how to handle the situation when the head is stuck in a wall.
+    cardSummaryChi: "\u7531\u4E8E\u89C6\u91CE\u548C\u6C89\u6D78\u5F0F\u4F53\u9A8C\u7684\u8981\u6C42\uFF0CUI\u901A\u5E38\u662F\u5904\u4E8E3D\u7A7A\u95F4\u91CC\u7684\uFF0C\u600E\u4E48\u8BBE\u8BA1\u51FA\u597D\u7684\u6548\u679C\u9700\u8981\u7F8E\u672F\u5934\u75BC\u4E00\u4E0B\u3002\u540C\u65F6\uFF0C\u53CC\u6301\u63A7\u5236\u5668\u7684\u5F15\u5165\u4F1A\u6781\u5927\u5730\u4F9D\u8D56\u7269\u7406\u6A21\u62DF\u7684\u6548\u679C\uFF0C\u5F88\u591A\u63A8\u3001\u6254\u3001\u6253\u3001\u6293\u7B49\u7684\u64CD\u4F5C\u90FD\u4E0E\u7269\u7406\u5BC6\u5207\u76F8\u5173\uFF0C\u540C\u65F6\u4E5F\u6D89\u53CA\u5230\u5F88\u591A\u78B0\u649E\u95EE\u9898\uFF0C\u6BD4\u5982\u5934\u63D2\u8FDB\u5899\u58C1\u600E\u4E48\u5904\u7406\u7B49"
+    cardImage: {fileID: 21300000, guid: f66cac0525ee68f418f24c996a028c99, type: 3}
+    cardValue: -4
+  - cardType: 2
+    cardOutNE: Minimalistic Colors
+    cardOutNC: "\u6781\u7B80\u8272\u5F69"
+    cardNameEng: Minimalistic Colors
+    cardNameChi: "\u6781\u7B80\u8272\u5F69"
+    cardSummaryEng: Minimalism is a modern art movement that emerged and became popular
+      in the 1950s to 1960s, primarily in the field of painting. Minimalism advocates
+      reducing the language of painting to merely the relationship between color
+      and form. It emphasizes using minimal colors and minimal images to simplify
+      the composition, eliminating any unnecessary elements that distract from the
+      main subject. The Dutch painter Piet Mondrian (1872-1944) is considered the
+      pioneer of minimalism, with his renowned work "Composition with Red, Yellow,
+      and Blue."
+    cardSummaryChi: "\u6781\u7B80\u4E3B\u4E49\uFF08\u82F1\u8BED\uFF1AMinimalism\uFF09\u662F\u4E00\u79CD\u73B0\u4EE3\u827A\u672F\u6D41\u6D3E\uFF0C\u51FA\u73B0\u5E76\u6D41\u884C\u4E8E20\u4E16\u7EAA50--60\u5E74\u4EE3\uFF0C\u4E3B\u8981\u8868\u73B0\u4E8E\u7ED8\u753B\u9886\u57DF\u3002\u6781\u7B80\u4E3B\u4E49\u4E3B\u5F20\u628A\u7ED8\u753B\u8BED\u8A00\u524A\u51CF\u81F3\u4EC5\u4EC5\u662F\u8272\u4E0E\u5F62\u7684\u5173\u7CFB\uFF0C\u4E3B\u5F20\u7528\u6781\u5C11\u7684\u8272\u5F69\u548C\u6781\u5C11\u7684\u5F62\u8C61\u53BB\u7B80\u5316\u753B\u9762\uFF0C\u6452\u5F03\u4E00\u5207\u5E72\u6270\u4E3B\u4F53\u7684\u4E0D\u5FC5\u8981\u7684\u4E1C\u897F\u3002\u8377\u5170\u753B\u5BB6\uFF0C\u5F7C\u57C3\xB7\u8499\u5FB7\u91CC\u5B89\uFF081872-1944\uFF09\uFF0C\u4ED6\u7684\u4EE3\u8868\u4F5C\u300A\u7EA2\u3001\u9EC4\u3001\u84DD\u7684\u6784\u6210\u300B\u53EF\u4EE5\u8BF4\u662F\u6781\u7B80\u4E3B\u4E49\u7684\u9F3B\u7956"
+    cardImage: {fileID: 21300000, guid: 5abbc434770fb244faaec97a50b26fb0, type: 3}
+    cardValue: -6
+  - cardType: 2
+    cardOutNE: Dancing Lines
+    cardOutNC: "\u8DF3\u821E\u7684\u7EBF"
+    cardNameEng: Normal Map
+    cardNameChi: "\u8DF3\u821E\u7684\u7EBF"
+    cardSummaryEng: Normal mapping is a type of bump mapping. They are special textures
+      that allow you to add surface details such as bumps, grooves, and scratches
+      to a model, capturing light as if represented by real geometric objects. In
+      the art production process of modern game development, artists use their 3D
+      modeling applications to generate normal maps based on high-resolution source
+      models. These normal maps are then mapped onto lower-resolution versions of
+      the models directly used in the game, allowing rendering of the original high-resolution
+      details using normal mapping.
+    cardSummaryChi: "\u6CD5\u7EBF\u8D34\u56FE (Normal Map) \u662F\u4E00\u79CD\u51F9\u51F8\u8D34\u56FE
+      (Bump Map)\u3002\u5B83\u4EEC\u662F\u4E00\u79CD\u7279\u6B8A\u7684\u7EB9\u7406\uFF0C\u53EF\u8BA9\u60A8\u5C06\u8868\u9762\u7EC6\u8282\uFF08\u5982\u51F9\u51F8\u3001\u51F9\u69FD\u548C\u5212\u75D5\uFF09\u6DFB\u52A0\u5230\u6A21\u578B\uFF0C\u4ECE\u800C\u6355\u6349\u5149\u7EBF\uFF0C\u5C31\u50CF\u7531\u771F\u5B9E\u51E0\u4F55\u4F53\u8868\u793A\u4E00\u6837\u3002\u5728\u73B0\u4EE3\u6E38\u620F\u5F00\u53D1\u7684\u7F8E\u672F\u5236\u4F5C\u6D41\u7A0B\u4E2D\uFF0C\u7F8E\u672F\u5E08\u5C06\u4F7F\u7528\u4ED6\u4EEC\u7684
+      3D \u5EFA\u6A21\u5E94\u7528\u7A0B\u5E8F\u57FA\u4E8E\u8D85\u9AD8\u5206\u8FA8\u7387\u7684\u6E90\u6A21\u578B\u751F\u6210\u6CD5\u7EBF\u8D34\u56FE\u3002\u7136\u540E\u5C06\u6CD5\u7EBF\u8D34\u56FE\u6620\u5C04\u5230\u53EF\u76F4\u63A5\u7528\u4E8E\u6E38\u620F\u7684\u8F83\u4F4E\u5206\u8FA8\u7387\u7684\u6A21\u578B\u7248\u672C\uFF0C\u4ECE\u800C\u4F7F\u7528\u6CD5\u7EBF\u8D34\u56FE\u6E32\u67D3\u539F\u59CB\u7684\u9AD8\u5206\u8FA8\u7387\u7EC6\u8282"
+    cardImage: {fileID: 21300000, guid: da71f590b19b4e8488f142fc278f0932, type: 3}
+    cardValue: -8
+  - cardType: 2
+    cardOutNE: Multiple Cameras
+    cardOutNC: "\u591A\u91CD\u6444\u50CF\u673A"
+    cardNameEng: Multiple Cameras
+    cardNameChi: "\u591A\u91CD\u6444\u50CF\u673A"
+    cardSummaryEng: The Camera component is a Unity component that captures and displays
+      the world within the player's view frustum. The content seen by the camera
+      is defined by its transform and Camera component. The transform position defines
+      the viewpoint, its forward (Z) axis defines the viewing direction, and its
+      upward (Y) axis defines the top of the screen. The settings of the Camera component
+      also define the size and shape of the view area. By adjusting these parameters,
+      the camera can display the content it "observes" on the current screen. As
+      game objects move and rotate, the displayed view will move and rotate accordingly.
+    cardSummaryChi: "Camera\u6444\u50CF\u673A\u662F\u4E00\u4E2Aunity\u7EC4\u4EF6\uFF0C\u529F\u80FD\u662F\u5411\u73A9\u5BB6\u6355\u83B7\u548C\u663E\u793A\u89C6\u9525\u4EE5\u5185\u7684\u4E16\u754C\u3002\u6444\u50CF\u673A\u6240\u770B\u5230\u7684\u5185\u5BB9\u7531\u5B83\u7684\u53D8\u6362\u548C
+      Camera \u7EC4\u4EF6\u6765\u5B9A\u4E49\u3002\u53D8\u6362\u4F4D\u7F6E\u5B9A\u4E49\u4E86\u89C6\u70B9\uFF0C\u5176\u5411\u524D\u7684
+      (Z) \u8F74\u5B9A\u4E49\u89C6\u56FE\u65B9\u5411\uFF0C\u5411\u4E0A\u7684 (Y)
+      \u8F74\u5B9A\u4E49\u5C4F\u5E55\u7684\u9876\u7AEF\u3002Camera \u7EC4\u4EF6\u7684\u8BBE\u7F6E\u8FD8\u5B9A\u4E49\u4E86\u89C6\u56FE\u4E2D\u533A\u57DF\u7684\u5927\u5C0F\u548C\u5F62\u72B6\u3002\u901A\u8FC7\u8BBE\u7F6E\u8FD9\u4E9B\u53C2\u6570\uFF0C\u6444\u50CF\u673A\u80FD\u591F\u663E\u793A\u5176\u5728\u5F53\u524D\u5C4F\u5E55\u4E0A\u201C\u89C2\u5BDF\u201D\u5230\u7684\u5185\u5BB9\u3002\u5F53\u6E38\u620F\u5BF9\u8C61\u79FB\u52A8\u548C\u65CB\u8F6C\u65F6\uFF0C\u663E\u793A\u7684\u89C6\u56FE\u4F1A\u968F\u4E4B\u79FB\u52A8\u548C\u65CB\u8F6C\u3002"
+    cardImage: {fileID: 21300000, guid: 8b6bf5d52cf1f2441b545085dc1b6b12, type: 3}
+    cardValue: -9
+  - cardType: 2
+    cardOutNE: Crazy CPU
+    cardOutNC: "\u75AF\u72C2\u7684CPU"
+    cardNameEng: Crazy CPU
+    cardNameChi: "\u75AF\u72C2\u7684CPU"
+    cardSummaryEng: Multithreaded rendering is highly complex and hardware-dependent.
+      When attempting to improve performance, we must first identify which tasks
+      are causing CPU issues (which can be checked using a profiler). If our game
+      runs slowly because the culling operation takes too long on one thread, lowering
+      the time spent sending commands to the GPU on another thread won't help much.
+    cardSummaryChi: "\u7531\u4E8E\u591A\u7EBF\u7A0B\u6E32\u67D3\u975E\u5E38\u590D\u6742\u5E76\u4E14\u4F9D\u8D56\u786C\u4EF6\uFF0C\u5728\u6211\u4EEC\u5C1D\u8BD5\u6539\u8FDB\u6027\u80FD\u65F6\uFF0C\u5FC5\u987B\u9996\u5148\u627E\u5230\u662F\u54EA\u4E9B\u4EFB\u52A1\u5BFC\u81F4\u4E86CPU\u95EE\u9898\uFF08\u53EF\u4EE5\u901A\u8FC7Profiler\u6765\u68C0\u67E5\uFF09\u3002\u5982\u679C\u6211\u4EEC\u7684\u6E38\u620F\u8FD0\u884C\u7F13\u6162\u662F\u56E0\u4E3A\u5728\u4E00\u4E2A\u7EBF\u7A0B\u4E0A\u5254\u9664\u64CD\u4F5C\u82B1\u8D39\u4E86\u592A\u957F\u7684\u65F6\u95F4\uFF0C\u90A3\u5982\u679C\u6211\u4EEC\u5728\u53E6\u4E00\u4E2A\u7EBF\u7A0B\u4E0A\u964D\u4F4E\u53D1\u9001\u7ED9GPU\u547D\u4EE4\u7684\u65F6\u95F4\u662F\u4E0D\u4F1A\u6709\u4EC0\u4E48\u5E2E\u52A9\u7684\u3002"
+    cardImage: {fileID: 21300000, guid: 36c33605b3eddf248a4fe19c156142b8, type: 3}
+    cardValue: -10
+  - cardType: 2
+    cardOutNE: Visual Narratives
+    cardOutNC: "\u7528\u56FE\u50CF\u8BB2\u6545\u4E8B"
+    cardNameEng: Visual Narratives
+    cardNameChi: "\u7528\u56FE\u50CF\u8BB2\u6545\u4E8B"
+    cardSummaryEng: Visual Narratives (VN), refer to the act of telling stories using
+      images. A classic example of VN is the ceiling paintings in the Sistine Chapel,
+      where Michelangelo depicted the story of "Adam and Eve" through three mural
+      paintings. From this perspective, visual narratives are synonymous with visual
+      stories, narrative images, picture stories, and storytelling through pictures.
+    cardSummaryChi: "\u89C6\u89C9\u53D9\u4E8B\uFF08Visual Narratives\uFF0C\u7B80\u79F0VN\uFF09\uFF0C\u6307\u7528\u56FE\u50CF\u8BB2\u6545\u4E8B\uFF08\u6240\u4EE5\u4E5F\u88AB\u79F0\u4E3A\u201C\u89C6\u89C9\u8BB2\u6545\u4E8B\u201D/visual\r\nstorytelling\uFF09VN\u7684\u4E00\u4E2A\u7ECF\u5178\u4F8B\u5B50\u662F\u897F\u65AF\u5EF7\u6559\u5802\u5929\u9876\u753B\uFF0C\u7C73\u5F00\u6717\u57FA\u7F57\u7528\u4E09\u5E45\u58C1\u753B\u8BB2\u8FF0\u4E86\u201C\u4E9A\u5F53\u548C\u590F\u5A03\u201D\u7684\u6545\u4E8B\u3002\u4ECE\u8FD9\u4E2A\u89D2\u5EA6\u770B\uFF0C\u89C6\u89C9\u53D9\u4E8B\u662F\u89C6\u89C9\u6545\u4E8B\u3001\u53D9\u4E8B\u56FE\u50CF\u3001\u56FE\u7247\u6545\u4E8B\u3001\u53D9\u4E8B\u56FE\u7247\u7684\u540C\u4E49\u8BCD\u3002"
+    cardImage: {fileID: 21300000, guid: 13aab0197a52d1c4a8c6e93599519430, type: 3}
+    cardValue: -5
+  - cardType: 2
+    cardOutNE: RT Rendering
+    cardOutNC: "\u5B9E\u65F6\u6E32\u67D3"
+    cardNameEng: Real-Time Rendering
+    cardNameChi: "\u5B9E\u65F6\u6E32\u67D3"
+    cardSummaryEng: Real-time rendering emphasizes real-time performance and interactivity
+      compared to traditional cloud rendering. From a technical perspective, real-time
+      rendering refers to achieving a smooth playback of 24 frames per second, which
+      prevents the viewer's eye from perceiving any stuttering. From the user's perspective,
+      it is similar to watching a video.
+    cardSummaryChi: "\u5B9E\u65F6\u6E32\u67D3\u548C\u4F20\u7EDF\u7684\u4E91\u6E32\u67D3\u76F8\u6BD4\uFF0C\u5F3A\u8C03\u5B9E\u65F6\u6027\u548C\u4EA4\u4E92\u6027\u3002\u5B9E\u65F6\u4ECE\u6280\u672F\u89D2\u5EA6\u6765\u8BF4\uFF1A\u53EA\u6709\u8FBE\u5230\u6BCF\u79D2\u64AD\u653E24\u5E27\u8FDE\u8D2F\u56FE\u50CF\u7684\u901F\u5EA6\uFF0C\u4EBA\u773C\u89C2\u770B\u65F6\u624D\u4E0D\u4F1A\u6709\u5361\u987F\u7684\u611F\u89C9\uFF0C\u5BF9\u4E8E\u7528\u6237\u89D2\u5EA6\u6765\u8BF4\u5C31\u548C\u770B\u89C6\u9891\u4E00\u6837\u3002"
+    cardImage: {fileID: 21300000, guid: bf501cd2269a33d4a9cc463339dd3f75, type: 3}
+    cardValue: -7
   cards_Code:
   - cardType: 3
     cardOutNE: 3D  Coordinates
@@ -560,81 +738,58 @@ MonoBehaviour:
     cardImage: {fileID: 21300000, guid: 47de86939a1ac6c47b76fed6f64676ff, type: 3}
     cardValue: -10
   - cardType: 3
-    cardOutNE: Handle Cameras
-    cardOutNC: "\u6444\u5F71\u5E08\u6263\u5DE5\u8D44"
-    cardNameEng: Cinemachine
-    cardNameChi: Cinemachine
-    cardSummaryEng: "The Camera in game engines is a hot potato; if the camera is
-      not set up correctly, it can greatly reduce the player's experience. Cinemachine
-      is a suite of modules for operating the Unity camera. Cinemachine solves the
-      complex mathematics and logic of tracking targets, composing, blending, and
-      cutting between shots. It is designed to significantly reduce the number of
-      time-consuming manual manipulations and script revisions that take place during
-      development. Cinemachine works in real time across all genres including FPS,
-      third person, 2D, side-scroller, top down, and RTS. It supports as many shots
-      in your Scene as you need. Its modular system lets you compose sophisticated
-      behaviors. Create your own\_extensions\_or integrate it with your custom camera
-      scripts. But even with Cinemachine's help, developers still have to put a lot
-      of thoughts and energy into adjusting the camera."
-    cardSummaryChi: "\u6E38\u620F\u4E2D\u7684\u6444\u50CF\u673A\uFF08Camera\uFF09\u5E76\u4E0D\u662F\u4E2A\u7701\u6CB9\u7684\u706F\uFF0C\u5982\u679C\u76F8\u673A\u8BBE\u7F6E\u7684\u4E0D\u5BF9\uFF0C\u5C06\u4F1A\u6781\u5927\u5F71\u54CD\u73A9\u5BB6\u7684\u6E38\u620F\u4F53\u9A8C\u3002Cinemachine\u662F\u4E00\u5957\u7528\u4E8E
-      Unity \u5F15\u64CE\u7684\u76F8\u673A\u667A\u80FD\u6539\u826F\u6A21\u5757\u3002Cinemachine
-      \u89E3\u51B3\u4E86\u8DDF\u8E2A\u76EE\u6807\u3001\u6784\u56FE\u3001\u6DF7\u5408\u3001\u955C\u5934\u4E4B\u95F4\u5207\u5272\u7B49\u590D\u6742\u7684\u6570\u5B66\u548C\u903B\u8F91\u95EE\u9898\uFF0C\u5B83\u7684\u8BBE\u8BA1\u76EE\u7684\u662F\u4E3A\u4E86\u80FD\u591F\u51CF\u5C11\u5F00\u53D1\u8FC7\u7A0B\u4E2D\u8017\u65F6\u8D39\u529B\u7684\u4EBA\u5DE5\u64CD\u4F5C\u548C\u811A\u672C\u4FEE\u6539\u3002Cinemachine
-      \u53EF\u4EE5\u5728\u5305\u62EC FPS\uFF0C \u7B2C\u4E09\u4EBA\u79F0\uFF0C2D\uFF0C\u6A2A\u677F\uFF0C\u4FEF\u89C6\u89D2\u5C04\u51FB\u548C
-      RTS \u5728\u5185\u7684\u6240\u6709\u7C7B\u578B\u4E2D\u5B9E\u65F6\u5DE5\u4F5C\uFF0C\u5B83\u652F\u6301\u5728\u573A\u666F\u4E2D\u8BBE\u7F6E\u5927\u91CF\u955C\u5934\u3002\u540C\u65F6\uFF0C\u5B83\u7684\u6A21\u5757\u5316\u7CFB\u7EDF\u53EF\u4EE5\u8BA9\u4F60\u7F16\u8F91\u590D\u6742\u7684\u6444\u50CF\u673A\u884C\u4E3A\uFF0C\u5E76\u521B\u5EFA\u81EA\u5DF1\u81EA\u5B9A\u4E49\u7684\u76F8\u673A\u811A\u672C\u3002\u4E0D\u8FC7\u5373\u4FBF\u6709\u4E86Cinemachine\u7684\u5E2E\u52A9\uFF0C\u5F00\u53D1\u4EBA\u5458\u8FD8\u662F\u9700\u8981\u82B1\u8D39\u5F88\u591A\u7684\u5FC3\u601D\u548C\u7CBE\u529B\u5728\u8C03\u6574\u6444\u50CF\u673A\u4E0A\u3002"
-    cardImage: {fileID: 21300000, guid: 47de86939a1ac6c47b76fed6f64676ff, type: 3}
-    cardValue: -10
+    cardOutNE: State Machine
+    cardOutNC: "\u89D2\u8272\u72B6\u6001\u673A"
+    cardNameEng: State Machine
+    cardNameChi: "\u89D2\u8272\u72B6\u6001\u673A"
+    cardSummaryEng: 'In a game like Supercold, the character manipulated by the player
+      may have multiple states (State): static, walking, running, airborne, and so
+      on. When the player wields a melee weapon, or simply presses WASD, the effect
+      produced is completely different according to the current state. So how to
+      get the current state of the player when executing the code? It may be possible
+      to use simple conditional statements to solve the problem, but as the complexity
+      of the game increases, these codes will become redundant and difficult to maintain.
+      State Machine is a better solution. Under the state machine system, the system
+      will automatically execute the corresponding code according to the current
+      state of the player character. If a bug occurs in the game, you only need to
+      check the script in the corresponding area according to the state of the player
+      when the error is reported. The State Machine pattern is widely used in game
+      development due to its clean code and valuable features.'
+    cardSummaryChi: "\u5728\u7C7B\u4F3CSupercold\u8FD9\u6837\u7684\u6E38\u620F\u4E2D\uFF0C\u73A9\u5BB6\u6240\u64CD\u7EB5\u7684\u89D2\u8272\u53EF\u80FD\u62E5\u6709\u591A\u79CD\u72B6\u6001\uFF08State\uFF09\uFF1A\u9759\u6B62\u3001\u8D70\u52A8\u3001\u8DD1\u52A8\u3001\u6D6E\u7A7A\u72B6\u6001\u7B49\u7B49\u3002\u5F53\u73A9\u5BB6\u6325\u821E\u8FD1\u6218\u6B66\u5668\uFF0C\u4EA6\u6216\u8005\u5355\u7EAF\u6309\u4E0BWASD\uFF0C\u6839\u636E\u76EE\u524D\u7684\u72B6\u6001\u6240\u4EA7\u751F\u7684\u6548\u679C\u662F\u622A\u7136\u4E0D\u540C\u7684\u3002\u90A3\u4E48\u6267\u884C\u4EE3\u7801\u65F6\u8BE5\u5982\u4F55\u83B7\u53D6\u73A9\u5BB6\u5F53\u524D\u7684\u72B6\u6001\u5462\uFF1F\u6216\u8BB8\u53EF\u4EE5\u7528\u7B80\u5355\u7684\u6761\u4EF6\u8BED\u53E5\u6765\u5224\u5B9A\u95EE\u9898\uFF0C\u4F46\u968F\u7740\u6E38\u620F\u590D\u6742\u7A0B\u5EA6\u7684\u63D0\u5347\uFF0C\u8FD9\u4E9B\u4EE3\u7801\u5C06\u53D8\u5F97\u5197\u4F59\u800C\u96BE\u4EE5\u7EF4\u62A4\u3002\u72B6\u6001\u673A\uFF08State
+      Machine\uFF09\u662F\u4E00\u4E2A\u66F4\u597D\u7684\u89E3\u51B3\u65B9\u6848\u3002\u5728\u72B6\u6001\u673A\u7CFB\u7EDF\u4E0B\uFF0C\u7CFB\u7EDF\u4F1A\u81EA\u52A8\u6839\u636E\u73A9\u5BB6\u89D2\u8272\u76EE\u524D\u7684\u72B6\u6001\u6765\u6267\u884C\u5BF9\u5E94\u7684\u4EE3\u7801\u3002\u5982\u679C\u5728\u6E38\u620F\u5185\u53D1\u751F\u4E86Bug\uFF0C\u53EA\u9700\u6839\u636E\u62A5\u9519\u65F6\u73A9\u5BB6\u7684\u72B6\u6001\u53BB\u68C0\u67E5\u5BF9\u5E94\u533A\u57DF\u7684\u811A\u672C\uFF0C\u4FBF\u80FD\u5F88\u5FEB\u53D1\u73B0\u95EE\u9898\u6240\u5728\u3002\u7531\u4E8E\u5177\u6709\u7B80\u6D01\u7684\u4EE3\u7801\u548C\u5B9E\u7528\u7684\u529F\u80FD\u7279\u6027\uFF0C\u72B6\u6001\u673A\u6A21\u5F0F\u5728\u6E38\u620F\u5F00\u53D1\u4E2D\u662F\u88AB\u5E7F\u6CDB\u4F7F\u7528\u7684\u3002"
+    cardImage: {fileID: 21300000, guid: 9e56a10f8578d9b4099612d8a8363542, type: 3}
+    cardValue: 2
   - cardType: 3
-    cardOutNE: Handle Cameras
-    cardOutNC: "\u6444\u5F71\u5E08\u6263\u5DE5\u8D44"
-    cardNameEng: Cinemachine
-    cardNameChi: Cinemachine
-    cardSummaryEng: "The Camera in game engines is a hot potato; if the camera is
-      not set up correctly, it can greatly reduce the player's experience. Cinemachine
-      is a suite of modules for operating the Unity camera. Cinemachine solves the
-      complex mathematics and logic of tracking targets, composing, blending, and
-      cutting between shots. It is designed to significantly reduce the number of
-      time-consuming manual manipulations and script revisions that take place during
-      development. Cinemachine works in real time across all genres including FPS,
-      third person, 2D, side-scroller, top down, and RTS. It supports as many shots
-      in your Scene as you need. Its modular system lets you compose sophisticated
-      behaviors. Create your own\_extensions\_or integrate it with your custom camera
-      scripts. But even with Cinemachine's help, developers still have to put a lot
-      of thoughts and energy into adjusting the camera."
-    cardSummaryChi: "\u6E38\u620F\u4E2D\u7684\u6444\u50CF\u673A\uFF08Camera\uFF09\u5E76\u4E0D\u662F\u4E2A\u7701\u6CB9\u7684\u706F\uFF0C\u5982\u679C\u76F8\u673A\u8BBE\u7F6E\u7684\u4E0D\u5BF9\uFF0C\u5C06\u4F1A\u6781\u5927\u5F71\u54CD\u73A9\u5BB6\u7684\u6E38\u620F\u4F53\u9A8C\u3002Cinemachine\u662F\u4E00\u5957\u7528\u4E8E
-      Unity \u5F15\u64CE\u7684\u76F8\u673A\u667A\u80FD\u6539\u826F\u6A21\u5757\u3002Cinemachine
-      \u89E3\u51B3\u4E86\u8DDF\u8E2A\u76EE\u6807\u3001\u6784\u56FE\u3001\u6DF7\u5408\u3001\u955C\u5934\u4E4B\u95F4\u5207\u5272\u7B49\u590D\u6742\u7684\u6570\u5B66\u548C\u903B\u8F91\u95EE\u9898\uFF0C\u5B83\u7684\u8BBE\u8BA1\u76EE\u7684\u662F\u4E3A\u4E86\u80FD\u591F\u51CF\u5C11\u5F00\u53D1\u8FC7\u7A0B\u4E2D\u8017\u65F6\u8D39\u529B\u7684\u4EBA\u5DE5\u64CD\u4F5C\u548C\u811A\u672C\u4FEE\u6539\u3002Cinemachine
-      \u53EF\u4EE5\u5728\u5305\u62EC FPS\uFF0C \u7B2C\u4E09\u4EBA\u79F0\uFF0C2D\uFF0C\u6A2A\u677F\uFF0C\u4FEF\u89C6\u89D2\u5C04\u51FB\u548C
-      RTS \u5728\u5185\u7684\u6240\u6709\u7C7B\u578B\u4E2D\u5B9E\u65F6\u5DE5\u4F5C\uFF0C\u5B83\u652F\u6301\u5728\u573A\u666F\u4E2D\u8BBE\u7F6E\u5927\u91CF\u955C\u5934\u3002\u540C\u65F6\uFF0C\u5B83\u7684\u6A21\u5757\u5316\u7CFB\u7EDF\u53EF\u4EE5\u8BA9\u4F60\u7F16\u8F91\u590D\u6742\u7684\u6444\u50CF\u673A\u884C\u4E3A\uFF0C\u5E76\u521B\u5EFA\u81EA\u5DF1\u81EA\u5B9A\u4E49\u7684\u76F8\u673A\u811A\u672C\u3002\u4E0D\u8FC7\u5373\u4FBF\u6709\u4E86Cinemachine\u7684\u5E2E\u52A9\uFF0C\u5F00\u53D1\u4EBA\u5458\u8FD8\u662F\u9700\u8981\u82B1\u8D39\u5F88\u591A\u7684\u5FC3\u601D\u548C\u7CBE\u529B\u5728\u8C03\u6574\u6444\u50CF\u673A\u4E0A\u3002"
-    cardImage: {fileID: 21300000, guid: 47de86939a1ac6c47b76fed6f64676ff, type: 3}
-    cardValue: -10
+    cardOutNE: Raycast
+    cardOutNC: "\u7A0B\u5E8F\uFF1A\u5C04\u7EBF\u68C0\u6D4B"
+    cardNameEng: Raycast
+    cardNameChi: "\u7A0B\u5E8F\uFF1A\u5C04\u7EBF\u68C0\u6D4B"
+    cardSummaryEng: The bullets fired from the muzzle of most FPS games use Raycast
+      technology. When the player clicks to fire, the 3D engine will launch a ray
+      in the aimed direction to detect whether there are obstacles passing through
+      the ray.
+    cardSummaryChi: "\u5927\u591AFPS\u6E38\u620F\u67AA\u53E3\u5C04\u51FA\u7684\u5B50\u5F39\u90FD\u7528\u5230\u4E86\u5C04\u7EBF\u68C0\u6D4B\uFF08Raycast\uFF09\u6280\u672F\u3002\u5F53\u73A9\u5BB6\u70B9\u51FB\u5F00\u706B\u65F6\uFF0C3D\u5F15\u64CE\u4F1A\u5411\u7784\u51C6\u7684\u65B9\u5411\u4E0A\u53D1\u5C04\u5C04\u7EBF\uFF0C\u4EE5\u6B64\u68C0\u6D4B\u5C04\u7EBF\u4E2D\u662F\u5426\u6709\u7A7F\u8FC7\u7684\u969C\u788D\u7269\u4F53\u3002"
+    cardImage: {fileID: 21300000, guid: 9925a085f793f64478137c1b0af244cf, type: 3}
+    cardValue: -6
   - cardType: 3
-    cardOutNE: Handle Cameras
-    cardOutNC: "\u6444\u5F71\u5E08\u6263\u5DE5\u8D44"
-    cardNameEng: Cinemachine
-    cardNameChi: Cinemachine
-    cardSummaryEng: "The Camera in game engines is a hot potato; if the camera is
-      not set up correctly, it can greatly reduce the player's experience. Cinemachine
-      is a suite of modules for operating the Unity camera. Cinemachine solves the
-      complex mathematics and logic of tracking targets, composing, blending, and
-      cutting between shots. It is designed to significantly reduce the number of
-      time-consuming manual manipulations and script revisions that take place during
-      development. Cinemachine works in real time across all genres including FPS,
-      third person, 2D, side-scroller, top down, and RTS. It supports as many shots
-      in your Scene as you need. Its modular system lets you compose sophisticated
-      behaviors. Create your own\_extensions\_or integrate it with your custom camera
-      scripts. But even with Cinemachine's help, developers still have to put a lot
-      of thoughts and energy into adjusting the camera."
-    cardSummaryChi: "\u6E38\u620F\u4E2D\u7684\u6444\u50CF\u673A\uFF08Camera\uFF09\u5E76\u4E0D\u662F\u4E2A\u7701\u6CB9\u7684\u706F\uFF0C\u5982\u679C\u76F8\u673A\u8BBE\u7F6E\u7684\u4E0D\u5BF9\uFF0C\u5C06\u4F1A\u6781\u5927\u5F71\u54CD\u73A9\u5BB6\u7684\u6E38\u620F\u4F53\u9A8C\u3002Cinemachine\u662F\u4E00\u5957\u7528\u4E8E
-      Unity \u5F15\u64CE\u7684\u76F8\u673A\u667A\u80FD\u6539\u826F\u6A21\u5757\u3002Cinemachine
-      \u89E3\u51B3\u4E86\u8DDF\u8E2A\u76EE\u6807\u3001\u6784\u56FE\u3001\u6DF7\u5408\u3001\u955C\u5934\u4E4B\u95F4\u5207\u5272\u7B49\u590D\u6742\u7684\u6570\u5B66\u548C\u903B\u8F91\u95EE\u9898\uFF0C\u5B83\u7684\u8BBE\u8BA1\u76EE\u7684\u662F\u4E3A\u4E86\u80FD\u591F\u51CF\u5C11\u5F00\u53D1\u8FC7\u7A0B\u4E2D\u8017\u65F6\u8D39\u529B\u7684\u4EBA\u5DE5\u64CD\u4F5C\u548C\u811A\u672C\u4FEE\u6539\u3002Cinemachine
-      \u53EF\u4EE5\u5728\u5305\u62EC FPS\uFF0C \u7B2C\u4E09\u4EBA\u79F0\uFF0C2D\uFF0C\u6A2A\u677F\uFF0C\u4FEF\u89C6\u89D2\u5C04\u51FB\u548C
-      RTS \u5728\u5185\u7684\u6240\u6709\u7C7B\u578B\u4E2D\u5B9E\u65F6\u5DE5\u4F5C\uFF0C\u5B83\u652F\u6301\u5728\u573A\u666F\u4E2D\u8BBE\u7F6E\u5927\u91CF\u955C\u5934\u3002\u540C\u65F6\uFF0C\u5B83\u7684\u6A21\u5757\u5316\u7CFB\u7EDF\u53EF\u4EE5\u8BA9\u4F60\u7F16\u8F91\u590D\u6742\u7684\u6444\u50CF\u673A\u884C\u4E3A\uFF0C\u5E76\u521B\u5EFA\u81EA\u5DF1\u81EA\u5B9A\u4E49\u7684\u76F8\u673A\u811A\u672C\u3002\u4E0D\u8FC7\u5373\u4FBF\u6709\u4E86Cinemachine\u7684\u5E2E\u52A9\uFF0C\u5F00\u53D1\u4EBA\u5458\u8FD8\u662F\u9700\u8981\u82B1\u8D39\u5F88\u591A\u7684\u5FC3\u601D\u548C\u7CBE\u529B\u5728\u8C03\u6574\u6444\u50CF\u673A\u4E0A\u3002"
-    cardImage: {fileID: 21300000, guid: 47de86939a1ac6c47b76fed6f64676ff, type: 3}
-    cardValue: -10
+    cardOutNE: ProBuilder
+    cardOutNC: "ProBuilder\u63D2\u4EF6"
+    cardNameEng: ProBuilder
+    cardNameChi: "ProBuilder\u63D2\u4EF6"
+    cardSummaryEng: The unity ProBuilder package includes a Model export feature,
+      which you can use to tweak your levels in any 3D modeling software. You can
+      build, edit, and texture custom geometry in Unity with the actions and tools
+      available in the ProBuilder package. You can also use ProBuilder to help with
+      in-scene level design, prototyping, collision Meshes, and play-testing. ProBuilder
+      also comes with a Scripting API, so that you can write C# scripts to make your
+      own tools and customizations.
+    cardSummaryChi: "Unity\u5F15\u64CE\u7684ProBuilder\u5305\u63D0\u4F9B\u4E86\u4E00\u4E2A\u5FEB\u6377\u7684\u6A21\u578B\u5BFC\u51FA\u529F\u80FD\uFF0C\u5F00\u53D1\u8005\u53EF\u4EE5\u4F7F\u7528\u5B83\u6765\u8C03\u6574\u4EFB\u4F553D\u5EFA\u6A21\u8F6F\u4EF6\u683C\u5F0F\u4E0B\u7684\u6A21\u578B\u6587\u4EF6\u3002\u5F00\u53D1\u8005\u53EF\u4EE5\u5728Unity\u4E2D\u4F7F\u7528ProBuilder\u5305\u4E2D\u53EF\u7528\u7684\u5DE5\u5177\u5FEB\u901F\u6784\u5EFA\u3001\u7F16\u8F91\u548C\u7EB9\u7406\u81EA\u5B9A\u4E49\u51E0\u4F55\u4F53\uFF08mesh\uFF09\u3002\u4F60\u4E5F\u53EF\u4EE5\u4F7F\u7528ProBuilder\u6765\u5E2E\u52A9\u8FDB\u884C\u573A\u666F\u7EA7\u8BBE\u8BA1\uFF0C\u539F\u578B\uFF0C\u78B0\u649E\u7F51\u683C\u548C\u6E38\u620F\u6D4B\u8BD5\u3002ProBuilder\u8FD8\u63D0\u4F9B\u4E86\u811A\u672CAPI\uFF0C\u56E0\u6B64\u5F00\u53D1\u8005\u53EF\u4EE5\u7F16\u5199c#\u811A\u672C\u6765\u6EE1\u8DB3\u66F4\u591A\u81EA\u5B9A\u4E49\u7684\u64CD\u4F5C\u3002"
+    cardImage: {fileID: 21300000, guid: cfa0ef09b9635fc4788daf729e9acfa8, type: 3}
+    cardValue: -11
   productLevels:
   - productLevel: 1
     nameEng: A Little Cold
-    nameChi: "\u9E21\u5EA6\u72C2\u70ED"
+    nameChi: "\u9E21\u5EA6\u72C2\u51B7"
     summaryEng: 'It was supposed to be a game in which you play as a border inspector,
       checking the passports of all people leaving the country. Well, let''s say
       thanks to the hurry production, the game has made it to the platform, but this
@@ -652,7 +807,7 @@ MonoBehaviour:
     - "\u89E3\u5BC6"
   - productLevel: 2
     nameEng: Superhot, Medium
-    nameChi: "\u975E\u5E38\u72C2\u70ED"
+    nameChi: "\u975E\u5E38\u72C2\u51B7"
     summaryEng: "After painstaking development, the standard version of the game
       is now available. In the game you play as a border inspector, checking the
       passports of all people leaving the country. There are often some terrorists
@@ -669,7 +824,7 @@ MonoBehaviour:
     - "\u89E3\u5BC6"
   - productLevel: 3
     nameEng: Superhot, Welldone
-    nameChi: "\u6781\u5EA6\u72C2\u70ED"
+    nameChi: "\u6781\u5EA6\u72C2\u51B7"
     summaryEng: 'After meticulous development, our splendid game is now launched.
       In the game you play as a border inspector, checking the passports of all people
       leaving the country. There are often some terrorists among them, so pick up

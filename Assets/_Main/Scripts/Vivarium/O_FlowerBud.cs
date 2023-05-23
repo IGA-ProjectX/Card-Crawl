@@ -61,7 +61,6 @@ namespace IGDF
                 else
                 {
                     Sequence s = DOTween.Sequence();
-                    //s.Append(transform.DOShakeRotation(sd.duration, sd.strength, sd.vibrato, sd.randomness, sd.fade, sd.targetMode));
                     s.Append(transform.DORotate(new Vector3(0, 0, -5), 0.1f));
                     s.Append(transform.DORotate(new Vector3(0, 0, 10), 0.2f));
                     s.Append(transform.DORotate(new Vector3(0, 0, 0), 0.1f));

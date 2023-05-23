@@ -19,6 +19,7 @@ namespace IGDF
         [HideInInspector] public RectTransform ui_HoverContent;
         [HideInInspector] public Transform chatBubbleParent;
         public JsonData mainData;
+        public GameObject debugPanel;
 
         private void Awake()
         {
@@ -103,6 +104,12 @@ namespace IGDF
                 }
             }
             return skillToGet;
+        }
+
+        public void OpenDebugPanel(string content)
+        {
+            //debugPanel.SetActive(true);
+            //debugPanel.GetComponentInChildren<TMPro.TMP_Text>().text += content;
         }
     }
 }

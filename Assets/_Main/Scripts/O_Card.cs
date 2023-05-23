@@ -135,6 +135,8 @@ namespace IGDF
         {
             if (M_Tutorial.instance != null && !M_Tutorial.instance.GetTutorialState()) M_Tutorial.instance.GetCardInfoAndDetermineTutorial(this);
 
+            if (M_Tutorial.instance != null && M_Tutorial.instance.GetTutorialState()) return;
+
             if (isCardReadyForSkill)
             {
                 Debug.Log("UseSkill");
@@ -156,7 +158,7 @@ namespace IGDF
 
         public void OnMouseDrag()
         {
-            if (M_Tutorial.instance != null && M_Tutorial.instance.GetTutorialState()) { return; }
+            if (M_Tutorial.instance != null && M_Tutorial.instance.GetTutorialState())  return; 
 
             if (isDraggable && M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse) 
             { 
@@ -172,6 +174,8 @@ namespace IGDF
 
         public void OnMouseUp()
         {
+            if (M_Tutorial.instance != null && M_Tutorial.instance.GetTutorialState()) return;
+
             if (isDraggable && M_Main.instance.m_Skill.GetSkillState() == SkillUseState.WaitForUse)
             {
                 lastMousePosition = Vector3.zero;

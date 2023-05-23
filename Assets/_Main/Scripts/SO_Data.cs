@@ -9,7 +9,7 @@ namespace IGDF
     {
         public int gameTimeInTotal;
         public int playExp;
-        public ProductShowcase[] productShowcases;
+        public List<ProductShowcase> productShowcases;
         public List<UnlockedSkillNode> unlockedSkillNodes;
         public SO_Skill[] inUseSkills;
     }
@@ -22,6 +22,15 @@ namespace IGDF
         public string producedDate;
         public string userReviewLevel;
         public string userReviewNumber;
+
+        public ProductShowcase(LevelType levelType, ProductLevel productLevel, string producedDate, string userReviewLevel, string userReviewNumber)
+        {
+            this.levelType = levelType;
+            this.productLevel = productLevel;
+            this.producedDate = producedDate;
+            this.userReviewLevel = userReviewLevel;
+            this.userReviewNumber = userReviewNumber;
+        }
     }
 
     [System.Serializable]
@@ -29,7 +38,7 @@ namespace IGDF
     {
         public int gameTimeInTotal;
         public int playExp;
-        public ProductShowcase[] productShowcases;
+        public List< ProductShowcase> productShowcases;
         public List<UnlockedSkillNode> unlockedSkillNodes;
         public int[] inUseSkills;
         public int targetUnlockedLevelNum;

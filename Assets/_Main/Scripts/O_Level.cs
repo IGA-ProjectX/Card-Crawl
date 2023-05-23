@@ -63,11 +63,17 @@ namespace IGDF
 
         public void EnterLevel()
         {
-            M_Global.instance.targetLevel = levelIndex;
-            Sequence s = DOTween.Sequence();
-            s.AppendCallback(() => SceneManager.LoadScene(1, LoadSceneMode.Additive));
-            s.AppendCallback(() => FindObjectOfType<M_SceneTransition>().EnterCurrentCabin());
-            s.AppendCallback(() => FindObjectOfType<M_Level>().CloseLevelSelectionPanel());
+            Debug.Log("asdadadsdasads");
+            if (M_SceneTransition.instance.currentView != M_SceneTransition.CabinView.InStudio)
+            {
+                Debug.Log("ented");
+                M_SceneTransition.instance.currentView = M_SceneTransition.CabinView.InStudio;
+                M_Global.instance.targetLevel = levelIndex;
+                Sequence s = DOTween.Sequence();
+                s.AppendCallback(() => SceneManager.LoadScene(1, LoadSceneMode.Additive));
+                s.AppendCallback(() => FindObjectOfType<M_SceneTransition>().EnterCurrentCabin());
+                s.AppendCallback(() => FindObjectOfType<M_Level>().CloseLevelSelectionPanel());
+            }
         }
     }
 }
